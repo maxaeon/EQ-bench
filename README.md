@@ -8,7 +8,7 @@ Status: *early scaffold* (v0.0.1) - layout may change
 | **Status** | `v0.1-alpha` – folder skeleton, pilot metric stubs, and sample data only. |
 | **Pilot window** | **Day 0 – Day 90** (see roadmap) |
 | **Inspiration** | *Humanity’s-Last-Exam*, HELM, EQ-Bench, ETHOS, EmpatheticDialogues |
-| **Lead org** | *Inflection AI* research group |
+| **Lead org** | tentatively *Inflection AI* research group |
 | **Contact** | placeholder: Max Parks, research lead maxaeonparks@gmail.com |
 
 ---

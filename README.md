@@ -39,15 +39,19 @@ SERA-X/
 ├── workflows/ # CI / lint / tests
 └── ISSUE_TEMPLATE/ # bug / feature templates
 
+---
+
 ## 4  Quick Start   *(developers)*
-```bash
+bash
 git clone https://github.com/maxaeon/SERA-x.git
 cd SERA-x
 pip install -r requirements-dev.txt
 pytest               # metric unit-tests
 python src/cli.py    # view help
 
-5 Quick Start (non-technical contributors)
+---
+
+## 5 Quick Start (non-technical contributors)
 Click “Fork” (top-right) → edits open in the GitHub web editor.
 
 Browse to any .md file, click “✏️” to propose changes.
@@ -57,7 +61,9 @@ GitHub automatically opens a pull request – add a short explanation, hit Creat
 A maintainer will review, run CI, and merge when ready.
 See docs/quick_github_guide.md for screenshots.
 
-6 Contributing
+---
+
+## 6 Contributing
 We welcome pull requests, issues, and Discussions from developers, psychologists, ethicists, educators, and end-users.
 
 Task type	How-to
@@ -68,7 +74,9 @@ Report bias or bug	Use Issue template Bug report, provide minimal repro.
 
 Please read CONTRIBUTING.md and our CODE_OF_CONDUCT.md before contributing.
 
-7 Roadmap (v0 → v1)
+---
+
+## 7 Roadmap (v0 → v1)
 Month	Milestone
 M-1 (Weeks 1-2)	Literature briefs & construct sheets consolidated
 M-1 (Week 3)	Axes & pilot metrics frozen (design_dossier_v1)

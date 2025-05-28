@@ -8,3 +8,33 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Populate constructs for a given axis onto the page
+function populateAxisConstructs(axis, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  fetch('construct_submissions.json')
+    .then(r => r.json())
+    .then(data => {
+      const items = data.filter(c =>
+        c.body && c.body.toLowerCase().includes(axis.toLowerCase())
+      );
+      if (items.length === 0) {
+        container.textContent = 'No constructs submitted yet.';
+        return;
+      }
+      const ul = document.createElement('ul');
+      items.forEach(c => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = c.url;
+        a.textContent = c.title;
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      container.appendChild(ul);
+    })
+    .catch(() => {
+      container.textContent = 'Unable to load constructs.';
+    });
+}

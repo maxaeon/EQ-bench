@@ -25,6 +25,15 @@
         <section id="constructs">
             <h2>Submitted Constructs</h2>
             <p>Community submissions collected from GitHub issues.</p>
+            <div class="sort-controls">
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select">
+                    <option value="date">Date</option>
+                    <option value="title">Alphabetical</option>
+                    <option value="field">Field/Topic</option>
+                    <option value="axis">SERA-X Axis</option>
+                </select>
+            </div>
             <table id="construct-table">
                 <thead>
                     <tr>
@@ -32,6 +41,8 @@
                         <th>Title</th>
                         <th>User</th>
                         <th>Date</th>
+                        <th>Axis</th>
+                        <th>Field</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -43,18 +54,42 @@
         <p>&copy; SERA-X contributors</p>
     </footer>
     <script>
+    function parseMeta(c) {
+        const body = (c.body || '').toLowerCase();
+        const axes = ['sense','explain','respond','adapt','extended'];
+        c.axis = axes.find(a => body.includes(a)) || '';
+        const fields = ['psychology','philosophy','neuroscience'];
+        c.field = fields.find(f => body.includes(f)) || 'other';
+    }
+
+    function render(data) {
+        const tbody = document.querySelector('#construct-table tbody');
+        tbody.innerHTML = '';
+        data.forEach(c => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${c.number}</td>
+                <td><a href="${c.url}">${c.title}</a></td>
+                <td>${c.user}</td>
+                <td>${c.created_at.split('T')[0]}</td>
+                <td>${c.axis}</td>
+                <td>${c.field}</td>`;
+            tbody.appendChild(row);
+        });
+    }
+
     fetch('construct_submissions.json')
         .then(r => r.json())
         .then(data => {
-            const tbody = document.querySelector('#construct-table tbody');
-            data.forEach(c => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${c.number}</td>
-                    <td><a href="${c.url}">${c.title}</a></td>
-                    <td>${c.user}</td>
-                    <td>${c.created_at.split('T')[0]}</td>`;
-                tbody.appendChild(row);
+            data.forEach(parseMeta);
+            render(data);
+            document.getElementById('sort-select').addEventListener('change', e => {
+                const v = e.target.value;
+                if (v === 'title') data.sort((a,b)=>a.title.localeCompare(b.title));
+                else if (v === 'field') data.sort((a,b)=>a.field.localeCompare(b.field));
+                else if (v === 'axis') data.sort((a,b)=>a.axis.localeCompare(b.axis));
+                else data.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
+                render(data);
             });
         });
     </script>

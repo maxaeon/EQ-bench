@@ -33,11 +33,14 @@ jobs:
               body: i.body
             }));
             fs.mkdirSync('data', { recursive: true });
-            fs.writeFileSync('data/construct_submissions.json', JSON.stringify(data, null, 2));
+            fs.mkdirSync('docs', { recursive: true });
+            const json = JSON.stringify(data, null, 2);
+            fs.writeFileSync('data/construct_submissions.json', json);
+            fs.writeFileSync('docs/construct_submissions.json', json);
       - name: Commit updates
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'data/construct_submissions.json'
+          add: 'data/construct_submissions.json docs/construct_submissions.json'
           message: 'Update construct submissions'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

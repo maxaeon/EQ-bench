@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERA-X - Submitted Constructs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a class="logo" href="index.html">SERA-X</a></h1>
+        <p class="tagline">
+            <a href="sense.html">Sense</a> &ndash;
+            <a href="explain.html">Explain</a> &ndash;
+            <a href="respond.html">Respond</a> &ndash;
+            <a href="adapt.html">Adapt</a> &ndash;
+            <a href="extended.html">Extended</a>
+        </p>
+    </header>
+    <main>
+        <section id="constructs">
+            <h2>Submitted Constructs</h2>
+            <p>Community submissions collected from GitHub issues.</p>
+            <table id="construct-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>User</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p>Click a title to open the original issue and share feedback.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; SERA-X contributors</p>
+    </footer>
+    <script>
+    fetch('construct_submissions.json')
+        .then(r => r.json())
+        .then(data => {
+            const tbody = document.querySelector('#construct-table tbody');
+            data.forEach(c => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${c.number}</td>
+                    <td><a href="${c.url}">${c.title}</a></td>
+                    <td>${c.user}</td>
+                    <td>${c.created_at.split('T')[0]}</td>`;
+                tbody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>

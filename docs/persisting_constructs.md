@@ -17,8 +17,10 @@ emotion-related constructs.
 
 For the early prototype we use **option 2**. A GitHub Actions workflow runs on
 issue events and periodically. It gathers all open issues labeled `construct` and
-writes their content to `data/construct_submissions.json`. The file is committed
-back to the repository so changes are visible in pull requests.
+writes their content to `data/construct_submissions.json`. The same JSON is
+also copied to `docs/construct_submissions.json` so the website can display the
+latest submissions. Both files are committed back to the repository so changes
+are visible in pull requests.
 
 This lightweight method keeps contributions transparent while avoiding the
 maintenance burden of an external database. Future work may revisit a database

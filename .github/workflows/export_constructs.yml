@@ -1,0 +1,43 @@
+name: export-constructs
+on:
+  issues:
+    types: [opened, edited, deleted]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Export construct issues to JSON
+        id: export
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'construct',
+              state: 'open',
+              per_page: 100,
+            });
+            const data = issues.map(i => ({
+              number: i.number,
+              title: i.title,
+              user: i.user.login,
+              url: i.html_url,
+              created_at: i.created_at,
+              body: i.body
+            }));
+            fs.mkdirSync('data', { recursive: true });
+            fs.writeFileSync('data/construct_submissions.json', JSON.stringify(data, null, 2));
+      - name: Commit updates
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'data/construct_submissions.json'
+          message: 'Update construct submissions'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

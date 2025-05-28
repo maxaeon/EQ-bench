@@ -8,12 +8,22 @@
     <link rel="icon" href="assets/images/favicon.png">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
         <h1><a class="logo" href="index.html">SERA-X</a></h1>
-        <p class="tagline"><a href="sense.html">Sense</a> &ndash; <a href="explain.html">Explain</a> &ndash; <a href="respond.html">Respond</a> &ndash; <a href="adapt.html">Adapt</a> &ndash; <a href="extended.html">Extended</a></p>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <nav class="site-nav" aria-label="Primary">
+            <ul>
+                <li><a href="sense.html">Sense</a></li>
+                <li><a href="explain.html">Explain</a></li>
+                <li><a href="respond.html">Respond</a></li>
+                <li><a href="adapt.html">Adapt</a></li>
+                <li><a href="extended.html">Extended</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section id="about">
             <img src="assets/images/sera.png" alt="SERA-x AI emotional intelligence benchmark icon">
             <h2>About</h2>
@@ -37,5 +47,6 @@
     <footer>
         <p>&copy; SERA-X contributors</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

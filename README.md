@@ -63,6 +63,13 @@ See docs/quick_github_guide.md for screenshots.
 
 ---
 
+### Project website
+
+The `docs/` folder doubles as a GitHub Pages site.
+Visit <https://maxaeon.github.io/SERA-x/> for a short overview of the project and a quick link to submit new construct forms.
+
+---
+
 ## 6 Contributing
 We welcome pull requests, issues, and Discussions from developers, psychologists, ethicists, educators, and end-users.
 

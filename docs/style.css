@@ -71,7 +71,7 @@ ul li {
 #about img {
     display: block;
     margin: 0 auto;
-    max-width: 200px;
+    max-width: 400px;
 }
 
 @media (prefers-color-scheme: dark) {

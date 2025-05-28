@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "number": 1,
+    "title": "Appraisal",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "The interpretation of an event's significance in terms of goals, values, or norms. Measures: structured interviews and Likert scales. SERA axes: explain, respond, adapt. Field: psychology"
+  },
+  {
+    "number": 2,
+    "title": "Empathic Response",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "A response that reflects understanding, concern, or support for another's emotional state. Measures include Empathy Quotient. SERA axes: explain, respond, adapt. Field: psychology"
+  },
+  {
+    "number": 3,
+    "title": "Emotion Label Recognition",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "The ability to identify and classify emotional states from cues such as language, facial expression, or tone. Measures: RMET, emotion recognition tasks. SERA axes: sense, adapt. Field: psychology"
+  },
+  {
+    "number": 4,
+    "title": "Arousal Regulation",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "The ability to modulate physiological and emotional arousal to remain goal-directed and appropriate. Measures: HRV, cortisol response. SERA axes: sense, explain, respond, adapt. Field: psychology"
+  },
+  {
+    "number": 5,
+    "title": "Emotion Co-Regulation",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "Interactive emotional regulation where people adjust their states together. Measures include dyadic coping scales. SERA axes: sense, explain, respond, adapt. Field: psychology"
+  },
+  {
+    "number": 6,
+    "title": "Emotional Appropriateness",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/6",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "The degree to which an emotional response or behaviour fits social or contextual norms. Measures: social norms questionnaires. SERA axes: explain, respond, adapt. Field: psychology"
+  },
+  {
+    "number": 7,
+    "title": "Perspective-Taking",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "The cognitive ability to imagine another person's point of view. Measures: Interpersonal Reactivity Index. SERA axes: explain, respond, adapt. Field: psychology"
+  },
+  {
+    "number": 8,
+    "title": "Action Tendency Recognition",
+    "user": "seed-data",
+    "url": "https://example.com/constructs/8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "body": "Understanding what behaviour an emotion is likely to motivate. Measures: action prediction from context. SERA axes: sense, explain, respond. Field: psychology"
+  }
+]

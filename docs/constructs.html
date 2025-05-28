@@ -41,8 +41,8 @@
                         <th>Title</th>
                         <th>User</th>
                         <th>Date</th>
-                        <th>Axis</th>
-                        <th>Field</th>
+                    <th>Axes</th>
+                    <th>Fields</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -57,9 +57,11 @@
     function parseMeta(c) {
         const body = (c.body || '').toLowerCase();
         const axes = ['sense','explain','respond','adapt','extended'];
-        c.axis = axes.find(a => body.includes(a)) || '';
+        const foundAxes = axes.filter(a => body.includes(a));
+        c.axis = foundAxes.join(', ');
         const fields = ['psychology','philosophy','neuroscience'];
-        c.field = fields.find(f => body.includes(f)) || 'other';
+        const foundFields = fields.filter(f => body.includes(f));
+        c.field = foundFields.length ? foundFields.join(', ') : 'other';
     }
 
     function render(data) {

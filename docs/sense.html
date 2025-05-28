@@ -24,8 +24,19 @@
 
     <main id="main">
         <section id="sense">
-            <h2>Sense</h2>
-            <p>Detect user emotion from language. SERA-X measures this axis using Macro-F1 on ten emotion labels.</p>
+            <h1>Sense</h1>
+            <p><strong>This axis evaluates an AI system’s ability to detect and recognize emotional content from input.</strong></p>
+
+<h2> What We Evaluate</h2>
+<p>Can the model identify expressed or implied emotions from user dialogue, even when indirect or masked?</p>
+
+<h2> Example Tasks</h2>
+<ul>
+    <li>Classify a text utterance as expressing one of 10 emotion categories.</li><li>Estimate continuous valence/arousal from user messages.</li><li>Distinguish between literal vs. sarcastic emotional tone.</li>
+</ul>
+
+<h2> Metrics Used</h2>
+<p>Macro-F1 for emotion label classification, CCC (concordance correlation coefficient) for valence/arousal regression.</p>
         </section>
     </main>
 

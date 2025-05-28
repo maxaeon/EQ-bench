@@ -24,8 +24,21 @@
 
     <main id="main">
         <section id="explain">
-            <h2>Explain</h2>
-            <p>Infer probable causes or appraisals behind emotions. This axis is evaluated using Cause-Inference Accuracy.</p>
+        <h1>Explain</h1>
+        <p><strong>This axis tests whether the system can infer the causes or appraisals that explain an emotion.</strong></p>
+
+
+<h2> What We Evaluate</h2>
+<p>Can the system identify what situational factors or beliefs caused an emotion?</p>
+
+<h2> Example Tasks</h2>
+<ul>
+    <li>Given a story and emotion, identify the core appraisal (e.g., goal-blocked, slighted).</li><li>Predict what the character will feel next, if new information is revealed.</li><li>Classify the formal object of an emotion (e.g., danger, loss, betrayal).</li>
+</ul>
+
+<h2> Metrics Used</h2>
+<p>Appraisal vector accuracy (16-dim SEC), cause-label accuracy, partial credit for next-emotion inference.</p>
+
         </section>
     </main>
 

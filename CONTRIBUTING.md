@@ -30,8 +30,7 @@ cd SERA-x
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Install development dependencies
-pip install -r requirements-dev.txt
+# No additional Python packages required yet
 ```
 
 To test the benchmark scoring scripts:

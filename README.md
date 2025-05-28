@@ -46,7 +46,7 @@ SERA-X/
 bash
 git clone https://github.com/maxaeon/SERA-x.git
 cd SERA-x
-pip install -r requirements-dev.txt
+# No additional Python packages required yet
 pytest               # metric unit-tests
 python src/cli.py    # view help
 

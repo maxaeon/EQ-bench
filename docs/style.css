@@ -68,6 +68,11 @@ ul {
 ul li {
     margin-bottom: 0.5rem;
 }
+#about img {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+}
 
 @media (prefers-color-scheme: dark) {
     body {

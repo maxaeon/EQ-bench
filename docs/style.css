@@ -19,6 +19,11 @@ h1 {
     font-size: 2.5rem;
 }
 
+header .logo {
+    color: #fff;
+    text-decoration: none;
+}
+
 h2 {
     color: #0d6efd;
     margin-top: 2rem;
@@ -83,5 +88,9 @@ ul li {
     }
     a.button:hover {
         background-color: #1158c7;
+    }
+
+    header .logo {
+        color: #fff;
     }
 }

@@ -1,0 +1,91 @@
+name: Construct submission
+description: Provide details for a new emotion-related construct
+labels: ["construct"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧠 1. What is the construct?
+  - type: input
+    id: name
+    attributes:
+      label: Name of construct
+      description: e.g., appraisal, empathic attunement
+    validations:
+      required: true
+  - type: textarea
+    id: definition
+    attributes:
+      label: Short definition
+      description: Explain in 1–2 sentences what this means in your field.
+  - type: textarea
+    id: importance
+    attributes:
+      label: Why this matters for emotional intelligence
+      description: How does this help us understand emotion-related skills in humans or machines?
+  - type: markdown
+    attributes:
+      value: |
+        ## 📐 2. How might we measure it?
+  - type: textarea
+    id: human_measure
+    attributes:
+      label: Human psychology methods
+      description: e.g., Likert scales, structured interviews
+  - type: textarea
+    id: behavioral_data
+    attributes:
+      label: Behavioral data
+      description: e.g., label accuracy, reaction time
+  - type: textarea
+    id: ai_task
+    attributes:
+      label: AI test task idea
+      description: Describe how this could be evaluated in a model.
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧭 3. Which SERA skill(s) does it support?
+  - type: textarea
+    id: sense
+    attributes:
+      label: Sense
+      description: Does it relate to how affect is detected or recognised?
+  - type: textarea
+    id: explain
+    attributes:
+      label: Explain
+      description: Does it clarify causes, appraisals, or mental-state reasoning?
+  - type: textarea
+    id: respond
+    attributes:
+      label: Respond
+      description: Does it guide supportive or empathic replies?
+  - type: textarea
+    id: adapt
+    attributes:
+      label: Adapt
+      description: Does it involve cultural learning, memory, or situational tuning?
+  - type: textarea
+    id: extended
+    attributes:
+      label: Extended
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 4. Recommended references
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: List citation(s) and link(s) here.
+  - type: markdown
+    attributes:
+      value: |
+        ## 📥 5. Optional extras
+  - type: textarea
+    id: extras
+    attributes:
+      label: Extras
+      description: Known biases, related constructs, diagrams, etc.

@@ -1,7 +1,7 @@
 # A living benchmark for **Sense - Explain -Respond - Adapt** emotional intelligence in AI systems.
 Status: *early scaffold* (v0.0.1) - layout may change
 
-# 1  Project Snapshot
+## 1  Project Snapshot
 |                         |                     |
 |-------------------------|---------------------|
 | **Goal** | Provide an open, reproducible framework that measures how well large-language models (and, later, multimodal systems) *sense*, *explain*, *respond* to, and *adapt* around human emotions. |

@@ -82,6 +82,10 @@
         <section id="literature">
             <h2>Relevant Literature</h2>
             <p>Peer‑reviewed sources informing our constructs.</p>
+            <div class="bibtex-controls">
+                <a class="button" href="https://github.com/maxaeon/SERA-x/issues/new?template=reference.yml">Add a source</a>
+                <a class="button" href="#" id="bibtex-download">Download BibTeX</a>
+            </div>
             <div class="search-controls">
                 <label for="lit-search">Search:</label>
                 <input type="search" id="lit-search" placeholder="Search literature">
@@ -113,6 +117,7 @@
             <table id="lit-table">
                 <thead>
                     <tr>
+                        <th><input type="checkbox" id="lit-select-all"></th>
                         <th>Title</th>
                         <th>Author(s)</th>
                         <th>Year</th>
@@ -298,14 +303,46 @@
             document.getElementById('construct-search').addEventListener('input', applyConstructFilters);
         });
 
+    const selectedLit = new Set();
+
+    function toBibtex(item) {
+        const keyAuthor = (item.authors || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '');
+        const key = keyAuthor + (item.year || '');
+        let entry = `@article{${key},\n  title = {${item.title}}`;
+        if (item.authors) entry += `,\n  author = {${item.authors}}`;
+        if (item.year) entry += `,\n  year = {${item.year}}`;
+        if (item.url) entry += `,\n  url = {${item.url}}`;
+        entry += `\n}`;
+        return entry;
+    }
+
+    function downloadFile(content, filename) {
+        const blob = new Blob([content], {type: 'text/x-bibtex'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        URL.revokeObjectURL(url);
+        a.remove();
+    }
+
+    function updateSelectAll() {
+        const cbs = document.querySelectorAll('#lit-table tbody .lit-check');
+        const allChecked = cbs.length && Array.from(cbs).every(cb => cb.checked);
+        document.getElementById('lit-select-all').checked = allChecked;
+    }
+
     function renderLit(items) {
         const tbody = document.querySelector('#lit-table tbody');
         tbody.innerHTML = '';
         items.forEach(l => {
+            const checked = selectedLit.has(l.__index) ? 'checked' : '';
             const row = document.createElement('tr');
-            const titleCell = l.title;
             row.innerHTML = `
-                <td>${titleCell}</td>
+                <td><input type="checkbox" class="lit-check" data-index="${l.__index}" ${checked}></td>
+                <td>${l.title}</td>
                 <td>${l.authors}</td>
                 <td>${l.year}</td>
                 <td>${l.relevance || ''}</td>
@@ -313,6 +350,14 @@
                 <td>${l.axis}</td>`;
             tbody.appendChild(row);
         });
+        tbody.querySelectorAll('.lit-check').forEach(cb => {
+            cb.addEventListener('change', () => {
+                const idx = parseInt(cb.dataset.index, 10);
+                if (cb.checked) selectedLit.add(idx); else selectedLit.delete(idx);
+                updateSelectAll();
+            });
+        });
+        updateSelectAll();
     }
 
     function applyLitFilters() {
@@ -344,7 +389,7 @@
     fetch('literature.json')
         .then(r => r.json())
         .then(lit => {
-            literature = lit;
+            literature = lit.map((l, i) => Object.assign({__index: i}, l));
 
             const axisSet = new Set();
             const fieldSet = new Set();
@@ -379,6 +424,22 @@
             fieldF.addEventListener('change', applyLitFilters);
             constructF.addEventListener('change', applyLitFilters);
             document.getElementById('lit-search').addEventListener('input', applyLitFilters);
+
+            document.getElementById('lit-select-all').addEventListener('change', e => {
+                document.querySelectorAll('#lit-table tbody .lit-check').forEach(cb => {
+                    cb.checked = e.target.checked;
+                    const idx = parseInt(cb.dataset.index, 10);
+                    if (e.target.checked) selectedLit.add(idx); else selectedLit.delete(idx);
+                });
+            });
+
+            document.getElementById('bibtex-download').addEventListener('click', e => {
+                e.preventDefault();
+                const items = Array.from(selectedLit).map(i => literature.find(l => l.__index === i)).filter(Boolean);
+                if (!items.length) return;
+                const content = items.map(toBibtex).join('\n\n');
+                downloadFile(content, 'references.bib');
+            });
 
             render(constructs);
         });

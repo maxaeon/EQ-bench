@@ -38,10 +38,9 @@
                 <thead>
                     <tr>
                         <th>Construct</th>
-                        <th>User</th>
-                        <th>Date</th>
                         <th>Axes</th>
                         <th>Fields</th>
+                        <th>Related Sources</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -68,6 +67,7 @@
                         <th>Title</th>
                         <th>Author(s)</th>
                         <th>Year</th>
+                        <th>Relevance</th>
                         <th>Construct</th>
                         <th>Axis</th>
                     </tr>
@@ -80,6 +80,9 @@
         <p>&copy; SERA-X contributors</p>
     </footer>
     <script>
+    let literature = [];
+    let constructs = [];
+
     function parseMeta(c) {
         const body = (c.body || '').toLowerCase();
         const axes = ['sense','explain','respond','adapt','extended'];
@@ -90,19 +93,31 @@
         c.field = foundFields.length ? foundFields.join(', ') : 'other';
     }
 
+    function getSources(c) {
+        if (!literature.length) return '';
+        const text = ((c.title || '') + ' ' + (c.body || '')).toLowerCase();
+        const matches = [];
+        literature.forEach(l => {
+            const author = (l.authors || '').split(' ')[0];
+            if (author && text.includes(author.toLowerCase())) {
+                const link = l.url ? `<a href="${l.url}">${l.authors}</a>` : l.authors;
+                if (!matches.includes(link)) matches.push(link);
+            }
+        });
+        return matches.join(', ');
+    }
+
     function render(data) {
         const tbody = document.querySelector('#construct-table tbody');
         tbody.innerHTML = '';
         data.forEach(c => {
             const row = document.createElement('tr');
-            const date = new Date(c.created_at);
-            const md = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+            const sources = getSources(c);
             row.innerHTML = `
                 <td><a href="${c.url}">${c.title}</a></td>
-                <td>${c.user}</td>
-                <td>${md}</td>
                 <td>${c.axis}</td>
-                <td>${c.field}</td>`;
+                <td>${c.field}</td>
+                <td>${sources}</td>`;
             tbody.appendChild(row);
         });
     }
@@ -111,14 +126,15 @@
         .then(r => r.json())
         .then(data => {
             data.forEach(parseMeta);
-            render(data);
+            constructs = data;
+            render(constructs);
             document.getElementById('sort-select').addEventListener('change', e => {
                 const v = e.target.value;
-                if (v === 'title') data.sort((a,b)=>a.title.localeCompare(b.title));
-                else if (v === 'field') data.sort((a,b)=>a.field.localeCompare(b.field));
-                else if (v === 'axis') data.sort((a,b)=>a.axis.localeCompare(b.axis));
-                else data.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
-                render(data);
+                if (v === 'title') constructs.sort((a,b)=>a.title.localeCompare(b.title));
+                else if (v === 'field') constructs.sort((a,b)=>a.field.localeCompare(b.field));
+                else if (v === 'axis') constructs.sort((a,b)=>a.axis.localeCompare(b.axis));
+                else constructs.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
+                render(constructs);
             });
         });
 
@@ -132,6 +148,7 @@
                 <td>${titleCell}</td>
                 <td>${l.authors}</td>
                 <td>${l.year}</td>
+                <td>${l.relevance || ''}</td>
                 <td>${l.construct}</td>
                 <td>${l.axis}</td>`;
             tbody.appendChild(row);
@@ -141,15 +158,17 @@
     fetch('literature.json')
         .then(r => r.json())
         .then(lit => {
-            renderLit(lit);
+            literature = lit;
+            renderLit(literature);
+            render(constructs);
             document.getElementById('lit-sort').addEventListener('change', e => {
                 const v = e.target.value;
-                if (v === 'title') lit.sort((a,b)=>a.title.localeCompare(b.title));
-                else if (v === 'author') lit.sort((a,b)=>a.authors.localeCompare(b.authors));
-                else if (v === 'construct') lit.sort((a,b)=>a.construct.localeCompare(b.construct));
-                else if (v === 'axis') lit.sort((a,b)=>a.axis.localeCompare(b.axis));
-                else lit.sort((a,b)=>(a.year||0)-(b.year||0));
-                renderLit(lit);
+                if (v === 'title') literature.sort((a,b)=>a.title.localeCompare(b.title));
+                else if (v === 'author') literature.sort((a,b)=>a.authors.localeCompare(b.authors));
+                else if (v === 'construct') literature.sort((a,b)=>a.construct.localeCompare(b.construct));
+                else if (v === 'axis') literature.sort((a,b)=>a.axis.localeCompare(b.axis));
+                else literature.sort((a,b)=>(a.year||0)-(b.year||0));
+                renderLit(literature);
             });
         });
     </script>

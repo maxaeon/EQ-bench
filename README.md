@@ -38,6 +38,7 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 ---
 
 ## 3  Repository Layout
+```text
 SERA-X/
 ├── Introduction (Home)
 ├── Project Overview
@@ -60,6 +61,7 @@ SERA-X/
 ├── Literature and References
 ├── Project Timeline
 └── What's New
+```
 
 
 ---

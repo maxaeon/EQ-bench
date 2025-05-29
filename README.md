@@ -81,14 +81,8 @@ python src/cli.py    # view help
 - GitHub account
 - Modern web browser
 
-Click “Fork” (top-right) → edits open in the GitHub web editor.
+See the [Quick GitHub Guide](docs/quick_github_guide.md) for step-by-step screenshots.
 
-Browse to any .md file, click “✏️” to propose changes.
-
-GitHub automatically opens a pull request – add a short explanation, hit Create PR.
-
-A maintainer will review, run CI, and merge when ready.
-See [quick_github_guide.md](docs/quick_github_guide.md) for screenshots.
 
 ---
 

@@ -44,12 +44,21 @@
                 <label for="construct-search">Search:</label>
                 <input type="search" id="construct-search" placeholder="Search constructs">
             </div>
+            <div class="filter-controls">
+                <label for="axis-filter">Axis:</label>
+                <select id="axis-filter">
+                    <option value="">All</option>
+                </select>
+                <label for="field-filter">Field/Topic:</label>
+                <select id="field-filter">
+                    <option value="">All</option>
+                </select>
+            </div>
             <div class="sort-controls">
                 <label for="sort-select">Sort by:</label>
                 <select id="sort-select">
                     <option value="title">Alphabetical</option>
-                    <option value="field">Field/Topic</option>
-                    <option value="axis">SERA-X Axis</option>
+                    <option value="relevance">Relevance</option>
                 </select>
             </div>
             <table id="construct-table">
@@ -69,14 +78,26 @@
         <section id="literature">
             <h2>Relevant Literature</h2>
             <p>Peer‑reviewed sources linked to our constructs.</p>
+            <div class="filter-controls">
+                <label for="lit-axis-filter">Axis:</label>
+                <select id="lit-axis-filter">
+                    <option value="">All</option>
+                </select>
+                <label for="lit-construct-filter">Construct:</label>
+                <select id="lit-construct-filter">
+                    <option value="">All</option>
+                </select>
+                <label for="lit-field-filter">Field/Topic:</label>
+                <select id="lit-field-filter">
+                    <option value="">All</option>
+                </select>
+            </div>
             <div class="sort-controls">
                 <label for="lit-sort">Sort by:</label>
                 <select id="lit-sort">
                     <option value="year">Year</option>
                     <option value="author">Author</option>
                     <option value="title">Title</option>
-                    <option value="construct">Construct</option>
-                    <option value="axis">SERA-X Axis</option>
                 </select>
             </div>
             <table id="lit-table">
@@ -111,9 +132,13 @@
             foundAxes = axes.filter(a => body.includes(a));
         }
         c.axis = foundAxes.join(', ');
-        const fields = ['psychology','philosophy','neuroscience'];
-        const foundFields = fields.filter(f => body.includes(f));
-        c.field = foundFields.length ? foundFields.join(', ') : 'other';
+        if (c.category) {
+            c.field = c.category;
+        } else {
+            const fields = ['psychology','philosophy','neuroscience','computer science','interdisciplinary'];
+            const foundFields = fields.filter(f => body.includes(f));
+            c.field = foundFields.length ? foundFields.join(', ') : 'other';
+        }
         if (c.measurement) {
             c.evaluation = c.measurement;
         } else {
@@ -129,8 +154,8 @@
         literature.forEach(l => {
             const author = (l.authors || '').split(' ')[0];
             if (author && text.includes(author.toLowerCase())) {
-                const name = l.authors;
-                if (!matches.includes(name)) matches.push(name);
+                const entry = `${l.authors} (${l.year})`;
+                if (!matches.includes(entry)) matches.push(entry);
             }
         });
         return matches.join(', ');
@@ -186,35 +211,70 @@
         });
     }
 
+    function applyConstructFilters() {
+        const q = document.getElementById('construct-search').value.trim().toLowerCase();
+        const axisSel = document.getElementById('axis-filter').value;
+        const fieldSel = document.getElementById('field-filter').value;
+        let items = constructs.filter(c => {
+            if (axisSel && !(c.axis || '').toLowerCase().includes(axisSel)) return false;
+            if (fieldSel && !(c.field || '').toLowerCase().includes(fieldSel)) return false;
+            if (q) {
+                const title = (c.title || '').toLowerCase();
+                const def = (c.definition || '').toLowerCase();
+                const syn = Array.isArray(c.synonyms) ? c.synonyms.join(' ').toLowerCase() : (c.synonyms || '').toLowerCase();
+                return title.includes(q) || def.includes(q) || syn.includes(q);
+            }
+            return true;
+        });
+
+        const sortVal = document.getElementById('sort-select').value;
+        if (sortVal === 'title') {
+            items.sort((a,b)=>a.title.localeCompare(b.title));
+        } else if (sortVal === 'relevance') {
+            const qtext = q;
+            const rank = c => {
+                if (!qtext) return 0;
+                const text = ((c.title || '') + ' ' + (c.definition || '') + ' ' + (Array.isArray(c.synonyms)? c.synonyms.join(' '): c.synonyms || '')).toLowerCase();
+                const idx = text.indexOf(qtext);
+                return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
+            };
+            items.sort((a,b)=>rank(a)-rank(b));
+        }
+        render(items);
+    }
+
     fetch('construct_submissions.json')
         .then(r => r.json())
         .then(data => {
             data.forEach(parseMeta);
             constructs = data;
-            // Default sort alphabetical
-            constructs.sort((a,b)=>a.title.localeCompare(b.title));
-            document.getElementById('sort-select').value = 'title';
-            render(constructs);
-            document.getElementById('sort-select').addEventListener('change', e => {
-                const v = e.target.value;
-                if (v === 'title') constructs.sort((a,b)=>a.title.localeCompare(b.title));
-                else if (v === 'field') constructs.sort((a,b)=>a.field.localeCompare(b.field));
-                else if (v === 'axis') constructs.sort((a,b)=>a.axis.localeCompare(b.axis));
-                else constructs.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
-                render(constructs);
+
+            const axisSet = new Set();
+            const fieldSet = new Set();
+            constructs.forEach(c => {
+                c.axis.split(',').forEach(a => axisSet.add(a.trim()));
+                if (c.field) fieldSet.add(c.field.trim());
             });
 
-            const searchInput = document.getElementById('construct-search');
-            searchInput.addEventListener('input', e => {
-                const q = e.target.value.trim().toLowerCase();
-                const filtered = constructs.filter(c => {
-                    const title = (c.title || '').toLowerCase();
-                    const def = (c.definition || '').toLowerCase();
-                    const syn = Array.isArray(c.synonyms) ? c.synonyms.join(' ').toLowerCase() : (c.synonyms || '').toLowerCase();
-                    return !q || title.includes(q) || def.includes(q) || syn.includes(q);
-                });
-                render(filtered);
+            const axisFilter = document.getElementById('axis-filter');
+            axisSet.forEach(a => {
+                if (a)
+                    axisFilter.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a.toLowerCase()));
             });
+
+            const fieldFilter = document.getElementById('field-filter');
+            fieldSet.forEach(f => {
+                if (f)
+                    fieldFilter.appendChild(new Option(f, f.toLowerCase()));
+            });
+
+            document.getElementById('sort-select').value = 'title';
+            applyConstructFilters();
+
+            document.getElementById('sort-select').addEventListener('change', applyConstructFilters);
+            document.getElementById('axis-filter').addEventListener('change', applyConstructFilters);
+            document.getElementById('field-filter').addEventListener('change', applyConstructFilters);
+            document.getElementById('construct-search').addEventListener('input', applyConstructFilters);
         });
 
     function renderLit(items) {
@@ -234,24 +294,58 @@
         });
     }
 
+    function applyLitFilters() {
+        const axisVal = document.getElementById('lit-axis-filter').value;
+        const constructVal = document.getElementById('lit-construct-filter').value;
+        const fieldVal = document.getElementById('lit-field-filter').value;
+        let items = literature.filter(l => {
+            if (axisVal && !(l.axis || '').toLowerCase().includes(axisVal)) return false;
+            if (fieldVal && !(l.category || '').toLowerCase().includes(fieldVal)) return false;
+            if (constructVal) {
+                const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
+                return list.some(c => c.trim().toLowerCase() === constructVal);
+            }
+            return true;
+        });
+
+        const sortVal = document.getElementById('lit-sort').value;
+        if (sortVal === 'title') items.sort((a,b)=>a.title.localeCompare(b.title));
+        else if (sortVal === 'author') items.sort((a,b)=>a.authors.localeCompare(b.authors));
+        else items.sort((a,b)=>(a.year||0)-(b.year||0));
+        renderLit(items);
+    }
+
     fetch('literature.json')
         .then(r => r.json())
         .then(lit => {
             literature = lit;
-            // Default sort by author
-            literature.sort((a,b)=>a.authors.localeCompare(b.authors));
-            document.getElementById('lit-sort').value = 'author';
-            renderLit(literature);
-            render(constructs);
-            document.getElementById('lit-sort').addEventListener('change', e => {
-                const v = e.target.value;
-                if (v === 'title') literature.sort((a,b)=>a.title.localeCompare(b.title));
-                else if (v === 'author') literature.sort((a,b)=>a.authors.localeCompare(b.authors));
-                else if (v === 'construct') literature.sort((a,b)=>a.construct.localeCompare(b.construct));
-                else if (v === 'axis') literature.sort((a,b)=>a.axis.localeCompare(b.axis));
-                else literature.sort((a,b)=>(a.year||0)-(b.year||0));
-                renderLit(literature);
+
+            const axisSet = new Set();
+            const fieldSet = new Set();
+            const constructSet = new Set();
+            literature.forEach(l => {
+                if (l.axis) l.axis.split(',').forEach(a => axisSet.add(a.trim()));
+                if (l.category) fieldSet.add(l.category.trim());
+                const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
+                list.forEach(c => constructSet.add(c.trim()));
             });
+
+            const axisF = document.getElementById('lit-axis-filter');
+            axisSet.forEach(a => { if (a) axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a.toLowerCase())); });
+            const fieldF = document.getElementById('lit-field-filter');
+            fieldSet.forEach(f => { if (f) fieldF.appendChild(new Option(f, f.toLowerCase())); });
+            const constructF = document.getElementById('lit-construct-filter');
+            constructSet.forEach(c => { if (c) constructF.appendChild(new Option(c, c.toLowerCase())); });
+
+            document.getElementById('lit-sort').value = 'author';
+            applyLitFilters();
+
+            document.getElementById('lit-sort').addEventListener('change', applyLitFilters);
+            axisF.addEventListener('change', applyLitFilters);
+            fieldF.addEventListener('change', applyLitFilters);
+            constructF.addEventListener('change', applyLitFilters);
+
+            render(constructs);
         });
     </script>
     <script src="script.js"></script>

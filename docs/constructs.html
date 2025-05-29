@@ -58,8 +58,8 @@
                         <th>Construct</th>
                         <th>Definition</th>
                         <th>Authors &amp; Sources</th>
+                        <th>Example</th>
                         <th>Axis</th>
-                        <th>How to Evaluate</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -146,31 +146,37 @@
         tbody.innerHTML = '';
         data.forEach((c, idx) => {
             const row = document.createElement('tr');
+            const extra = document.createElement('tr');
             const sources = getSources(c);
             const id = `cdetail-${idx}`;
             const synonyms = Array.isArray(c.synonyms) ? c.synonyms.join(', ') : (c.synonyms || '');
             const related = Array.isArray(c.related_terms) ? c.related_terms.join(', ') : (c.related_terms || '');
-            const details = `
-                <div id="${id}" class="construct-details" style="display:none;">
-                  <strong>synonyms:</strong> ${synonyms}<br>
-                  <strong>related terms:</strong> ${related}<br><br>
-                  ${c.example ? `<em>${c.example}</em><br>` : ''}
-                  ${c.evaluation ? truncate(c.evaluation, 250) : ''}
-                </div>`;
+
             row.innerHTML = `
-                <td><button class="toggle-details" data-target="${id}">${c.title}</button>${details}</td>
+                <td><button class="toggle-details" data-target="${id}">${c.title}</button></td>
                 <td>${c.definition || ''}</td>
                 <td>${sources}</td>
-                <td>${c.axis}</td>
-                <td>${c.evaluation || ''}</td>`;
+                <td>${c.example || ''}</td>
+                <td>${c.axis}</td>`;
+
+            extra.className = 'construct-extra';
+            extra.id = id;
+            extra.style.display = 'none';
+            extra.innerHTML = `
+                <td colspan="5"><strong>synonyms:</strong> ${synonyms}<br>
+                <strong>related terms:</strong> ${related}<br><br>
+                ${c.evaluation || ''}<br>
+                <a href="https://github.com/maxaeon/SERA-x/issues/new?title=Feedback%20on%20${encodeURIComponent(c.title)}">Suggest an improvement</a></td>`;
+
             tbody.appendChild(row);
+            tbody.appendChild(extra);
         });
 
         document.querySelectorAll('.toggle-details').forEach(btn => {
             btn.addEventListener('click', () => {
                 const target = document.getElementById(btn.dataset.target);
                 if (target.style.display === 'none' || !target.style.display) {
-                    target.style.display = 'block';
+                    target.style.display = 'table-row';
                 } else {
                     target.style.display = 'none';
                 }

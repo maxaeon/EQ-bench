@@ -50,6 +50,7 @@ function populateAxisConstructs(axis, containerId) {
         const id = `${containerId}-detail-${idx}`;
         const synonyms = Array.isArray(c.synonyms) ? c.synonyms.join(', ') : (c.synonyms || '');
         const related = Array.isArray(c.related_terms) ? c.related_terms.join(', ') : (c.related_terms || '');
+        const issues = c.verification_issues || '';
         const btn = document.createElement('button');
         btn.className = 'toggle-details';
         btn.dataset.target = id;
@@ -60,7 +61,8 @@ function populateAxisConstructs(axis, containerId) {
         details.style.display = 'none';
         details.innerHTML = `
           <strong>synonyms:</strong> ${synonyms}<br>
-          <strong>related terms:</strong> ${related}<br><br>
+          <strong>related terms:</strong> ${related}<br>
+          <strong>verification issues:</strong> ${issues}<br><br>
           ${c.example ? `<em>${c.example}</em><br>` : ''}
           ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation}` : ''}`;
         li.appendChild(btn);

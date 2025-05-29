@@ -12,6 +12,7 @@
     "measurement": "NLP sentiment analysis; scenario-based evaluation; qualitative interpretation tasks.",
     "related_terms": ["Appraisal Processes", "Evaluative Judgment"],
     "example": "Customer service bots evaluate context to choose supportive responses.",
+    "verification_issues": "Subjective appraisals difficult to verify; context-specific evaluations hard to model.",
     "references": "Nussbaum 2001",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
@@ -29,6 +30,7 @@
     "measurement": "Facial emotion recognition accuracy using FER-2013 dataset; voice tone analysis and biometric monitoring (heart rate, skin conductance sensors).",
     "related_terms": ["Bodily Feedback", "Somatic Emotion"],
     "example": "Wearable sensors track heart rate to infer emotional states.",
+    "verification_issues": "Physiological signals may be ambiguous or noisy; hard to distinguish emotions solely from bodily data.",
     "interdisciplinary": "philosophy, neuroscience",
     "category": "Philosophy and Ethics"
   },
@@ -45,6 +47,7 @@
     "measurement": "User-reported surveys assessing emotional authenticity; qualitative user interviews exploring subjective emotional experiences; interpretative phenomenological analysis (IPA).",
     "related_terms": ["Subjective Feeling", "First-Person Experience"],
     "example": "Users describe the 'feel' of fear during VR experiments.",
+    "verification_issues": "Relies on subjective self-report and phenomenological interpretation; difficult to validate objectively.",
     "references": "Goldie 2000",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
@@ -62,6 +65,7 @@
     "measurement": "Behavioral decision-making tasks; physiological response monitoring; computational models using reinforcement learning informed by somatic marker frameworks.",
     "related_terms": ["Decision Bias", "Emotional Heuristics"],
     "example": "Risk-taking behavior influenced by gut feelings.",
+    "verification_issues": "Linking bodily markers to decision outcomes requires complex modeling; difficult to isolate causation.",
     "references": "Damasio 1994",
     "interdisciplinary": "neuroscience, philosophy",
     "category": "Philosophy and Ethics"
@@ -79,6 +83,7 @@
     "measurement": "Moral decision-making scenario tests (e.g., trolley dilemmas adapted for AI); moral Turing tests; simulations of moral dilemmas.",
     "related_terms": ["Machine Ethics", "Moral Decision"],
     "example": "Autonomous vehicles weighing ethical dilemmas in traffic.",
+    "verification_issues": "Ethical evaluations are culturally variable; scenario tests may oversimplify moral complexity.",
     "references": "Floridi & Sanders 2004",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -96,6 +101,7 @@
     "measurement": "Algorithmic fairness assessments using frameworks such as statistical parity and equalized odds; inclusivity audits; ethical impact assessments.",
     "related_terms": ["Responsible Innovation", "Tech Ethics"],
     "example": "Auditing emotion recognition apps for demographic bias.",
+    "verification_issues": "Requires diverse data and agreed metrics for fairness; ethical norms differ across contexts.",
     "references": "Coeckelbergh 2020",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -113,6 +119,7 @@
     "measurement": "Compliance audits and social impact assessments.",
     "related_terms": ["AI Guidelines", "Normative Principles"],
     "example": "Drafting codes of conduct for affective chatbots.",
+    "verification_issues": "Guideline compliance may be subjective and lacks standardized benchmarks; varies by jurisdiction.",
     "references": "Boddington 2017; EU AI guidelines 2019",
     "interdisciplinary": "philosophy, ethics, psychology, law",
     "category": "Philosophy and Ethics"
@@ -130,6 +137,7 @@
     "measurement": "Empathy and sympathy scenario evaluations; user feedback; compassionate response accuracy tests.",
     "related_terms": ["Compassionate AI", "Empathy"],
     "example": "Therapeutic chatbots expressing sympathetic concern.",
+    "verification_issues": "Empathy and compassion are subjective; evaluations rely on human judgments that may be biased.",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
   },
@@ -146,6 +154,7 @@
     "measurement": "Demographic bias testing in datasets; fairness metrics applied to emotional recognition datasets (AffectNet, IEMOCAP); power dynamics evaluations.",
     "related_terms": ["Algorithmic Fairness", "Inequity"],
     "example": "Study revealing bias in facial emotion datasets.",
+    "verification_issues": "Requires diverse datasets to detect bias; fairness definitions may differ; power dynamics hard to quantify.",
     "references": "Crawford 2021",
     "interdisciplinary": "philosophy, sociology, computer science",
     "category": "Philosophy and Ethics"
@@ -163,6 +172,7 @@
     "measurement": "Emotional response modulation tasks; interaction scenarios; observational methods and sentiment analysis.",
     "related_terms": ["Affective Control", "Coping"],
     "example": "Apps teaching breathing exercises to reduce anxiety.",
+    "verification_issues": "Emotion regulation strategies vary by individual and context; difficult to assess unobtrusively.",
     "references": "Gross 1998",
     "interdisciplinary": "psychology, computational modeling",
     "category": "Psychology"
@@ -180,6 +190,7 @@
     "measurement": "False-belief tasks adapted for AI; predictive accuracy tests; interpretability analysis.",
     "related_terms": ["Mental State Attribution", "Perspective-Taking"],
     "example": "Robots predicting a person's next action in a game.",
+    "verification_issues": "Ground truth mental states are unobservable; tasks rely on proxy measures like behavior or text.",
     "references": "Baron-Cohen et al. 1985",
     "interdisciplinary": "psychology, computational cognition",
     "category": "Psychology"
@@ -197,6 +208,7 @@
     "measurement": "Facial Action Coding System and cross-cultural expression recognition.",
     "related_terms": ["Universal Expressions", "Discrete Emotions"],
     "example": "Analyzing cross-cultural photographs for emotion recognition.",
+    "verification_issues": "Universality claims disputed; cultural differences may skew expression datasets.",
     "references": "Ekman 1992; Izard 1971",
     "interdisciplinary": "psychology, anthropology, neuroscience",
     "category": "Psychology"
@@ -214,6 +226,7 @@
     "measurement": "Accuracy metrics from multimodal datasets; model interpretability tests.",
     "related_terms": ["Cross-Channel Sensing", "Multisensory Input"],
     "example": "Driver monitoring using voice and face cues.",
+    "verification_issues": "Aligning different modalities and obtaining labeled datasets can be challenging.",
     "references": "Poria et al. 2019",
     "interdisciplinary": "computer science, psychology",
     "category": "Computer Science"
@@ -231,6 +244,7 @@
     "measurement": "Emotion classification accuracy and user interaction studies.",
     "related_terms": ["Emotion AI", "Affective Interaction"],
     "example": "Wearables detecting mood for wellness apps.",
+    "verification_issues": "Broad scope makes standard metrics difficult; results may depend heavily on dataset quality.",
     "references": "Picard 1997; Calvo & D'Mello 2010",
     "interdisciplinary": "computer science, psychology, engineering",
     "category": "Computer Science"
@@ -248,6 +262,7 @@
     "measurement": "Neurological modeling; fMRI correlation methods; computational simulations.",
     "related_terms": ["Amygdala", "Limbic System"],
     "example": "fMRI studies mapping fear responses.",
+    "verification_issues": "Neural signals are noisy and may not map cleanly to discrete emotions.",
     "references": "LeDoux 1998",
     "interdisciplinary": "neuroscience, computational neuroscience",
     "category": "Neuroscience"
@@ -265,6 +280,7 @@
     "measurement": "Animal models and neurochemical manipulations.",
     "related_terms": ["Evolutionary Emotions", "Primal Circuits"],
     "example": "Animal studies exploring SEEKING drive.",
+    "verification_issues": "Reliance on animal models may limit generalizability; ethical and species differences complicate validation.",
     "references": "Panksepp 1998; Panksepp & Biven 2012",
     "interdisciplinary": "neuroscience, comparative psychology, evolutionary biology",
     "category": "Neuroscience"
@@ -282,6 +298,7 @@
     "measurement": "Behavioral recognition tasks and neuroimaging.",
     "related_terms": ["Face Detection", "Expression Analysis"],
     "example": "Security cameras identifying facial cues.",
+    "verification_issues": "Expressions can be culturally variable; datasets may lack diversity; expressions don't always reveal emotion.",
     "references": "Adolphs 2002; Haxby et al. 2000",
     "interdisciplinary": "neuroscience, psychology, computer vision",
     "category": "Neuroscience"
@@ -299,6 +316,7 @@
     "measurement": "Affect Grid ratings and physiological indicators of valence/arousal.",
     "related_terms": ["Valence-Arousal", "Affective Dimensions"],
     "example": "Video game adaptation to player's mood.",
+    "verification_issues": "Valence and arousal ratings may oversimplify emotional states and rely on self-report.",
     "references": "Russell 2003; Barrett & Russell 1998",
     "interdisciplinary": "psychology, neuroscience, affective science",
     "category": "Psychology"
@@ -316,6 +334,7 @@
     "measurement": "Behavior observation and self-reported motivational states.",
     "related_terms": ["Motivational States", "Behavior Tendency"],
     "example": "Social media posts revealing mobilization after protests.",
+    "verification_issues": "Action tendencies are often internal and context dependent, making objective measurement hard.",
     "references": "Frijda 1986; Frijda et al. 1989",
     "interdisciplinary": "psychology, cognitive science, behavioral economics",
     "category": "Psychology"
@@ -333,6 +352,7 @@
     "measurement": "Embodied interaction scenarios involving embodied AI platforms (e.g., Pepper Robot, virtual reality environments); situated emotional responses; dynamic contextual adaptations.",
     "related_terms": ["Situated Emotion", "Embodied Interaction"],
     "example": "Robots adapting behavior based on physical proximity.",
+    "verification_issues": "Requires embodied hardware or simulations; context dependence makes reproducibility difficult.",
     "references": "Clark 1997",
     "interdisciplinary": "philosophy, cognitive science, computational modeling",
     "category": "Interdisciplinary"

@@ -6,7 +6,8 @@
     "construct": "Emotion as salience strategy",
     "axis": "explain",
     "relevance": "Emotions guide attention and reasoning non-propositionally; foundation for non-binary, gradient model of EI",
-    "url": "https://doi.org/10.1093/0198238829.001.0001"
+    "url": "https://doi.org/10.1093/0198238829.001.0001",
+    "category": "Philosophy and Ethics"
   },
   {
     "title": "The Emotions",
@@ -15,7 +16,8 @@
     "construct": "Feelings-towards",
     "axis": "sense, explain",
     "relevance": "Emotions directed at objects and values beyond bodily states; supports separate 'Sense' and 'Explain' axes",
-    "url": "https://doi.org/10.1093/0199253049.001.0001"
+    "url": "https://doi.org/10.1093/0199253049.001.0001",
+    "category": "Philosophy and Ethics"
   },
   {
     "title": "MSCEIT",
@@ -24,7 +26,8 @@
     "construct": "Four-branch model of EI",
     "axis": "sense, explain, respond, adapt",
     "relevance": "Splits EI into perceive, use, understand and regulate; validated on large sample guiding multi-score approach",
-    "url": "https://doi.org/10.1037/t00344-000"
+    "url": "https://doi.org/10.1037/t00344-000",
+    "category": "Psychology"
   },
   {
     "title": "How Emotions Are Made",
@@ -33,7 +36,8 @@
     "construct": "Core affect, constructionism",
     "axis": "adapt",
     "relevance": "Emotions depend on context, concepts and culture; informs Adapt axis and dataset design",
-    "url": "https://en.wikipedia.org/wiki/How_Emotions_Are_Made"
+    "url": "https://en.wikipedia.org/wiki/How_Emotions_Are_Made",
+    "category": "Psychology"
   },
   {
     "title": "EmpatheticDialogues",
@@ -42,7 +46,8 @@
     "construct": "Empathic response",
     "axis": "respond",
     "relevance": "Dialogue dataset providing gold empathic responses; baseline for Respond axis",
-    "url": "https://doi.org/10.18653/v1/D19-1015"
+    "url": "https://doi.org/10.18653/v1/D19-1015",
+    "category": "Computer Science"
   },
   {
     "title": "Upheavals of Thought",
@@ -51,7 +56,8 @@
     "construct": "Evaluative judgment",
     "axis": "explain",
     "relevance": "Seminal cognitive account of emotions as evaluative judgments",
-    "url": ""
+    "url": "",
+    "category": "Philosophy and Ethics"
   },
   {
     "title": "What is an Emotion?",
@@ -60,7 +66,8 @@
     "construct": "Physiological emotion theory",
     "axis": "explain",
     "relevance": "Foundational physiological theory providing essential philosophical grounding",
-    "url": ""
+    "url": "",
+    "category": "Philosophy and Ethics"
   },
   {
     "title": "Descartes' Error",
@@ -69,7 +76,8 @@
     "construct": "Emotion-cognition interaction",
     "axis": "explain",
     "relevance": "Influential exploration of interrelation between emotion and cognition",
-    "url": ""
+    "url": "",
+    "category": "Neuroscience"
   },
   {
     "title": "Gut Reactions",
@@ -78,6 +86,97 @@
     "construct": "Perceptual/bodily theory",
     "axis": "sense, explain",
     "relevance": "Contemporary philosophical defense of perceptual and bodily approaches",
-    "url": ""
+    "url": "",
+    "category": "Philosophy and Ethics"
+  },
+  {
+    "title": "On the Morality of Artificial Agents",
+    "authors": "Floridi & Sanders",
+    "year": 2004,
+    "construct": "Artificial moral agency",
+    "axis": "respond",
+    "relevance": "Seminal paper on attributing moral agency to AI systems",
+    "url": "",
+    "category": "Philosophy and Ethics"
+  },
+  {
+    "title": "AI Ethics",
+    "authors": "Coeckelbergh",
+    "year": 2020,
+    "construct": "Ethical AI development",
+    "axis": "adapt",
+    "relevance": "Overview of responsible AI principles",
+    "url": "",
+    "category": "Philosophy and Ethics"
+  },
+  {
+    "title": "The Theory of Moral Sentiments",
+    "authors": "Smith",
+    "year": 1759,
+    "construct": "Sympathy and moral sentiment",
+    "axis": "respond",
+    "relevance": "Classic account of moral emotions",
+    "url": "",
+    "category": "Philosophy and Ethics"
+  },
+  {
+    "title": "Atlas of AI",
+    "authors": "Crawford",
+    "year": 2021,
+    "construct": "Bias and power dynamics",
+    "axis": "extended",
+    "relevance": "Analyzes power and inequity in AI systems",
+    "url": "",
+    "category": "Philosophy and Ethics"
+  },
+  {
+    "title": "Antecedent- and Response-focused Emotion Regulation",
+    "authors": "Gross",
+    "year": 1998,
+    "construct": "Emotion regulation",
+    "axis": "adapt",
+    "relevance": "Foundational paper on emotion regulation processes",
+    "url": "",
+    "category": "Psychology"
+  },
+  {
+    "title": "Does the autistic child have a 'theory of mind'?",
+    "authors": "Baron-Cohen et al.",
+    "year": 1985,
+    "construct": "Theory of Mind",
+    "axis": "explain",
+    "relevance": "Introduces classic ToM test",
+    "url": "",
+    "category": "Psychology"
+  },
+  {
+    "title": "Emotion Recognition in Conversation",
+    "authors": "Poria et al.",
+    "year": 2019,
+    "construct": "Multimodal emotion recognition",
+    "axis": "sense",
+    "relevance": "Benchmark for multimodal emotion recognition models",
+    "url": "",
+    "category": "Computer Science"
+  },
+  {
+    "title": "The Emotional Brain",
+    "authors": "LeDoux",
+    "year": 1998,
+    "construct": "Neural circuits of emotion",
+    "axis": "explain",
+    "relevance": "Neuroscience basis of emotion",
+    "url": "",
+    "category": "Neuroscience"
+  },
+  {
+    "title": "Being There",
+    "authors": "Clark",
+    "year": 1997,
+    "construct": "Embodied cognition and emotion",
+    "axis": "extended",
+    "relevance": "Embodied cognition framework",
+    "url": "",
+    "category": "Interdisciplinary"
   }
 ]

@@ -40,6 +40,10 @@
         <section id="constructs">
             <h2>Tentative Constructs</h2>
             <p>Undergoing development by an interdisciplinary team of experts in psychology, computer science, philosophy, and more.</p>
+            <div class="search-controls">
+                <label for="construct-search">Search:</label>
+                <input type="search" id="construct-search" placeholder="Search constructs">
+            </div>
             <div class="sort-controls">
                 <label for="sort-select">Sort by:</label>
                 <select id="sort-select">
@@ -164,6 +168,18 @@
                 else if (v === 'axis') constructs.sort((a,b)=>a.axis.localeCompare(b.axis));
                 else constructs.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
                 render(constructs);
+            });
+
+            const searchInput = document.getElementById('construct-search');
+            searchInput.addEventListener('input', e => {
+                const q = e.target.value.trim().toLowerCase();
+                const filtered = constructs.filter(c => {
+                    const title = (c.title || '').toLowerCase();
+                    const def = (c.definition || '').toLowerCase();
+                    const syn = Array.isArray(c.synonyms) ? c.synonyms.join(' ').toLowerCase() : (c.synonyms || '').toLowerCase();
+                    return !q || title.includes(q) || def.includes(q) || syn.includes(q);
+                });
+                render(filtered);
             });
         });
 

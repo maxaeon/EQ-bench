@@ -27,6 +27,9 @@ Each record includes an `axes` field listing the relevant SERA skills
 this field via `docs/script.js`. If an older entry lacks `axes`, the script
 falls back to searching the issue text.
 
+Records may also include a `synonyms` array with alternate names or related
+terms. The constructs page uses these values to make search more flexible.
+
 This lightweight method keeps contributions transparent while avoiding the
 maintenance burden of an external database. Future work may revisit a database
 if query or scale needs grow.

@@ -77,7 +77,7 @@ Browse to any .md file, click “✏️” to propose changes.
 GitHub automatically opens a pull request – add a short explanation, hit Create PR.
 
 A maintainer will review, run CI, and merge when ready.
-See docs/quick_github_guide.md for screenshots.
+See the [Quick GitHub Guide](docs/quick_github_guide.md) for step-by-step screenshots.
 
 ---
 

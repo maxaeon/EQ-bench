@@ -47,11 +47,11 @@
             <div class="controls-row">
                 <div class="filter-controls">
                     <label for="axis-filter">Axis:</label>
-                    <select id="axis-filter" multiple>
+                    <select id="axis-filter" multiple size="1">
                         <option value="">All</option>
                     </select>
                     <label for="field-filter">Field/Topic:</label>
-                    <select id="field-filter" multiple>
+                    <select id="field-filter" multiple size="1">
                         <option value="">All</option>
                     </select>
                 </div>
@@ -87,15 +87,15 @@
             <div class="controls-row">
                 <div class="filter-controls">
                     <label for="lit-axis-filter">Axis:</label>
-                    <select id="lit-axis-filter" multiple>
+                    <select id="lit-axis-filter" multiple size="1">
                         <option value="">All</option>
                     </select>
                     <label for="lit-construct-filter">Construct:</label>
-                    <select id="lit-construct-filter" multiple>
+                    <select id="lit-construct-filter" multiple size="1">
                         <option value="">All</option>
                     </select>
                     <label for="lit-field-filter">Field/Topic:</label>
-                    <select id="lit-field-filter" multiple>
+                    <select id="lit-field-filter" multiple size="1">
                         <option value="">All</option>
                     </select>
                 </div>
@@ -141,7 +141,7 @@
         }
         c.axis = foundAxes.join(', ');
         if (c.category) {
-            c.field = c.category;
+            c.field = c.category.toLowerCase();
         } else {
             const fields = ['psychology','philosophy and ethics','neuroscience','computer science'];
             const foundFields = fields.filter(f => body.includes(f));
@@ -172,6 +172,10 @@
     function truncate(text, len) {
         if (!text) return '';
         return text.length > len ? text.slice(0, len) + '…' : text;
+    }
+
+    function toTitle(text) {
+        return text.replace(/(^|\s)\S/g, t => t.toUpperCase());
     }
 
     function render(data) {
@@ -263,7 +267,7 @@
             const fieldSet = new Set();
             constructs.forEach(c => {
                 c.axis.split(',').forEach(a => axisSet.add(a.trim()));
-                if (c.field) fieldSet.add(c.field.trim());
+                if (c.field) fieldSet.add(c.field.trim().toLowerCase());
             });
 
             const axisFilter = document.getElementById('axis-filter');
@@ -277,7 +281,7 @@
             const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
             fieldOrder.forEach(f => {
                 if (fieldSet.has(f))
-                    fieldFilter.appendChild(new Option(f.charAt(0).toUpperCase()+f.slice(1), f));
+                    fieldFilter.appendChild(new Option(toTitle(f), f));
             });
 
             document.getElementById('sort-select').value = 'title';
@@ -342,7 +346,7 @@
             const constructSet = new Set();
             literature.forEach(l => {
                 if (l.axis) l.axis.split(',').forEach(a => axisSet.add(a.trim()));
-                if (l.category) fieldSet.add(l.category.trim());
+                if (l.category) fieldSet.add(l.category.trim().toLowerCase());
                 const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
                 list.forEach(c => constructSet.add(c.trim()));
             });
@@ -352,7 +356,7 @@
             axisOrder.forEach(a => { if (axisSet.has(a)) axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)); });
             const fieldF = document.getElementById('lit-field-filter');
             const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
-            fieldOrder.forEach(f => { if (fieldSet.has(f)) fieldF.appendChild(new Option(f.charAt(0).toUpperCase()+f.slice(1), f)); });
+            fieldOrder.forEach(f => { if (fieldSet.has(f)) fieldF.appendChild(new Option(toTitle(f), f)); });
             const constructF = document.getElementById('lit-construct-filter');
             Array.from(constructSet)
                 .sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()))

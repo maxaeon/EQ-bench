@@ -1,66 +1,182 @@
 [
   {
     "number": 1,
-    "title": "Appraisal",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/1",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "The interpretation of an event's significance in terms of goals, values, or norms. Measures: structured interviews and Likert scales. SERA axes: explain, respond, adapt. Field: psychology"
+    "title": "Cognitive Appraisal Theory",
+    "axes": "explain, respond, extended",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "From Nussbaum's Upheavals of Thought in philosophy, emotions are evaluative judgments. Field: philosophy"
   },
   {
     "number": 2,
-    "title": "Empathic Response",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/2",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "A response that reflects understanding, concern, or support for another's emotional state. Measures include Empathy Quotient. SERA axes: explain, respond, adapt. Field: psychology"
+    "title": "Physiological Theory of Emotion",
+    "axes": "sense, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Based on James's 1884 article in psychology and philosophy, emotions arise from bodily perceptions. Field: philosophy"
   },
   {
     "number": 3,
-    "title": "Emotion Label Recognition",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/3",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "The ability to identify and classify emotional states from cues such as language, facial expression, or tone. Measures: RMET, emotion recognition tasks. SERA axes: sense, adapt. Field: psychology"
+    "title": "Phenomenological Aspect of Emotion",
+    "axes": "respond, extended",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy"
   },
   {
     "number": 4,
-    "title": "Arousal Regulation",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/4",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "The ability to modulate physiological and emotional arousal to remain goal-directed and appropriate. Measures: HRV, cortisol response. SERA axes: sense, explain, respond, adapt. Field: psychology"
+    "title": "Somatic Marker Hypothesis",
+    "axes": "explain, respond, adapt",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience"
   },
   {
     "number": 5,
-    "title": "Emotion Co-Regulation",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/5",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "Interactive emotional regulation where people adjust their states together. Measures include dyadic coping scales. SERA axes: sense, explain, respond, adapt. Field: psychology"
+    "title": "Artificial Moral Agency",
+    "axes": "respond, adapt, extended",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Floridi and Sanders discuss AI as morally accountable agents in philosophy and ethics. Field: philosophy"
   },
   {
     "number": 6,
-    "title": "Emotional Appropriateness",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/6",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "The degree to which an emotional response or behaviour fits social or contextual norms. Measures: social norms questionnaires. SERA axes: explain, respond, adapt. Field: psychology"
+    "title": "Ethical AI Development",
+    "axes": "extended, adapt",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Coeckelbergh's AI Ethics emphasizes ethical obligations in emotion recognition technologies. Field: philosophy"
   },
   {
     "number": 7,
-    "title": "Perspective-Taking",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/7",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "The cognitive ability to imagine another person's point of view. Measures: Interpersonal Reactivity Index. SERA axes: explain, respond, adapt. Field: psychology"
+    "title": "Ethical Framework for Emotional AI",
+    "axes": "extended, adapt",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Boddington proposes normative guidelines for emotional AI engagement. Field: philosophy"
   },
   {
     "number": 8,
-    "title": "Action Tendency Recognition",
-    "user": "Max Parks",
-    "url": "https://github.com/maxaeon/SERA-x/issues/8",
-    "created_at": "2025-05-28T00:00:00Z",
-    "body": "Understanding what behaviour an emotion is likely to motivate. Measures: action prediction from context. SERA axes: sense, explain, respond. Field: psychology"
+    "title": "Sympathy and Moral Sentiment",
+    "axes": "respond, extended",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Smith's moral philosophy highlights ethical empathy in emotional judgment. Field: philosophy"
+  },
+  {
+    "number": 9,
+    "title": "Bias and Power Dynamics",
+    "axes": "sense, adapt, extended",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Crawford critiques bias in emotion recognition algorithms in the field of technology ethics. Field: philosophy"
+  },
+  {
+    "number": 10,
+    "title": "Emotion Regulation",
+    "axes": "respond, adapt",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Gross's psychological research examines how people adjust emotional responses. Field: psychology"
+  },
+  {
+    "number": 11,
+    "title": "Theory of Mind",
+    "axes": "sense, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Baron-Cohen and colleagues explore attribution of mental states and emotions. Field: psychology"
+  },
+  {
+    "number": 12,
+    "title": "Basic Emotions Model",
+    "axes": "sense, respond",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Ekman's work identifies universal emotional expressions studied in psychology. Field: psychology"
+  },
+  {
+    "number": 13,
+    "title": "Multimodal Emotion Recognition",
+    "axes": "sense, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Poria and colleagues describe algorithms that combine audio, visual, and text cues. Field: computer science"
+  },
+  {
+    "number": 14,
+    "title": "Affective Computing",
+    "axes": "sense, respond, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Picard's foundational computer science book introduces computational methods for interpreting and simulating emotion. Field: computer science"
+  },
+  {
+    "number": 15,
+    "title": "Neural Circuits of Emotion",
+    "axes": "sense, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "LeDoux describes amygdala and limbic roles in emotion processing from neuroscience. Field: neuroscience"
+  },
+  {
+    "number": 16,
+    "title": "Primary Emotional Systems",
+    "axes": "sense, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Panksepp identifies fundamental emotional circuits such as SEEKING and FEAR. Field: neuroscience"
+  },
+  {
+    "number": 17,
+    "title": "Facial Expression Recognition",
+    "axes": "sense, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Adolphs analyzes neural mechanisms for detecting facial expressions. Field: neuroscience"
+  },
+  {
+    "number": 18,
+    "title": "Core Affect Model",
+    "axes": "sense, respond, explain",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Russell's psychological construction approach views emotions as constructed from affective dimensions. Field: psychology"
+  },
+  {
+    "number": 19,
+    "title": "Action Readiness",
+    "axes": "respond, adapt",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Frijda defines emotion as states preparing action, influencing adaptation. Field: psychology"
+  },
+  {
+    "number": 20,
+    "title": "Embodied Cognition and Emotion",
+    "axes": "respond, adapt, extended",
+    "user": "placeholder",
+    "url": "https://example.com",
+    "created_at": "2025-01-01T00:00:00Z",
+    "body": "Clark's work on embodied cognition links emotional interactions to the situated body. Field: philosophy"
   }
 ]

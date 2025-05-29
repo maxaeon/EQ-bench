@@ -10,6 +10,8 @@
     "body": "From Nussbaum's Upheavals of Thought in philosophy, emotions are evaluative judgments. Field: philosophy",
     "definition": "Emotions are evaluative judgments assessing events or objects as significant relative to personal well-being.",
     "measurement": "NLP sentiment analysis; scenario-based evaluation; qualitative interpretation tasks.",
+    "related_terms": ["Appraisal Processes", "Evaluative Judgment"],
+    "example": "Customer service bots evaluate context to choose supportive responses.",
     "references": "Nussbaum 2001",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
@@ -25,6 +27,8 @@
     "body": "Classical physiological theory holds that emotions arise from bodily perceptions. Field: philosophy",
     "definition": "Emotions are perceptions of bodily states or physiological responses triggered by stimuli.",
     "measurement": "Facial emotion recognition accuracy using FER-2013 dataset; voice tone analysis and biometric monitoring (heart rate, skin conductance sensors).",
+    "related_terms": ["Bodily Feedback", "Somatic Emotion"],
+    "example": "Wearable sensors track heart rate to infer emotional states.",
     "interdisciplinary": "philosophy, neuroscience",
     "category": "Philosophy and Ethics"
   },
@@ -39,6 +43,8 @@
     "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy",
     "definition": "The subjective, experiential, qualitative aspect of emotional experience.",
     "measurement": "User-reported surveys assessing emotional authenticity; qualitative user interviews exploring subjective emotional experiences; interpretative phenomenological analysis (IPA).",
+    "related_terms": ["Subjective Feeling", "First-Person Experience"],
+    "example": "Users describe the 'feel' of fear during VR experiments.",
     "references": "Goldie 2000",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
@@ -54,6 +60,8 @@
     "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience",
     "definition": "Emotional processes guide or bias behavior and decision-making through bodily states and sensations.",
     "measurement": "Behavioral decision-making tasks; physiological response monitoring; computational models using reinforcement learning informed by somatic marker frameworks.",
+    "related_terms": ["Decision Bias", "Emotional Heuristics"],
+    "example": "Risk-taking behavior influenced by gut feelings.",
     "references": "Damasio 1994",
     "interdisciplinary": "neuroscience, philosophy",
     "category": "Philosophy and Ethics"
@@ -69,6 +77,8 @@
     "body": "Floridi and Sanders discuss AI as morally accountable agents in philosophy and ethics. Field: philosophy",
     "definition": "AI systems can perform actions with moral significance, raising questions of moral responsibility.",
     "measurement": "Moral decision-making scenario tests (e.g., trolley dilemmas adapted for AI); moral Turing tests; simulations of moral dilemmas.",
+    "related_terms": ["Machine Ethics", "Moral Decision"],
+    "example": "Autonomous vehicles weighing ethical dilemmas in traffic.",
     "references": "Floridi & Sanders 2004",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -84,6 +94,8 @@
     "body": "Coeckelbergh's AI Ethics emphasizes ethical obligations in emotion recognition technologies. Field: philosophy",
     "definition": "Normative principles guiding fair, responsible, and inclusive development of emotional AI.",
     "measurement": "Algorithmic fairness assessments using frameworks such as statistical parity and equalized odds; inclusivity audits; ethical impact assessments.",
+    "related_terms": ["Responsible Innovation", "Tech Ethics"],
+    "example": "Auditing emotion recognition apps for demographic bias.",
     "references": "Coeckelbergh 2020",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -99,6 +111,8 @@
     "body": "Boddington proposes normative guidelines for emotional AI engagement. Field: philosophy",
     "definition": "Normative principles for how emotional AI should interact with people.",
     "measurement": "Compliance audits and social impact assessments.",
+    "related_terms": ["AI Guidelines", "Normative Principles"],
+    "example": "Drafting codes of conduct for affective chatbots.",
     "references": "Boddington 2017; EU AI guidelines 2019",
     "interdisciplinary": "philosophy, ethics, psychology, law",
     "category": "Philosophy and Ethics"
@@ -114,6 +128,8 @@
     "body": "Classical moral philosophy highlights ethical empathy in emotional judgment. Field: philosophy",
     "definition": "Capacity for emotional understanding and compassionate response towards others\u2019 emotional states.",
     "measurement": "Empathy and sympathy scenario evaluations; user feedback; compassionate response accuracy tests.",
+    "related_terms": ["Compassionate AI", "Empathy"],
+    "example": "Therapeutic chatbots expressing sympathetic concern.",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
   },
@@ -128,6 +144,8 @@
     "body": "Crawford critiques bias in emotion recognition algorithms in the field of technology ethics. Field: philosophy",
     "definition": "Exploration of systemic bias, ethical fairness, and power inequalities embedded in AI systems, particularly emotion recognition.",
     "measurement": "Demographic bias testing in datasets; fairness metrics applied to emotional recognition datasets (AffectNet, IEMOCAP); power dynamics evaluations.",
+    "related_terms": ["Algorithmic Fairness", "Inequity"],
+    "example": "Study revealing bias in facial emotion datasets.",
     "references": "Crawford 2021",
     "interdisciplinary": "philosophy, sociology, computer science",
     "category": "Philosophy and Ethics"
@@ -143,6 +161,8 @@
     "body": "Gross's psychological research examines how people adjust emotional responses. Field: psychology",
     "definition": "The processes by which individuals or systems influence which emotions they experience, when, and how they express them.",
     "measurement": "Emotional response modulation tasks; interaction scenarios; observational methods and sentiment analysis.",
+    "related_terms": ["Affective Control", "Coping"],
+    "example": "Apps teaching breathing exercises to reduce anxiety.",
     "references": "Gross 1998",
     "interdisciplinary": "psychology, computational modeling",
     "category": "Psychology"
@@ -158,6 +178,8 @@
     "body": "Baron-Cohen and colleagues explore attribution of mental states and emotions. Field: psychology",
     "definition": "Ability to attribute mental states (beliefs, desires, intentions) to others.",
     "measurement": "False-belief tasks adapted for AI; predictive accuracy tests; interpretability analysis.",
+    "related_terms": ["Mental State Attribution", "Perspective-Taking"],
+    "example": "Robots predicting a person's next action in a game.",
     "references": "Baron-Cohen et al. 1985",
     "interdisciplinary": "psychology, computational cognition",
     "category": "Psychology"
@@ -173,6 +195,8 @@
     "body": "Ekman's work identifies universal emotional expressions studied in psychology. Field: psychology",
     "definition": "Proposes universal discrete emotions with characteristic expressions.",
     "measurement": "Facial Action Coding System and cross-cultural expression recognition.",
+    "related_terms": ["Universal Expressions", "Discrete Emotions"],
+    "example": "Analyzing cross-cultural photographs for emotion recognition.",
     "references": "Ekman 1992; Izard 1971",
     "interdisciplinary": "psychology, anthropology, neuroscience",
     "category": "Psychology"
@@ -188,6 +212,8 @@
     "body": "Poria and colleagues describe algorithms that combine audio, visual, and text cues. Field: computer science",
     "definition": "Algorithms integrating multiple modalities (audio, visual, textual) for emotion detection.",
     "measurement": "Accuracy metrics from multimodal datasets; model interpretability tests.",
+    "related_terms": ["Cross-Channel Sensing", "Multisensory Input"],
+    "example": "Driver monitoring using voice and face cues.",
     "references": "Poria et al. 2019",
     "interdisciplinary": "computer science, psychology",
     "category": "Computer Science"
@@ -203,6 +229,8 @@
     "body": "Picard's foundational computer science book introduces computational methods for interpreting and simulating emotion. Field: computer science",
     "definition": "Computational systems that recognize, interpret, or simulate emotions.",
     "measurement": "Emotion classification accuracy and user interaction studies.",
+    "related_terms": ["Emotion AI", "Affective Interaction"],
+    "example": "Wearables detecting mood for wellness apps.",
     "references": "Picard 1997; Calvo & D'Mello 2010",
     "interdisciplinary": "computer science, psychology, engineering",
     "category": "Computer Science"
@@ -218,6 +246,8 @@
     "body": "LeDoux describes amygdala and limbic roles in emotion processing from neuroscience. Field: neuroscience",
     "definition": "Brain structures and pathways involved in emotional processing such as the amygdala and prefrontal cortex.",
     "measurement": "Neurological modeling; fMRI correlation methods; computational simulations.",
+    "related_terms": ["Amygdala", "Limbic System"],
+    "example": "fMRI studies mapping fear responses.",
     "references": "LeDoux 1998",
     "interdisciplinary": "neuroscience, computational neuroscience",
     "category": "Neuroscience"
@@ -233,6 +263,8 @@
     "body": "Panksepp identifies fundamental emotional circuits such as SEEKING and FEAR. Field: neuroscience",
     "definition": "Basic neural systems such as SEEKING and FEAR underlying emotions.",
     "measurement": "Animal models and neurochemical manipulations.",
+    "related_terms": ["Evolutionary Emotions", "Primal Circuits"],
+    "example": "Animal studies exploring SEEKING drive.",
     "references": "Panksepp 1998; Panksepp & Biven 2012",
     "interdisciplinary": "neuroscience, comparative psychology, evolutionary biology",
     "category": "Neuroscience"
@@ -248,6 +280,8 @@
     "body": "Adolphs analyzes neural mechanisms for detecting facial expressions. Field: neuroscience",
     "definition": "Neural mechanisms for perceiving facial expressions of emotion.",
     "measurement": "Behavioral recognition tasks and neuroimaging.",
+    "related_terms": ["Face Detection", "Expression Analysis"],
+    "example": "Security cameras identifying facial cues.",
     "references": "Adolphs 2002; Haxby et al. 2000",
     "interdisciplinary": "neuroscience, psychology, computer vision",
     "category": "Neuroscience"
@@ -263,6 +297,8 @@
     "body": "Russell's psychological construction approach views emotions as constructed from affective dimensions. Field: psychology",
     "definition": "Emotions constructed from valence and arousal dimensions of core affect.",
     "measurement": "Affect Grid ratings and physiological indicators of valence/arousal.",
+    "related_terms": ["Valence-Arousal", "Affective Dimensions"],
+    "example": "Video game adaptation to player's mood.",
     "references": "Russell 2003; Barrett & Russell 1998",
     "interdisciplinary": "psychology, neuroscience, affective science",
     "category": "Psychology"
@@ -278,6 +314,8 @@
     "body": "Frijda defines emotion as states preparing action, influencing adaptation. Field: psychology",
     "definition": "Emotions prepare action tendencies in response to situations.",
     "measurement": "Behavior observation and self-reported motivational states.",
+    "related_terms": ["Motivational States", "Behavior Tendency"],
+    "example": "Social media posts revealing mobilization after protests.",
     "references": "Frijda 1986; Frijda et al. 1989",
     "interdisciplinary": "psychology, cognitive science, behavioral economics",
     "category": "Psychology"
@@ -293,6 +331,8 @@
     "body": "Clark's work on embodied cognition links emotional interactions to the situated body. Field: philosophy",
     "definition": "Emotion is intrinsically tied to physical states and situational contexts.",
     "measurement": "Embodied interaction scenarios involving embodied AI platforms (e.g., Pepper Robot, virtual reality environments); situated emotional responses; dynamic contextual adaptations.",
+    "related_terms": ["Situated Emotion", "Embodied Interaction"],
+    "example": "Robots adapting behavior based on physical proximity.",
     "references": "Clark 1997",
     "interdisciplinary": "philosophy, cognitive science, computational modeling",
     "category": "Interdisciplinary"

@@ -151,6 +151,7 @@
             const id = `cdetail-${idx}`;
             const synonyms = Array.isArray(c.synonyms) ? c.synonyms.join(', ') : (c.synonyms || '');
             const related = Array.isArray(c.related_terms) ? c.related_terms.join(', ') : (c.related_terms || '');
+            const issues = c.verification_issues || '';
 
             row.innerHTML = `
                 <td><button class="toggle-details" data-target="${id}">${c.title}</button></td>
@@ -164,7 +165,8 @@
             extra.style.display = 'none';
             extra.innerHTML = `
                 <td colspan="5"><strong>synonyms:</strong> ${synonyms}<br>
-                <strong>related terms:</strong> ${related}<br><br>
+                <strong>related terms:</strong> ${related}<br>
+                <strong>verification issues:</strong> ${issues}<br><br>
                 ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}` : ''}<br>
                 <a href="https://github.com/maxaeon/SERA-x/issues/new?title=Feedback%20on%20${encodeURIComponent(c.title)}">Suggest an improvement</a></td>`;
 

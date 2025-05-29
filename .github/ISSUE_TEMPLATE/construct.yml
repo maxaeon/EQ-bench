@@ -83,7 +83,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 📥 5. Optional extras
+        ## 🚧 5. Potential verification issues
+  - type: textarea
+    id: verification_issues
+    attributes:
+      label: Verification issues
+      description: Challenges that might arise when validating this construct.
+  - type: markdown
+    attributes:
+      value: |
+        ## 📥 6. Optional extras
   - type: textarea
     id: extras
     attributes:

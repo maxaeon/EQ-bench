@@ -48,6 +48,33 @@
             </table>
             <p>Click a title to open the original issue and share feedback.</p>
         </section>
+
+        <section id="literature">
+            <h2>Relevant Literature</h2>
+            <p>Peer‑reviewed sources linked to our constructs.</p>
+            <div class="sort-controls">
+                <label for="lit-sort">Sort by:</label>
+                <select id="lit-sort">
+                    <option value="year">Year</option>
+                    <option value="author">Author</option>
+                    <option value="title">Title</option>
+                    <option value="construct">Construct</option>
+                    <option value="axis">SERA-X Axis</option>
+                </select>
+            </div>
+            <table id="lit-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author(s)</th>
+                        <th>Year</th>
+                        <th>Construct</th>
+                        <th>Axis</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
     </main>
     <footer>
         <p>&copy; SERA-X contributors</p>
@@ -92,6 +119,37 @@
                 else if (v === 'axis') data.sort((a,b)=>a.axis.localeCompare(b.axis));
                 else data.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
                 render(data);
+            });
+        });
+
+    function renderLit(items) {
+        const tbody = document.querySelector('#lit-table tbody');
+        tbody.innerHTML = '';
+        items.forEach(l => {
+            const row = document.createElement('tr');
+            const titleCell = l.url ? `<a href="${l.url}">${l.title}</a>` : l.title;
+            row.innerHTML = `
+                <td>${titleCell}</td>
+                <td>${l.authors}</td>
+                <td>${l.year}</td>
+                <td>${l.construct}</td>
+                <td>${l.axis}</td>`;
+            tbody.appendChild(row);
+        });
+    }
+
+    fetch('literature.json')
+        .then(r => r.json())
+        .then(lit => {
+            renderLit(lit);
+            document.getElementById('lit-sort').addEventListener('change', e => {
+                const v = e.target.value;
+                if (v === 'title') lit.sort((a,b)=>a.title.localeCompare(b.title));
+                else if (v === 'author') lit.sort((a,b)=>a.authors.localeCompare(b.authors));
+                else if (v === 'construct') lit.sort((a,b)=>a.construct.localeCompare(b.construct));
+                else if (v === 'axis') lit.sort((a,b)=>a.axis.localeCompare(b.axis));
+                else lit.sort((a,b)=>(a.year||0)-(b.year||0));
+                renderLit(lit);
             });
         });
     </script>

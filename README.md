@@ -2,7 +2,7 @@
 Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 1  Project Snapshot
-
+| Project Attribute | Short description |
 |-------------------------|---------------------|
 | **Goal** | Provide an open, reproducible framework that measures how well large-language models (and, later, multimodal systems) *sense*, *explain*, *respond* to, and *adapt* around human emotions. |
 | **Status** | `v0.1-alpha` – folder skeleton, pilot metric stubs, and sample data only. |

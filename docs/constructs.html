@@ -87,14 +87,22 @@
     function parseMeta(c) {
         const body = (c.body || '').toLowerCase();
         const axes = ['sense','explain','respond','adapt','extended'];
-        const foundAxes = axes.filter(a => body.includes(a));
+        let foundAxes = [];
+        if (c.axes) {
+            foundAxes = c.axes.split(',').map(a => a.trim().toLowerCase());
+        } else {
+            foundAxes = axes.filter(a => body.includes(a));
+        }
         c.axis = foundAxes.join(', ');
         const fields = ['psychology','philosophy','neuroscience'];
         const foundFields = fields.filter(f => body.includes(f));
         c.field = foundFields.length ? foundFields.join(', ') : 'other';
-        // try to capture any evaluation guidance from the issue body
-        const evalMatch = (c.body || '').match(/(?:evaluation|ai test task idea)[:\-]?\s*(.*)/i);
-        c.evaluation = evalMatch ? evalMatch[1].trim() : '';
+        if (c.measurement) {
+            c.evaluation = c.measurement;
+        } else {
+            const evalMatch = (c.body || '').match(/(?:evaluation|ai test task idea)[:\-]?\s*(.*)/i);
+            c.evaluation = evalMatch ? evalMatch[1].trim() : '';
+        }
     }
 
     function getSources(c) {

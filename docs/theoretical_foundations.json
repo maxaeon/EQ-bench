@@ -4,20 +4,27 @@
     "description": "Computational methods for recognizing, interpreting, and simulating human emotions.",
     "origin": "Computer Science",
     "reference": "Picard, R. (1997). Affective Computing. MIT Press.",
-    "role": "Provides computational models and methods used in EI assessment."
+    "role": "Provides computational models for sensing and interpreting emotion signals, shaping data collection and scoring rules for the Sense and Explain metrics."
   },
   {
     "framework": "Ethical AI Development",
     "description": "Normative principles and ethical frameworks guiding fair, inclusive, and responsible development of AI systems.",
     "origin": "Ethics, Philosophy",
     "reference": "Coeckelbergh (2020). AI Ethics. MIT Press.",
-    "role": "Ensures ethical compliance, fairness, and inclusivity throughout SERA-X evaluation."
+    "role": "Defines review protocols and fairness audits that shape the evaluation methodology and metrics across all axes."
   },
   {
     "framework": "Bias and Power Dynamics",
     "description": "Critical examination of bias, fairness, and social power imbalances inherent in AI algorithms and data.",
     "origin": "Philosophy, Sociology, Ethics",
     "reference": "Crawford, K. (2021). Atlas of AI. Yale University Press.",
-    "role": "Highlights fairness and inclusivity requirements and informs data and algorithm assessment protocols."
+    "role": "Guides how datasets and results are analyzed for unequal impacts and informs the weighting of bias-aware metrics."
+  },
+  {
+    "framework": "Extended Mind",
+    "description": "Cognition extends beyond the individual to include tools and environment.",
+    "origin": "Philosophy, Cognitive Science",
+    "reference": "Clark, A., & Chalmers, D. (1998). The Extended Mind. Analysis.",
+    "role": "Grounds the \"Extended\" axis and shapes human–AI interaction metrics by framing the system and user as a single cognitive loop."
   }
 ]

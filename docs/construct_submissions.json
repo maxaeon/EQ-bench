@@ -11,7 +11,7 @@
     "definition": "Emotions are evaluative judgments assessing events or objects as significant relative to personal well-being.",
     "measurement": "NLP sentiment analysis; scenario-based evaluation; qualitative interpretation tasks.",
     "related_terms": ["Appraisal Processes", "Evaluative Judgment"],
-    "example": "Customer service bots evaluate context to choose supportive responses.",
+    "example": "AI assistant identifies a user's anger about negative work feedback and validates their frustration.",
     "references": "Nussbaum 2001",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
@@ -28,7 +28,7 @@
     "definition": "Emotions are perceptions of bodily states or physiological responses triggered by stimuli.",
     "measurement": "Facial emotion recognition accuracy using FER-2013 dataset; voice tone analysis and biometric monitoring (heart rate, skin conductance sensors).",
     "related_terms": ["Bodily Feedback", "Somatic Emotion"],
-    "example": "Wearable sensors track heart rate to infer emotional states.",
+    "example": "Smart wearable detects anxiety through increased heart rate and tense vocal tone, prompting support.",
     "interdisciplinary": "philosophy, neuroscience",
     "category": "Philosophy and Ethics"
   },
@@ -44,7 +44,7 @@
     "definition": "The subjective, experiential, qualitative aspect of emotional experience.",
     "measurement": "User-reported surveys assessing emotional authenticity; qualitative user interviews exploring subjective emotional experiences; interpretative phenomenological analysis (IPA).",
     "related_terms": ["Subjective Feeling", "First-Person Experience"],
-    "example": "Users describe the 'feel' of fear during VR experiments.",
+    "example": "Virtual companion engages users in reflective dialogue about their emotional experiences.",
     "references": "Goldie 2000",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
@@ -61,7 +61,7 @@
     "definition": "Emotional processes guide or bias behavior and decision-making through bodily states and sensations.",
     "measurement": "Behavioral decision-making tasks; physiological response monitoring; computational models using reinforcement learning informed by somatic marker frameworks.",
     "related_terms": ["Decision Bias", "Emotional Heuristics"],
-    "example": "Risk-taking behavior influenced by gut feelings.",
+    "example": "AI financial advisor detects subtle stress responses, influencing financial decision-making guidance.",
     "references": "Damasio 1994",
     "interdisciplinary": "neuroscience, philosophy",
     "category": "Philosophy and Ethics"
@@ -78,7 +78,7 @@
     "definition": "AI systems can perform actions with moral significance, raising questions of moral responsibility.",
     "measurement": "Moral decision-making scenario tests (e.g., trolley dilemmas adapted for AI); moral Turing tests; simulations of moral dilemmas.",
     "related_terms": ["Machine Ethics", "Moral Decision"],
-    "example": "Autonomous vehicles weighing ethical dilemmas in traffic.",
+    "example": "Autonomous vehicle ethically navigates an unavoidable accident scenario to minimize harm.",
     "references": "Floridi & Sanders 2004",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -95,7 +95,7 @@
     "definition": "Normative principles guiding fair, responsible, and inclusive development of emotional AI.",
     "measurement": "Algorithmic fairness assessments using frameworks such as statistical parity and equalized odds; inclusivity audits; ethical impact assessments.",
     "related_terms": ["Responsible Innovation", "Tech Ethics"],
-    "example": "Auditing emotion recognition apps for demographic bias.",
+    "example": "Developers systematically test algorithms to ensure fair emotional recognition across diverse populations.",
     "references": "Coeckelbergh 2020",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -129,7 +129,7 @@
     "definition": "Capacity for emotional understanding and compassionate response towards others\u2019 emotional states.",
     "measurement": "Empathy and sympathy scenario evaluations; user feedback; compassionate response accuracy tests.",
     "related_terms": ["Compassionate AI", "Empathy"],
-    "example": "Therapeutic chatbots expressing sympathetic concern.",
+    "example": "Healthcare chatbot compassionately acknowledges user's sadness instead of offering only technical solutions.",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
   },
@@ -145,7 +145,7 @@
     "definition": "Exploration of systemic bias, ethical fairness, and power inequalities embedded in AI systems, particularly emotion recognition.",
     "measurement": "Demographic bias testing in datasets; fairness metrics applied to emotional recognition datasets (AffectNet, IEMOCAP); power dynamics evaluations.",
     "related_terms": ["Algorithmic Fairness", "Inequity"],
-    "example": "Study revealing bias in facial emotion datasets.",
+    "example": "Researchers identify demographic biases in facial emotion-recognition algorithms, prompting algorithmic improvements.",
     "references": "Crawford 2021",
     "interdisciplinary": "philosophy, sociology, computer science",
     "category": "Philosophy and Ethics"
@@ -162,7 +162,7 @@
     "definition": "The processes by which individuals or systems influence which emotions they experience, when, and how they express them.",
     "measurement": "Emotional response modulation tasks; interaction scenarios; observational methods and sentiment analysis.",
     "related_terms": ["Affective Control", "Coping"],
-    "example": "Apps teaching breathing exercises to reduce anxiety.",
+    "example": "Educational AI tutor adapts task difficulty when detecting student frustration.",
     "references": "Gross 1998",
     "interdisciplinary": "psychology, computational modeling",
     "category": "Psychology"
@@ -179,7 +179,7 @@
     "definition": "Ability to attribute mental states (beliefs, desires, intentions) to others.",
     "measurement": "False-belief tasks adapted for AI; predictive accuracy tests; interpretability analysis.",
     "related_terms": ["Mental State Attribution", "Perspective-Taking"],
-    "example": "Robots predicting a person's next action in a game.",
+    "example": "Social robot recognizes emotional distress due to a lost item, proactively offering help.",
     "references": "Baron-Cohen et al. 1985",
     "interdisciplinary": "psychology, computational cognition",
     "category": "Psychology"
@@ -213,7 +213,7 @@
     "definition": "Algorithms integrating multiple modalities (audio, visual, textual) for emotion detection.",
     "measurement": "Accuracy metrics from multimodal datasets; model interpretability tests.",
     "related_terms": ["Cross-Channel Sensing", "Multisensory Input"],
-    "example": "Driver monitoring using voice and face cues.",
+    "example": "Video conferencing AI integrates facial, vocal, and textual cues to accurately detect participants' emotions.",
     "references": "Poria et al. 2019",
     "interdisciplinary": "computer science, psychology",
     "category": "Computer Science"
@@ -247,7 +247,7 @@
     "definition": "Brain structures and pathways involved in emotional processing such as the amygdala and prefrontal cortex.",
     "measurement": "Neurological modeling; fMRI correlation methods; computational simulations.",
     "related_terms": ["Amygdala", "Limbic System"],
-    "example": "fMRI studies mapping fear responses.",
+    "example": "Emotion recognition models use neural-circuit-inspired designs (e.g., amygdala structures) to detect subtle emotional signals.",
     "references": "LeDoux 1998",
     "interdisciplinary": "neuroscience, computational neuroscience",
     "category": "Neuroscience"

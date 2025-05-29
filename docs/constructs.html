@@ -168,7 +168,7 @@
                 <td>${l.authors}</td>
                 <td>${l.year}</td>
                 <td>${l.relevance || ''}</td>
-                <td>${l.construct}</td>
+                <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${l.axis}</td>`;
             tbody.appendChild(row);
         });

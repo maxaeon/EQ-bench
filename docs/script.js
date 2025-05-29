@@ -62,7 +62,7 @@ function populateAxisConstructs(axis, containerId) {
           <strong>synonyms:</strong> ${synonyms}<br>
           <strong>related terms:</strong> ${related}<br><br>
           ${c.example ? `<em>${c.example}</em><br>` : ''}
-          ${c.evaluation ? (c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation) : ''}`;
+          ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation}` : ''}`;
         li.appendChild(btn);
         li.appendChild(details);
         ul.appendChild(li);

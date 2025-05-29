@@ -2,6 +2,7 @@
   {
     "number": 1,
     "title": "Cognitive Appraisal Theory",
+    "synonyms": ["Appraisal Theory", "Cognitive Evaluation"],
     "axes": "explain, respond, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -16,6 +17,7 @@
   {
     "number": 2,
     "title": "Physiological Theory of Emotion",
+    "synonyms": ["James-Lange Theory"],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -29,6 +31,7 @@
   {
     "number": 3,
     "title": "Phenomenological Aspect of Emotion",
+    "synonyms": ["Emotional Phenomenology"],
     "axes": "respond, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -43,6 +46,7 @@
   {
     "number": 4,
     "title": "Somatic Marker Hypothesis",
+    "synonyms": ["Somatic Marker Theory"],
     "axes": "explain, respond, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -57,6 +61,7 @@
   {
     "number": 5,
     "title": "Artificial Moral Agency",
+    "synonyms": ["Machine Moral Agency"],
     "axes": "respond, adapt, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -71,6 +76,7 @@
   {
     "number": 6,
     "title": "Ethical AI Development",
+    "synonyms": ["Responsible AI Development"],
     "axes": "extended, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -85,6 +91,7 @@
   {
     "number": 7,
     "title": "Ethical Framework for Emotional AI",
+    "synonyms": ["Emotional AI Guidelines"],
     "axes": "extended, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -99,6 +106,7 @@
   {
     "number": 8,
     "title": "Sympathy and Moral Sentiment",
+    "synonyms": ["Compassion", "Moral Sympathy"],
     "axes": "respond, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -112,6 +120,7 @@
   {
     "number": 9,
     "title": "Bias and Power Dynamics",
+    "synonyms": ["Algorithmic Bias"],
     "axes": "sense, adapt, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -126,6 +135,7 @@
   {
     "number": 10,
     "title": "Emotion Regulation",
+    "synonyms": ["Emotional Control"],
     "axes": "respond, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -140,6 +150,7 @@
   {
     "number": 11,
     "title": "Theory of Mind",
+    "synonyms": ["Mentalizing"],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -154,6 +165,7 @@
   {
     "number": 12,
     "title": "Basic Emotions Model",
+    "synonyms": ["Universal Emotions"],
     "axes": "sense, respond",
     "user": "placeholder",
     "url": "https://example.com",
@@ -168,6 +180,7 @@
   {
     "number": 13,
     "title": "Multimodal Emotion Recognition",
+    "synonyms": ["Cross-modal Emotion Detection"],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -182,6 +195,7 @@
   {
     "number": 14,
     "title": "Affective Computing",
+    "synonyms": ["Emotion AI"],
     "axes": "sense, respond, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -196,6 +210,7 @@
   {
     "number": 15,
     "title": "Neural Circuits of Emotion",
+    "synonyms": ["Emotion Circuitry"],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -210,6 +225,7 @@
   {
     "number": 16,
     "title": "Primary Emotional Systems",
+    "synonyms": ["Basic Emotional Circuits"],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -224,6 +240,7 @@
   {
     "number": 17,
     "title": "Facial Expression Recognition",
+    "synonyms": ["FER"],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -238,6 +255,7 @@
   {
     "number": 18,
     "title": "Core Affect Model",
+    "synonyms": ["Circumplex Model"],
     "axes": "sense, respond, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -252,6 +270,7 @@
   {
     "number": 19,
     "title": "Action Readiness",
+    "synonyms": ["Action Tendency"],
     "axes": "respond, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -266,6 +285,7 @@
   {
     "number": 20,
     "title": "Embodied Cognition and Emotion",
+    "synonyms": ["Embodied Emotion"],
     "axes": "respond, adapt, extended",
     "user": "placeholder",
     "url": "https://example.com",

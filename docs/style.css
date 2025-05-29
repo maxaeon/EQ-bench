@@ -170,6 +170,11 @@ ul li {
     margin-bottom: 1rem;
 }
 
+/* Search bar styling */
+.search-controls {
+    margin-bottom: 1rem;
+}
+
 /* Table styling for constructs page */
 table {
     width: 100%;

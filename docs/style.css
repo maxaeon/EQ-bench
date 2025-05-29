@@ -32,6 +32,38 @@ header {
     position: relative;
 }
 
+/* Dropdown menu shown when clicking the SERA-X logo */
+#logo-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0d6efd;
+    display: none;
+    padding: 0.5rem 0;
+    z-index: 100;
+}
+
+#logo-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#logo-menu li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.25rem 1rem;
+}
+
+#logo-menu li a:hover {
+    background-color: #0b5ed7;
+}
+
+#logo-menu.show {
+    display: block;
+}
+
 h1 {
     margin: 0;
     font-size: 2.5rem;
@@ -187,6 +219,14 @@ tbody tr:nth-child(even) {
 
     header .logo {
         color: #fff;
+    }
+
+    #logo-menu {
+        background-color: #1f6feb;
+    }
+
+    #logo-menu li a:hover {
+        background-color: #1158c7;
     }
 
     /* Dark mode table styles */

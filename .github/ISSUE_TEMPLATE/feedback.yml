@@ -1,0 +1,32 @@
+name: SERA-X framework feedback
+description: Share your thoughts on the SERA-X axes, methodology, or documentation
+labels: ["feedback"]
+assignees: []
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Overall feedback
+      description: Short summary of your impressions or suggestions
+    validations:
+      required: true
+  - type: textarea
+    id: axes
+    attributes:
+      label: Axes and constructs
+      description: Comments on the proposed axes or emotion-related constructs
+  - type: textarea
+    id: methodology
+    attributes:
+      label: Methodology
+      description: Feedback on evaluation metrics or benchmark design
+  - type: textarea
+    id: docs
+    attributes:
+      label: Website or documentation
+      description: Suggestions to improve clarity or usability
+  - type: textarea
+    id: other
+    attributes:
+      label: Anything else
+      description: Additional remarks or ideas

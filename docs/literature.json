@@ -7,7 +7,8 @@
     "axis": "explain",
     "relevance": "Emotions guide attention and reasoning non-propositionally; foundation for non-binary, gradient model of EI",
     "url": "https://doi.org/10.1093/0198238829.001.0001",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["rationality", "emotion", "salience", "philosophy"]
   },
   {
     "title": "The Emotions",
@@ -17,7 +18,8 @@
     "axis": "sense, explain",
     "relevance": "Emotions directed at objects and values beyond bodily states; supports separate 'Sense' and 'Explain' axes",
     "url": "https://doi.org/10.1093/0199253049.001.0001",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["feelings", "intentionality", "emotion", "philosophy"]
   },
   {
     "title": "MSCEIT",
@@ -27,7 +29,8 @@
     "axis": "sense, explain, respond, adapt",
     "relevance": "Splits EI into perceive, use, understand and regulate; validated on large sample guiding multi-score approach",
     "url": "https://doi.org/10.1037/t00344-000",
-    "category": "Psychology"
+    "category": "Psychology",
+    "keywords": ["ability test", "emotional intelligence", "measurement"]
   },
   {
     "title": "How Emotions Are Made",
@@ -37,7 +40,8 @@
     "axis": "adapt",
     "relevance": "Emotions depend on context, concepts and culture; informs Adapt axis and dataset design",
     "url": "https://en.wikipedia.org/wiki/How_Emotions_Are_Made",
-    "category": "Psychology"
+    "category": "Psychology",
+    "keywords": ["constructionism", "core affect", "culture"]
   },
   {
     "title": "EmpatheticDialogues",
@@ -47,7 +51,8 @@
     "axis": "respond",
     "relevance": "Dialogue dataset providing gold empathic responses; baseline for Respond axis",
     "url": "https://doi.org/10.18653/v1/D19-1015",
-    "category": "Computer Science"
+    "category": "Computer Science",
+    "keywords": ["empathy", "dialogue dataset", "nlp"]
   },
   {
     "title": "Upheavals of Thought",
@@ -57,7 +62,8 @@
     "axis": "explain",
     "relevance": "Seminal cognitive account of emotions as evaluative judgments",
     "url": "",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["cognitive appraisal", "judgment", "emotion"]
   },
   {
     "title": "Descartes' Error",
@@ -67,7 +73,8 @@
     "axis": "explain",
     "relevance": "Influential exploration of interrelation between emotion and cognition",
     "url": "",
-    "category": "Neuroscience"
+    "category": "Neuroscience",
+    "keywords": ["neuroscience", "emotion-cognition", "somatic marker"]
   },
   {
     "title": "Gut Reactions",
@@ -77,7 +84,8 @@
     "axis": "sense, explain",
     "relevance": "Contemporary philosophical defense of perceptual and bodily approaches",
     "url": "",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["bodily emotion", "perception", "philosophy"]
   },
   {
     "title": "On the Morality of Artificial Agents",
@@ -87,7 +95,8 @@
     "axis": "respond",
     "relevance": "Seminal paper on attributing moral agency to AI systems",
     "url": "",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["moral agency", "ai ethics", "robots"]
   },
   {
     "title": "AI Ethics",
@@ -97,7 +106,8 @@
     "axis": "adapt",
     "relevance": "Overview of responsible AI principles",
     "url": "",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["responsible ai", "ethics", "governance"]
   },
   {
     "title": "Atlas of AI",
@@ -107,7 +117,8 @@
     "axis": "extended",
     "relevance": "Analyzes power and inequity in AI systems",
     "url": "",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["bias", "power", "sociotechnical"]
   },
   {
     "title": "Antecedent- and Response-focused Emotion Regulation",
@@ -117,7 +128,8 @@
     "axis": "adapt",
     "relevance": "Foundational paper on emotion regulation processes",
     "url": "",
-    "category": "Psychology"
+    "category": "Psychology",
+    "keywords": ["emotion regulation", "strategy", "process model"]
   },
   {
     "title": "Does the autistic child have a 'theory of mind'?",
@@ -127,7 +139,8 @@
     "axis": "explain",
     "relevance": "Introduces classic ToM test",
     "url": "",
-    "category": "Psychology"
+    "category": "Psychology",
+    "keywords": ["autism", "false belief", "social cognition"]
   },
   {
     "title": "Emotion Recognition in Conversation",
@@ -137,7 +150,8 @@
     "axis": "sense",
     "relevance": "Benchmark for multimodal emotion recognition models",
     "url": "",
-    "category": "Computer Science"
+    "category": "Computer Science",
+    "keywords": ["multimodal", "conversation", "emotion recognition"]
   },
   {
     "title": "The Emotional Brain",
@@ -147,7 +161,8 @@
     "axis": "explain",
     "relevance": "Neuroscience basis of emotion",
     "url": "",
-    "category": "Neuroscience"
+    "category": "Neuroscience",
+    "keywords": ["amygdala", "neural circuits", "fear"]
   },
   {
     "title": "The Extended Mind",
@@ -157,7 +172,8 @@
     "axis": "extended",
     "relevance": "Seminal work on cognition extending into the environment",
     "url": "",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["distributed cognition", "externalism", "embodiment"]
   },
   {
     "title": "Phenomenology of Perception",
@@ -167,7 +183,8 @@
     "axis": "respond, extended",
     "relevance": "Classic account of embodied perception and lived experience",
     "url": "",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "keywords": ["phenomenology", "embodiment", "perception"]
   },
   {
     "title": "A Survey on Bias and Fairness in Machine Learning",
@@ -177,6 +194,7 @@
     "axis": "extended",
     "relevance": "Comprehensive review of bias and fairness metrics in ML",
     "url": "",
-    "category": "Computer Science"
+    "category": "Computer Science",
+    "keywords": ["fairness", "bias", "machine learning"]
   }
 ]

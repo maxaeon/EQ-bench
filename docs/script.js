@@ -119,3 +119,26 @@ function enableMultiSelectDropdown(select) {
     }
   });
 }
+
+// Populate theoretical foundations table on the research page
+function populateFoundationsTable(tbodyId) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  fetch('theoretical_foundations.json')
+    .then(r => r.json())
+    .then(data => {
+      data.forEach(f => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${f.framework}</td>
+          <td>${f.description}</td>
+          <td>${f.origin}</td>
+          <td>${f.reference}</td>
+          <td>${f.role}</td>`;
+        tbody.appendChild(row);
+      });
+    })
+    .catch(() => {
+      tbody.innerHTML = '<tr><td colspan="5">Unable to load foundations.</td></tr>';
+    });
+}

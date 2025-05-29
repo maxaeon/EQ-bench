@@ -20,10 +20,9 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Based on James's 1884 article in psychology and philosophy, emotions arise from bodily perceptions. Field: philosophy",
+    "body": "Classical physiological theory holds that emotions arise from bodily perceptions. Field: philosophy",
     "definition": "Emotions are perceptions of bodily states or physiological responses triggered by stimuli.",
     "measurement": "Facial emotion recognition accuracy using FER-2013 dataset; voice tone analysis and biometric monitoring (heart rate, skin conductance sensors).",
-    "references": "James 1884",
     "interdisciplinary": "philosophy, neuroscience",
     "category": "Philosophy and Ethics"
   },
@@ -104,10 +103,9 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Smith's moral philosophy highlights ethical empathy in emotional judgment. Field: philosophy",
+    "body": "Classical moral philosophy highlights ethical empathy in emotional judgment. Field: philosophy",
     "definition": "Capacity for emotional understanding and compassionate response towards others\u2019 emotional states.",
     "measurement": "Empathy and sympathy scenario evaluations; user feedback; compassionate response accuracy tests.",
-    "references": "Smith 1759",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
   },

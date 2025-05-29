@@ -71,24 +71,6 @@
     "category": "Philosophy and Ethics"
   },
   {
-    "number": 5,
-    "title": "Artificial Moral Agency",
-    "synonyms": ["Machine Moral Agency"],
-    "axes": "respond, adapt, extended",
-    "user": "placeholder",
-    "url": "https://example.com",
-    "created_at": "2025-01-01T00:00:00Z",
-    "body": "Floridi and Sanders discuss AI as morally accountable agents in philosophy and ethics. Field: philosophy",
-    "definition": "AI systems can perform actions with moral significance, raising questions of moral responsibility.",
-    "measurement": "Moral decision-making scenario tests (e.g., trolley dilemmas adapted for AI); moral Turing tests; simulations of moral dilemmas.",
-    "related_terms": ["Machine Ethics", "Moral Decision"],
-    "example": "Autonomous vehicles weighing ethical dilemmas in traffic.",
-    "verification_issues": "Ethical evaluations are culturally variable; scenario tests may oversimplify moral complexity.",
-    "references": "Floridi & Sanders 2004",
-    "interdisciplinary": "philosophy, computer science",
-    "category": "Philosophy and Ethics"
-  },
-  {
     "number": 6,
     "title": "Ethical AI Development",
     "synonyms": ["Responsible AI Development"],

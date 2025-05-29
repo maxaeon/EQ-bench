@@ -25,6 +25,16 @@ We model it as four independent, graded skills:
 | **Adapt** | Retain performance on new cultures & slang | Δ-F1 across “Experience Packs” |
 | **Extended** | Evaluated at different levels of human-AI interaction.
 
+### Theoretical Foundations
+Underlying this interdisciplinary methodology are several Theoretical Foundations, essential to guiding and informing our approach to emotional intelligence assessment. These foundations provide crucial context and ensure conceptual coherence by defining the ethical considerations, methodological principles, and disciplinary frameworks that inform how emotional intelligence constructs are identified, understood, measured, and interpreted within the SERA-X project. Understanding these theoretical foundations is vital to appreciating the comprehensive, responsible, and rigorous nature of our emotional intelligence benchmarks.
+
+| Theoretical Foundation | Brief Description | Disciplinary Origin | Primary Reference(s) | Role in Project |
+| --- | --- | --- | --- | --- |
+| Affective Computing | Computational methods for recognizing, interpreting, and simulating human emotions. | Computer Science | Picard, R. (1997). Affective Computing. MIT Press. | Provides computational models and methods used in EI assessment. |
+| Ethical AI Development | Normative principles and ethical frameworks guiding fair, inclusive, and responsible development of AI systems. | Ethics, Philosophy | Coeckelbergh (2020). AI Ethics. MIT Press. | Ensures ethical compliance, fairness, and inclusivity throughout SERA-X evaluation. |
+| Bias and Power Dynamics | Critical examination of bias, fairness, and social power imbalances inherent in AI algorithms and data. | Philosophy, Sociology, Ethics | Crawford, K. (2021). Atlas of AI. Yale University Press. | Highlights fairness and inclusivity requirements and informs data and algorithm assessment protocols. |
+
+
 ---
 
 ## 3  Repository Layout

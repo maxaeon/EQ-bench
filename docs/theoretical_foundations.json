@@ -7,13 +7,6 @@
     "role": "Provides computational models and methods used in EI assessment."
   },
   {
-    "framework": "Artificial Moral Agency",
-    "description": "Theoretical exploration of moral responsibility and ethical decision-making capacities of artificial agents.",
-    "origin": "Philosophy, Ethics",
-    "reference": "Floridi & Sanders (2004). \u201cOn the Morality of Artificial Agents.\u201d",
-    "role": "Guides ethical decision-making standards and responsible AI behavior evaluation."
-  },
-  {
     "framework": "Ethical AI Development",
     "description": "Normative principles and ethical frameworks guiding fair, inclusive, and responsible development of AI systems.",
     "origin": "Ethics, Philosophy",

@@ -44,22 +44,24 @@
                 <label for="construct-search">Search:</label>
                 <input type="search" id="construct-search" placeholder="Search constructs">
             </div>
-            <div class="filter-controls">
-                <label for="axis-filter">Axis:</label>
-                <select id="axis-filter">
-                    <option value="">All</option>
-                </select>
-                <label for="field-filter">Field/Topic:</label>
-                <select id="field-filter">
-                    <option value="">All</option>
-                </select>
-            </div>
-            <div class="sort-controls">
-                <label for="sort-select">Sort by:</label>
-                <select id="sort-select">
-                    <option value="title">Alphabetical</option>
-                    <option value="relevance">Relevance</option>
-                </select>
+            <div class="controls-row">
+                <div class="filter-controls">
+                    <label for="axis-filter">Axis:</label>
+                    <select id="axis-filter" multiple>
+                        <option value="">All</option>
+                    </select>
+                    <label for="field-filter">Field/Topic:</label>
+                    <select id="field-filter" multiple>
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <div class="sort-controls">
+                    <label for="sort-select">Sort by:</label>
+                    <select id="sort-select">
+                        <option value="title">Alphabetical</option>
+                        <option value="relevance">Relevance</option>
+                    </select>
+                </div>
             </div>
             <table id="construct-table">
                 <thead>
@@ -78,27 +80,33 @@
         <section id="literature">
             <h2>Relevant Literature</h2>
             <p>Peer‑reviewed sources linked to our constructs.</p>
-            <div class="filter-controls">
-                <label for="lit-axis-filter">Axis:</label>
-                <select id="lit-axis-filter">
-                    <option value="">All</option>
-                </select>
-                <label for="lit-construct-filter">Construct:</label>
-                <select id="lit-construct-filter">
-                    <option value="">All</option>
-                </select>
-                <label for="lit-field-filter">Field/Topic:</label>
-                <select id="lit-field-filter">
-                    <option value="">All</option>
-                </select>
+            <div class="search-controls">
+                <label for="lit-search">Search:</label>
+                <input type="search" id="lit-search" placeholder="Search literature">
             </div>
-            <div class="sort-controls">
-                <label for="lit-sort">Sort by:</label>
-                <select id="lit-sort">
-                    <option value="year">Year</option>
-                    <option value="author">Author</option>
-                    <option value="title">Title</option>
-                </select>
+            <div class="controls-row">
+                <div class="filter-controls">
+                    <label for="lit-axis-filter">Axis:</label>
+                    <select id="lit-axis-filter" multiple>
+                        <option value="">All</option>
+                    </select>
+                    <label for="lit-construct-filter">Construct:</label>
+                    <select id="lit-construct-filter" multiple>
+                        <option value="">All</option>
+                    </select>
+                    <label for="lit-field-filter">Field/Topic:</label>
+                    <select id="lit-field-filter" multiple>
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <div class="sort-controls">
+                    <label for="lit-sort">Sort by:</label>
+                    <select id="lit-sort">
+                        <option value="year">Year</option>
+                        <option value="author">Author</option>
+                        <option value="title">Title</option>
+                    </select>
+                </div>
             </div>
             <table id="lit-table">
                 <thead>
@@ -135,7 +143,7 @@
         if (c.category) {
             c.field = c.category;
         } else {
-            const fields = ['psychology','philosophy','neuroscience','computer science','interdisciplinary'];
+            const fields = ['psychology','philosophy and ethics','neuroscience','computer science'];
             const foundFields = fields.filter(f => body.includes(f));
             c.field = foundFields.length ? foundFields.join(', ') : 'other';
         }
@@ -213,11 +221,11 @@
 
     function applyConstructFilters() {
         const q = document.getElementById('construct-search').value.trim().toLowerCase();
-        const axisSel = document.getElementById('axis-filter').value;
-        const fieldSel = document.getElementById('field-filter').value;
+        const axisSel = Array.from(document.getElementById('axis-filter').selectedOptions).map(o=>o.value).filter(Boolean);
+        const fieldSel = Array.from(document.getElementById('field-filter').selectedOptions).map(o=>o.value).filter(Boolean);
         let items = constructs.filter(c => {
-            if (axisSel && !(c.axis || '').toLowerCase().includes(axisSel)) return false;
-            if (fieldSel && !(c.field || '').toLowerCase().includes(fieldSel)) return false;
+            if (axisSel.length && !axisSel.some(a => (c.axis || '').toLowerCase().includes(a))) return false;
+            if (fieldSel.length && !fieldSel.some(f => (c.field || '').toLowerCase().includes(f))) return false;
             if (q) {
                 const title = (c.title || '').toLowerCase();
                 const def = (c.definition || '').toLowerCase();
@@ -257,15 +265,17 @@
             });
 
             const axisFilter = document.getElementById('axis-filter');
-            axisSet.forEach(a => {
-                if (a)
-                    axisFilter.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a.toLowerCase()));
+            const axisOrder = ['sense','explain','respond','adapt','extended'];
+            axisOrder.forEach(a => {
+                if (axisSet.has(a))
+                    axisFilter.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a));
             });
 
             const fieldFilter = document.getElementById('field-filter');
-            fieldSet.forEach(f => {
-                if (f)
-                    fieldFilter.appendChild(new Option(f, f.toLowerCase()));
+            const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
+            fieldOrder.forEach(f => {
+                if (fieldSet.has(f))
+                    fieldFilter.appendChild(new Option(f.charAt(0).toUpperCase()+f.slice(1), f));
             });
 
             document.getElementById('sort-select').value = 'title';
@@ -295,15 +305,20 @@
     }
 
     function applyLitFilters() {
-        const axisVal = document.getElementById('lit-axis-filter').value;
-        const constructVal = document.getElementById('lit-construct-filter').value;
-        const fieldVal = document.getElementById('lit-field-filter').value;
+        const q = document.getElementById('lit-search').value.trim().toLowerCase();
+        const axisVals = Array.from(document.getElementById('lit-axis-filter').selectedOptions).map(o=>o.value).filter(Boolean);
+        const constructVals = Array.from(document.getElementById('lit-construct-filter').selectedOptions).map(o=>o.value).filter(Boolean);
+        const fieldVals = Array.from(document.getElementById('lit-field-filter').selectedOptions).map(o=>o.value).filter(Boolean);
         let items = literature.filter(l => {
-            if (axisVal && !(l.axis || '').toLowerCase().includes(axisVal)) return false;
-            if (fieldVal && !(l.category || '').toLowerCase().includes(fieldVal)) return false;
-            if (constructVal) {
+            if (axisVals.length && !axisVals.some(a => (l.axis || '').toLowerCase().includes(a))) return false;
+            if (fieldVals.length && !fieldVals.some(f => (l.category || '').toLowerCase().includes(f))) return false;
+            if (constructVals.length) {
                 const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
-                return list.some(c => c.trim().toLowerCase() === constructVal);
+                if (!constructVals.some(v => list.some(c => c.trim().toLowerCase() === v))) return false;
+            }
+            if (q) {
+                const text = `${l.title || ''} ${l.authors || ''} ${l.relevance || ''}`.toLowerCase();
+                if (!text.includes(q)) return false;
             }
             return true;
         });
@@ -331,11 +346,13 @@
             });
 
             const axisF = document.getElementById('lit-axis-filter');
-            axisSet.forEach(a => { if (a) axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a.toLowerCase())); });
+            const axisOrder = ['sense','explain','respond','adapt','extended'];
+            axisOrder.forEach(a => { if (axisSet.has(a)) axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)); });
             const fieldF = document.getElementById('lit-field-filter');
-            fieldSet.forEach(f => { if (f) fieldF.appendChild(new Option(f, f.toLowerCase())); });
+            const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
+            fieldOrder.forEach(f => { if (fieldSet.has(f)) fieldF.appendChild(new Option(f.charAt(0).toUpperCase()+f.slice(1), f)); });
             const constructF = document.getElementById('lit-construct-filter');
-            constructSet.forEach(c => { if (c) constructF.appendChild(new Option(c, c.toLowerCase())); });
+            Array.from(constructSet).sort().forEach(c => { if (c) constructF.appendChild(new Option(c, c.toLowerCase())); });
 
             document.getElementById('lit-sort').value = 'author';
             applyLitFilters();
@@ -344,6 +361,7 @@
             axisF.addEventListener('change', applyLitFilters);
             fieldF.addEventListener('change', applyLitFilters);
             constructF.addEventListener('change', applyLitFilters);
+            document.getElementById('lit-search').addEventListener('input', applyLitFilters);
 
             render(constructs);
         });

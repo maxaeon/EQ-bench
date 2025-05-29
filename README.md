@@ -39,16 +39,28 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 
 ## 3  Repository Layout
 SERA-X/
-├── docs/ # design notes, IRB forms, construct sheets
-├── src/ # metric implementations & cli
-├── benchmarks/ # scoring scripts, baseline configs
-├── data/
-│ ├── construct_submissions.json # exported issue data
-│ └── samples/ # de-identified toy snippets (full data external)
-├── notebooks/ # exploration & visualisations
-└── .github/
-├── workflows/ # CI / lint / tests
-└── ISSUE_TEMPLATE/ # bug / feature templates
+├── Introduction (Home)
+├── Project Overview
+│   ├── Goals and Purpose
+│   └── SERA-X Axes Explained
+├── Research and Methodologies
+│   ├── Phase 1: Literature Review
+│   ├── Phase 2: Construct Refinement
+│   ├── Phase 3: Benchmarking Development
+│   └── Phase 4: Pilot Testing
+├── Constructs
+│   ├── Philosophy Constructs
+│   ├── Psychology Constructs
+│   ├── Neuroscience Constructs
+│   ├── Computer Science Constructs
+├── Ethical and Methodological Considerations
+├── Contributor Guidelines
+├── Visual Aids
+├── Glossary
+├── Literature and References
+├── Project Timeline
+└── What's New
+
 
 ---
 

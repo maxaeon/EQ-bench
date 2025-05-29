@@ -1,4 +1,4 @@
-# A living benchmark for **Sense - Explain -Respond - Adapt** emotional intelligence in AI systems.
+# A Benchmark for **Sense - Explain - Respond - Adapt - Extended** Emotional Intelligence in AI Systems.
 Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 1  Project Snapshot

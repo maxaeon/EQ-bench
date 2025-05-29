@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SERA-X Constructs</title>
+    <title>SERA-X - Phase 1</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,53 +31,12 @@
     </header>
     <main id="main">
         <section id="contribute">
-            <h1>Welcome to the Constructs section of the SERA-X Framework!</h1>
-            <p>Here, you'll find clear definitions and practical examples of the core ideas, or constructs, that form the foundation of our emotional intelligence benchmarking framework for artificial intelligence.</p>
-            <p>Each construct represents a specific aspect of emotional intelligence—grounded in philosophy, psychology, neuroscience, computer science, or interdisciplinary research—and is carefully defined, illustrated with real-world examples, and aligned with the relevant SERA-X axes (Sensing, Explaining, Responding, Adapting, and Extended).</p>
-            <p>Whether you're a researcher contributing your expertise or simply exploring, these constructs help clarify exactly what we measure, why it matters, and how we evaluate emotional intelligence in AI systems. Explore the constructs, get inspired, and consider contributing your insights!</p>
-            <p>Have an insight from psychology, neuroscience, or other fields? Help expand our benchmark.</p>
-            <p><a class="button" href="https://github.com/maxaeon/SERA-x/issues/new?template=construct.yml">Submit Construct</a></p>
+            <h1>Phase 1: Literature Scan and Axis Feedback</h1>
+            <p>We are gathering community input on the proposed SERA-X axes and compiling relevant peer‑reviewed literature.</p>
+            <p>Please explore the references below and suggest additions or corrections.</p>
+            <p><a class="button" href="https://github.com/maxaeon/SERA-x/issues/new?template=reference.yml">Suggest a reference</a></p>
         </section>
         
-        <section id="constructs">
-            <h2>Tentative Starting Point</h2>
-            <p>Undergoing development by an interdisciplinary team of experts in psychology, computer science, philosophy, and more.</p>
-            <div class="search-controls">
-                <label for="construct-search">Search:</label>
-                <input type="search" id="construct-search" placeholder="Search constructs">
-            </div>
-            <div class="controls-row">
-                <div class="filter-controls">
-                    <label for="axis-filter">Axis:</label>
-                    <select id="axis-filter" multiple size="1">
-                        <option value="">All</option>
-                    </select>
-                    <label for="field-filter">Field/Topic:</label>
-                    <select id="field-filter" multiple size="1">
-                        <option value="">All</option>
-                    </select>
-                </div>
-                <div class="sort-controls">
-                    <label for="sort-select">Sort by:</label>
-                    <select id="sort-select">
-                        <option value="title">Alphabetical</option>
-                        <option value="relevance">Relevance</option>
-                    </select>
-                </div>
-            </div>
-            <table id="construct-table">
-                <thead>
-                    <tr>
-                        <th>Construct</th>
-                        <th>Definition</th>
-                        <th>Example</th>
-                        <th>Axis</th>
-                        <th>Authors &amp; Sources</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
 
         <section id="literature">
             <h2>Relevant Literature</h2>
@@ -134,174 +93,12 @@
         <p>&copy; SERA-X contributors</p>
     </footer>
     <script>
+
     let literature = [];
-    let constructs = [];
-
-    function parseMeta(c) {
-        const body = (c.body || '').toLowerCase();
-        const axes = ['sense','explain','respond','adapt','extended'];
-        let foundAxes = [];
-        if (c.axes) {
-            foundAxes = c.axes.split(',').map(a => a.trim().toLowerCase());
-        } else {
-            foundAxes = axes.filter(a => body.includes(a));
-        }
-        c.axis = foundAxes.join(', ');
-        if (c.category) {
-            c.field = c.category.toLowerCase();
-        } else {
-            const fields = ['psychology','philosophy and ethics','neuroscience','computer science'];
-            const foundFields = fields.filter(f => body.includes(f));
-            c.field = foundFields.length ? foundFields.join(', ') : 'other';
-        }
-        if (c.measurement) {
-            c.evaluation = c.measurement;
-        } else {
-            const evalMatch = (c.body || '').match(/(?:evaluation|ai test task idea)[:\-]?\s*(.*)/i);
-            c.evaluation = evalMatch ? evalMatch[1].trim() : '';
-        }
-    }
-
-    function getSources(c) {
-        if (!literature.length) return '';
-        const text = ((c.title || '') + ' ' + (c.body || '')).toLowerCase();
-        const matches = [];
-        literature.forEach(l => {
-            const author = (l.authors || '').split(' ')[0];
-            if (author && text.includes(author.toLowerCase())) {
-                const entry = `${l.authors} (${l.year})`;
-                if (!matches.includes(entry)) matches.push(entry);
-            }
-        });
-        return matches.join(', ');
-    }
-
-    function truncate(text, len) {
-        if (!text) return '';
-        return text.length > len ? text.slice(0, len) + '…' : text;
-    }
 
     function toTitle(text) {
         return text.replace(/(^|\s)\S/g, t => t.toUpperCase());
     }
-
-    function render(data) {
-        const tbody = document.querySelector('#construct-table tbody');
-        tbody.innerHTML = '';
-        data.forEach((c, idx) => {
-            const row = document.createElement('tr');
-            row.className = 'construct-row';
-            const extra = document.createElement('tr');
-            const sources = getSources(c);
-            const id = `cdetail-${idx}`;
-            const synonyms = Array.isArray(c.synonyms) ? c.synonyms.join(', ') : (c.synonyms || '');
-            const related = Array.isArray(c.related_terms) ? c.related_terms.join(', ') : (c.related_terms || '');
-            const issues = c.verification_issues || '';
-
-            row.dataset.target = id;
-            row.innerHTML = `
-                <td>${c.title}</td>
-                <td>${c.definition || ''}</td>
-                <td>${c.example || ''}</td>
-                <td>${c.axis}</td>
-                <td>${sources}</td>`;
-
-            extra.className = 'construct-extra';
-            extra.id = id;
-            extra.style.display = 'none';
-            extra.innerHTML = `
-                <td colspan="5"><strong>synonyms:</strong> ${synonyms}<br>
-                <strong>related terms:</strong> ${related}<br>
-                ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}<br>` : ''}
-                <strong>Potential Issues:</strong> ${issues}<br><br>
-                <a href="https://github.com/maxaeon/SERA-x/issues/new?title=Feedback%20on%20${encodeURIComponent(c.title)}">Suggest an improvement</a></td>`;
-
-            tbody.appendChild(row);
-            tbody.appendChild(extra);
-        });
-
-        tbody.querySelectorAll('.construct-row').forEach(r => {
-            r.addEventListener('click', () => {
-                const target = document.getElementById(r.dataset.target);
-                if (target.style.display === 'none' || !target.style.display) {
-                    target.style.display = 'table-row';
-                } else {
-                    target.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    function applyConstructFilters() {
-        const q = document.getElementById('construct-search').value.trim().toLowerCase();
-        const axisSel = Array.from(document.getElementById('axis-filter').selectedOptions).map(o=>o.value).filter(Boolean);
-        const fieldSel = Array.from(document.getElementById('field-filter').selectedOptions).map(o=>o.value).filter(Boolean);
-        let items = constructs.filter(c => {
-            if (axisSel.length && !axisSel.some(a => (c.axis || '').toLowerCase().includes(a))) return false;
-            if (fieldSel.length && !fieldSel.some(f => (c.field || '').toLowerCase().includes(f))) return false;
-            if (q) {
-                const title = (c.title || '').toLowerCase();
-                const def = (c.definition || '').toLowerCase();
-                const syn = Array.isArray(c.synonyms) ? c.synonyms.join(' ').toLowerCase() : (c.synonyms || '').toLowerCase();
-                return title.includes(q) || def.includes(q) || syn.includes(q);
-            }
-            return true;
-        });
-
-        const sortVal = document.getElementById('sort-select').value;
-        if (sortVal === 'title') {
-            items.sort((a,b)=>a.title.localeCompare(b.title));
-        } else if (sortVal === 'relevance') {
-            const qtext = q;
-            const rank = c => {
-                if (!qtext) return 0;
-                const text = ((c.title || '') + ' ' + (c.definition || '') + ' ' + (Array.isArray(c.synonyms)? c.synonyms.join(' '): c.synonyms || '')).toLowerCase();
-                const idx = text.indexOf(qtext);
-                return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
-            };
-            items.sort((a,b)=>rank(a)-rank(b));
-        }
-        render(items);
-    }
-
-    fetch('construct_submissions.json')
-        .then(r => r.json())
-        .then(data => {
-            data.forEach(parseMeta);
-            constructs = data;
-
-            const axisSet = new Set();
-            const fieldSet = new Set();
-            constructs.forEach(c => {
-                c.axis.split(',').forEach(a => axisSet.add(a.trim()));
-                if (c.field) fieldSet.add(c.field.trim().toLowerCase());
-            });
-
-            const axisFilter = document.getElementById('axis-filter');
-            const axisOrder = ['sense','explain','respond','adapt','extended'];
-            axisOrder.forEach(a => {
-                if (axisSet.has(a))
-                    axisFilter.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a));
-            });
-
-            const fieldFilter = document.getElementById('field-filter');
-            const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
-            fieldOrder.forEach(f => {
-                if (fieldSet.has(f))
-                    fieldFilter.appendChild(new Option(toTitle(f), f));
-            });
-
-            enableMultiSelectDropdown(axisFilter);
-            enableMultiSelectDropdown(fieldFilter);
-
-            document.getElementById('sort-select').value = 'title';
-            applyConstructFilters();
-
-            document.getElementById('sort-select').addEventListener('change', applyConstructFilters);
-            document.getElementById('axis-filter').addEventListener('change', applyConstructFilters);
-            document.getElementById('field-filter').addEventListener('change', applyConstructFilters);
-            document.getElementById('construct-search').addEventListener('input', applyConstructFilters);
-        });
 
     const selectedLit = new Set();
 
@@ -441,7 +238,6 @@
                 downloadFile(content, 'references.bib');
             });
 
-            render(constructs);
         });
     </script>
     <script src="script.js"></script>

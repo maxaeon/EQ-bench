@@ -30,6 +30,9 @@ The matrix helps identify overlaps, gaps, and strong candidates for construct ma
 | Boddington (2017) *Towards a Code of Ethics for Artificial Intelligence* | Ethics of Emotion and AI |  |  |  |  |  |  |
 | Smith (1759) *The Theory of Moral Sentiments* | Ethics of Emotion and AI |  |  |  |  |  |  |
 | Crawford (2021) *Atlas of AI* | Ethics of Emotion and AI |  |  |  |  |  |  |
+| Husserl (1913/1982) *Ideas Pertaining to a Pure Phenomenology and to a Phenomenological Philosophy* | Philosophy (Phenomenology) | Phenomenological aspect of emotion | Foundational phenomenological method for studying subjective experience |  | — | High (theoretical) |  |
+| Merleau-Ponty (1962) *Phenomenology of Perception* | Philosophy (Phenomenology) | Phenomenological aspect of emotion | Embodied perception shaping experience |  | — | High (theoretical) |  |
+| Mehrabi et al. (2021) "A Survey on Bias and Fairness in Machine Learning" | Computer Science (Machine Learning) | Bias and fairness in AI | Comprehensive survey of fairness metrics |  | — | High |  |
 | Gross (1998) "Antecedent- and Response-focused Emotion Regulation" | Psychology (Emotion) |  |  |  |  |  |  |
 | Baron-Cohen et al. (1985) "Does the autistic child have a 'theory of mind'?" | Psychology (Emotion) |  |  |  |  |  |  |
 | Ekman (1992) "An Argument for Basic Emotions" | Psychology (Emotion) |  |  |  |  |  |  |

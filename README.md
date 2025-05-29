@@ -69,6 +69,7 @@ See docs/quick_github_guide.md for screenshots.
 The `docs/` folder doubles as a GitHub Pages site.
 Visit <https://maxaeon.github.io/SERA-x/> for a short overview of the project and a quick link to submit new construct forms.
 Construct issue submissions are automatically exported to `data/construct_submissions.json` via GitHub Actions. See `docs/persisting_constructs.md` for details.
+The website also provides an **Add a source** button to submit peer-reviewed references using a GitHub issue template. Selected references can be downloaded as a BibTeX file.
 
 ---
 

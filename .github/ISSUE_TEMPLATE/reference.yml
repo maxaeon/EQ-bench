@@ -1,0 +1,39 @@
+name: Reference submission
+description: Add a peer-reviewed source to the literature database
+labels: ["reference"]
+assignees: []
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Full title of the paper, chapter, or book
+    validations:
+      required: true
+  - type: input
+    id: authors
+    attributes:
+      label: Author(s)
+      description: e.g., Smith J., Doe A.
+  - type: input
+    id: year
+    attributes:
+      label: Year
+  - type: input
+    id: url
+    attributes:
+      label: DOI or URL
+  - type: input
+    id: construct
+    attributes:
+      label: Related construct(s)
+      description: Which construct(s) does this reference inform?
+  - type: input
+    id: axis
+    attributes:
+      label: SERA skill axis
+      description: sense, explain, respond, adapt, or extended
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Short note on relevance

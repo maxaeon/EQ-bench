@@ -196,6 +196,12 @@ tbody tr:nth-child(even) {
     max-width: 400px;
 }
 
+#extended img {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
 .gantt-chart img {
     display: block;
     max-width: 100%;

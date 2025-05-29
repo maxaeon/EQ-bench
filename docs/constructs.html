@@ -55,6 +55,13 @@
             </table>
         </section>
 
+        <section id="contribute">
+            <h2>Contribute a Construct</h2>
+            <p>Have an insight from psychology, neuroscience, or other fields? Help expand our benchmark by submitting a construct.</p>
+            <p><a class="button" href="https://github.com/maxaeon/SERA-x/issues/new?template=construct.yml">Submit Construct</a></p>
+            <p><a href="constructs.html">View submitted constructs</a></p>
+        </section>
+
         <section id="literature">
             <h2>Relevant Literature</h2>
             <p>Peer‑reviewed sources linked to our constructs.</p>
@@ -146,6 +153,9 @@
         .then(data => {
             data.forEach(parseMeta);
             constructs = data;
+            // Default sort alphabetical
+            constructs.sort((a,b)=>a.title.localeCompare(b.title));
+            document.getElementById('sort-select').value = 'title';
             render(constructs);
             document.getElementById('sort-select').addEventListener('change', e => {
                 const v = e.target.value;
@@ -178,6 +188,9 @@
         .then(r => r.json())
         .then(lit => {
             literature = lit;
+            // Default sort by author
+            literature.sort((a,b)=>a.authors.localeCompare(b.authors));
+            document.getElementById('lit-sort').value = 'author';
             renderLit(literature);
             render(constructs);
             document.getElementById('lit-sort').addEventListener('change', e => {

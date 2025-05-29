@@ -1,8 +1,8 @@
-# A Benchmark for **Sense - Explain - Respond - Adapt - Extended** Emotional Intelligence in AI Systems.
+# A Benchmark for **Sense - Explain - Respond - Adapt - Extended** Emotional Intelligence in AI Systems
 Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 1  Project Snapshot
-|                         |                     |
+
 |-------------------------|---------------------|
 | **Goal** | Provide an open, reproducible framework that measures how well large-language models (and, later, multimodal systems) *sense*, *explain*, *respond* to, and *adapt* around human emotions. |
 | **Status** | `v0.1-alpha` – folder skeleton, pilot metric stubs, and sample data only. |
@@ -15,7 +15,7 @@ Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 2  Why SERA-X?
 Emotional intelligence in AI should not be judged by a single pass/fail label.  
-We model it as four independent, graded skills:
+We model it as four independent, graded skills, along with an extended perspective:
 
 | Axis | Short description | Pilot metric (text-only) |
 |------|-------------------|--------------------------|
@@ -43,19 +43,15 @@ Below is a map of the major folders and documents. Links jump to the
 corresponding page where available.
 
 - **[Introduction (Home)](docs/index.html)** – Landing page with a brief project overview.
-- **[Project Overview](docs/research.html)** – Goals, theoretical foundations and methodology.
-  - *Goals and Purpose* – Summary of the objectives driving SERA‑X.
   - **[SERA-X Axes Explained](docs/index.html)** – Short descriptions of the Sense, Explain, Respond, Adapt and Extended skills.
-- **Research and Methodologies** – Step‑by‑step approach to building the benchmark.
+- **[Project Overview](docs/research.html)** – Goals, theoretical foundations and methodology.
   - **[Phase&nbsp;1: Literature Review](docs/phase1.html)** – Collect references and gather feedback.
   - **[Phase&nbsp;2: Construct Refinement](docs/phase2.html)** – Consolidate and validate key constructs.
   - **[Phase&nbsp;3: Benchmarking Development](docs/phase3.html)** – Design metrics and evaluation protocols.
   - **[Phase&nbsp;4: Pilot Testing](docs/phase4.html)** – Run initial experiments and refine methods.
-- **Constructs** – Lists of emotion constructs across disciplines.
 - **[Ethical and Methodological Considerations](docs/research.html)** – Approach to fairness and transparency.
 - **[Contributor Guidelines](CONTRIBUTING.md)** – How to contribute to the project.
 - **Visual Aids** – Diagrams and images located under `docs/assets`.
-- **Glossary** – Definitions for key terms (forthcoming).
 - **[Literature and References](docs/literature-matrix.md)** – Compiled bibliography of relevant work.
 - **[Project Timeline](docs/timetable.md)** – 90‑day action plan and milestones.
 - **What's New** – Recent updates and release notes.

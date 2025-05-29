@@ -62,9 +62,9 @@ function populateAxisConstructs(axis, containerId) {
         details.innerHTML = `
           <strong>synonyms:</strong> ${synonyms}<br>
           <strong>related terms:</strong> ${related}<br>
-          <strong>verification issues:</strong> ${issues}<br><br>
-          ${c.example ? `<em>${c.example}</em><br>` : ''}
-          ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation}` : ''}`;
+          ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation}<br>` : ''}
+          <strong>Potential Issues:</strong> ${issues}<br><br>
+          ${c.example ? `<em>${c.example}</em><br>` : ''}`;
         li.appendChild(btn);
         li.appendChild(details);
         ul.appendChild(li);

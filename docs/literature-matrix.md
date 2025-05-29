@@ -32,7 +32,7 @@ The matrix helps identify overlaps, gaps, and strong candidates for construct ma
 | Baron-Cohen et al. (1985) "Does the autistic child have a 'theory of mind'?" | Psychology (Emotion) | Theory of Mind |  |  |  |  |  |
 | Poria et al. (2019) "Emotion Recognition in Conversation" | Computer Science (Emotion Recognition) | Multimodal emotion recognition |  |  |  |  |  |
 | LeDoux (1998) *The Emotional Brain* | Neuroscience (Emotion) | Neural circuits of emotion |  |  |  |  |  |
-| Clark (1997) *Being There* | Interdisciplinary Integration and Theory | Embodied cognition and emotion |  |  |  |  |  |
+| Clark & Chalmers (1998) "The Extended Mind" | Interdisciplinary Integration and Theory | Extended or Distributed Mind |  |  |  |  |  |
 
 ---
 

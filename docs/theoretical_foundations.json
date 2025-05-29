@@ -1,0 +1,30 @@
+[
+  {
+    "framework": "Affective Computing",
+    "description": "Computational methods for recognizing, interpreting, and simulating human emotions.",
+    "origin": "Computer Science",
+    "reference": "Picard, R. (1997). Affective Computing. MIT Press.",
+    "role": "Provides computational models and methods used in EI assessment."
+  },
+  {
+    "framework": "Artificial Moral Agency",
+    "description": "Theoretical exploration of moral responsibility and ethical decision-making capacities of artificial agents.",
+    "origin": "Philosophy, Ethics",
+    "reference": "Floridi & Sanders (2004). \u201cOn the Morality of Artificial Agents.\u201d",
+    "role": "Guides ethical decision-making standards and responsible AI behavior evaluation."
+  },
+  {
+    "framework": "Ethical AI Development",
+    "description": "Normative principles and ethical frameworks guiding fair, inclusive, and responsible development of AI systems.",
+    "origin": "Ethics, Philosophy",
+    "reference": "Coeckelbergh (2020). AI Ethics. MIT Press.",
+    "role": "Ensures ethical compliance, fairness, and inclusivity throughout SERA-X evaluation."
+  },
+  {
+    "framework": "Bias and Power Dynamics",
+    "description": "Critical examination of bias, fairness, and social power imbalances inherent in AI algorithms and data.",
+    "origin": "Philosophy, Sociology, Ethics",
+    "reference": "Crawford, K. (2021). Atlas of AI. Yale University Press.",
+    "role": "Highlights fairness and inclusivity requirements and informs data and algorithm assessment protocols."
+  }
+]

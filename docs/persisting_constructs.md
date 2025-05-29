@@ -22,6 +22,11 @@ also copied to `docs/construct_submissions.json` so the website can display the
 latest submissions. Both files are committed back to the repository so changes
 are visible in pull requests.
 
+Each record includes an `axes` field listing the relevant SERA skills
+(e.g., `"sense, explain"`). Pages like `sense.html` filter constructs by reading
+this field via `docs/script.js`. If an older entry lacks `axes`, the script
+falls back to searching the issue text.
+
 This lightweight method keeps contributions transparent while avoiding the
 maintenance burden of an external database. Future work may revisit a database
 if query or scale needs grow.

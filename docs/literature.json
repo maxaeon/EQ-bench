@@ -5,6 +5,7 @@
     "year": 1987,
     "construct": "Emotion as salience strategy",
     "axis": "explain",
+    "relevance": "Emotions guide attention and reasoning non-propositionally; foundation for non-binary, gradient model of EI",
     "url": "https://doi.org/10.1093/0198238829.001.0001"
   },
   {
@@ -13,6 +14,7 @@
     "year": 2000,
     "construct": "Feelings-towards",
     "axis": "sense, explain",
+    "relevance": "Emotions directed at objects and values beyond bodily states; supports separate 'Sense' and 'Explain' axes",
     "url": "https://doi.org/10.1093/0199253049.001.0001"
   },
   {
@@ -21,6 +23,7 @@
     "year": 2003,
     "construct": "Four-branch model of EI",
     "axis": "sense, explain, respond, adapt",
+    "relevance": "Splits EI into perceive, use, understand and regulate; validated on large sample guiding multi-score approach",
     "url": "https://doi.org/10.1037/t00344-000"
   },
   {
@@ -29,6 +32,7 @@
     "year": 2017,
     "construct": "Core affect, constructionism",
     "axis": "adapt",
+    "relevance": "Emotions depend on context, concepts and culture; informs Adapt axis and dataset design",
     "url": "https://en.wikipedia.org/wiki/How_Emotions_Are_Made"
   },
   {
@@ -37,6 +41,43 @@
     "year": 2019,
     "construct": "Empathic response",
     "axis": "respond",
+    "relevance": "Dialogue dataset providing gold empathic responses; baseline for Respond axis",
     "url": "https://doi.org/10.18653/v1/D19-1015"
+  },
+  {
+    "title": "Upheavals of Thought",
+    "authors": "Nussbaum",
+    "year": 2001,
+    "construct": "Evaluative judgment",
+    "axis": "explain",
+    "relevance": "Seminal cognitive account of emotions as evaluative judgments",
+    "url": ""
+  },
+  {
+    "title": "What is an Emotion?",
+    "authors": "James",
+    "year": 1884,
+    "construct": "Physiological emotion theory",
+    "axis": "explain",
+    "relevance": "Foundational physiological theory providing essential philosophical grounding",
+    "url": ""
+  },
+  {
+    "title": "Descartes' Error",
+    "authors": "Damasio",
+    "year": 1994,
+    "construct": "Emotion-cognition interaction",
+    "axis": "explain",
+    "relevance": "Influential exploration of interrelation between emotion and cognition",
+    "url": ""
+  },
+  {
+    "title": "Gut Reactions",
+    "authors": "Prinz",
+    "year": 2004,
+    "construct": "Perceptual/bodily theory",
+    "axis": "sense, explain",
+    "relevance": "Contemporary philosophical defense of perceptual and bodily approaches",
+    "url": ""
   }
 ]

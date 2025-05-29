@@ -38,9 +38,9 @@
                 <thead>
                     <tr>
                         <th>Construct</th>
+                        <th>Definition</th>
                         <th>Authors &amp; Sources</th>
                         <th>Relevance (Axis)</th>
-                        <th>Fields</th>
                         <th>How to Evaluate</th>
                     </tr>
                 </thead>
@@ -119,9 +119,9 @@
             const sources = getSources(c);
             row.innerHTML = `
                 <td><a href="${c.url}">${c.title}</a></td>
+                <td>${c.definition || ''}</td>
                 <td>${sources}</td>
                 <td>${c.axis}</td>
-                <td>${c.field}</td>
                 <td>${c.evaluation || ''}</td>`;
             tbody.appendChild(row);
         });

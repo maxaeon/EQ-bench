@@ -10,6 +10,7 @@ Status: *early scaffold* (v0.0.1) - layout may change
 | **Inspiration** | *Humanity’s-Last-Exam*, HELM, EQ-Bench, ETHOS, EmpatheticDialogues |
 | **Lead org** | tentatively *Inflection AI* research group |
 | **Contact** | placeholder: Max Parks, research lead maxaeonparks@gmail.com |
+SERA-X is an open benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets. Visitors can use the issue templates **Add a Source** and **Add a Construct** to automatically append references and constructs to the datasets `docs/literature.json` and `data/construct_submissions.json`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Quick GitHub Guide](docs/quick_github_guide.md).
 
 ---
 
@@ -90,8 +91,7 @@ See the [Quick GitHub Guide](docs/quick_github_guide.md) for step-by-step screen
 
 The `docs/` folder doubles as a GitHub Pages site.
 Visit <https://maxaeon.github.io/SERA-x/> for a short overview of the project and a quick link to submit new construct forms.
-Construct issue submissions are automatically exported to `data/construct_submissions.json` via GitHub Actions. See `docs/persisting_constructs.md` for details.
-The website also provides an **Add a source** button to submit peer-reviewed references using a GitHub issue template. Selected references can be downloaded as a BibTeX file.
+Construct submissions filed via the **Add a Construct** issue template are automatically exported to `data/construct_submissions.json`. Peer-reviewed references submitted through the **Add a Source** template populate `docs/literature.json`. These flows run via GitHub Actions—see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Quick GitHub Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file.
 
 ---
 

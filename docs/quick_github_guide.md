@@ -25,3 +25,11 @@ This short walkthrough helps new contributors fork the repository, edit a file, 
 ![Step 3 screenshot](assets/images/step3.png)
 
 A maintainer or group from the team will review your submission, run tests, and merge it when ready. Thank you for contributing!
+
+## Submitting References or Constructs via Issues
+
+1. On the SERA-X website, navigate to the page where you want to contribute.
+2. Click the **Add a source** or **Add a construct** button.
+3. A GitHub issue form will open. Fill out the requested details.
+4. Click **Submit new issue**.
+5. Once the change is merged, GitHub Actions update the site automatically with your entry.

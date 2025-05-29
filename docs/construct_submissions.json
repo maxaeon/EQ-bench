@@ -7,10 +7,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "From Nussbaum's Upheavals of Thought in philosophy, emotions are evaluative judgments. Field: philosophy",
-    "definition": "Emotions are evaluations of events relative to personal goals.",
-    "measurement": "Self-report appraisal inventories or scenario-based tasks.",
-    "references": "Nussbaum 2001; Lazarus 1991; Scherer 2001",
-    "interdisciplinary": "philosophy, psychology, cognitive science"
+    "definition": "Emotions are evaluative judgments assessing events or objects as significant relative to personal well-being.",
+    "measurement": "NLP sentiment analysis; scenario-based evaluation; qualitative interpretation tasks.",
+    "references": "Nussbaum 2001",
+    "interdisciplinary": "philosophy, psychology",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 2,
@@ -20,10 +21,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Based on James's 1884 article in psychology and philosophy, emotions arise from bodily perceptions. Field: philosophy",
-    "definition": "Emotions arise from perception of bodily changes caused by stimuli.",
-    "measurement": "Autonomic recordings such as heart rate and skin conductance.",
-    "references": "James 1884; Cannon 1927; Damasio 1994",
-    "interdisciplinary": "psychology, physiology, neuroscience"
+    "definition": "Emotions are perceptions of bodily states or physiological responses triggered by stimuli.",
+    "measurement": "Facial and vocal emotion recognition algorithms; biometric sensor data analysis (e.g., galvanic skin response).",
+    "references": "James 1884",
+    "interdisciplinary": "philosophy, neuroscience",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 3,
@@ -33,10 +35,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy",
-    "definition": "Focuses on the felt subjective experience of emotions and 'feelings toward'.",
-    "measurement": "Qualitative reports and phenomenological analysis of experience.",
-    "references": "Goldie 2000; Ratcliffe 2008",
-    "interdisciplinary": "philosophy, psychology, phenomenology"
+    "definition": "The subjective, experiential, qualitative aspect of emotional experience.",
+    "measurement": "User-reported surveys assessing emotional authenticity; qualitative interviews; interpretative phenomenological analysis.",
+    "references": "Goldie 2000",
+    "interdisciplinary": "philosophy, psychology",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 4,
@@ -46,10 +49,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience",
-    "definition": "Decision-making uses bodily states linked to emotional memories as markers.",
-    "measurement": "Iowa Gambling Task with physiological recording and neuroimaging.",
-    "references": "Damasio 1994; Bechara & Damasio 2005",
-    "interdisciplinary": "neuroscience, psychology, cognitive science"
+    "definition": "Emotional processes guide or bias behavior and decision-making through bodily states and sensations.",
+    "measurement": "Behavioral decision-making tasks; physiological response monitoring; computational modeling of affective decision-making.",
+    "references": "Damasio 1994",
+    "interdisciplinary": "neuroscience, philosophy",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 5,
@@ -59,10 +63,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Floridi and Sanders discuss AI as morally accountable agents in philosophy and ethics. Field: philosophy",
-    "definition": "AI systems can be considered morally accountable agents under certain conditions.",
-    "measurement": "Assessment of ethical reasoning and compliance in simulated scenarios.",
-    "references": "Floridi & Sanders 2004; Moor 2006",
-    "interdisciplinary": "philosophy, ethics, computer science"
+    "definition": "AI systems can perform actions with moral significance, raising questions of moral responsibility.",
+    "measurement": "Ethical decision-making scenario analysis; moral Turing tests; simulations of moral dilemmas.",
+    "references": "Floridi & Sanders 2004",
+    "interdisciplinary": "philosophy, computer science",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 6,
@@ -72,10 +77,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Coeckelbergh's AI Ethics emphasizes ethical obligations in emotion recognition technologies. Field: philosophy",
-    "definition": "Creating AI that complies with ethical guidelines in emotion technologies.",
-    "measurement": "Bias audits, stakeholder feedback, and policy conformance checks.",
-    "references": "Coeckelbergh 2020; IEEE Ethically Aligned Design",
-    "interdisciplinary": "philosophy, ethics, technology studies"
+    "definition": "Normative principles guiding fair, responsible, and inclusive development of emotional AI.",
+    "measurement": "Algorithmic fairness assessments; inclusivity audits; ethical impact assessments.",
+    "references": "Coeckelbergh 2020",
+    "interdisciplinary": "philosophy, computer science",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 7,
@@ -88,7 +94,8 @@
     "definition": "Normative principles for how emotional AI should interact with people.",
     "measurement": "Compliance audits and social impact assessments.",
     "references": "Boddington 2017; EU AI guidelines 2019",
-    "interdisciplinary": "philosophy, ethics, psychology, law"
+    "interdisciplinary": "philosophy, ethics, psychology, law",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 8,
@@ -98,10 +105,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Smith's moral philosophy highlights ethical empathy in emotional judgment. Field: philosophy",
-    "definition": "Sympathy underpins moral judgments and social relationships.",
-    "measurement": "Empathy scales and behavioral economics tasks.",
-    "references": "Smith 1759; modern empathy research",
-    "interdisciplinary": "philosophy, psychology, economics"
+    "definition": "Capacity for emotional understanding and compassionate response towards others\u2019 emotional states.",
+    "measurement": "Empathy and sympathy scenario evaluations; user feedback; compassionate response accuracy tests.",
+    "references": "Smith 1759",
+    "interdisciplinary": "philosophy, psychology",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 9,
@@ -111,10 +119,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Crawford critiques bias in emotion recognition algorithms in the field of technology ethics. Field: philosophy",
-    "definition": "Explores how emotion recognition algorithms reflect social biases and power.",
-    "measurement": "Algorithmic fairness metrics and demographic audits.",
-    "references": "Crawford 2021; Buolamwini & Gebru 2018",
-    "interdisciplinary": "technology ethics, sociology, computer science"
+    "definition": "Exploration of systemic bias, ethical fairness, and power inequalities embedded in AI systems, particularly emotion recognition.",
+    "measurement": "Demographic bias testing in datasets; fairness metrics; power dynamics evaluations.",
+    "references": "Crawford 2021",
+    "interdisciplinary": "philosophy, sociology, computer science",
+    "category": "Philosophy and Ethics"
   },
   {
     "number": 10,
@@ -124,10 +133,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Gross's psychological research examines how people adjust emotional responses. Field: psychology",
-    "definition": "Processes by which people influence which emotions they have and how they express them.",
-    "measurement": "Emotion Regulation Questionnaire, reappraisal tasks, physiological monitoring.",
-    "references": "Gross 1998; Gross & Thompson 2007",
-    "interdisciplinary": "psychology, neuroscience, education"
+    "definition": "The processes by which individuals or systems influence which emotions they experience, when, and how they express them.",
+    "measurement": "Emotional response modulation tasks; interaction scenarios; observational methods and sentiment analysis.",
+    "references": "Gross 1998",
+    "interdisciplinary": "psychology, computational modeling",
+    "category": "Psychology"
   },
   {
     "number": 11,
@@ -137,10 +147,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Baron-Cohen and colleagues explore attribution of mental states and emotions. Field: psychology",
-    "definition": "Ability to attribute mental states and emotions to others.",
-    "measurement": "False-belief tasks, reading the mind in the eyes test, neuroimaging.",
-    "references": "Baron-Cohen 1995; Premack & Woodruff 1978",
-    "interdisciplinary": "psychology, neuroscience, philosophy"
+    "definition": "Ability to attribute mental states (beliefs, desires, intentions) to others.",
+    "measurement": "False-belief tasks adapted for AI; predictive accuracy tests; interpretability analysis.",
+    "references": "Baron-Cohen et al. 1985",
+    "interdisciplinary": "psychology, computational cognition",
+    "category": "Psychology"
   },
   {
     "number": 12,
@@ -153,7 +164,8 @@
     "definition": "Proposes universal discrete emotions with characteristic expressions.",
     "measurement": "Facial Action Coding System and cross-cultural expression recognition.",
     "references": "Ekman 1992; Izard 1971",
-    "interdisciplinary": "psychology, anthropology, neuroscience"
+    "interdisciplinary": "psychology, anthropology, neuroscience",
+    "category": "Psychology"
   },
   {
     "number": 13,
@@ -163,10 +175,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Poria and colleagues describe algorithms that combine audio, visual, and text cues. Field: computer science",
-    "definition": "Uses audio, visual, and text cues for automated emotion detection.",
-    "measurement": "Model accuracy on datasets with multiple modalities.",
-    "references": "Poria et al. 2017; Zadeh et al. 2018",
-    "interdisciplinary": "computer science, psychology, linguistics"
+    "definition": "Algorithms integrating multiple modalities (audio, visual, textual) for emotion detection.",
+    "measurement": "Accuracy metrics from multimodal datasets; model interpretability tests.",
+    "references": "Poria et al. 2019",
+    "interdisciplinary": "computer science, psychology",
+    "category": "Computer Science"
   },
   {
     "number": 14,
@@ -179,7 +192,8 @@
     "definition": "Computational systems that recognize, interpret, or simulate emotions.",
     "measurement": "Emotion classification accuracy and user interaction studies.",
     "references": "Picard 1997; Calvo & D'Mello 2010",
-    "interdisciplinary": "computer science, psychology, engineering"
+    "interdisciplinary": "computer science, psychology, engineering",
+    "category": "Computer Science"
   },
   {
     "number": 15,
@@ -189,10 +203,11 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "LeDoux describes amygdala and limbic roles in emotion processing from neuroscience. Field: neuroscience",
-    "definition": "Studies brain networks like the amygdala involved in emotional processes.",
-    "measurement": "fMRI, EEG, and lesion studies during emotional tasks.",
-    "references": "LeDoux 1996; Phelps & LeDoux 2005",
-    "interdisciplinary": "neuroscience, psychology, cognitive science"
+    "definition": "Brain structures and pathways involved in emotional processing such as the amygdala and prefrontal cortex.",
+    "measurement": "Neurological modeling; fMRI correlation methods; computational simulations.",
+    "references": "LeDoux 1998",
+    "interdisciplinary": "neuroscience, computational neuroscience",
+    "category": "Neuroscience"
   },
   {
     "number": 16,
@@ -205,7 +220,8 @@
     "definition": "Basic neural systems such as SEEKING and FEAR underlying emotions.",
     "measurement": "Animal models and neurochemical manipulations.",
     "references": "Panksepp 1998; Panksepp & Biven 2012",
-    "interdisciplinary": "neuroscience, comparative psychology, evolutionary biology"
+    "interdisciplinary": "neuroscience, comparative psychology, evolutionary biology",
+    "category": "Neuroscience"
   },
   {
     "number": 17,
@@ -218,7 +234,8 @@
     "definition": "Neural mechanisms for perceiving facial expressions of emotion.",
     "measurement": "Behavioral recognition tasks and neuroimaging.",
     "references": "Adolphs 2002; Haxby et al. 2000",
-    "interdisciplinary": "neuroscience, psychology, computer vision"
+    "interdisciplinary": "neuroscience, psychology, computer vision",
+    "category": "Neuroscience"
   },
   {
     "number": 18,
@@ -231,7 +248,8 @@
     "definition": "Emotions constructed from valence and arousal dimensions of core affect.",
     "measurement": "Affect Grid ratings and physiological indicators of valence/arousal.",
     "references": "Russell 2003; Barrett & Russell 1998",
-    "interdisciplinary": "psychology, neuroscience, affective science"
+    "interdisciplinary": "psychology, neuroscience, affective science",
+    "category": "Psychology"
   },
   {
     "number": 19,
@@ -244,7 +262,8 @@
     "definition": "Emotions prepare action tendencies in response to situations.",
     "measurement": "Behavior observation and self-reported motivational states.",
     "references": "Frijda 1986; Frijda et al. 1989",
-    "interdisciplinary": "psychology, cognitive science, behavioral economics"
+    "interdisciplinary": "psychology, cognitive science, behavioral economics",
+    "category": "Psychology"
   },
   {
     "number": 20,
@@ -254,9 +273,10 @@
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Clark's work on embodied cognition links emotional interactions to the situated body. Field: philosophy",
-    "definition": "Emotion is grounded in bodily interaction with the environment.",
-    "measurement": "Embodied interaction experiments and robotics tests.",
-    "references": "Clark 1997; Barsalou 2008",
-    "interdisciplinary": "philosophy, cognitive science, robotics"
+    "definition": "Emotion is intrinsically tied to physical states and situational contexts.",
+    "measurement": "Embodied interaction scenarios; situated emotional responses; dynamic contextual adaptations.",
+    "references": "Clark 1997",
+    "interdisciplinary": "philosophy, cognitive science, computational modeling",
+    "category": "Interdisciplinary"
   }
 ]

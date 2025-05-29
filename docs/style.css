@@ -230,6 +230,11 @@ tbody tr:nth-child(even) {
     font-size: 0.9em;
 }
 
+.construct-extra td {
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #111;
@@ -273,6 +278,10 @@ tbody tr:nth-child(even) {
     }
 
     tbody tr:nth-child(even) {
+        background-color: #222;
+    }
+
+    .construct-extra td {
         background-color: #222;
     }
 }

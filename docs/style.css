@@ -170,6 +170,10 @@ ul li {
     margin-bottom: 1rem;
 }
 
+.filter-controls {
+    margin-bottom: 1rem;
+}
+
 /* Search bar styling */
 .search-controls {
     margin-bottom: 1rem;

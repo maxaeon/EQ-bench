@@ -1,0 +1,42 @@
+[
+  {
+    "title": "The Rationality of Emotion",
+    "authors": "de Sousa",
+    "year": 1987,
+    "construct": "Emotion as salience strategy",
+    "axis": "explain",
+    "url": "https://doi.org/10.1093/0198238829.001.0001"
+  },
+  {
+    "title": "The Emotions",
+    "authors": "Goldie",
+    "year": 2000,
+    "construct": "Feelings-towards",
+    "axis": "sense, explain",
+    "url": "https://doi.org/10.1093/0199253049.001.0001"
+  },
+  {
+    "title": "MSCEIT",
+    "authors": "Mayer et al.",
+    "year": 2003,
+    "construct": "Four-branch model of EI",
+    "axis": "sense, explain, respond, adapt",
+    "url": "https://doi.org/10.1037/t00344-000"
+  },
+  {
+    "title": "How Emotions Are Made",
+    "authors": "Barrett",
+    "year": 2017,
+    "construct": "Core affect, constructionism",
+    "axis": "adapt",
+    "url": "https://en.wikipedia.org/wiki/How_Emotions_Are_Made"
+  },
+  {
+    "title": "EmpatheticDialogues",
+    "authors": "Rashkin et al.",
+    "year": 2019,
+    "construct": "Empathic response",
+    "axis": "respond",
+    "url": "https://doi.org/10.18653/v1/D19-1015"
+  }
+]

@@ -6,7 +6,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "From Nussbaum's Upheavals of Thought in philosophy, emotions are evaluative judgments. Field: philosophy"
+    "body": "From Nussbaum's Upheavals of Thought in philosophy, emotions are evaluative judgments. Field: philosophy",
+    "definition": "Emotions are evaluations of events relative to personal goals.",
+    "measurement": "Self-report appraisal inventories or scenario-based tasks.",
+    "references": "Nussbaum 2001; Lazarus 1991; Scherer 2001",
+    "interdisciplinary": "philosophy, psychology, cognitive science"
   },
   {
     "number": 2,
@@ -15,7 +19,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Based on James's 1884 article in psychology and philosophy, emotions arise from bodily perceptions. Field: philosophy"
+    "body": "Based on James's 1884 article in psychology and philosophy, emotions arise from bodily perceptions. Field: philosophy",
+    "definition": "Emotions arise from perception of bodily changes caused by stimuli.",
+    "measurement": "Autonomic recordings such as heart rate and skin conductance.",
+    "references": "James 1884; Cannon 1927; Damasio 1994",
+    "interdisciplinary": "psychology, physiology, neuroscience"
   },
   {
     "number": 3,
@@ -24,7 +32,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy"
+    "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy",
+    "definition": "Focuses on the felt subjective experience of emotions and 'feelings toward'.",
+    "measurement": "Qualitative reports and phenomenological analysis of experience.",
+    "references": "Goldie 2000; Ratcliffe 2008",
+    "interdisciplinary": "philosophy, psychology, phenomenology"
   },
   {
     "number": 4,
@@ -33,7 +45,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience"
+    "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience",
+    "definition": "Decision-making uses bodily states linked to emotional memories as markers.",
+    "measurement": "Iowa Gambling Task with physiological recording and neuroimaging.",
+    "references": "Damasio 1994; Bechara & Damasio 2005",
+    "interdisciplinary": "neuroscience, psychology, cognitive science"
   },
   {
     "number": 5,
@@ -42,7 +58,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Floridi and Sanders discuss AI as morally accountable agents in philosophy and ethics. Field: philosophy"
+    "body": "Floridi and Sanders discuss AI as morally accountable agents in philosophy and ethics. Field: philosophy",
+    "definition": "AI systems can be considered morally accountable agents under certain conditions.",
+    "measurement": "Assessment of ethical reasoning and compliance in simulated scenarios.",
+    "references": "Floridi & Sanders 2004; Moor 2006",
+    "interdisciplinary": "philosophy, ethics, computer science"
   },
   {
     "number": 6,
@@ -51,7 +71,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Coeckelbergh's AI Ethics emphasizes ethical obligations in emotion recognition technologies. Field: philosophy"
+    "body": "Coeckelbergh's AI Ethics emphasizes ethical obligations in emotion recognition technologies. Field: philosophy",
+    "definition": "Creating AI that complies with ethical guidelines in emotion technologies.",
+    "measurement": "Bias audits, stakeholder feedback, and policy conformance checks.",
+    "references": "Coeckelbergh 2020; IEEE Ethically Aligned Design",
+    "interdisciplinary": "philosophy, ethics, technology studies"
   },
   {
     "number": 7,
@@ -60,7 +84,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Boddington proposes normative guidelines for emotional AI engagement. Field: philosophy"
+    "body": "Boddington proposes normative guidelines for emotional AI engagement. Field: philosophy",
+    "definition": "Normative principles for how emotional AI should interact with people.",
+    "measurement": "Compliance audits and social impact assessments.",
+    "references": "Boddington 2017; EU AI guidelines 2019",
+    "interdisciplinary": "philosophy, ethics, psychology, law"
   },
   {
     "number": 8,
@@ -69,7 +97,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Smith's moral philosophy highlights ethical empathy in emotional judgment. Field: philosophy"
+    "body": "Smith's moral philosophy highlights ethical empathy in emotional judgment. Field: philosophy",
+    "definition": "Sympathy underpins moral judgments and social relationships.",
+    "measurement": "Empathy scales and behavioral economics tasks.",
+    "references": "Smith 1759; modern empathy research",
+    "interdisciplinary": "philosophy, psychology, economics"
   },
   {
     "number": 9,
@@ -78,7 +110,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Crawford critiques bias in emotion recognition algorithms in the field of technology ethics. Field: philosophy"
+    "body": "Crawford critiques bias in emotion recognition algorithms in the field of technology ethics. Field: philosophy",
+    "definition": "Explores how emotion recognition algorithms reflect social biases and power.",
+    "measurement": "Algorithmic fairness metrics and demographic audits.",
+    "references": "Crawford 2021; Buolamwini & Gebru 2018",
+    "interdisciplinary": "technology ethics, sociology, computer science"
   },
   {
     "number": 10,
@@ -87,7 +123,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Gross's psychological research examines how people adjust emotional responses. Field: psychology"
+    "body": "Gross's psychological research examines how people adjust emotional responses. Field: psychology",
+    "definition": "Processes by which people influence which emotions they have and how they express them.",
+    "measurement": "Emotion Regulation Questionnaire, reappraisal tasks, physiological monitoring.",
+    "references": "Gross 1998; Gross & Thompson 2007",
+    "interdisciplinary": "psychology, neuroscience, education"
   },
   {
     "number": 11,
@@ -96,7 +136,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Baron-Cohen and colleagues explore attribution of mental states and emotions. Field: psychology"
+    "body": "Baron-Cohen and colleagues explore attribution of mental states and emotions. Field: psychology",
+    "definition": "Ability to attribute mental states and emotions to others.",
+    "measurement": "False-belief tasks, reading the mind in the eyes test, neuroimaging.",
+    "references": "Baron-Cohen 1995; Premack & Woodruff 1978",
+    "interdisciplinary": "psychology, neuroscience, philosophy"
   },
   {
     "number": 12,
@@ -105,7 +149,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Ekman's work identifies universal emotional expressions studied in psychology. Field: psychology"
+    "body": "Ekman's work identifies universal emotional expressions studied in psychology. Field: psychology",
+    "definition": "Proposes universal discrete emotions with characteristic expressions.",
+    "measurement": "Facial Action Coding System and cross-cultural expression recognition.",
+    "references": "Ekman 1992; Izard 1971",
+    "interdisciplinary": "psychology, anthropology, neuroscience"
   },
   {
     "number": 13,
@@ -114,7 +162,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Poria and colleagues describe algorithms that combine audio, visual, and text cues. Field: computer science"
+    "body": "Poria and colleagues describe algorithms that combine audio, visual, and text cues. Field: computer science",
+    "definition": "Uses audio, visual, and text cues for automated emotion detection.",
+    "measurement": "Model accuracy on datasets with multiple modalities.",
+    "references": "Poria et al. 2017; Zadeh et al. 2018",
+    "interdisciplinary": "computer science, psychology, linguistics"
   },
   {
     "number": 14,
@@ -123,7 +175,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Picard's foundational computer science book introduces computational methods for interpreting and simulating emotion. Field: computer science"
+    "body": "Picard's foundational computer science book introduces computational methods for interpreting and simulating emotion. Field: computer science",
+    "definition": "Computational systems that recognize, interpret, or simulate emotions.",
+    "measurement": "Emotion classification accuracy and user interaction studies.",
+    "references": "Picard 1997; Calvo & D'Mello 2010",
+    "interdisciplinary": "computer science, psychology, engineering"
   },
   {
     "number": 15,
@@ -132,7 +188,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "LeDoux describes amygdala and limbic roles in emotion processing from neuroscience. Field: neuroscience"
+    "body": "LeDoux describes amygdala and limbic roles in emotion processing from neuroscience. Field: neuroscience",
+    "definition": "Studies brain networks like the amygdala involved in emotional processes.",
+    "measurement": "fMRI, EEG, and lesion studies during emotional tasks.",
+    "references": "LeDoux 1996; Phelps & LeDoux 2005",
+    "interdisciplinary": "neuroscience, psychology, cognitive science"
   },
   {
     "number": 16,
@@ -141,7 +201,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Panksepp identifies fundamental emotional circuits such as SEEKING and FEAR. Field: neuroscience"
+    "body": "Panksepp identifies fundamental emotional circuits such as SEEKING and FEAR. Field: neuroscience",
+    "definition": "Basic neural systems such as SEEKING and FEAR underlying emotions.",
+    "measurement": "Animal models and neurochemical manipulations.",
+    "references": "Panksepp 1998; Panksepp & Biven 2012",
+    "interdisciplinary": "neuroscience, comparative psychology, evolutionary biology"
   },
   {
     "number": 17,
@@ -150,7 +214,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Adolphs analyzes neural mechanisms for detecting facial expressions. Field: neuroscience"
+    "body": "Adolphs analyzes neural mechanisms for detecting facial expressions. Field: neuroscience",
+    "definition": "Neural mechanisms for perceiving facial expressions of emotion.",
+    "measurement": "Behavioral recognition tasks and neuroimaging.",
+    "references": "Adolphs 2002; Haxby et al. 2000",
+    "interdisciplinary": "neuroscience, psychology, computer vision"
   },
   {
     "number": 18,
@@ -159,7 +227,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Russell's psychological construction approach views emotions as constructed from affective dimensions. Field: psychology"
+    "body": "Russell's psychological construction approach views emotions as constructed from affective dimensions. Field: psychology",
+    "definition": "Emotions constructed from valence and arousal dimensions of core affect.",
+    "measurement": "Affect Grid ratings and physiological indicators of valence/arousal.",
+    "references": "Russell 2003; Barrett & Russell 1998",
+    "interdisciplinary": "psychology, neuroscience, affective science"
   },
   {
     "number": 19,
@@ -168,7 +240,11 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Frijda defines emotion as states preparing action, influencing adaptation. Field: psychology"
+    "body": "Frijda defines emotion as states preparing action, influencing adaptation. Field: psychology",
+    "definition": "Emotions prepare action tendencies in response to situations.",
+    "measurement": "Behavior observation and self-reported motivational states.",
+    "references": "Frijda 1986; Frijda et al. 1989",
+    "interdisciplinary": "psychology, cognitive science, behavioral economics"
   },
   {
     "number": 20,
@@ -177,6 +253,10 @@
     "user": "placeholder",
     "url": "https://example.com",
     "created_at": "2025-01-01T00:00:00Z",
-    "body": "Clark's work on embodied cognition links emotional interactions to the situated body. Field: philosophy"
+    "body": "Clark's work on embodied cognition links emotional interactions to the situated body. Field: philosophy",
+    "definition": "Emotion is grounded in bodily interaction with the environment.",
+    "measurement": "Embodied interaction experiments and robotics tests.",
+    "references": "Clark 1997; Barsalou 2008",
+    "interdisciplinary": "philosophy, cognitive science, robotics"
   }
 ]

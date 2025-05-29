@@ -235,6 +235,13 @@ tbody tr:nth-child(even) {
     margin: 0 auto;
 }
 
+/* Contributing page step images */
+.contrib-step img {
+    display: block;
+    margin: 0.5rem auto;
+    max-width: 300px;
+}
+
 /* Inline construct expansion controls */
 .toggle-details {
     background: none;

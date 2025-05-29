@@ -21,16 +21,13 @@ The matrix helps identify overlaps, gaps, and strong candidates for construct ma
 
 ---
 | Nussbaum (2001) *Upheavals of Thought* | Philosophy (Emotion and Cognition) |  |  | Seminal cognitive account of emotions as evaluative judgments. | — |  |  |
-| James (1884) "What is an Emotion?" | Philosophy (Emotion and Cognition) |  |  | Foundational physiological theory of emotion; essential philosophical grounding. | — |  |  |
 | Goldie (2000) *The Emotions* | Philosophy (Emotion and Cognition) |  |  | Integrative account covering phenomenological, cognitive, and affective dimensions. | — |  |  |
 | Damasio (1994) *Descartes' Error* | Philosophy (Emotion and Cognition) |  |  | Influential exploration of emotion-cognition interrelation. | — |  |  |
 | Prinz (2004) *Gut Reactions* | Philosophy (Emotion and Cognition) |  |  | Contemporary philosophical defense of perceptual/bodily theory. | — |  |  |
 | Floridi & Sanders (2004) "On the Morality of Artificial Agents" | Ethics of Emotion and AI |  |  |  |  |  |  |
 | Coeckelbergh (2020) *AI Ethics* | Ethics of Emotion and AI |  |  |  |  |  |  |
 | Boddington (2017) *Towards a Code of Ethics for Artificial Intelligence* | Ethics of Emotion and AI |  |  |  |  |  |  |
-| Smith (1759) *The Theory of Moral Sentiments* | Ethics of Emotion and AI |  |  |  |  |  |  |
 | Crawford (2021) *Atlas of AI* | Ethics of Emotion and AI |  |  |  |  |  |  |
-| Husserl (1913/1982) *Ideas Pertaining to a Pure Phenomenology and to a Phenomenological Philosophy* | Philosophy (Phenomenology) | Phenomenological aspect of emotion | Foundational phenomenological method for studying subjective experience |  | — | High (theoretical) |  |
 | Merleau-Ponty (1962) *Phenomenology of Perception* | Philosophy (Phenomenology) | Phenomenological aspect of emotion | Embodied perception shaping experience |  | — | High (theoretical) |  |
 | Mehrabi et al. (2021) "A Survey on Bias and Fairness in Machine Learning" | Computer Science (Machine Learning) | Bias and fairness in AI | Comprehensive survey of fairness metrics |  | — | High |  |
 | Gross (1998) "Antecedent- and Response-focused Emotion Regulation" | Psychology (Emotion) |  |  |  |  |  |  |

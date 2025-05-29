@@ -60,16 +60,6 @@
     "category": "Philosophy and Ethics"
   },
   {
-    "title": "What is an Emotion?",
-    "authors": "James",
-    "year": 1884,
-    "construct": "Physiological emotion theory",
-    "axis": "explain",
-    "relevance": "Foundational physiological theory providing essential philosophical grounding",
-    "url": "",
-    "category": "Philosophy and Ethics"
-  },
-  {
     "title": "Descartes' Error",
     "authors": "Damasio",
     "year": 1994,
@@ -106,16 +96,6 @@
     "construct": "Ethical AI development",
     "axis": "adapt",
     "relevance": "Overview of responsible AI principles",
-    "url": "",
-    "category": "Philosophy and Ethics"
-  },
-  {
-    "title": "The Theory of Moral Sentiments",
-    "authors": "Smith",
-    "year": 1759,
-    "construct": "Sympathy and moral sentiment",
-    "axis": "respond",
-    "relevance": "Classic account of moral emotions",
     "url": "",
     "category": "Philosophy and Ethics"
   },
@@ -178,16 +158,6 @@
     "relevance": "Embodied cognition framework",
     "url": "",
     "category": "Interdisciplinary"
-  },
-  {
-    "title": "Ideas Pertaining to a Pure Phenomenology and to a Phenomenological Philosophy",
-    "authors": "Husserl",
-    "year": 1913,
-    "construct": "Phenomenological aspect of emotion",
-    "axis": "respond, extended",
-    "relevance": "Foundational phenomenological method for analyzing subjective experience",
-    "url": "",
-    "category": "Philosophy and Ethics"
   },
   {
     "title": "Phenomenology of Perception",

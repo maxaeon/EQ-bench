@@ -23,7 +23,7 @@ We model it as four independent, graded skills:
 | **Explain** | Infer probable causes / appraisals | Cause-Inference Accuracy |
 | **Respond** | Generate helpful, empathic replies | Human Empathy Score (HES 1-5) |
 | **Adapt** | Retain performance on new cultures & slang | Δ-F1 across “Experience Packs” |
-| **Extended** | Evaluated at different levels of human-AI interaction.
+| **Extended** | Evaluates AI's performance across diverse human-AI interaction levels. | Composite score from multi-modal interaction assessments. |
 
 ### Theoretical Foundations
 Underlying this interdisciplinary methodology are several Theoretical Foundations, essential to guiding and informing our approach to emotional intelligence assessment. These foundations provide crucial context and ensure conceptual coherence by defining the ethical considerations, methodological principles, and disciplinary frameworks that inform how emotional intelligence constructs are identified, understood, measured, and interpreted within the SERA-X project. Understanding these theoretical foundations is vital to appreciating the comprehensive, responsible, and rigorous nature of our emotional intelligence benchmarks.

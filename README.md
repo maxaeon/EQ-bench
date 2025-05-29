@@ -39,30 +39,26 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 ---
 
 ## 3  Repository Layout
-```text
-SERA-X/
-├── Introduction (Home)
-├── Project Overview
-│   ├── Goals and Purpose
-│   └── SERA-X Axes Explained
-├── Research and Methodologies
-│   ├── Phase 1: Literature Review
-│   ├── Phase 2: Construct Refinement
-│   ├── Phase 3: Benchmarking Development
-│   └── Phase 4: Pilot Testing
-├── Constructs
-│   ├── Philosophy Constructs
-│   ├── Psychology Constructs
-│   ├── Neuroscience Constructs
-│   ├── Computer Science Constructs
-├── Ethical and Methodological Considerations
-├── Contributor Guidelines
-├── Visual Aids
-├── Glossary
-├── Literature and References
-├── Project Timeline
-└── What's New
-```
+Below is a map of the major folders and documents. Links jump to the
+corresponding page where available.
+
+- **[Introduction (Home)](docs/index.html)** – Landing page with a brief project overview.
+- **[Project Overview](docs/research.html)** – Goals, theoretical foundations and methodology.
+  - *Goals and Purpose* – Summary of the objectives driving SERA‑X.
+  - **[SERA-X Axes Explained](docs/index.html)** – Short descriptions of the Sense, Explain, Respond, Adapt and Extended skills.
+- **Research and Methodologies** – Step‑by‑step approach to building the benchmark.
+  - **[Phase&nbsp;1: Literature Review](docs/phase1.html)** – Collect references and gather feedback.
+  - **[Phase&nbsp;2: Construct Refinement](docs/phase2.html)** – Consolidate and validate key constructs.
+  - **[Phase&nbsp;3: Benchmarking Development](docs/phase3.html)** – Design metrics and evaluation protocols.
+  - **[Phase&nbsp;4: Pilot Testing](docs/phase4.html)** – Run initial experiments and refine methods.
+- **Constructs** – Lists of emotion constructs across disciplines.
+- **[Ethical and Methodological Considerations](docs/research.html)** – Approach to fairness and transparency.
+- **[Contributor Guidelines](CONTRIBUTING.md)** – How to contribute to the project.
+- **Visual Aids** – Diagrams and images located under `docs/assets`.
+- **Glossary** – Definitions for key terms (forthcoming).
+- **[Literature and References](docs/literature-matrix.md)** – Compiled bibliography of relevant work.
+- **[Project Timeline](docs/timetable.md)** – 90‑day action plan and milestones.
+- **What's New** – Recent updates and release notes.
 
 
 ---

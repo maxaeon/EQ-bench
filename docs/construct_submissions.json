@@ -107,23 +107,6 @@
     "category": "Philosophy and Ethics"
   },
   {
-    "number": 8,
-    "title": "Phenomenological Accounts of Moral Sentiment",
-    "synonyms": ["Moral Sentiments", "Sympathy"],
-    "axes": "respond, extended",
-    "user": "placeholder",
-    "url": "https://example.com",
-    "created_at": "2025-01-01T00:00:00Z",
-    "body": "Phenomenological philosophers describe moral emotions such as sympathy and guilt through first-person experience. Field: philosophy",
-    "definition": "Explores moral sentiments from the lived perspective, emphasising subjective understanding of compassion and guilt.",
-    "measurement": "Qualitative interviews and scenario-based ratings capturing felt moral emotions.",
-    "related_terms": ["Compassionate AI", "Moral Phenomenology"],
-    "example": "Robot companion engages with a user's guilt using reflective dialogue.",
-    "verification_issues": "Subjective reports vary across cultures and may lack replicability.",
-    "interdisciplinary": "philosophy, psychology",
-    "category": "Philosophy and Ethics"
-  },
-  {
     "number": 9,
     "title": "Bias and Power Dynamics",
     "synonyms": ["Algorithmic Bias"],

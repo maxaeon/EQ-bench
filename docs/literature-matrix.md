@@ -20,27 +20,19 @@ The matrix helps identify overlaps, gaps, and strong candidates for construct ma
 | Rashkin et al. (2019) *EmpatheticDialogues* | NLP / ML | Empathic response | Empathy modeled as structured dialogue; gold responses from crowd |  | EmpatheticDialogues | High | Informs SERA “Respond” axis; HES scoring baseline |
 
 ---
-| Nussbaum (2001) *Upheavals of Thought* | Philosophy (Emotion and Cognition) |  |  | Seminal cognitive account of emotions as evaluative judgments. | — |  |  |
-| Goldie (2000) *The Emotions* | Philosophy (Emotion and Cognition) |  |  | Integrative account covering phenomenological, cognitive, and affective dimensions. | — |  |  |
-| Damasio (1994) *Descartes' Error* | Philosophy (Emotion and Cognition) |  |  | Influential exploration of emotion-cognition interrelation. | — |  |  |
-| Prinz (2004) *Gut Reactions* | Philosophy (Emotion and Cognition) |  |  | Contemporary philosophical defense of perceptual/bodily theory. | — |  |  |
-| Floridi & Sanders (2004) "On the Morality of Artificial Agents" | Ethics of Emotion and AI |  |  |  |  |  |  |
-| Coeckelbergh (2020) *AI Ethics* | Ethics of Emotion and AI |  |  |  |  |  |  |
-| Boddington (2017) *Towards a Code of Ethics for Artificial Intelligence* | Ethics of Emotion and AI |  |  |  |  |  |  |
-| Crawford (2021) *Atlas of AI* | Ethics of Emotion and AI |  |  |  |  |  |  |
+| Nussbaum (2001) *Upheavals of Thought* | Philosophy (Emotion and Cognition) | Evaluative judgment |  | Seminal cognitive account of emotions as evaluative judgments. | — |  |  |
+| Damasio (1994) *Descartes' Error* | Philosophy (Emotion and Cognition) | Emotion-cognition interaction |  | Influential exploration of emotion-cognition interrelation. | — |  |  |
+| Prinz (2004) *Gut Reactions* | Philosophy (Emotion and Cognition) | Perceptual/bodily theory |  | Contemporary philosophical defense of perceptual/bodily theory. | — |  |  |
+| Floridi & Sanders (2004) "On the Morality of Artificial Agents" | Ethics of Emotion and AI | Artificial moral agency |  |  |  |  |  |
+| Coeckelbergh (2020) *AI Ethics* | Ethics of Emotion and AI | Ethical AI development |  |  |  |  |  |
+| Crawford (2021) *Atlas of AI* | Ethics of Emotion and AI | Bias and power dynamics |  |  |  |  |  |
 | Merleau-Ponty (1962) *Phenomenology of Perception* | Philosophy (Phenomenology) | Phenomenological aspect of emotion | Embodied perception shaping experience |  | — | High (theoretical) |  |
 | Mehrabi et al. (2021) "A Survey on Bias and Fairness in Machine Learning" | Computer Science (Machine Learning) | Bias and fairness in AI | Comprehensive survey of fairness metrics |  | — | High |  |
-| Gross (1998) "Antecedent- and Response-focused Emotion Regulation" | Psychology (Emotion) |  |  |  |  |  |  |
-| Baron-Cohen et al. (1985) "Does the autistic child have a 'theory of mind'?" | Psychology (Emotion) |  |  |  |  |  |  |
-| Ekman (1992) "An Argument for Basic Emotions" | Psychology (Emotion) |  |  |  |  |  |  |
-| Poria et al. (2019) "Emotion Recognition in Conversation" | Computer Science (Emotion Recognition) |  |  |  |  |  |  |
-| Picard (1997) *Affective Computing* | Computer Science (Emotion Recognition) |  |  |  |  |  |  |
-| LeDoux (1998) *The Emotional Brain* | Neuroscience (Emotion) |  |  |  |  |  |  |
-| Panksepp (1998) *Affective Neuroscience* | Neuroscience (Emotion) |  |  |  |  |  |  |
-| Adolphs (2002) "Recognizing Emotion from Facial Expressions" | Neuroscience (Emotion) |  |  |  |  |  |  |
-| Russell (2003) "Core Affect and the Psychological Construction of Emotion" | Interdisciplinary Integration and Theory |  |  |  |  |  |  |
-| Frijda (1986) *The Emotions* | Interdisciplinary Integration and Theory |  |  |  |  |  |  |
-| Clark (1997) *Being There* | Interdisciplinary Integration and Theory |  |  |  |  |  |  |
+| Gross (1998) "Antecedent- and Response-focused Emotion Regulation" | Psychology (Emotion) | Emotion regulation |  |  |  |  |  |
+| Baron-Cohen et al. (1985) "Does the autistic child have a 'theory of mind'?" | Psychology (Emotion) | Theory of Mind |  |  |  |  |  |
+| Poria et al. (2019) "Emotion Recognition in Conversation" | Computer Science (Emotion Recognition) | Multimodal emotion recognition |  |  |  |  |  |
+| LeDoux (1998) *The Emotional Brain* | Neuroscience (Emotion) | Neural circuits of emotion |  |  |  |  |  |
+| Clark (1997) *Being There* | Interdisciplinary Integration and Theory | Embodied cognition and emotion |  |  |  |  |  |
 
 ---
 

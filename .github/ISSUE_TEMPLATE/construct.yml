@@ -83,11 +83,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 🚧 5. Potential verification issues
+        ## 🚧 5. Potential Issues
   - type: textarea
     id: verification_issues
     attributes:
-      label: Verification issues
+      label: Potential Issues
       description: Challenges that might arise when validating this construct.
   - type: markdown
     attributes:

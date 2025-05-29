@@ -13,7 +13,7 @@
         <div id="logo-menu" class="logo-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Methodologies</a></li>
+                <li><a href="research.html">Project Development</a></li>
                 <li><a href="constructs.html">Current Project Status</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -57,9 +57,9 @@
                     <tr>
                         <th>Construct</th>
                         <th>Definition</th>
-                        <th>Authors &amp; Sources</th>
                         <th>Example</th>
                         <th>Axis</th>
+                        <th>Authors &amp; Sources</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -129,8 +129,8 @@
         literature.forEach(l => {
             const author = (l.authors || '').split(' ')[0];
             if (author && text.includes(author.toLowerCase())) {
-                const link = l.url ? `<a href="${l.url}">${l.authors}</a>` : l.authors;
-                if (!matches.includes(link)) matches.push(link);
+                const name = l.authors;
+                if (!matches.includes(name)) matches.push(name);
             }
         });
         return matches.join(', ');
@@ -156,9 +156,9 @@
             row.innerHTML = `
                 <td><button class="toggle-details" data-target="${id}">${c.title}</button></td>
                 <td>${c.definition || ''}</td>
-                <td>${sources}</td>
                 <td>${c.example || ''}</td>
-                <td>${c.axis}</td>`;
+                <td>${c.axis}</td>
+                <td>${sources}</td>`;
 
             extra.className = 'construct-extra';
             extra.id = id;
@@ -166,8 +166,8 @@
             extra.innerHTML = `
                 <td colspan="5"><strong>synonyms:</strong> ${synonyms}<br>
                 <strong>related terms:</strong> ${related}<br>
-                <strong>verification issues:</strong> ${issues}<br><br>
-                ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}` : ''}<br>
+                ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}<br>` : ''}
+                <strong>Potential Issues:</strong> ${issues}<br><br>
                 <a href="https://github.com/maxaeon/SERA-x/issues/new?title=Feedback%20on%20${encodeURIComponent(c.title)}">Suggest an improvement</a></td>`;
 
             tbody.appendChild(row);
@@ -222,7 +222,7 @@
         tbody.innerHTML = '';
         items.forEach(l => {
             const row = document.createElement('tr');
-            const titleCell = l.url ? `<a href="${l.url}">${l.title}</a>` : l.title;
+            const titleCell = l.title;
             row.innerHTML = `
                 <td>${titleCell}</td>
                 <td>${l.authors}</td>

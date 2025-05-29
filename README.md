@@ -60,6 +60,12 @@ corresponding page where available.
 ---
 
 ## 4  Quick Start   *(developers)*
+
+**Prerequisites:**
+- Python ≥3.8
+- Git
+- virtualenv or venv
+
 bash
 git clone https://github.com/maxaeon/SERA-x.git
 cd SERA-x
@@ -70,14 +76,13 @@ python src/cli.py    # view help
 ---
 
 ## 5 Quick Start (non-technical contributors)
-Click “Fork” (top-right) → edits open in the GitHub web editor.
 
-Browse to any .md file, click “✏️” to propose changes.
+**Prerequisites:**
+- GitHub account
+- Modern web browser
 
-GitHub automatically opens a pull request – add a short explanation, hit Create PR.
-
-A maintainer will review, run CI, and merge when ready.
 See the [Quick GitHub Guide](docs/quick_github_guide.md) for step-by-step screenshots.
+
 
 ---
 

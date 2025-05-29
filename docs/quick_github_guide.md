@@ -1,4 +1,4 @@
-# Quick GitHub Guide
+# Quick GitHub Guide for Contributing to SERA-X
 
 This short walkthrough helps new contributors fork the repository, edit a file, and submit a pull request using the GitHub web interface.
 
@@ -24,6 +24,4 @@ This short walkthrough helps new contributors fork the repository, edit a file, 
 
 ![Step 3 screenshot](assets/images/step3.png)
 
-A maintainer will review your submission, run tests, and merge it when ready. Thank you for contributing!
-
-
+A maintainer or group from the team will review your submission, run tests, and merge it when ready. Thank you for contributing!

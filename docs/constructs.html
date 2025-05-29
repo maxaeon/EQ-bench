@@ -37,12 +37,11 @@
             <table id="construct-table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Title</th>
+                        <th>Construct</th>
                         <th>User</th>
                         <th>Date</th>
-                    <th>Axes</th>
-                    <th>Fields</th>
+                        <th>Axes</th>
+                        <th>Fields</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -69,11 +68,12 @@
         tbody.innerHTML = '';
         data.forEach(c => {
             const row = document.createElement('tr');
+            const date = new Date(c.created_at);
+            const md = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
             row.innerHTML = `
-                <td>${c.number}</td>
                 <td><a href="${c.url}">${c.title}</a></td>
                 <td>${c.user}</td>
-                <td>${c.created_at.split('T')[0]}</td>
+                <td>${md}</td>
                 <td>${c.axis}</td>
                 <td>${c.field}</td>`;
             tbody.appendChild(row);

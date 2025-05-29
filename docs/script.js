@@ -16,9 +16,16 @@ function populateAxisConstructs(axis, containerId) {
   fetch('construct_submissions.json')
     .then(r => r.json())
     .then(data => {
-      const items = data.filter(c =>
-        c.body && c.body.toLowerCase().includes(axis.toLowerCase())
-      );
+      const axisLower = axis.toLowerCase();
+      const items = data.filter(c => {
+        if (c.axes) {
+          const axes = c.axes
+            .split(',')
+            .map(a => a.trim().toLowerCase());
+          if (axes.includes(axisLower)) return true;
+        }
+        return c.body && c.body.toLowerCase().includes(axisLower);
+      });
       if (items.length === 0) {
         container.textContent = 'No constructs submitted yet.';
         return;

@@ -178,5 +178,35 @@
     "relevance": "Embodied cognition framework",
     "url": "",
     "category": "Interdisciplinary"
+  },
+  {
+    "title": "Ideas Pertaining to a Pure Phenomenology and to a Phenomenological Philosophy",
+    "authors": "Husserl",
+    "year": 1913,
+    "construct": "Phenomenological aspect of emotion",
+    "axis": "respond, extended",
+    "relevance": "Foundational phenomenological method for analyzing subjective experience",
+    "url": "",
+    "category": "Philosophy and Ethics"
+  },
+  {
+    "title": "Phenomenology of Perception",
+    "authors": "Merleau-Ponty",
+    "year": 1962,
+    "construct": "Phenomenological aspect of emotion",
+    "axis": "respond, extended",
+    "relevance": "Classic account of embodied perception and lived experience",
+    "url": "",
+    "category": "Philosophy and Ethics"
+  },
+  {
+    "title": "A Survey on Bias and Fairness in Machine Learning",
+    "authors": "Mehrabi et al.",
+    "year": 2021,
+    "construct": "Bias and power dynamics",
+    "axis": "extended",
+    "relevance": "Comprehensive review of bias and fairness metrics in ML",
+    "url": "",
+    "category": "Computer Science"
   }
 ]

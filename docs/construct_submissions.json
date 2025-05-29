@@ -22,7 +22,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Based on James's 1884 article in psychology and philosophy, emotions arise from bodily perceptions. Field: philosophy",
     "definition": "Emotions are perceptions of bodily states or physiological responses triggered by stimuli.",
-    "measurement": "Facial and vocal emotion recognition algorithms; biometric sensor data analysis (e.g., galvanic skin response).",
+    "measurement": "Facial emotion recognition accuracy using FER-2013 dataset; voice tone analysis and biometric monitoring (heart rate, skin conductance sensors).",
     "references": "James 1884",
     "interdisciplinary": "philosophy, neuroscience",
     "category": "Philosophy and Ethics"
@@ -36,7 +36,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy",
     "definition": "The subjective, experiential, qualitative aspect of emotional experience.",
-    "measurement": "User-reported surveys assessing emotional authenticity; qualitative interviews; interpretative phenomenological analysis.",
+    "measurement": "User-reported surveys assessing emotional authenticity; qualitative user interviews exploring subjective emotional experiences; interpretative phenomenological analysis (IPA).",
     "references": "Goldie 2000",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics"
@@ -50,7 +50,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience",
     "definition": "Emotional processes guide or bias behavior and decision-making through bodily states and sensations.",
-    "measurement": "Behavioral decision-making tasks; physiological response monitoring; computational modeling of affective decision-making.",
+    "measurement": "Behavioral decision-making tasks; physiological response monitoring; computational models using reinforcement learning informed by somatic marker frameworks.",
     "references": "Damasio 1994",
     "interdisciplinary": "neuroscience, philosophy",
     "category": "Philosophy and Ethics"
@@ -64,7 +64,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Floridi and Sanders discuss AI as morally accountable agents in philosophy and ethics. Field: philosophy",
     "definition": "AI systems can perform actions with moral significance, raising questions of moral responsibility.",
-    "measurement": "Ethical decision-making scenario analysis; moral Turing tests; simulations of moral dilemmas.",
+    "measurement": "Moral decision-making scenario tests (e.g., trolley dilemmas adapted for AI); moral Turing tests; simulations of moral dilemmas.",
     "references": "Floridi & Sanders 2004",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -78,7 +78,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Coeckelbergh's AI Ethics emphasizes ethical obligations in emotion recognition technologies. Field: philosophy",
     "definition": "Normative principles guiding fair, responsible, and inclusive development of emotional AI.",
-    "measurement": "Algorithmic fairness assessments; inclusivity audits; ethical impact assessments.",
+    "measurement": "Algorithmic fairness assessments using frameworks such as statistical parity and equalized odds; inclusivity audits; ethical impact assessments.",
     "references": "Coeckelbergh 2020",
     "interdisciplinary": "philosophy, computer science",
     "category": "Philosophy and Ethics"
@@ -120,7 +120,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Crawford critiques bias in emotion recognition algorithms in the field of technology ethics. Field: philosophy",
     "definition": "Exploration of systemic bias, ethical fairness, and power inequalities embedded in AI systems, particularly emotion recognition.",
-    "measurement": "Demographic bias testing in datasets; fairness metrics; power dynamics evaluations.",
+    "measurement": "Demographic bias testing in datasets; fairness metrics applied to emotional recognition datasets (AffectNet, IEMOCAP); power dynamics evaluations.",
     "references": "Crawford 2021",
     "interdisciplinary": "philosophy, sociology, computer science",
     "category": "Philosophy and Ethics"
@@ -274,7 +274,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Clark's work on embodied cognition links emotional interactions to the situated body. Field: philosophy",
     "definition": "Emotion is intrinsically tied to physical states and situational contexts.",
-    "measurement": "Embodied interaction scenarios; situated emotional responses; dynamic contextual adaptations.",
+    "measurement": "Embodied interaction scenarios involving embodied AI platforms (e.g., Pepper Robot, virtual reality environments); situated emotional responses; dynamic contextual adaptations.",
     "references": "Clark 1997",
     "interdisciplinary": "philosophy, cognitive science, computational modeling",
     "category": "Interdisciplinary"

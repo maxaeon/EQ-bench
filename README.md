@@ -1,4 +1,9 @@
-# A Benchmark for **Sense - Explain - Respond - Adapt - Extended** Emotional Intelligence in AI Systems
+# AI EQ Benchmark Research Hub
+
+Welcome to the **AI Emotional Intelligence (EQ) Benchmark Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems, anchored around the leading **SERA-X** model.
+
+GitHub Discussions are enabled for open dialogue and interdisciplinary collaboration.
+
 Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 1  Project Snapshot
@@ -40,22 +45,17 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 ---
 
 ## 3  Repository Layout
-Below is a map of the major folders and documents. Links jump to the
-corresponding page where available.
+This repository is organized as an AI EQ Benchmark Research Hub. Major sections include:
 
-- **[Introduction (Home)](docs/index.html)** – Landing page with a brief project overview.
-  - **[SERA-X Axes Explained](docs/index.html)** – Short descriptions of the Sense, Explain, Respond, Adapt and Extended skills.
-- **[Project Overview](docs/research.html)** – Goals, theoretical foundations and methodology.
-  - **[Phase&nbsp;1: Literature Review](docs/phase1.html)** – Collect references and gather feedback.
-  - **[Phase&nbsp;2: Construct Refinement](docs/phase2.html)** – Consolidate and validate key constructs.
-  - **[Phase&nbsp;3: Benchmarking Development](docs/phase3.html)** – Design metrics and evaluation protocols.
-  - **[Phase&nbsp;4: Pilot Testing](docs/phase4.html)** – Run initial experiments and refine methods.
-- **[Ethical and Methodological Considerations](docs/research.html)** – Approach to fairness and transparency.
-- **[Contributor Guidelines](CONTRIBUTING.md)** – How to contribute to the project.
-- **Visual Aids** – Diagrams and images located under `docs/assets`.
-- **[Literature and References](docs/literature-matrix.md)** – Compiled bibliography of relevant work.
-- **[Project Timeline](docs/timetable.md)** – 90‑day action plan and milestones.
-- **What's New** – Recent updates and release notes.
+- **Benchmarks/** – details of the SERA-X benchmark and comparisons to alternative models.
+- **Resources-and-Tools/** – datasets, scripts, and utilities for running EQ evaluations.
+- **Research-and-Publications/** – links to papers and articles related to emotional intelligence benchmarking.
+- **Community-and-Collaboration/** – information on participating via GitHub Discussions or chat channels.
+- **Contributor-Hub/** – guidelines and Markdown templates for submitting new constructs, datasets, and publications.
+- **Ethical-Standards/** – frameworks that guide responsible research.
+- **Outreach-and-Dissemination/** – upcoming events and announcements.
+- **Visualizations/** – placeholders for interactive graphs.
+- **updates.md** – log of recent news and milestones.
 
 
 ---

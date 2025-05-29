@@ -85,3 +85,37 @@ function populateAxisConstructs(axis, containerId) {
       container.textContent = 'Unable to load constructs.';
     });
 }
+
+// Enable dropdown-like behavior for multi-select elements
+function enableMultiSelectDropdown(select) {
+  if (!select || select.__multiInitialized) return;
+  select.__multiInitialized = true;
+
+  const expand = () => {
+    const count = select.options.length;
+    select.size = Math.min(count, 6);
+    select.classList.add('select-open');
+  };
+
+  const collapse = () => {
+    select.size = 1;
+    select.classList.remove('select-open');
+  };
+
+  select.addEventListener('focus', expand);
+  select.addEventListener('click', expand);
+  select.addEventListener('change', collapse);
+  select.addEventListener('blur', collapse);
+  select.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      collapse();
+      select.blur();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!select.contains(e.target)) {
+      collapse();
+    }
+  });
+}

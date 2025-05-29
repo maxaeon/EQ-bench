@@ -284,6 +284,9 @@
                     fieldFilter.appendChild(new Option(toTitle(f), f));
             });
 
+            enableMultiSelectDropdown(axisFilter);
+            enableMultiSelectDropdown(fieldFilter);
+
             document.getElementById('sort-select').value = 'title';
             applyConstructFilters();
 
@@ -361,6 +364,10 @@
             Array.from(constructSet)
                 .sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()))
                 .forEach(c => { if (c) constructF.appendChild(new Option(c, c.toLowerCase())); });
+
+            enableMultiSelectDropdown(axisF);
+            enableMultiSelectDropdown(fieldF);
+            enableMultiSelectDropdown(constructF);
 
             document.getElementById('lit-sort').value = 'author';
             applyLitFilters();

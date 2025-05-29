@@ -48,6 +48,9 @@ header {
     margin: 0;
     padding: 0;
 }
+#logo-menu ul ul {
+    padding-left: 1rem;
+}
 
 #logo-menu li a {
     display: block;

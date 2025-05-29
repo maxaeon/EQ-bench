@@ -136,19 +136,45 @@
         return matches.join(', ');
     }
 
+    function truncate(text, len) {
+        if (!text) return '';
+        return text.length > len ? text.slice(0, len) + '…' : text;
+    }
+
     function render(data) {
         const tbody = document.querySelector('#construct-table tbody');
         tbody.innerHTML = '';
-        data.forEach(c => {
+        data.forEach((c, idx) => {
             const row = document.createElement('tr');
             const sources = getSources(c);
+            const id = `cdetail-${idx}`;
+            const synonyms = Array.isArray(c.synonyms) ? c.synonyms.join(', ') : (c.synonyms || '');
+            const related = Array.isArray(c.related_terms) ? c.related_terms.join(', ') : (c.related_terms || '');
+            const details = `
+                <div id="${id}" class="construct-details" style="display:none;">
+                  <strong>synonyms:</strong> ${synonyms}<br>
+                  <strong>related terms:</strong> ${related}<br><br>
+                  ${c.example ? `<em>${c.example}</em><br>` : ''}
+                  ${c.evaluation ? truncate(c.evaluation, 250) : ''}
+                </div>`;
             row.innerHTML = `
-                <td><a href="${c.url}">${c.title}</a></td>
+                <td><button class="toggle-details" data-target="${id}">${c.title}</button>${details}</td>
                 <td>${c.definition || ''}</td>
                 <td>${sources}</td>
                 <td>${c.axis}</td>
                 <td>${c.evaluation || ''}</td>`;
             tbody.appendChild(row);
+        });
+
+        document.querySelectorAll('.toggle-details').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = document.getElementById(btn.dataset.target);
+                if (target.style.display === 'none' || !target.style.display) {
+                    target.style.display = 'block';
+                } else {
+                    target.style.display = 'none';
+                }
+            });
         });
     }
 

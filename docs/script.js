@@ -45,13 +45,37 @@ function populateAxisConstructs(axis, containerId) {
         return;
       }
       const ul = document.createElement('ul');
-      items.forEach(c => {
+      items.forEach((c, idx) => {
         const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = c.url;
-        a.textContent = c.title;
-        li.appendChild(a);
+        const id = `${containerId}-detail-${idx}`;
+        const synonyms = Array.isArray(c.synonyms) ? c.synonyms.join(', ') : (c.synonyms || '');
+        const related = Array.isArray(c.related_terms) ? c.related_terms.join(', ') : (c.related_terms || '');
+        const btn = document.createElement('button');
+        btn.className = 'toggle-details';
+        btn.dataset.target = id;
+        btn.textContent = c.title;
+        const details = document.createElement('div');
+        details.id = id;
+        details.className = 'construct-details';
+        details.style.display = 'none';
+        details.innerHTML = `
+          <strong>synonyms:</strong> ${synonyms}<br>
+          <strong>related terms:</strong> ${related}<br><br>
+          ${c.example ? `<em>${c.example}</em><br>` : ''}
+          ${c.evaluation ? (c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation) : ''}`;
+        li.appendChild(btn);
+        li.appendChild(details);
         ul.appendChild(li);
+      });
+      ul.addEventListener('click', e => {
+        if (e.target && e.target.classList.contains('toggle-details')) {
+          const target = document.getElementById(e.target.dataset.target);
+          if (target.style.display === 'none' || !target.style.display) {
+            target.style.display = 'block';
+          } else {
+            target.style.display = 'none';
+          }
+        }
       });
       container.appendChild(ul);
     })

@@ -179,6 +179,7 @@
         tbody.innerHTML = '';
         data.forEach((c, idx) => {
             const row = document.createElement('tr');
+            row.className = 'construct-row';
             const extra = document.createElement('tr');
             const sources = getSources(c);
             const id = `cdetail-${idx}`;
@@ -186,8 +187,9 @@
             const related = Array.isArray(c.related_terms) ? c.related_terms.join(', ') : (c.related_terms || '');
             const issues = c.verification_issues || '';
 
+            row.dataset.target = id;
             row.innerHTML = `
-                <td><button class="toggle-details" data-target="${id}">${c.title}</button></td>
+                <td>${c.title}</td>
                 <td>${c.definition || ''}</td>
                 <td>${c.example || ''}</td>
                 <td>${c.axis}</td>
@@ -207,9 +209,9 @@
             tbody.appendChild(extra);
         });
 
-        document.querySelectorAll('.toggle-details').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const target = document.getElementById(btn.dataset.target);
+        tbody.querySelectorAll('.construct-row').forEach(r => {
+            r.addEventListener('click', () => {
+                const target = document.getElementById(r.dataset.target);
                 if (target.style.display === 'none' || !target.style.display) {
                     target.style.display = 'table-row';
                 } else {
@@ -352,7 +354,9 @@
             const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
             fieldOrder.forEach(f => { if (fieldSet.has(f)) fieldF.appendChild(new Option(f.charAt(0).toUpperCase()+f.slice(1), f)); });
             const constructF = document.getElementById('lit-construct-filter');
-            Array.from(constructSet).sort().forEach(c => { if (c) constructF.appendChild(new Option(c, c.toLowerCase())); });
+            Array.from(constructSet)
+                .sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()))
+                .forEach(c => { if (c) constructF.appendChild(new Option(c, c.toLowerCase())); });
 
             document.getElementById('lit-sort').value = 'author';
             applyLitFilters();

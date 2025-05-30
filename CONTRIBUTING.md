@@ -40,6 +40,12 @@ pytest
 
 ---
 
+### Updating issue submissions
+
+Construct and reference datasets are keyed by issue title. When multiple open issues share a title (case-insensitive), the export workflow keeps only the most recently updated issue. Submit a new issue with the same title to replace an older entry in the JSON files.
+
+---
+
 ## 🌱 Branching Strategy
 
 - All work happens off `main`.

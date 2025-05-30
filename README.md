@@ -108,6 +108,15 @@ Code contribution	Branch feat/<area>/<short-desc> → PR → ensure CI passes.
 Report bias or bug	Use Issue template Bug report, provide minimal repro.
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
+### Merging BibTeX references (maintainers)
+Run the helper script after collecting new `.bib` citations:
+
+```bash
+python scripts/merge_bibtex.py path/to/references.bib
+```
+
+This updates `data/literature.json` and mirrors it to `docs/data/literature.json` after deduplicating entries by title and DOI.
+
 
 ---
 ## 7 Roadmap (v0 → v1)

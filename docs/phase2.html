@@ -332,6 +332,13 @@ async function deleteSelectedConstruct() {
 
 document.getElementById('edit-construct-btn').addEventListener('click', startEditConstruct);
 document.getElementById('delete-construct-btn').addEventListener('click', deleteSelectedConstruct);
+
+// Confirm before saving new or updated constructs
+document.getElementById('construct-form')?.addEventListener('submit', e => {
+    if (!confirm('Save changes?')) {
+        e.preventDefault();
+    }
+});
     </script>
     <script src="script.js"></script>
 </body>

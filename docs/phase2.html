@@ -32,7 +32,6 @@
                 <li><a href="respond.html">Respond</a></li>
                 <li><a href="adapt.html">Adapt</a></li>
                 <li><a href="extended.html">Extended</a></li>
-                <li><a href="submissions.html">Submissions</a></li>
             </ul>
         </nav>
     </header>
@@ -99,6 +98,24 @@
             </table>
             </div>
         </section>
+<section>
+    <h2>Manage Constructs</h2>
+    <p>Authorized collaborators can create, edit and delete construct records.</p>
+    <button id="login-btn">Login to Edit</button>
+</section>
+
+<section id="construct-section" style="display:none;">
+    <h3>Constructs</h3>
+    <form id="construct-form">
+        <input type="hidden" id="construct-id">
+        <label>Title: <input type="text" id="construct-title" required></label>
+        <label>Axes: <input type="text" id="construct-axes"></label>
+        <label>Definition:<br><textarea id="construct-def" rows="3"></textarea></label>
+        <button type="submit">Save Construct</button>
+        <button type="button" id="construct-cancel" style="display:none;">Cancel</button>
+    </form>
+    <div id="construct-list"></div>
+</section>
     </main>
 
     <footer>
@@ -276,6 +293,79 @@
     }
 
     document.addEventListener('DOMContentLoaded', loadConstructs);
+let authed = false;
+
+function renderConstructs() {
+    const list = document.getElementById('construct-list');
+    list.innerHTML = '';
+    constructs.forEach(c => {
+        const div = document.createElement('div');
+        div.innerHTML = `<strong>${c.title}</strong> (${c.axes || ''})`;
+        if (authed) {
+            const eBtn = document.createElement('button');
+            eBtn.textContent = 'Edit';
+            eBtn.onclick = () => editConstruct(c);
+            const dBtn = document.createElement('button');
+            dBtn.textContent = 'Delete';
+            dBtn.onclick = () => removeConstruct(c);
+            div.append(' ', eBtn, ' ', dBtn);
+        }
+        list.appendChild(div);
+    });
+}
+
+function editConstruct(c) {
+    document.getElementById('construct-id').value = c.id || '';
+    document.getElementById('construct-title').value = c.title || '';
+    document.getElementById('construct-axes').value = c.axes || '';
+    document.getElementById('construct-def').value = c.definition || '';
+    document.getElementById('construct-cancel').style.display = 'inline';
+}
+
+async function removeConstruct(c) {
+    if (!authed) return;
+    if (confirm('Delete this construct?')) {
+        if (c.id && typeof deleteConstruct === 'function') await deleteConstruct(c.id);
+        constructs = constructs.filter(x => x !== c);
+        renderConstructs();
+    }
+}
+
+document.getElementById('construct-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!authed) return;
+    const id = document.getElementById('construct-id').value;
+    const obj = {
+        title: document.getElementById('construct-title').value,
+        axes: document.getElementById('construct-axes').value,
+        definition: document.getElementById('construct-def').value
+    };
+    if (id) {
+        if (typeof updateConstruct === 'function') await updateConstruct(id, obj);
+    } else {
+        if (typeof addConstruct === 'function') await addConstruct(obj);
+    }
+    document.getElementById('construct-form').reset();
+    document.getElementById('construct-id').value = '';
+    document.getElementById('construct-cancel').style.display = 'none';
+    await loadConstructs();
+    renderConstructs();
+});
+
+document.getElementById('construct-cancel').addEventListener('click', () => {
+    document.getElementById('construct-form').reset();
+    document.getElementById('construct-id').value = '';
+    document.getElementById('construct-cancel').style.display = 'none';
+});
+
+document.getElementById('login-btn').addEventListener('click', async () => {
+    if (await authenticate()) {
+        authed = true;
+        document.getElementById('construct-section').style.display = 'block';
+        document.getElementById('login-btn').style.display = 'none';
+        renderConstructs();
+    }
+});
     </script>
     <script src="script.js"></script>
 </body>

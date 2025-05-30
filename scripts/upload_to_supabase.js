@@ -8,7 +8,7 @@ if (!baseUrl || !serviceKey) {
   process.exit(1);
 }
 
-async function upload(file, type) {
+async function upload(file, table) {
   let items = [];
   try {
     items = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -17,8 +17,7 @@ async function upload(file, type) {
     return;
   }
   for (const item of items) {
-    const payload = { submission_type: type, data: item };
-    const res = await fetch(`${baseUrl}/rest/v1/submissions`, {
+    const res = await fetch(`${baseUrl}/rest/v1/${table}`, {
       method: 'POST',
       headers: {
         apikey: serviceKey,
@@ -26,15 +25,22 @@ async function upload(file, type) {
         'Content-Type': 'application/json',
         Prefer: 'resolution=merge-duplicates'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(item)
     });
     if (!res.ok) {
-      console.error('Error uploading', type, await res.text());
+      console.error('Error uploading', table, await res.text());
     }
   }
 }
 
-(async () => {
-  await upload('data/construct_submissions.json', 'construct');
-  await upload('data/literature.json', 'literature');
-})();
+if (require.main === module) {
+  const [file, table] = process.argv.slice(2);
+  if (file && table) {
+    upload(file, table);
+  } else {
+    (async () => {
+      await upload('data/construct_submissions.json', 'constructs');
+      await upload('data/literature.json', 'literature');
+    })();
+  }
+}

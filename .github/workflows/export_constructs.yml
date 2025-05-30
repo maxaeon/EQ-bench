@@ -54,7 +54,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload to Supabase
-        run: node scripts/upload_to_supabase.js
+        run: node scripts/upload_to_supabase.js data/construct_submissions.json constructs
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}

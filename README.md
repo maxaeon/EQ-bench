@@ -7,7 +7,7 @@ GitHub Discussions are enabled for open dialogue and interdisciplinary collabora
 Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 1  Project Snapshot
-SERA-X is an open benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets. Visitors can use the issue templates **Add a Source** and **Add a Construct** to automatically append references and constructs to the datasets `docs/literature.json` and `data/construct_submissions.json`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
+SERA-X is an open benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets. Visitors can use the issue templates **Add a Source** and **Add a Construct** to automatically append references and constructs to the datasets `data/literature.json` and `data/construct_submissions.json`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
 
 | Project Attribute | Short description |
 |-------------------------|---------------------|
@@ -92,7 +92,7 @@ See the [Research Hub Contribution Guide](docs/quick_github_guide.md) for step-b
 
 The `docs/` folder doubles as a GitHub Pages site.
 Visit <https://maxaeon.github.io/EQ-bench/> for a short overview of the project and a quick link to submit new construct forms.
-Construct submissions filed via the **Add a Construct** issue template are automatically exported to `data/construct_submissions.json`. Peer-reviewed references submitted through the **Add a Source** template populate `docs/literature.json`. These flows run via GitHub Actions—see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file.
+Construct submissions filed via the **Add a Construct** issue template are automatically exported to `data/construct_submissions.json`. Peer-reviewed references submitted through the **Add a Source** template populate `data/literature.json`. These flows run via GitHub Actions—see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file.
 The website also lets you rate how relevant each construct or paper is using a star widget.
 The scale runs from **1 star = not relevant** to **5 stars = crucial**.
 

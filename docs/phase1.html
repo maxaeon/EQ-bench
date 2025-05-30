@@ -257,7 +257,7 @@
         renderLit(items);
     }
 
-    fetch('literature.json')
+    fetch('data/literature.json')
         .then(r => r.json())
         .then(lit => {
             literature = lit.map((l, i) => Object.assign({__index: i, ratings: l.ratings || []}, l));

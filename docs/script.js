@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function populateAxisConstructs(axis, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
-  fetch('construct_submissions.json')
+  fetch('data/construct_submissions.json')
     .then(r => r.json())
     .then(data => {
       const axisLower = axis.toLowerCase();

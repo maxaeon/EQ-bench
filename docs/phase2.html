@@ -226,7 +226,7 @@
         render(items);
     }
 
-    fetch('construct_submissions.json')
+    fetch('data/construct_submissions.json')
         .then(r => r.json())
         .then(data => {
             data.forEach((c, i) => { parseMeta(c); c.ratings = c.ratings || []; });

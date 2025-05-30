@@ -1,0 +1,19 @@
+name: Request Publication Deletion
+description: Propose removing a reference from the literature database
+labels: ["delete-publication"]
+assignees: []
+body:
+  - type: input
+    id: publication_title
+    attributes:
+      label: Publication title or ID
+      description: Name exactly as listed
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for removal
+      description: Explain why this publication should be deleted
+    validations:
+      required: true

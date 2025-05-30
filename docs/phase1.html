@@ -96,7 +96,7 @@
                         <th>Relevance</th>
                         <th>Construct</th>
                         <th>Axis</th>
-                        <th>Significance <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
+                        <th>Avg Rating <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -173,13 +173,32 @@
         document.getElementById('lit-select-all').checked = allChecked;
     }
 
+    function computeAvg(base, user) {
+        const arr = Array.isArray(base) ? base.slice() : [];
+        if (user !== null && user !== '') arr.push(parseFloat(user));
+        if (!arr.length) return 0;
+        const sum = arr.reduce((a,b)=>a+parseFloat(b),0);
+        return sum / arr.length;
+    }
+
+    function updateAvgRating(idx) {
+        const item = literature.find(l => l.__index == idx);
+        if (!item) return;
+        const key = 'lit-rating-' + idx;
+        const user = localStorage.getItem(key);
+        const span = document.querySelector(`.avg-rating[data-index="${idx}"]`);
+        if (span) span.textContent = computeAvg(item.ratings, user).toFixed(1);
+    }
+
     function initLitRatings() {
         document.querySelectorAll('.lit-rating').forEach(input => {
             const key = 'lit-rating-' + input.dataset.index;
             const stored = localStorage.getItem(key);
             if (stored !== null) input.value = stored;
+            updateAvgRating(input.dataset.index);
             input.addEventListener('change', () => {
                 localStorage.setItem(key, input.value);
+                updateAvgRating(input.dataset.index);
             });
         });
     }
@@ -198,7 +217,7 @@
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${l.axis}</td>
-                <td><input type="number" min="0" max="5" class="rating-input lit-rating" data-index="${l.__index}" style="width:3em"></td>`;
+                <td><span class="avg-rating" data-index="${l.__index}"></span> <input type="number" min="0" max="5" class="rating-input lit-rating" data-index="${l.__index}" style="width:3em"></td>`;
             tbody.appendChild(row);
         });
         tbody.querySelectorAll('.lit-check').forEach(cb => {
@@ -241,7 +260,7 @@
     fetch('literature.json')
         .then(r => r.json())
         .then(lit => {
-            literature = lit.map((l, i) => Object.assign({__index: i}, l));
+            literature = lit.map((l, i) => Object.assign({__index: i, ratings: l.ratings || []}, l));
 
             const axisSet = new Set();
             const fieldSet = new Set();

@@ -90,7 +90,7 @@
                         <th>Example</th>
                         <th>Axis</th>
                         <th>Authors &amp; Sources</th>
-                        <th>Significance <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
+                        <th>Avg Rating <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -153,7 +153,7 @@
                 <td>${c.example || ''}</td>
                 <td>${c.axis}</td>
                 <td></td>
-                <td><input type="number" min="0" max="5" class="rating-input construct-rating" data-index="${idx}" style="width:3em"></td>`;
+                <td><span class="avg-rating" data-index="${idx}"></span> <input type="number" min="0" max="5" class="rating-input construct-rating" data-index="${idx}" style="width:3em"></td>`;
 
             extra.className = 'construct-extra';
             extra.id = id;
@@ -182,13 +182,31 @@
         initConstructRatings();
     }
 
+    function computeAvg(base, user) {
+        const arr = Array.isArray(base) ? base.slice() : [];
+        if (user !== null && user !== '') arr.push(parseFloat(user));
+        if (!arr.length) return 0;
+        return arr.reduce((a,b)=>a+parseFloat(b),0) / arr.length;
+    }
+
+    function updateConstructAvg(idx) {
+        const item = constructs[idx];
+        if (!item) return;
+        const key = 'construct-rating-' + idx;
+        const user = localStorage.getItem(key);
+        const span = document.querySelector(`.avg-rating[data-index="${idx}"]`);
+        if (span) span.textContent = computeAvg(item.ratings, user).toFixed(1);
+    }
+
     function initConstructRatings() {
         document.querySelectorAll('.construct-rating').forEach(input => {
             const key = 'construct-rating-' + input.dataset.index;
             const stored = localStorage.getItem(key);
             if (stored !== null) input.value = stored;
+            updateConstructAvg(input.dataset.index);
             input.addEventListener('change', () => {
                 localStorage.setItem(key, input.value);
+                updateConstructAvg(input.dataset.index);
             });
         });
     }
@@ -228,7 +246,7 @@
     fetch('construct_submissions.json')
         .then(r => r.json())
         .then(data => {
-            data.forEach(parseMeta);
+            data.forEach((c, i) => { parseMeta(c); c.ratings = c.ratings || []; });
             constructs = data;
 
             const axisSet = new Set();

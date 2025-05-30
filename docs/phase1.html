@@ -103,9 +103,11 @@
             </table>
             </div>
         </section>
-                    <div class="bibtex-controls">
-                <a class="button" href="#" id="bibtex-download">Download BibTeX</a>
-            </div>
+        <div class="bibtex-controls">
+            <a class="button" href="#" id="bibtex-download">Download BibTeX</a>
+            <button id="edit-lit-btn" class="button">Edit</button>
+            <button id="delete-lit-btn" class="button">Delete</button>
+        </div>
 
             <hr style="margin-top: 40px; margin-bottom: 20px;">
 
@@ -125,21 +127,8 @@
 
 <section>
     <h2>Manage Submissions</h2>
-    <p>Authorized collaborators can create, edit and delete literature records.</p>
+    <p>Authorized collaborators can edit or delete literature records.</p>
     <button id="login-btn">Login to Edit</button>
-</section>
-
-<section id="literature-section" style="display:none;">
-    <h3>Literature</h3>
-    <form id="literature-form">
-        <input type="hidden" id="literature-id">
-        <label>Title: <input type="text" id="lit-title" required></label>
-        <label>Authors: <input type="text" id="lit-authors"></label>
-        <label>Year: <input type="number" id="lit-year"></label>
-        <button type="submit">Save Entry</button>
-        <button type="button" id="literature-cancel" style="display:none;">Cancel</button>
-    </form>
-    <div id="literature-list"></div>
 </section>
     </main>
     <footer>
@@ -154,6 +143,7 @@
     }
 
     const selectedLit = new Set();
+    let selectedLitRow = null;
 
     function toBibtex(item) {
         const type = item.journal ? 'article' : 'book';
@@ -200,10 +190,8 @@
         items.forEach(l => {
             const checked = selectedLit.has(l.__index) ? 'checked' : '';
             const row = document.createElement('tr');
-            const extra = document.createElement('tr');
-            const id = `ldetail-${l.__index}`;
             row.className = 'lit-row';
-            row.dataset.target = id;
+            row.id = `lit-row-${l.__index}`;
             row.innerHTML = `
                 <td><input type="checkbox" class="lit-check" data-index="${l.__index}" ${checked}></td>
                 <td>${l.title}</td>
@@ -213,16 +201,7 @@
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${l.axis}</td>
                 <td><span class="avg-rating" data-index="${l.__index}"></span> <div class="star-rating lit-rating" data-index="${l.__index}"></div></td>`;
-            extra.className = 'lit-extra';
-            extra.id = id;
-            extra.style.display = 'none';
-            extra.innerHTML = `
-                <td colspan="8">
-                    <button class="button edit-lit" data-index="${l.__index}">Edit</button>
-                    <button class="button delete-lit" data-index="${l.__index}">Delete</button>
-                </td>`;
             tbody.appendChild(row);
-            tbody.appendChild(extra);
         });
         tbody.querySelectorAll('.lit-check').forEach(cb => {
             cb.addEventListener('change', () => {
@@ -234,43 +213,9 @@
         tbody.querySelectorAll('.lit-row').forEach(r => {
             r.addEventListener('click', e => {
                 if (e.target.classList.contains('lit-check') || e.target.closest('.star-rating')) return;
-                const target = document.getElementById(r.dataset.target);
-                if (target.style.display === 'none' || !target.style.display) {
-                    target.style.display = 'table-row';
-                } else {
-                    target.style.display = 'none';
-                }
-            });
-        });
-        tbody.querySelectorAll('.edit-lit').forEach(btn => {
-            btn.addEventListener('click', async e => {
-                e.stopPropagation();
-                const idx = parseInt(btn.dataset.index, 10);
-                let lit = literature.find(l => l.__index == idx);
-                if (!authed) {
-                    if (!(await authenticate())) return;
-                    authed = true;
-                    document.getElementById('literature-section').style.display = 'block';
-                    document.getElementById('login-btn').style.display = 'none';
-                    renderLiterature();
-                }
-                if (lit) editLiterature(lit);
-            });
-        });
-        tbody.querySelectorAll('.delete-lit').forEach(btn => {
-            btn.addEventListener('click', async e => {
-                e.stopPropagation();
-                const idx = parseInt(btn.dataset.index, 10);
-                let lit = literature.find(l => l.__index == idx);
-                if (!lit) return;
-                if (!authed) {
-                    if (!(await authenticate())) return;
-                    authed = true;
-                    document.getElementById('literature-section').style.display = 'block';
-                    document.getElementById('login-btn').style.display = 'none';
-                    renderLiterature();
-                }
-                removeLiterature(lit);
+                tbody.querySelectorAll('.lit-row').forEach(x => x.classList.remove('selected'));
+                r.classList.add('selected');
+                selectedLitRow = parseInt(r.id.replace('lit-row-',''),10);
             });
         });
         updateSelectAll();
@@ -396,91 +341,58 @@
     document.addEventListener('DOMContentLoaded', loadLiterature);
 let authed = false;
 
-function renderLiterature() {
-    const list = document.getElementById('literature-list');
-    list.innerHTML = '';
-    literature.forEach(l => {
-        const div = document.createElement('div');
-        div.innerHTML = `<strong>${l.title}</strong> ${l.year ? '('+l.year+')' : ''}`;
-        if (authed) {
-            const eBtn = document.createElement('button');
-            eBtn.textContent = 'Edit';
-            eBtn.onclick = () => editLiterature(l);
-            const dBtn = document.createElement('button');
-            dBtn.textContent = 'Delete';
-            dBtn.onclick = () => removeLiterature(l);
-            div.append(' ', eBtn, ' ', dBtn);
-        }
-        list.appendChild(div);
+function startEditLit() {
+    if (selectedLitRow === null) { alert('Select an entry first.'); return; }
+    const item = literature.find(l => l.__index === selectedLitRow);
+    if (!item) return;
+    const row = document.getElementById('lit-row-' + selectedLitRow);
+    document.getElementById('lit-edit-row')?.remove();
+    const editRow = document.createElement('tr');
+    editRow.id = 'lit-edit-row';
+    editRow.innerHTML = `<td colspan="8"><form id="lit-edit-form">
+        <label>Title: <input type="text" name="title" value="${item.title}"></label>
+        <label>Authors: <input type="text" name="authors" value="${item.authors || ''}"></label>
+        <label>Year: <input type="number" name="year" value="${item.year || ''}"></label>
+        <button type="submit">Save</button>
+        <button type="button" id="lit-edit-cancel">Cancel</button>
+    </form></td>`;
+    row.insertAdjacentElement('afterend', editRow);
+    document.getElementById('lit-edit-form').addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!authed) { if (!(await authenticate())) return; authed = true; }
+        if (!confirm('Save changes?')) return;
+        item.title = e.target.title.value;
+        item.authors = e.target.authors.value;
+        item.year = parseInt(e.target.year.value,10) || null;
+        if (item.id && typeof updateLiterature === 'function') await updateLiterature(item.id, {title:item.title, authors:item.authors, year:item.year});
+        editRow.remove();
+        applyLitFilters();
     });
+    document.getElementById('lit-edit-cancel').addEventListener('click', () => editRow.remove());
 }
 
-function editLiterature(l) {
-    document.getElementById('literature-id').value = l.id || '';
-    document.getElementById('lit-title').value = l.title || '';
-    document.getElementById('lit-authors').value = l.authors || '';
-    document.getElementById('lit-year').value = l.year || '';
-    document.getElementById('literature-cancel').style.display = 'inline';
+async function deleteSelectedLit() {
+    if (selectedLitRow === null) { alert('Select an entry first.'); return; }
+    const idx = literature.findIndex(l => l.__index === selectedLitRow);
+    if (idx === -1) return;
+    if (!authed) { if (!(await authenticate())) return; authed = true; }
+    if (!confirm('Delete this entry?')) return;
+    const item = literature[idx];
+    if (item.id && typeof deleteLiterature === 'function') await deleteLiterature(item.id);
+    literature.splice(idx,1);
+    selectedLitRow = null;
+    applyLitFilters();
 }
-
-async function removeLiterature(l) {
-    if (!authed) return;
-    if (confirm('Delete this entry?')) {
-        if (l.id && typeof deleteLiterature === 'function') await deleteLiterature(l.id);
-        literature = literature.filter(x => x !== l);
-        renderLiterature();
-    }
-}
-
-document.getElementById('literature-form').addEventListener('submit', async e => {
-    e.preventDefault();
-    if (!authed) return;
-    const id = document.getElementById('literature-id').value;
-    const obj = {
-        title: document.getElementById('lit-title').value,
-        authors: document.getElementById('lit-authors').value,
-        year: parseInt(document.getElementById('lit-year').value,10) || null
-    };
-    if (id) {
-        if (typeof updateLiterature === 'function') await updateLiterature(id, obj);
-    } else {
-        if (typeof addLiterature === 'function') await addLiterature(obj);
-    }
-    document.getElementById('literature-form').reset();
-    document.getElementById('literature-id').value = '';
-    document.getElementById('literature-cancel').style.display = 'none';
-    await loadLiterature();
-    renderLiterature();
-});
-
-document.getElementById('literature-cancel').addEventListener('click', () => {
-    document.getElementById('literature-form').reset();
-    document.getElementById('literature-id').value = '';
-    document.getElementById('literature-cancel').style.display = 'none';
-});
 
 document.getElementById('login-btn').addEventListener('click', async () => {
     if (await authenticate()) {
         authed = true;
-        document.getElementById('literature-section').style.display = 'block';
         document.getElementById('login-btn').style.display = 'none';
-        renderLiterature();
     }
 });
 
-document.getElementById('add-source-btn').addEventListener('click', async () => {
-    if (!authed) {
-        if (!(await authenticate())) return;
-        authed = true;
-        document.getElementById('literature-section').style.display = 'block';
-        document.getElementById('login-btn').style.display = 'none';
-        renderLiterature();
-    }
-    document.getElementById('literature-form').reset();
-    document.getElementById('literature-id').value = '';
-    document.getElementById('literature-cancel').style.display = 'none';
-    document.getElementById('literature-section').scrollIntoView({behavior:'smooth'});
-});
+document.getElementById('edit-lit-btn').addEventListener('click', startEditLit);
+document.getElementById('delete-lit-btn').addEventListener('click', deleteSelectedLit);
     </script>
     <script src="script.js"></script>
 </body>

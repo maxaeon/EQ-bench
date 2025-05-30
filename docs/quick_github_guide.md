@@ -12,7 +12,7 @@ This guide shows how to contribute to the AI EQ Benchmark Research Hub using the
 1. Visit <https://maxaeon.github.io/EQ-bench/>.
 2. Choose **Add a Source** or **Add a Construct** to open a GitHub issue form.
 3. Provide the requested details and click **Submit new issue**.
-4. On the **Phase&nbsp;1** page you can upload your own `.bib` file using the file selector next to **Download BibTeX**. Any new entries are shown in the table locally.
+4. On the **Phase&nbsp;1** page you can upload your own `.bib` file using the file selector next to **Manually add source**. Any new entries are shown in the table locally.
 
 ## 2. Convert references to BibTeX
 

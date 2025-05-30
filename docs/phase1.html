@@ -136,10 +136,17 @@
     const selectedLit = new Set();
 
     function toBibtex(item) {
+        const type = item.journal ? 'article' : 'book';
         const keyAuthor = (item.authors || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '');
         const key = keyAuthor + (item.year || '');
-        let entry = `@article{${key},\n  title = {${item.title}}`;
+        let entry = `@${type}{${key},\n  title = {${item.title}}`;
         if (item.authors) entry += `,\n  author = {${item.authors}}`;
+        if (item.journal) entry += `,\n  journal = {${item.journal}}`;
+        if (item.publisher) entry += `,\n  publisher = {${item.publisher}}`;
+        if (item.address) entry += `,\n  address = {${item.address}}`;
+        if (item.volume) entry += `,\n  volume = {${item.volume}}`;
+        if (item.number) entry += `,\n  number = {${item.number}}`;
+        if (item.pages) entry += `,\n  pages = {${item.pages}}`;
         if (item.year) entry += `,\n  year = {${item.year}}`;
         if (item.url) entry += `,\n  url = {${item.url}}`;
         entry += `\n}`;

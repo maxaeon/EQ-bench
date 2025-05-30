@@ -218,6 +218,11 @@ ul li {
     display: flex;
     gap: 1rem;
 }
+.construct-controls {
+    margin: 0.5rem 0 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
 
 label.button {
     display: inline-block;
@@ -265,6 +270,9 @@ table {
 
 .table-scroll tbody tr {
     height: var(--table-row-h);
+}
+.table-scroll tbody tr.selected {
+    background-color: #e0f0ff;
 }
 
 .info-icon {
@@ -468,5 +476,8 @@ tbody tr:nth-child(even) {
 @media (prefers-color-scheme: dark) {
     .star-rating .star {
         color: #555;
+    }
+    .table-scroll tbody tr.selected {
+        background-color: #333;
     }
 }

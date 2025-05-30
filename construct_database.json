@@ -13,14 +13,13 @@
       "definition": "Emotions arise from evaluations of events relative to personal goals.",
       "axes": ["explain", "respond"]
     },
-'...'
   ],
   "benchmarks": [
     {
       "name": "Sample EQ Assessment",
       "description": "A small benchmark referencing the above constructs.",
       "axes_tested": ["sense", "explain", "respond", "adapt", "extended"],
-      "construct_ids": [1, 2,'...']
+      "construct_ids": [1]
     }
   ]
 }

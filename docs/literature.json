@@ -215,17 +215,6 @@
     "keywords": ["distributed cognition", "externalism", "embodiment"]
   },
   {
-    "title": "Phenomenology of Perception",
-    "authors": "Merleau-Ponty",
-    "year": 1962,
-    "construct": "Phenomenological aspect of emotion",
-    "axis": "respond, extended",
-    "relevance": "Classic account of embodied perception and lived experience",
-    "url": "",
-    "category": "Philosophy and Ethics",
-    "keywords": ["phenomenology", "embodiment", "perception"]
-  },
-  {
     "title": "A Survey on Bias and Fairness in Machine Learning",
     "authors": "Mehrabi et al.",
     "year": 2021,
@@ -235,21 +224,6 @@
     "url": "",
     "category": "Computer Science",
     "keywords": ["fairness", "bias", "machine learning"]
-  },
-  {
-    "title": "What Is an Emotion?",
-    "authors": "William James",
-    "year": 1884,
-    "journal": "Mind",
-    "volume": 9,
-    "number": 34,
-    "pages": "188--205",
-    "construct": "Emotion theory",
-    "axis": "explain",
-    "relevance": "Classic essay questioning the nature of emotion",
-    "url": "",
-    "category": "Philosophy and Ethics",
-    "keywords": ["emotion", "philosophy"]
   },
   {
     "title": "An Argument for Basic Emotions",

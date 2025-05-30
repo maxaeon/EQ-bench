@@ -1,7 +1,7 @@
 [
   {
     "number": 2,
-    "title": "Physiological Theory of Emotion",
+    "title": "Physiological Measures of Emotion",
     "synonyms": [
       "James-Lange Theory"
     ],
@@ -25,7 +25,7 @@
   },
   {
     "number": 3,
-    "title": "Phenomenological Aspect of Emotion",
+    "title": "Phenomenological Aspects of Emotion",
     "synonyms": [
       "Emotional Phenomenology"
     ],
@@ -35,7 +35,7 @@
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy",
     "definition": "The subjective, experiential, qualitative aspect of emotional experience.",
-    "measurement": "User-reported surveys assessing emotional authenticity; qualitative user interviews exploring subjective emotional experiences; interpretative phenomenological analysis (IPA).",
+    "measurement": "We will explore how AI supports the emotional phenomenology of their human partners. User-reported surveys assessing emotional authenticity; qualitative user interviews exploring subjective emotional experiences; interpretative phenomenological analysis (IPA).",
     "related_terms": [
       "Subjective Feeling",
       "First-Person Experience"
@@ -50,7 +50,7 @@
   },
   {
     "number": 4,
-    "title": "Somatic Marker Hypothesis",
+    "title": "Somatic Markers",
     "synonyms": [
       "Somatic Marker Theory"
     ],
@@ -125,7 +125,7 @@
   },
   {
     "number": 12,
-    "title": "Basic Emotions Model",
+    "title": "Basic Emotions",
     "synonyms": [
       "Universal Emotions"
     ],
@@ -250,7 +250,7 @@
   },
   {
     "number": 18,
-    "title": "Core Affect Model",
+    "title": "Core Affect",
     "synonyms": [
       "Circumplex Model"
     ],

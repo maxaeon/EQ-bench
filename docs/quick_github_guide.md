@@ -1,3 +1,8 @@
+---
+layout: default
+title: Research Hub Contribution Guide
+---
+
 # Research Hub Contribution Guide
 
 This guide shows how to contribute to the AI EQ Benchmark Research Hub using the GitHub interface and our collaborative Overleaf project. You can participate without installing any software.

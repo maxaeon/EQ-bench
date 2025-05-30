@@ -1,3 +1,7 @@
+---
+layout: default
+title: SERA-X Literature Matrix
+---
 
 # 📚 SERA-X Literature Matrix
 *A collaborative index of key readings across disciplines informing benchmark design.*

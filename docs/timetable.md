@@ -1,3 +1,8 @@
+---
+layout: default
+title: SERA-X 90-Day Action Plan
+---
+
 # 🗓️ SERA-X 90-Day Action Plan
 
 This document outlines the deliverables, roles, and timeline for the pilot phase of the SERA-X benchmark.

@@ -1,3 +1,8 @@
+---
+layout: default
+title: Comparison of Alternative Emotional Intelligence Models
+---
+
 # Comparison of Alternative Emotional Intelligence Models
 
 This section provides an overview and comparison of prominent emotional intelligence (EI) benchmarking models and frameworks currently utilized in AI research. Understanding these alternatives contextualizes the rationale and unique strengths of the SERA-X framework.

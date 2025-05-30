@@ -1,35 +1,24 @@
-# Quick GitHub Guide for Contributing to SERA-X
+# Research Hub Contribution Guide
 
-This short walkthrough helps new contributors fork the repository, edit a file, and submit a pull request using the GitHub web interface.
+This guide shows how to contribute to the AI EQ Benchmark Research Hub using the GitHub interface and our collaborative Overleaf project. You can participate without installing any software.
 
-## 1. Fork the repository
+## 1. Use the GitHub Pages interface
 
-1. Navigate to the project page on GitHub.
-2. Click the **Fork** button in the upper-right corner.
+1. Visit <https://maxaeon.github.io/EQ-bench/>.
+2. Choose **Add a Source** or **Add a Construct** to open a GitHub issue form.
+3. Provide the requested details and click **Submit new issue**.
 
-![Step 1 screenshot](assets/images/step1.png)
+## 2. Edit the literature review in Overleaf
 
-## 2. Edit a file
+1. On the Research Hub website, follow the link labeled "Access the collaborative Overleaf document."
+2. Overleaf opens in Visual mode, so you can edit without knowing LaTeX.
+3. Add your references or comments and press **Save**. Your changes are stored in the shared project.
 
-1. Browse to the file you wish to change, such as a Markdown document under `docs/`.
-2. Click the **pencil icon** to open the web editor.
-3. Make your edits and provide a short commit message.
+## 3. Optional: Edit files on GitHub
 
-![Step 2 screenshot](assets/images/step2.png)
+1. Browse to any Markdown file in this repository.
+2. Click the **pencil** icon to open GitHub's editor.
+3. Enter your edits and give a short commit message.
+4. After saving, GitHub will prompt you to open a pull request.
 
-## 3. Propose your changes
-
-1. After saving, GitHub will prompt you to create a pull request.
-2. Review the diff, add a brief description of your contribution, and click **Create pull request**.
-
-![Step 3 screenshot](assets/images/step3.png)
-
-A maintainer or group from the team will review your submission, run tests, and merge it when ready. Thank you for contributing!
-
-## Submitting References or Constructs via Issues
-
-1. On the SERA-X website, navigate to the page where you want to contribute.
-2. Click the **Add a source** or **Add a construct** button.
-3. A GitHub issue form will open. Fill out the requested details.
-4. Click **Submit new issue**.
-5. Once the change is merged, GitHub Actions update the site automatically with your entry.
+A maintainer will review your submission and merge it when ready. Thanks for helping improve the Research Hub!

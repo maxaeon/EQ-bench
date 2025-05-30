@@ -7,6 +7,10 @@ body {
     line-height: 1.6;
 }
 
+:root {
+    --table-row-h: 2.5em;
+}
+
 .skip-link {
     position: absolute;
     top: -40px;
@@ -207,9 +211,13 @@ table {
 }
 
 .table-scroll {
-    max-height: 20em;
+    max-height: calc(var(--table-row-h) * 10);
     overflow-y: auto;
     display: block;
+}
+
+.table-scroll tbody tr {
+    height: var(--table-row-h);
 }
 
 .info-icon {

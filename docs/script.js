@@ -154,11 +154,17 @@ function populateFoundationsTable(tbodyId) {
 }
 
 // Initialize interactive star rating widgets
+function parseRating(val) {
+  const n = parseInt(val, 10);
+  return Number.isInteger(n) && n >= 1 && n <= 5 ? n : null;
+}
+
 function initStarRatings(selector, keyPrefix, updateFn) {
   document.querySelectorAll(selector).forEach(el => {
     const idx = el.dataset.index;
     const key = keyPrefix + '-' + idx;
-    const stored = parseInt(localStorage.getItem(key) || '0', 10);
+    let stored = parseRating(localStorage.getItem(key));
+    if (stored === null) stored = 0;
 
     const render = (rating) => {
       el.innerHTML = '';
@@ -177,7 +183,8 @@ function initStarRatings(selector, keyPrefix, updateFn) {
     el.addEventListener('click', (e) => {
       const star = e.target.closest('.star');
       if (!star) return;
-      const val = parseInt(star.dataset.value, 10);
+      const val = parseRating(star.dataset.value);
+      if (val === null) return;
       localStorage.setItem(key, val);
       render(val);
       updateFn(idx);
@@ -187,10 +194,17 @@ function initStarRatings(selector, keyPrefix, updateFn) {
 
 // Calculate average rating from existing values and optional user value
 function computeAverage(base, user) {
-  const arr = Array.isArray(base) ? base.slice() : [];
-  if (user !== null && user !== '') arr.push(parseFloat(user));
+  const arr = [];
+  if (Array.isArray(base)) {
+    base.forEach(v => {
+      const n = parseRating(v);
+      if (n !== null) arr.push(n);
+    });
+  }
+  const u = parseRating(user);
+  if (u !== null) arr.push(u);
   if (!arr.length) return 0;
-  return arr.reduce((a, b) => a + parseFloat(b), 0) / arr.length;
+  return arr.reduce((a, b) => a + b, 0) / arr.length;
 }
 
 // Setup star widgets and update corresponding averages

@@ -229,3 +229,45 @@ function initRatings(selector, storagePrefix, getItemFn) {
   };
   initStarRatings(selector, storagePrefix, update);
 }
+
+// Parse BibTeX text into reference objects matching literature.json fields
+function parseBibtex(text) {
+  const entries = [];
+  if (!text) return entries;
+  const entryRe = /@([a-zA-Z]+)\s*{\s*([^,]+),/g;
+  let match;
+  while ((match = entryRe.exec(text)) !== null) {
+    let start = match.index + match[0].length;
+    let braces = 1;
+    let i = start;
+    while (i < text.length && braces > 0) {
+      if (text[i] === '{') braces++; else if (text[i] === '}') braces--;
+      i++;
+    }
+    const body = text.slice(start, i - 1);
+    entryRe.lastIndex = i;
+    const fields = {};
+    const fieldRe = /(\w+)\s*=\s*(\{[^\}]*\}|"[^"]*"|[^,\n]+),?/g;
+    let f;
+    while ((f = fieldRe.exec(body)) !== null) {
+      let val = f[2].trim();
+      if ((val.startsWith('{') && val.endsWith('}')) || (val.startsWith('"') && val.endsWith('"')))
+        val = val.slice(1, -1);
+      fields[f[1].toLowerCase()] = val;
+    }
+    entries.push({
+      title: fields.title || '',
+      authors: fields.author || fields.authors || '',
+      year: fields.year || '',
+      journal: fields.journal || fields.booktitle || '',
+      publisher: fields.publisher || '',
+      address: fields.address || '',
+      volume: fields.volume || '',
+      number: fields.number || '',
+      pages: fields.pages || '',
+      url: fields.url || (fields.doi ? `https://doi.org/${fields.doi}` : ''),
+      doi: fields.doi || ''
+    });
+  }
+  return entries;
+}

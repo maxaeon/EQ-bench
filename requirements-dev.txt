@@ -1,1 +1,4 @@
-# Development dependencies will be listed here as the project evolves.
+# Typical development dependencies
+pytest
+flake8
+# Additional packages may be required as the project grows.

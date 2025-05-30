@@ -26,7 +26,6 @@ The matrix helps identify overlaps, gaps, and strong candidates for construct ma
 | Floridi & Sanders (2004) "On the Morality of Artificial Agents" | Ethics of Emotion and AI | Artificial moral agency |  |  |  |  |  |
 | Coeckelbergh (2020) *AI Ethics* | Ethics of Emotion and AI | Ethical AI development |  |  |  |  |  |
 | Crawford (2021) *Atlas of AI* | Ethics of Emotion and AI | Bias and power dynamics |  |  |  |  |  |
-| Merleau-Ponty (1962) *Phenomenology of Perception* | Philosophy (Phenomenology) | Phenomenological aspect of emotion | Embodied perception shaping experience |  | — | High (theoretical) |  |
 | Mehrabi et al. (2021) "A Survey on Bias and Fairness in Machine Learning" | Computer Science (Machine Learning) | Bias and fairness in AI | Comprehensive survey of fairness metrics |  | — | High |  |
 | Gross (1998) "Antecedent- and Response-focused Emotion Regulation" | Psychology (Emotion) | Emotion regulation |  |  |  |  |  |
 | Baron-Cohen et al. (1985) "Does the autistic child have a 'theory of mind'?" | Psychology (Emotion) | Theory of Mind |  |  |  |  |  |

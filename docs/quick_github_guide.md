@@ -14,13 +14,17 @@ This guide shows how to contribute to the AI EQ Benchmark Research Hub using the
 3. Provide the requested details and click **Submit new issue**.
 4. On the **Phase&nbsp;1** page you can upload your own `.bib` file using the file selector next to **Download BibTeX**. Any new entries are shown in the table locally.
 
-## 2. Edit the literature review in Overleaf
+## 2. Convert references to BibTeX
+
+When filling out a literature issue or sharing your own bibliography, convert each reference to a standard BibTeX entry. A quick way is to paste the DOI into an online converter such as [bibtex.com](https://www.bibtex.com/c/doi-to-bibtex-converter/). Copy the generated BibTeX text into a `.bib` file or the issue form.
+
+## 3. Edit the literature review in Overleaf
 
 1. On the Research Hub website, follow the link labeled "Access the collaborative Overleaf document."
 2. Overleaf opens in Visual mode, so you can edit without knowing LaTeX.
 3. Add your references or comments and press **Save**. Your changes are stored in the shared project.
 
-## 3. Optional: Edit files on GitHub
+## 4. Optional: Edit files on GitHub
 
 1. Browse to any Markdown file in this repository.
 2. Click the **pencil** icon to open GitHub's editor.

@@ -48,7 +48,7 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 ## 3  Repository Layout
 This repository is organized as an AI EQ Benchmark Research Hub. Major sections include:
 
-- **Benchmarks/** – details of the SERA-X benchmark and comparisons to alternative models (see docs/alternative-models.html).
+- **Benchmarks/** – details of the SERA-X benchmark and comparisons to alternative models (see [docs/alternative-models.html](docs/alternative-models.html)).
 - **Resources-and-Tools/** – datasets, scripts, and utilities for running EQ evaluations.
 - **Research-and-Publications/** – links to papers and articles related to emotional intelligence benchmarking.
 - **Community-and-Collaboration/** – information on participating via GitHub Discussions or chat channels.
@@ -57,7 +57,7 @@ This repository is organized as an AI EQ Benchmark Research Hub. Major sections 
 - 🔗 [Ethics and Inclusivity Standards](ethics-inclusivity.md)
 - **Outreach-and-Dissemination/** – upcoming events and announcements.
 - **Visualizations/** – placeholders for interactive graphs.
-- **updates.md** – log of recent news and milestones.
+- [**updates.md**](updates.md) – log of recent news and milestones.
 
 
 ---
@@ -101,12 +101,12 @@ Construct submissions filed via the **Add a Construct** issue template are autom
 We welcome pull requests, issues, and Discussions from developers, psychologists, ethicists, educators, and end-users.
 
 Task type	How-to
-Add literature insight	Fill a docs/01_lit_scan/construct_sheet.md using the template.
+Add literature insight	Fill a [docs/construct-sheet.md](docs/construct-sheet.md) using the template.
 Suggest new metric	Open an Issue tagged enhancement, include formula & citation.
 Code contribution	Branch feat/<area>/<short-desc> → PR → ensure CI passes.
 Report bias or bug	Use Issue template Bug report, provide minimal repro.
 
-Please read CONTRIBUTING.md and our CODE_OF_CONDUCT.md before contributing.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
 
 ---
 ## 7 Roadmap (v0 → v1)

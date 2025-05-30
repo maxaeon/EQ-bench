@@ -18,14 +18,27 @@ emotion-related constructs.
    `data/`. This keeps everything versioned alongside the code and works with
    GitHub Pages without extra services.
 
-## Chosen approach
+## Current approach
 
-For the early prototype we use **option 2**. A GitHub Actions workflow runs on
-issue events and periodically. It gathers all open issues labeled `construct` and
-writes their content to `data/construct_submissions.json`. This JSON file is
-committed back to the repository so changes are visible in pull requests and
-can be loaded directly by the website. The GitHub Pages site reads from
-`docs/data/*.json`, so the workflow also mirrors each export there.
+Submissions are now stored in a small Supabase instance so that the website can
+fetch constructs and literature entries dynamically. The GitHub Actions
+workflows still export `data/construct_submissions.json` and
+`data/literature.json` as static snapshots. These JSON files are mirrored under
+`docs/data/` for GitHub Pages, but the source of truth is the Supabase project.
+
+Each workflow step uploads the JSON contents using
+`scripts/upload_to_supabase.js` with the credentials provided via repository
+secrets. Construct records are inserted into the `constructs` table, while
+
+literature entries go into the `literature` table.
+
+### Configuration
+
+The GitHub workflows require `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` secrets
+for uploads. The public website reads the same database using the
+`SUPABASE_URL` and `SUPABASE_ANON_KEY` variables injected at build time. See the
+[GitHub documentation on encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+for how to configure these values.
 
 Each record includes an `axes` field listing the relevant SERA skills
 (e.g., `"sense, explain"`). Pages like `sense.html` filter constructs by reading
@@ -35,9 +48,8 @@ falls back to searching the issue text.
 Records may also include a `synonyms` array with alternate names or related
 terms. The constructs page uses these values to make search more flexible.
 
-This lightweight method keeps contributions transparent while avoiding the
-maintenance burden of an external database. Future work may revisit a database
-if query or scale needs grow.
+This hybrid method keeps contributions transparent via the JSON snapshots while
+allowing richer queries and edits through the Supabase backend.
 
 ## Removing entries
 

@@ -399,6 +399,13 @@ document.getElementById('login-btn').addEventListener('click', async () => {
 
 document.getElementById('edit-lit-btn').addEventListener('click', startEditLit);
 document.getElementById('delete-lit-btn').addEventListener('click', deleteSelectedLit);
+
+// Confirm before saving new or updated literature
+document.getElementById('literature-form')?.addEventListener('submit', e => {
+    if (!confirm('Save changes?')) {
+        e.preventDefault();
+    }
+});
     </script>
     <script src="script.js"></script>
 </body>

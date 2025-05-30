@@ -227,11 +227,19 @@
         render(items);
     }
 
-    fetch('data/construct_submissions.json')
-        .then(r => r.json())
-        .then(data => {
-            data.forEach((c, i) => { parseMeta(c); c.ratings = c.ratings || []; });
-            constructs = data;
+    async function loadConstructs() {
+        let data = [];
+        if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchConstructs === 'function') {
+            for (let i=0; i<20 && !window.supabase; i++) await new Promise(r=>setTimeout(r,100));
+            if (window.supabase) {
+                try { data = await fetchConstructs(); } catch(e) { console.error(e); }
+            }
+        }
+        if (!Array.isArray(data) || !data.length) {
+            try { data = await (await fetch('data/construct_submissions.json')).json(); } catch(e) { data = []; }
+        }
+        data.forEach((c, i) => { parseMeta(c); c.ratings = c.ratings || []; });
+        constructs = data;
 
             const axisSet = new Set();
             const fieldSet = new Set();
@@ -264,7 +272,9 @@
             document.getElementById('axis-filter').addEventListener('change', applyConstructFilters);
             document.getElementById('field-filter').addEventListener('change', applyConstructFilters);
             document.getElementById('construct-search').addEventListener('input', applyConstructFilters);
-        });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadConstructs);
     </script>
     <script src="script.js"></script>
 </body>

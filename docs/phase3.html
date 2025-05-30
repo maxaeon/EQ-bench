@@ -51,31 +51,33 @@
                 </ul>
             </div>
             <div class="database-structure">
-                <h3>Database Structure (Tentative Placeholder)</h3>
+                <h3>Tentative Database Structure (Supabase Schema)</h3>
                 <pre>
-{
-    "axes": ["sense", "explain", "respond", "adapt", "extended"],
-    "constructs": [
-        {
-            "id": 1,
-            "title": "Cognitive Appraisal Theory",
-            "axes": ["explain", "respond"]
-        },
-        {
-            "id": 2,
-            "title": "Emotion Regulation",
-            "axes": ["respond", "adapt"]
-        }
-    ],
-    "benchmarks": [
-        {
-            "name": "Sample EQ Assessment",
-            "axes_tested": ["sense", "explain", "respond", "adapt", "extended"]
-        }
-    ]
-}
+constructs
+├── id (serial, primary key)
+├── construct_name (text)
+├── description (text)
+├── sera_x_axes (text[])
+├── difficulty_level (text)
+├── examples (text[])
+└── created_at (timestamp)
+
+literature
+├── id (serial, primary key)
+├── title (text)
+├── authors (text[])
+├── year (int)
+├── reference_link (text)
+├── notes (text)
+└── created_at (timestamp)
+
+submissions
+├── id (serial, primary key)
+├── submission_type (construct|literature)
+├── data (jsonb)
+└── submitted_at (timestamp)
                 </pre>
-                <p class="placeholder-note">This structure is provisional and will be refined by the research collaborative.</p>
+                <p class="placeholder-note">This schema will be refined by the research collaborative.</p>
             </div>
         </section>
     </main>

@@ -96,6 +96,16 @@ Construct submissions filed via the **Add a Construct** issue template are autom
 The website also lets you rate how relevant each construct or paper is using a star widget.
 The scale runs from **1 star = not relevant** to **5 stars = crucial**.
 
+### Supabase integration (experimental)
+To back the JSON datasets with a Supabase database, define the following JavaScript variables before loading `docs/script.js`:
+
+```javascript
+window.SUPABASE_URL = 'https://<project>.supabase.co';
+window.SUPABASE_ANON_KEY = '<your anon key>';
+```
+
+Store these values as GitHub repository secrets and inject them during build time (see `.github/workflows/export_constructs.yml`). The keys are never committed to the repository.
+
 ---
 
 ## 6 Contributing

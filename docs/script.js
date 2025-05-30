@@ -1,3 +1,102 @@
+// Simple password prompt for CRUD actions
+const password = 'inflection.ai';
+function authenticate() {
+  const userPass = prompt('Enter password for editing:');
+  if (userPass !== password) {
+    alert('Incorrect password. Access denied.');
+    return false;
+  }
+  return true;
+}
+
+// Initialize Supabase client if credentials are provided via globals
+let supabase = null;
+if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
+  import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm').then(({ createClient }) => {
+    supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+  });
+}
+
+async function fetchConstructs() {
+  if (!supabase) return [];
+  const { data, error } = await supabase.from('constructs').select('*');
+  if (error) {
+    console.error('Error fetching constructs:', error);
+    return [];
+  }
+  return data;
+}
+
+async function addConstruct(construct) {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('constructs').insert([construct]);
+  if (error) {
+    console.error('Error adding construct:', error);
+    return null;
+  }
+  return data;
+}
+
+async function updateConstruct(id, updates) {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('constructs').update(updates).eq('id', id);
+  if (error) {
+    console.error('Error updating construct:', error);
+    return null;
+  }
+  return data;
+}
+
+async function deleteConstruct(id) {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('constructs').delete().eq('id', id);
+  if (error) {
+    console.error('Error deleting construct:', error);
+    return null;
+  }
+  return data;
+}
+
+async function fetchLiterature() {
+  if (!supabase) return [];
+  const { data, error } = await supabase.from('literature').select('*');
+  if (error) {
+    console.error('Error fetching literature:', error);
+    return [];
+  }
+  return data;
+}
+
+async function addLiterature(entry) {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('literature').insert([entry]);
+  if (error) {
+    console.error('Error adding literature:', error);
+    return null;
+  }
+  return data;
+}
+
+async function updateLiterature(id, updates) {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('literature').update(updates).eq('id', id);
+  if (error) {
+    console.error('Error updating literature:', error);
+    return null;
+  }
+  return data;
+}
+
+async function deleteLiterature(id) {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('literature').delete().eq('id', id);
+  if (error) {
+    console.error('Error deleting literature:', error);
+    return null;
+  }
+  return data;
+}
+
 // Navigation menu toggle for small screens
 window.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');

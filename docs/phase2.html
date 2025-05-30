@@ -100,8 +100,8 @@
             </div>
         </section>
         <div class="construct-controls">
-            <button id="edit-construct-btn" class="button">Edit</button>
-            <button id="delete-construct-btn" class="button">Delete</button>
+            <button id="edit-construct-btn" class="button" disabled>Edit</button>
+            <button id="delete-construct-btn" class="button" disabled>Delete</button>
         </div>
 <section>
     <h2>Manage Constructs</h2>
@@ -284,6 +284,8 @@ document.getElementById('login-btn').addEventListener('click', async () => {
     if (await authenticate()) {
         authed = true;
         document.getElementById('login-btn').style.display = 'none';
+        document.getElementById('edit-construct-btn').disabled = false;
+        document.getElementById('delete-construct-btn').disabled = false;
     }
 });
 

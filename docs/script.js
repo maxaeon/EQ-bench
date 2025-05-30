@@ -6,15 +6,58 @@ if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
   });
 }
 
+let loginOverlay = null;
+let loginResolve = null;
+
+function createLoginForm() {
+  if (loginOverlay) return;
+  loginOverlay = document.createElement('div');
+  loginOverlay.id = 'login-overlay';
+  loginOverlay.className = 'hidden';
+  loginOverlay.innerHTML = `
+    <form id="login-form" class="login-form">
+      <h3>Login</h3>
+      <label>Email<br><input type="email" id="login-email" required></label><br>
+      <label>Password<br><input type="password" id="login-pass" required></label><br>
+      <div class="login-buttons">
+        <button type="submit" class="button">Login</button>
+        <button type="button" id="login-cancel" class="button">Cancel</button>
+      </div>
+    </form>`;
+  document.body.appendChild(loginOverlay);
+  const form = loginOverlay.querySelector('#login-form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = form.querySelector('#login-email').value.trim();
+    const password = form.querySelector('#login-pass').value;
+    hideLoginForm();
+    if (loginResolve) loginResolve({ email, password });
+  });
+  loginOverlay.querySelector('#login-cancel').addEventListener('click', () => {
+    hideLoginForm();
+    if (loginResolve) loginResolve(null);
+  });
+}
+
+function showLoginForm() {
+  createLoginForm();
+  loginOverlay.classList.remove('hidden');
+  loginOverlay.querySelector('#login-email').focus();
+  return new Promise(res => { loginResolve = res; });
+}
+
+function hideLoginForm() {
+  if (loginOverlay) loginOverlay.classList.add('hidden');
+}
+
 async function authenticate() {
   // If Supabase is configured, prefer email/password authentication
   if (supabase) {
     const { data: { session } } = await supabase.auth.getSession();
     if (session) return true;
-    const email = prompt('Supabase email:');
-    const pass = prompt('Password:');
-    if (!email || !pass) return false;
-    const { error } = await supabase.auth.signInWithPassword({ email, password: pass });
+    const creds = await showLoginForm();
+    if (!creds) return false;
+    const { error } = await supabase.auth.signInWithPassword(creds);
     if (error) {
       alert('Incorrect credentials. Access denied.');
       return false;
@@ -25,8 +68,8 @@ async function authenticate() {
   // Fallback to environment-provided password
   const envPass = window.DOC_PASSWORD;
   if (envPass) {
-    const userPass = prompt('Enter password for editing:');
-    if (userPass !== envPass) {
+    const creds = await showLoginForm();
+    if (!creds || creds.password !== envPass) {
       alert('Incorrect password. Access denied.');
       return false;
     }

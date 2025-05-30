@@ -105,8 +105,8 @@
         </section>
         <div class="bibtex-controls">
             <a class="button" href="#" id="bibtex-download">Download BibTeX</a>
-            <button id="edit-lit-btn" class="button">Edit</button>
-            <button id="delete-lit-btn" class="button">Delete</button>
+            <button id="edit-lit-btn" class="button" disabled>Edit</button>
+            <button id="delete-lit-btn" class="button" disabled>Delete</button>
         </div>
 
             <hr style="margin-top: 40px; margin-bottom: 20px;">
@@ -394,6 +394,8 @@ document.getElementById('login-btn').addEventListener('click', async () => {
     if (await authenticate()) {
         authed = true;
         document.getElementById('login-btn').style.display = 'none';
+        document.getElementById('edit-lit-btn').disabled = false;
+        document.getElementById('delete-lit-btn').disabled = false;
     }
 });
 

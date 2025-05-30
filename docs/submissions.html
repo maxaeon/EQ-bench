@@ -234,8 +234,8 @@
         document.getElementById('literature-cancel').style.display = 'none';
     });
 
-    document.getElementById('login-btn').addEventListener('click', () => {
-        if (authenticate()) {
+    document.getElementById('login-btn').addEventListener('click', async () => {
+        if (await authenticate()) {
             authed = true;
             document.getElementById('construct-section').style.display = 'block';
             document.getElementById('literature-section').style.display = 'block';

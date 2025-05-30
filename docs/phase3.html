@@ -55,11 +55,11 @@
                 <pre>
 constructs
 ├── id (serial, primary key)
-├── construct_name (text)
-├── description (text)
-├── sera_x_axes (text[])
-├── difficulty_level (text)
-├── examples (text[])
+├── title (text)
+├── axes (text[])
+├── definition (text)
+├── measurement (text)
+├── category (text)
 └── created_at (timestamp)
 
 literature
@@ -67,15 +67,9 @@ literature
 ├── title (text)
 ├── authors (text[])
 ├── year (int)
-├── reference_link (text)
-├── notes (text)
+├── url (text)
+├── category (text)
 └── created_at (timestamp)
-
-submissions
-├── id (serial, primary key)
-├── submission_type (construct|literature)
-├── data (jsonb)
-└── submitted_at (timestamp)
                 </pre>
                 <p class="placeholder-note">This schema will be refined by the research collaborative.</p>
             </div>

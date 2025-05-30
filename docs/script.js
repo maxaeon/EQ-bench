@@ -1,15 +1,29 @@
 // Authentication helper for CRUD actions
 let supabase = null;
+let supabasePromise = null;
 // expose placeholder for legacy checks
 window.supabase = null;
-if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
-  import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm').then(({ createClient }) => {
-    const client = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-    supabase = client;
-    // make available for inline scripts that check `window.supabase`
-    window.supabase = client;
-  });
+
+async function ensureSupabase() {
+  if (supabase) return supabase;
+  if (supabasePromise) return supabasePromise;
+  if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return null;
+  supabasePromise = import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
+    .then(({ createClient }) => {
+      supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+      window.supabase = supabase;
+      return supabase;
+    })
+    .catch(err => {
+      console.error('Failed to load Supabase client', err);
+      supabasePromise = null;
+      return null;
+    });
+  return supabasePromise;
 }
+
+// kick off loading in the background when possible
+ensureSupabase();
 
 let loginOverlay = null;
 let loginResolve = null;
@@ -57,12 +71,13 @@ function hideLoginForm() {
 
 async function authenticate() {
   // If Supabase is configured, prefer email/password authentication
-  if (supabase) {
-    const { data: { session } } = await supabase.auth.getSession();
+  const client = await ensureSupabase();
+  if (client) {
+    const { data: { session } } = await client.auth.getSession();
     if (session) return true;
     const creds = await showLoginForm();
     if (!creds) return false;
-    const { error } = await supabase.auth.signInWithPassword(creds);
+    const { error } = await client.auth.signInWithPassword(creds);
     if (error) {
       alert('Incorrect credentials. Access denied.');
       return false;
@@ -83,8 +98,9 @@ async function authenticate() {
 }
 
 async function fetchConstructs() {
-  if (!supabase) return [];
-  const { data, error } = await supabase.from('constructs').select('*');
+  const client = await ensureSupabase();
+  if (!client) return [];
+  const { data, error } = await client.from('constructs').select('*');
   if (error) {
     console.error('Error fetching constructs:', error);
     return [];
@@ -93,8 +109,9 @@ async function fetchConstructs() {
 }
 
 async function addConstruct(construct) {
-  if (!supabase) return null;
-  const { data, error } = await supabase.from('constructs').insert([construct]);
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('constructs').insert([construct]);
   if (error) {
     console.error('Error adding construct:', error);
     return null;
@@ -103,8 +120,9 @@ async function addConstruct(construct) {
 }
 
 async function updateConstruct(id, updates) {
-  if (!supabase) return null;
-  const { data, error } = await supabase.from('constructs').update(updates).eq('id', id);
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('constructs').update(updates).eq('id', id);
   if (error) {
     console.error('Error updating construct:', error);
     return null;
@@ -113,8 +131,9 @@ async function updateConstruct(id, updates) {
 }
 
 async function deleteConstruct(id) {
-  if (!supabase) return null;
-  const { data, error } = await supabase.from('constructs').delete().eq('id', id);
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('constructs').delete().eq('id', id);
   if (error) {
     console.error('Error deleting construct:', error);
     return null;
@@ -123,8 +142,9 @@ async function deleteConstruct(id) {
 }
 
 async function fetchLiterature() {
-  if (!supabase) return [];
-  const { data, error } = await supabase.from('literature').select('*');
+  const client = await ensureSupabase();
+  if (!client) return [];
+  const { data, error } = await client.from('literature').select('*');
   if (error) {
     console.error('Error fetching literature:', error);
     return [];
@@ -133,8 +153,9 @@ async function fetchLiterature() {
 }
 
 async function addLiterature(entry) {
-  if (!supabase) return null;
-  const { data, error } = await supabase.from('literature').insert([entry]);
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('literature').insert([entry]);
   if (error) {
     console.error('Error adding literature:', error);
     return null;
@@ -143,8 +164,9 @@ async function addLiterature(entry) {
 }
 
 async function updateLiterature(id, updates) {
-  if (!supabase) return null;
-  const { data, error } = await supabase.from('literature').update(updates).eq('id', id);
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('literature').update(updates).eq('id', id);
   if (error) {
     console.error('Error updating literature:', error);
     return null;
@@ -153,8 +175,9 @@ async function updateLiterature(id, updates) {
 }
 
 async function deleteLiterature(id) {
-  if (!supabase) return null;
-  const { data, error } = await supabase.from('literature').delete().eq('id', id);
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('literature').delete().eq('id', id);
   if (error) {
     console.error('Error deleting literature:', error);
     return null;

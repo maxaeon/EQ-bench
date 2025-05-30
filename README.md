@@ -52,8 +52,8 @@ This repository is organized as an AI EQ Benchmark Research Hub. Major sections 
 - **Research-and-Publications/** – links to papers and articles related to emotional intelligence benchmarking.
 - **Community-and-Collaboration/** – information on participating via GitHub Discussions or chat channels.
 - **Contributor-Hub/** – guidelines and Markdown templates for submitting new constructs, datasets, and publications.
-- **Ethical-Standards/** – frameworks that guide responsible research.
-- 🔗 [Ethics and Inclusivity Standards](ethics-inclusivity.md)
+- **docs/ethics/** – frameworks that guide responsible research.
+- 🔗 [Ethics and Inclusivity Standards](docs/ethics/inclusivity.md)
 - **Outreach-and-Dissemination/** – upcoming events and announcements.
 - **Visualizations/** – placeholders for interactive graphs.
 - [**updates.md**](updates.md) – log of recent news and milestones.

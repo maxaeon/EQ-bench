@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Submissions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/images/favicon.png">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+        <h1><a class="logo" href="#" id="logo-link">AI EQ Benchmark Framework</a></h1>
+        <div id="logo-menu" class="logo-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="expert-collaborators.html">Our Team of Experts</a></li>
+                <li>
+                    <a href="research.html">Project Development</a>
+                    <ul>
+                        <li><a href="phase1.html">Phase 1</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://github.com/maxaeon/EQ-bench">GitHub Repository</a></li>
+            </ul>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <nav class="site-nav" aria-label="Primary">
+            <ul>
+                <li><a href="sense.html">Sense</a></li>
+                <li><a href="explain.html">Explain</a></li>
+                <li><a href="respond.html">Respond</a></li>
+                <li><a href="adapt.html">Adapt</a></li>
+                <li><a href="extended.html">Extended</a></li>
+                <li><a href="submissions.html">Submissions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section>
+            <h1>Manage Submissions</h1>
+            <p>This page lets authorized collaborators create, edit and delete construct and literature records.</p>
+            <button id="login-btn">Login to Edit</button>
+        </section>
+
+        <section id="construct-section" style="display:none;">
+            <h2>Constructs</h2>
+            <form id="construct-form">
+                <input type="hidden" id="construct-id">
+                <label>Title: <input type="text" id="construct-title" required></label>
+                <label>Axes: <input type="text" id="construct-axes"></label>
+                <label>Definition:<br><textarea id="construct-def" rows="3"></textarea></label>
+                <button type="submit">Save Construct</button>
+                <button type="button" id="construct-cancel" style="display:none;">Cancel</button>
+            </form>
+            <div id="construct-list"></div>
+        </section>
+
+        <section id="literature-section" style="display:none;">
+            <h2>Literature</h2>
+            <form id="literature-form">
+                <input type="hidden" id="literature-id">
+                <label>Title: <input type="text" id="lit-title" required></label>
+                <label>Authors: <input type="text" id="lit-authors"></label>
+                <label>Year: <input type="number" id="lit-year"></label>
+                <button type="submit">Save Entry</button>
+                <button type="button" id="literature-cancel" style="display:none;">Cancel</button>
+            </form>
+            <div id="literature-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Inflection AI Research Collaborative</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+    let authed = false;
+    let constructs = [];
+    let literature = [];
+
+    async function loadConstructs() {
+        let data = [];
+        if (typeof fetchConstructs === 'function') {
+            for (let i=0;i<20 && !window.supabase;i++) await new Promise(r=>setTimeout(r,100));
+            if (window.supabase) {
+                try { data = await fetchConstructs(); } catch(e) { console.error(e); }
+            }
+        }
+        if (!Array.isArray(data) || !data.length) {
+            try { data = await (await fetch('data/construct_submissions.json')).json(); } catch(e) { data = []; }
+        }
+        constructs = data;
+        renderConstructs();
+    }
+
+    function renderConstructs() {
+        const list = document.getElementById('construct-list');
+        list.innerHTML = '';
+        constructs.forEach(c => {
+            const div = document.createElement('div');
+            div.innerHTML = `<strong>${c.title}</strong> (${c.axes || ''})`;
+            if (authed) {
+                const eBtn = document.createElement('button');
+                eBtn.textContent = 'Edit';
+                eBtn.onclick = () => editConstruct(c);
+                const dBtn = document.createElement('button');
+                dBtn.textContent = 'Delete';
+                dBtn.onclick = () => removeConstruct(c);
+                div.append(' ', eBtn, ' ', dBtn);
+            }
+            list.appendChild(div);
+        });
+    }
+
+    async function loadLiterature() {
+        let data = [];
+        if (typeof fetchLiterature === 'function') {
+            for (let i=0;i<20 && !window.supabase;i++) await new Promise(r=>setTimeout(r,100));
+            if (window.supabase) {
+                try { data = await fetchLiterature(); } catch(e) { console.error(e); }
+            }
+        }
+        if (!Array.isArray(data) || !data.length) {
+            try { data = await (await fetch('data/literature.json')).json(); } catch(e) { data = []; }
+        }
+        literature = data;
+        renderLiterature();
+    }
+
+    function renderLiterature() {
+        const list = document.getElementById('literature-list');
+        list.innerHTML = '';
+        literature.forEach(l => {
+            const div = document.createElement('div');
+            div.innerHTML = `<strong>${l.title}</strong> ${l.year ? '('+l.year+')' : ''}`;
+            if (authed) {
+                const eBtn = document.createElement('button');
+                eBtn.textContent = 'Edit';
+                eBtn.onclick = () => editLiterature(l);
+                const dBtn = document.createElement('button');
+                dBtn.textContent = 'Delete';
+                dBtn.onclick = () => removeLiterature(l);
+                div.append(' ', eBtn, ' ', dBtn);
+            }
+            list.appendChild(div);
+        });
+    }
+
+    function editConstruct(c) {
+        document.getElementById('construct-id').value = c.id || '';
+        document.getElementById('construct-title').value = c.title || '';
+        document.getElementById('construct-axes').value = c.axes || '';
+        document.getElementById('construct-def').value = c.definition || '';
+        document.getElementById('construct-cancel').style.display = 'inline';
+    }
+
+    function editLiterature(l) {
+        document.getElementById('literature-id').value = l.id || '';
+        document.getElementById('lit-title').value = l.title || '';
+        document.getElementById('lit-authors').value = l.authors || '';
+        document.getElementById('lit-year').value = l.year || '';
+        document.getElementById('literature-cancel').style.display = 'inline';
+    }
+
+    async function removeConstruct(c) {
+        if (!authed) return;
+        if (confirm('Delete this construct?')) {
+            if (c.id && typeof deleteConstruct === 'function') await deleteConstruct(c.id);
+            constructs = constructs.filter(x => x !== c);
+            renderConstructs();
+        }
+    }
+
+    async function removeLiterature(l) {
+        if (!authed) return;
+        if (confirm('Delete this entry?')) {
+            if (l.id && typeof deleteLiterature === 'function') await deleteLiterature(l.id);
+            literature = literature.filter(x => x !== l);
+            renderLiterature();
+        }
+    }
+
+    document.getElementById('construct-form').addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!authed) return;
+        const id = document.getElementById('construct-id').value;
+        const obj = {
+            title: document.getElementById('construct-title').value,
+            axes: document.getElementById('construct-axes').value,
+            definition: document.getElementById('construct-def').value
+        };
+        if (id) {
+            if (typeof updateConstruct === 'function') await updateConstruct(id, obj);
+        } else {
+            if (typeof addConstruct === 'function') await addConstruct(obj);
+        }
+        document.getElementById('construct-form').reset();
+        document.getElementById('construct-id').value = '';
+        document.getElementById('construct-cancel').style.display = 'none';
+        await loadConstructs();
+    });
+
+    document.getElementById('construct-cancel').addEventListener('click', () => {
+        document.getElementById('construct-form').reset();
+        document.getElementById('construct-id').value = '';
+        document.getElementById('construct-cancel').style.display = 'none';
+    });
+
+    document.getElementById('literature-form').addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!authed) return;
+        const id = document.getElementById('literature-id').value;
+        const obj = {
+            title: document.getElementById('lit-title').value,
+            authors: document.getElementById('lit-authors').value,
+            year: parseInt(document.getElementById('lit-year').value,10) || null
+        };
+        if (id) {
+            if (typeof updateLiterature === 'function') await updateLiterature(id, obj);
+        } else {
+            if (typeof addLiterature === 'function') await addLiterature(obj);
+        }
+        document.getElementById('literature-form').reset();
+        document.getElementById('literature-id').value = '';
+        document.getElementById('literature-cancel').style.display = 'none';
+        await loadLiterature();
+    });
+
+    document.getElementById('literature-cancel').addEventListener('click', () => {
+        document.getElementById('literature-form').reset();
+        document.getElementById('literature-id').value = '';
+        document.getElementById('literature-cancel').style.display = 'none';
+    });
+
+    document.getElementById('login-btn').addEventListener('click', () => {
+        if (authenticate()) {
+            authed = true;
+            document.getElementById('construct-section').style.display = 'block';
+            document.getElementById('literature-section').style.display = 'block';
+            document.getElementById('login-btn').style.display = 'none';
+            renderConstructs();
+            renderLiterature();
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadConstructs();
+        loadLiterature();
+    });
+    </script>
+</body>
+</html>

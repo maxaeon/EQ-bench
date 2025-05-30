@@ -10,7 +10,11 @@
     "relevance": "Introduced the field of affective computing and emotion-aware systems",
     "url": "",
     "category": "Computer Science",
-    "keywords": ["affective computing", "emotion recognition"]
+    "keywords": [
+      "affective computing",
+      "emotion recognition"
+    ],
+    "significance": 0
   },
   {
     "title": "The Rationality of Emotion",
@@ -21,7 +25,13 @@
     "relevance": "Emotions guide attention and reasoning non-propositionally; foundation for non-binary, gradient model of EI",
     "url": "https://doi.org/10.1093/0198238829.001.0001",
     "category": "Philosophy and Ethics",
-    "keywords": ["rationality", "emotion", "salience", "philosophy"]
+    "keywords": [
+      "rationality",
+      "emotion",
+      "salience",
+      "philosophy"
+    ],
+    "significance": 0
   },
   {
     "title": "The Emotions: A Philosophical Exploration",
@@ -34,7 +44,13 @@
     "relevance": "Emotions directed at objects and values beyond bodily states; supports separate 'Sense' and 'Explain' axes",
     "url": "https://doi.org/10.1093/0199253049.001.0001",
     "category": "Philosophy and Ethics",
-    "keywords": ["feelings", "intentionality", "emotion", "philosophy"]
+    "keywords": [
+      "feelings",
+      "intentionality",
+      "emotion",
+      "philosophy"
+    ],
+    "significance": 0
   },
   {
     "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User’s Manual",
@@ -47,7 +63,12 @@
     "relevance": "Splits EI into perceive, use, understand and regulate; validated on large sample guiding multi-score approach",
     "url": "https://doi.org/10.1037/t00344-000",
     "category": "Psychology",
-    "keywords": ["ability test", "emotional intelligence", "measurement"]
+    "keywords": [
+      "ability test",
+      "emotional intelligence",
+      "measurement"
+    ],
+    "significance": 0
   },
   {
     "title": "How Emotions Are Made",
@@ -58,7 +79,12 @@
     "relevance": "Emotions depend on context, concepts and culture; informs Adapt axis and dataset design",
     "url": "https://en.wikipedia.org/wiki/How_Emotions_Are_Made",
     "category": "Psychology",
-    "keywords": ["constructionism", "core affect", "culture"]
+    "keywords": [
+      "constructionism",
+      "core affect",
+      "culture"
+    ],
+    "significance": 0
   },
   {
     "title": "EmpatheticDialogues",
@@ -69,7 +95,12 @@
     "relevance": "Dialogue dataset providing gold empathic responses; baseline for Respond axis",
     "url": "https://doi.org/10.18653/v1/D19-1015",
     "category": "Computer Science",
-    "keywords": ["empathy", "dialogue dataset", "nlp"]
+    "keywords": [
+      "empathy",
+      "dialogue dataset",
+      "nlp"
+    ],
+    "significance": 0
   },
   {
     "title": "Upheavals of Thought: The Intelligence of Emotions",
@@ -82,7 +113,12 @@
     "relevance": "Seminal cognitive account of emotions as evaluative judgments",
     "url": "",
     "category": "Philosophy and Ethics",
-    "keywords": ["cognitive appraisal", "judgment", "emotion"]
+    "keywords": [
+      "cognitive appraisal",
+      "judgment",
+      "emotion"
+    ],
+    "significance": 0
   },
   {
     "title": "Descartes' Error: Emotion, Reason, and the Human Brain",
@@ -95,7 +131,12 @@
     "relevance": "Influential exploration of interrelation between emotion and cognition",
     "url": "",
     "category": "Neuroscience",
-    "keywords": ["neuroscience", "emotion-cognition", "somatic marker"]
+    "keywords": [
+      "neuroscience",
+      "emotion-cognition",
+      "somatic marker"
+    ],
+    "significance": 0
   },
   {
     "title": "Gut Reactions",
@@ -106,7 +147,12 @@
     "relevance": "Contemporary philosophical defense of perceptual and bodily approaches",
     "url": "",
     "category": "Philosophy and Ethics",
-    "keywords": ["bodily emotion", "perception", "philosophy"]
+    "keywords": [
+      "bodily emotion",
+      "perception",
+      "philosophy"
+    ],
+    "significance": 0
   },
   {
     "title": "On the Morality of Artificial Agents",
@@ -121,7 +167,12 @@
     "relevance": "Seminal paper on attributing moral agency to AI systems",
     "url": "",
     "category": "Philosophy and Ethics",
-    "keywords": ["moral agency", "ai ethics", "robots"]
+    "keywords": [
+      "moral agency",
+      "ai ethics",
+      "robots"
+    ],
+    "significance": 0
   },
   {
     "title": "AI Ethics",
@@ -132,7 +183,12 @@
     "relevance": "Overview of responsible AI principles",
     "url": "",
     "category": "Philosophy and Ethics",
-    "keywords": ["responsible ai", "ethics", "governance"]
+    "keywords": [
+      "responsible ai",
+      "ethics",
+      "governance"
+    ],
+    "significance": 0
   },
   {
     "title": "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence",
@@ -145,7 +201,12 @@
     "relevance": "Analyzes power and inequity in AI systems",
     "url": "",
     "category": "Philosophy and Ethics",
-    "keywords": ["bias", "power", "sociotechnical"]
+    "keywords": [
+      "bias",
+      "power",
+      "sociotechnical"
+    ],
+    "significance": 0
   },
   {
     "title": "Antecedent- and Response-focused Emotion Regulation: Divergent Consequences for Experience, Expression, and Physiology",
@@ -160,7 +221,12 @@
     "relevance": "Foundational paper on emotion regulation processes",
     "url": "",
     "category": "Psychology",
-    "keywords": ["emotion regulation", "strategy", "process model"]
+    "keywords": [
+      "emotion regulation",
+      "strategy",
+      "process model"
+    ],
+    "significance": 0
   },
   {
     "title": "Does the Autistic Child Have a 'Theory of Mind'?",
@@ -175,7 +241,12 @@
     "relevance": "Introduces classic ToM test",
     "url": "",
     "category": "Psychology",
-    "keywords": ["autism", "false belief", "social cognition"]
+    "keywords": [
+      "autism",
+      "false belief",
+      "social cognition"
+    ],
+    "significance": 0
   },
   {
     "title": "Emotion Recognition in Conversation",
@@ -186,7 +257,12 @@
     "relevance": "Benchmark for multimodal emotion recognition models",
     "url": "",
     "category": "Computer Science",
-    "keywords": ["multimodal", "conversation", "emotion recognition"]
+    "keywords": [
+      "multimodal",
+      "conversation",
+      "emotion recognition"
+    ],
+    "significance": 0
   },
   {
     "title": "The Emotional Brain",
@@ -197,7 +273,12 @@
     "relevance": "Neuroscience basis of emotion",
     "url": "",
     "category": "Neuroscience",
-    "keywords": ["amygdala", "neural circuits", "fear"]
+    "keywords": [
+      "amygdala",
+      "neural circuits",
+      "fear"
+    ],
+    "significance": 0
   },
   {
     "title": "The Extended Mind",
@@ -212,7 +293,12 @@
     "relevance": "Seminal work on cognition extending into the environment",
     "url": "",
     "category": "Philosophy and Ethics",
-    "keywords": ["distributed cognition", "externalism", "embodiment"]
+    "keywords": [
+      "distributed cognition",
+      "externalism",
+      "embodiment"
+    ],
+    "significance": 0
   },
   {
     "title": "A Survey on Bias and Fairness in Machine Learning",
@@ -223,7 +309,12 @@
     "relevance": "Comprehensive review of bias and fairness metrics in ML",
     "url": "",
     "category": "Computer Science",
-    "keywords": ["fairness", "bias", "machine learning"]
+    "keywords": [
+      "fairness",
+      "bias",
+      "machine learning"
+    ],
+    "significance": 0
   },
   {
     "title": "An Argument for Basic Emotions",
@@ -238,7 +329,11 @@
     "relevance": "Seminal defense of the basic emotion approach",
     "url": "",
     "category": "Psychology",
-    "keywords": ["basic emotions", "emotion theory"]
+    "keywords": [
+      "basic emotions",
+      "emotion theory"
+    ],
+    "significance": 0
   },
   {
     "title": "The Bar-On Model of Emotional-Social Intelligence (ESI)",
@@ -252,7 +347,11 @@
     "relevance": "Overview of the Bar-On model of emotional-social intelligence",
     "url": "",
     "category": "Psychology",
-    "keywords": ["emotional intelligence", "bar-on"]
+    "keywords": [
+      "emotional intelligence",
+      "bar-on"
+    ],
+    "significance": 0
   },
   {
     "title": "Handbook of Emotions",
@@ -265,6 +364,10 @@
     "relevance": "Comprehensive reference on emotion research",
     "url": "",
     "category": "Psychology",
-    "keywords": ["emotion", "reference"]
+    "keywords": [
+      "emotion",
+      "reference"
+    ],
+    "significance": 0
   }
 ]

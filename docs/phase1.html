@@ -37,6 +37,7 @@
     <main id="main">
         <section id="contribute">
             <h1>Phase 1: Framework Feedback and Literature Scan</h1>
+            <hr>
             <h2>Axis Feedback</h2>
             <p>We are gathering input on the proposed SERA-X axes and compiling relevant peer‑reviewed literature. As an introductory project, contributors and collaborators are encouraged to familiarize themselves with existing emotional intelligence benchmarking frameworks. Please review our detailed comparison here:</p>
             <p><a href="alternative-models.html"><strong>Comparison of Alternative Emotional Intelligence Models</strong></a></p>
@@ -47,6 +48,7 @@
 
 
         <section id="literature">
+            <hr>
             <h2>Relevant Literature</h2>
             <p>Notice something missing? Click the button below to add a source.</p>
             <section><a class="button" href="https://github.com/maxaeon/EQ-bench/issues/new?template=reference.yml">Add a source</a></section>
@@ -83,6 +85,7 @@
                     </select>
                 </div>
             </div>
+            <div class="table-scroll">
             <table id="lit-table">
                 <thead>
                     <tr>
@@ -93,10 +96,12 @@
                         <th>Relevance</th>
                         <th>Construct</th>
                         <th>Axis</th>
+                        <th>Significance <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
+            </div>
         </section>
                     <div class="bibtex-controls">
                 <a class="button" href="#" id="bibtex-download">Download BibTeX</a>
@@ -105,6 +110,7 @@
             <hr style="margin-top: 40px; margin-bottom: 20px;">
 
             <div style="padding:20px; background-color:#f9f9f9; border-radius:8px; border: 1px solid #ddd;">
+              <hr>
               <h2>Collaborative Literature Review</h2>
               <p>
                 We encourage all contributors to help build our interdisciplinary literature review directly in our shared Overleaf project. Your input is essential in identifying and synthesizing relevant sources from philosophy, psychology, neuroscience, and computer science.
@@ -167,6 +173,17 @@
         document.getElementById('lit-select-all').checked = allChecked;
     }
 
+    function initLitRatings() {
+        document.querySelectorAll('.lit-rating').forEach(input => {
+            const key = 'lit-rating-' + input.dataset.index;
+            const stored = localStorage.getItem(key);
+            if (stored !== null) input.value = stored;
+            input.addEventListener('change', () => {
+                localStorage.setItem(key, input.value);
+            });
+        });
+    }
+
     function renderLit(items) {
         const tbody = document.querySelector('#lit-table tbody');
         tbody.innerHTML = '';
@@ -180,7 +197,8 @@
                 <td>${l.year}</td>
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
-                <td>${l.axis}</td>`;
+                <td>${l.axis}</td>
+                <td><input type="number" min="0" max="5" class="rating-input lit-rating" data-index="${l.__index}" style="width:3em"></td>`;
             tbody.appendChild(row);
         });
         tbody.querySelectorAll('.lit-check').forEach(cb => {
@@ -191,6 +209,7 @@
             });
         });
         updateSelectAll();
+        initLitRatings();
     }
 
     function applyLitFilters() {

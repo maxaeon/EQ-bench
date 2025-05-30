@@ -52,6 +52,7 @@
         </section>
 
         <section id="constructs">
+            <hr>
             <h2>Tentative Starting Point</h2>
             <p>Undergoing development by an interdisciplinary team of experts in psychology, computer science, philosophy, and more.</p>
             <p>Notice something missing? Click the button below to add a construct.</p>
@@ -80,6 +81,7 @@
                     </select>
                 </div>
             </div>
+            <div class="table-scroll">
             <table id="construct-table">
                 <thead>
                     <tr>
@@ -88,10 +90,12 @@
                         <th>Example</th>
                         <th>Axis</th>
                         <th>Authors &amp; Sources</th>
+                        <th>Significance <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
+            </div>
         </section>
     </main>
 
@@ -148,13 +152,14 @@
                 <td>${c.definition || ''}</td>
                 <td>${c.example || ''}</td>
                 <td>${c.axis}</td>
-                <td></td>`;
+                <td></td>
+                <td><input type="number" min="0" max="5" class="rating-input construct-rating" data-index="${idx}" style="width:3em"></td>`;
 
             extra.className = 'construct-extra';
             extra.id = id;
             extra.style.display = 'none';
             extra.innerHTML = `
-                <td colspan="5"><strong>synonyms:</strong> ${synonyms}<br>
+                <td colspan="6"><strong>synonyms:</strong> ${synonyms}<br>
                 <strong>related terms:</strong> ${related}<br>
                 ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}<br>` : ''}
                 <strong>Potential Issues:</strong> ${issues}<br><br>
@@ -172,6 +177,18 @@
                 } else {
                     target.style.display = 'none';
                 }
+            });
+        });
+        initConstructRatings();
+    }
+
+    function initConstructRatings() {
+        document.querySelectorAll('.construct-rating').forEach(input => {
+            const key = 'construct-rating-' + input.dataset.index;
+            const stored = localStorage.getItem(key);
+            if (stored !== null) input.value = stored;
+            input.addEventListener('change', () => {
+                localStorage.setItem(key, input.value);
             });
         });
     }

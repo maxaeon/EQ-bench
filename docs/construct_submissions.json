@@ -2,7 +2,10 @@
   {
     "number": 1,
     "title": "Cognitive Appraisal Theory",
-    "synonyms": ["Appraisal Theory", "Cognitive Evaluation"],
+    "synonyms": [
+      "Appraisal Theory",
+      "Cognitive Evaluation"
+    ],
     "axes": "explain, respond, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -10,17 +13,23 @@
     "body": "From Nussbaum's Upheavals of Thought in philosophy, emotions are evaluative judgments. Field: philosophy",
     "definition": "Emotions are evaluative judgments assessing events or objects as significant relative to personal well-being.",
     "measurement": "NLP sentiment analysis; scenario-based evaluation; qualitative interpretation tasks.",
-    "related_terms": ["Appraisal Processes", "Evaluative Judgment"],
+    "related_terms": [
+      "Appraisal Processes",
+      "Evaluative Judgment"
+    ],
     "example": "AI assistant identifies a user's anger about negative work feedback and validates their frustration.",
     "verification_issues": "Subjective appraisals difficult to verify; context-specific evaluations hard to model.",
     "references": "Nussbaum 2001",
     "interdisciplinary": "philosophy, psychology",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "significance": 0
   },
   {
     "number": 2,
     "title": "Physiological Theory of Emotion",
-    "synonyms": ["James-Lange Theory"],
+    "synonyms": [
+      "James-Lange Theory"
+    ],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -28,16 +37,22 @@
     "body": "Classical physiological theory holds that emotions arise from bodily perceptions. Field: philosophy",
     "definition": "Emotions are perceptions of bodily states or physiological responses triggered by stimuli.",
     "measurement": "Facial emotion recognition accuracy using FER-2013 dataset; voice tone analysis and biometric monitoring (heart rate, skin conductance sensors).",
-    "related_terms": ["Bodily Feedback", "Somatic Emotion"],
+    "related_terms": [
+      "Bodily Feedback",
+      "Somatic Emotion"
+    ],
     "example": "Smart wearable detects anxiety through increased heart rate and tense vocal tone, prompting support.",
     "verification_issues": "Physiological signals may be ambiguous or noisy; hard to distinguish emotions solely from bodily data.",
     "interdisciplinary": "philosophy, neuroscience",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "significance": 0
   },
   {
     "number": 3,
     "title": "Phenomenological Aspect of Emotion",
-    "synonyms": ["Emotional Phenomenology"],
+    "synonyms": [
+      "Emotional Phenomenology"
+    ],
     "axes": "respond, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -45,17 +60,23 @@
     "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy",
     "definition": "The subjective, experiential, qualitative aspect of emotional experience.",
     "measurement": "User-reported surveys assessing emotional authenticity; qualitative user interviews exploring subjective emotional experiences; interpretative phenomenological analysis (IPA).",
-    "related_terms": ["Subjective Feeling", "First-Person Experience"],
+    "related_terms": [
+      "Subjective Feeling",
+      "First-Person Experience"
+    ],
     "example": "Virtual companion engages users in reflective dialogue about their emotional experiences.",
     "verification_issues": "Relies on subjective self-report and phenomenological interpretation; difficult to validate objectively.",
     "references": "Goldie 2000",
     "interdisciplinary": "philosophy, psychology",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "significance": 0
   },
   {
     "number": 4,
     "title": "Somatic Marker Hypothesis",
-    "synonyms": ["Somatic Marker Theory"],
+    "synonyms": [
+      "Somatic Marker Theory"
+    ],
     "axes": "explain, respond, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -63,17 +84,23 @@
     "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience",
     "definition": "Emotional processes guide or bias behavior and decision-making through bodily states and sensations.",
     "measurement": "Behavioral decision-making tasks; physiological response monitoring; computational models using reinforcement learning informed by somatic marker frameworks.",
-    "related_terms": ["Decision Bias", "Emotional Heuristics"],
+    "related_terms": [
+      "Decision Bias",
+      "Emotional Heuristics"
+    ],
     "example": "AI financial advisor detects subtle stress responses, influencing financial decision-making guidance.",
     "verification_issues": "Linking bodily markers to decision outcomes requires complex modeling; difficult to isolate causation.",
     "references": "Damasio 1994",
     "interdisciplinary": "neuroscience, philosophy",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "significance": 0
   },
   {
     "number": 10,
     "title": "Emotion Regulation",
-    "synonyms": ["Emotional Control"],
+    "synonyms": [
+      "Emotional Control"
+    ],
     "axes": "respond, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -81,17 +108,23 @@
     "body": "Gross's psychological research examines how people adjust emotional responses. Field: psychology",
     "definition": "The processes by which individuals or systems influence which emotions they experience, when, and how they express them.",
     "measurement": "Emotional response modulation tasks; interaction scenarios; observational methods and sentiment analysis.",
-    "related_terms": ["Affective Control", "Coping"],
+    "related_terms": [
+      "Affective Control",
+      "Coping"
+    ],
     "example": "Educational AI tutor adapts task difficulty when detecting student frustration.",
     "verification_issues": "Emotion regulation strategies vary by individual and context; difficult to assess unobtrusively.",
     "references": "Gross 1998",
     "interdisciplinary": "psychology, computational modeling",
-    "category": "Psychology"
+    "category": "Psychology",
+    "significance": 0
   },
   {
     "number": 11,
     "title": "Theory of Mind",
-    "synonyms": ["Mentalizing"],
+    "synonyms": [
+      "Mentalizing"
+    ],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -99,17 +132,23 @@
     "body": "Baron-Cohen and colleagues explore attribution of mental states and emotions. Field: psychology",
     "definition": "Ability to attribute mental states (beliefs, desires, intentions) to others.",
     "measurement": "False-belief tasks adapted for AI; predictive accuracy tests; interpretability analysis.",
-    "related_terms": ["Mental State Attribution", "Perspective-Taking"],
+    "related_terms": [
+      "Mental State Attribution",
+      "Perspective-Taking"
+    ],
     "example": "Social robot recognizes emotional distress due to a lost item, proactively offering help.",
     "verification_issues": "Ground truth mental states are unobservable; tasks rely on proxy measures like behavior or text.",
     "references": "Baron-Cohen et al. 1985",
     "interdisciplinary": "psychology, computational cognition",
-    "category": "Psychology"
+    "category": "Psychology",
+    "significance": 0
   },
   {
     "number": 12,
     "title": "Basic Emotions Model",
-    "synonyms": ["Universal Emotions"],
+    "synonyms": [
+      "Universal Emotions"
+    ],
     "axes": "sense, respond",
     "user": "placeholder",
     "url": "https://example.com",
@@ -117,17 +156,23 @@
     "body": "Ekman's work identifies universal emotional expressions studied in psychology. Field: psychology",
     "definition": "Proposes universal discrete emotions with characteristic expressions.",
     "measurement": "Facial Action Coding System and cross-cultural expression recognition.",
-    "related_terms": ["Universal Expressions", "Discrete Emotions"],
+    "related_terms": [
+      "Universal Expressions",
+      "Discrete Emotions"
+    ],
     "example": "Analyzing cross-cultural photographs for emotion recognition.",
     "verification_issues": "Universality claims disputed; cultural differences may skew expression datasets.",
     "references": "Ekman 1992; Izard 1971",
     "interdisciplinary": "psychology, anthropology, neuroscience",
-    "category": "Psychology"
+    "category": "Psychology",
+    "significance": 0
   },
   {
     "number": 13,
     "title": "Multimodal Emotion Recognition",
-    "synonyms": ["Cross-modal Emotion Detection"],
+    "synonyms": [
+      "Cross-modal Emotion Detection"
+    ],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -135,17 +180,23 @@
     "body": "Poria and colleagues describe algorithms that combine audio, visual, and text cues. Field: computer science",
     "definition": "Algorithms integrating multiple modalities (audio, visual, textual) for emotion detection.",
     "measurement": "Accuracy metrics from multimodal datasets; model interpretability tests.",
-    "related_terms": ["Cross-Channel Sensing", "Multisensory Input"],
+    "related_terms": [
+      "Cross-Channel Sensing",
+      "Multisensory Input"
+    ],
     "example": "Video conferencing AI integrates facial, vocal, and textual cues to accurately detect participants' emotions.",
     "verification_issues": "Aligning different modalities and obtaining labeled datasets can be challenging.",
     "references": "Poria et al. 2019",
     "interdisciplinary": "computer science, psychology",
-    "category": "Computer Science"
+    "category": "Computer Science",
+    "significance": 0
   },
   {
     "number": 15,
     "title": "Neural Circuits of Emotion",
-    "synonyms": ["Emotion Circuitry"],
+    "synonyms": [
+      "Emotion Circuitry"
+    ],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -153,17 +204,23 @@
     "body": "LeDoux describes amygdala and limbic roles in emotion processing from neuroscience. Field: neuroscience",
     "definition": "Brain structures and pathways involved in emotional processing such as the amygdala and prefrontal cortex.",
     "measurement": "Neurological modeling; fMRI correlation methods; computational simulations.",
-    "related_terms": ["Amygdala", "Limbic System"],
+    "related_terms": [
+      "Amygdala",
+      "Limbic System"
+    ],
     "example": "Emotion recognition models use neural-circuit-inspired designs (e.g., amygdala structures) to detect subtle emotional signals.",
     "verification_issues": "Neural signals are noisy and may not map cleanly to discrete emotions.",
     "references": "LeDoux 1998",
     "interdisciplinary": "neuroscience, computational neuroscience",
-    "category": "Neuroscience"
+    "category": "Neuroscience",
+    "significance": 0
   },
   {
     "number": 16,
     "title": "Primary Emotional Systems",
-    "synonyms": ["Basic Emotional Circuits"],
+    "synonyms": [
+      "Basic Emotional Circuits"
+    ],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -171,17 +228,23 @@
     "body": "Panksepp identifies fundamental emotional circuits such as SEEKING and FEAR. Field: neuroscience",
     "definition": "Basic neural systems such as SEEKING and FEAR underlying emotions.",
     "measurement": "Animal models and neurochemical manipulations.",
-    "related_terms": ["Evolutionary Emotions", "Primal Circuits"],
+    "related_terms": [
+      "Evolutionary Emotions",
+      "Primal Circuits"
+    ],
     "example": "Animal studies exploring SEEKING drive.",
     "verification_issues": "Reliance on animal models may limit generalizability; ethical and species differences complicate validation.",
     "references": "Panksepp 1998; Panksepp & Biven 2012",
     "interdisciplinary": "neuroscience, comparative psychology, evolutionary biology",
-    "category": "Neuroscience"
+    "category": "Neuroscience",
+    "significance": 0
   },
   {
     "number": 17,
     "title": "Facial Expression Recognition",
-    "synonyms": ["FER"],
+    "synonyms": [
+      "FER"
+    ],
     "axes": "sense, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -189,17 +252,23 @@
     "body": "Adolphs analyzes neural mechanisms for detecting facial expressions. Field: neuroscience",
     "definition": "Neural mechanisms for perceiving facial expressions of emotion.",
     "measurement": "Behavioral recognition tasks and neuroimaging.",
-    "related_terms": ["Face Detection", "Expression Analysis"],
+    "related_terms": [
+      "Face Detection",
+      "Expression Analysis"
+    ],
     "example": "Security cameras identifying facial cues.",
     "verification_issues": "Expressions can be culturally variable; datasets may lack diversity; expressions don't always reveal emotion.",
     "references": "Adolphs 2002; Haxby et al. 2000",
     "interdisciplinary": "neuroscience, psychology, computer vision",
-    "category": "Neuroscience"
+    "category": "Neuroscience",
+    "significance": 0
   },
   {
     "number": 18,
     "title": "Core Affect Model",
-    "synonyms": ["Circumplex Model"],
+    "synonyms": [
+      "Circumplex Model"
+    ],
     "axes": "sense, respond, explain",
     "user": "placeholder",
     "url": "https://example.com",
@@ -207,17 +276,23 @@
     "body": "Russell's psychological construction approach views emotions as constructed from affective dimensions. Field: psychology",
     "definition": "Emotions constructed from valence and arousal dimensions of core affect.",
     "measurement": "Affect Grid ratings and physiological indicators of valence/arousal.",
-    "related_terms": ["Valence-Arousal", "Affective Dimensions"],
+    "related_terms": [
+      "Valence-Arousal",
+      "Affective Dimensions"
+    ],
     "example": "Video game adaptation to player's mood.",
     "verification_issues": "Valence and arousal ratings may oversimplify emotional states and rely on self-report.",
     "references": "Russell 2003; Barrett & Russell 1998",
     "interdisciplinary": "psychology, neuroscience, affective science",
-    "category": "Psychology"
+    "category": "Psychology",
+    "significance": 0
   },
   {
     "number": 19,
     "title": "Action Readiness",
-    "synonyms": ["Action Tendency"],
+    "synonyms": [
+      "Action Tendency"
+    ],
     "axes": "respond, adapt",
     "user": "placeholder",
     "url": "https://example.com",
@@ -225,17 +300,23 @@
     "body": "Frijda defines emotion as states preparing action, influencing adaptation. Field: psychology",
     "definition": "Emotions prepare action tendencies in response to situations.",
     "measurement": "Behavior observation and self-reported motivational states.",
-    "related_terms": ["Motivational States", "Behavior Tendency"],
+    "related_terms": [
+      "Motivational States",
+      "Behavior Tendency"
+    ],
     "example": "Social media posts revealing mobilization after protests.",
     "verification_issues": "Action tendencies are often internal and context dependent, making objective measurement hard.",
     "references": "Frijda 1986; Frijda et al. 1989",
     "interdisciplinary": "psychology, cognitive science, behavioral economics",
-    "category": "Psychology"
+    "category": "Psychology",
+    "significance": 0
   },
   {
     "number": 20,
     "title": "Extended or Distributed Mind",
-    "synonyms": ["Extended Mind"],
+    "synonyms": [
+      "Extended Mind"
+    ],
     "axes": "respond, adapt, extended",
     "user": "placeholder",
     "url": "https://example.com",
@@ -243,11 +324,15 @@
     "body": "Clark and Chalmers argue that cognitive processes extend into the environment. This construct explores how components of mental states can be distributed in varying degrees across external resources. Field: philosophy",
     "definition": "Mental states may be partly realized outside the brain, with degrees of distribution across tools and social partners.",
     "measurement": "Scenarios evaluating reliance on external memory aids or collaborative tools for emotional reasoning; measure degree of external contribution.",
-    "related_terms": ["Situated Emotion", "Embodied Interaction"],
+    "related_terms": [
+      "Situated Emotion",
+      "Embodied Interaction"
+    ],
     "example": "Tracking mood in a notebook that supports emotional reflection.",
     "verification_issues": "Attributing degrees of distribution is challenging; boundaries between internal and external processes are fuzzy.",
     "references": "Clark & Chalmers 1998",
     "interdisciplinary": "philosophy, cognitive science, computational modeling",
-    "category": "Philosophy and Ethics"
+    "category": "Philosophy and Ethics",
+    "significance": 0
   }
 ]

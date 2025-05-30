@@ -38,7 +38,7 @@ The GitHub workflows require `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` secrets
 for uploads. The public website reads the same database using the
 `SUPABASE_URL` and `SUPABASE_ANON_KEY` variables injected at build time. See the
 [GitHub documentation on encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-for how to configure these values.
+for how to configure these values. The deployment workflow inserts them into docs/env.js so that the website's CRUD functions can talk to Supabase.
 
 Each record includes an `axes` field listing the relevant SERA skills
 (e.g., `"sense, explain"`). Pages like `sense.html` filter constructs by reading

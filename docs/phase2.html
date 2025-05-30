@@ -189,24 +189,9 @@
                 }
             });
         });
-        initStarRatings('.construct-rating', 'construct-rating', updateConstructAvg);
+        initRatings('.construct-rating', 'construct-rating', idx => constructs[idx]);
     }
 
-    function computeAvg(base, user) {
-        const arr = Array.isArray(base) ? base.slice() : [];
-        if (user !== null && user !== '') arr.push(parseFloat(user));
-        if (!arr.length) return 0;
-        return arr.reduce((a,b)=>a+parseFloat(b),0) / arr.length;
-    }
-
-    function updateConstructAvg(idx) {
-        const item = constructs[idx];
-        if (!item) return;
-        const key = 'construct-rating-' + idx;
-        const user = localStorage.getItem(key);
-        const span = document.querySelector(`.avg-rating[data-index="${idx}"]`);
-        if (span) span.textContent = computeAvg(item.ratings, user).toFixed(1);
-    }
 
 
     function applyConstructFilters() {

@@ -184,3 +184,28 @@ function initStarRatings(selector, keyPrefix, updateFn) {
     });
   });
 }
+
+// Calculate average rating from existing values and optional user value
+function computeAverage(base, user) {
+  const arr = Array.isArray(base) ? base.slice() : [];
+  if (user !== null && user !== '') arr.push(parseFloat(user));
+  if (!arr.length) return 0;
+  return arr.reduce((a, b) => a + parseFloat(b), 0) / arr.length;
+}
+
+// Setup star widgets and update corresponding averages
+// selector: rating widget selector
+// storagePrefix: prefix for localStorage keys
+// getItemFn: function that returns the data item for a given index
+function initRatings(selector, storagePrefix, getItemFn) {
+  const update = (idx) => {
+    if (typeof getItemFn !== 'function') return;
+    const item = getItemFn(idx);
+    if (!item) return;
+    const key = storagePrefix + '-' + idx;
+    const user = localStorage.getItem(key);
+    const span = document.querySelector(`.avg-rating[data-index="${idx}"]`);
+    if (span) span.textContent = computeAverage(item.ratings, user).toFixed(1);
+  };
+  initStarRatings(selector, storagePrefix, update);
+}

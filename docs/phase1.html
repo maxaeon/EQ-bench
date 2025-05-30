@@ -252,8 +252,8 @@
         let lit = [];
         const useSupabase = window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchLiterature === 'function';
         if (useSupabase) {
-            for (let i=0; i<20 && !window.supabase; i++) await new Promise(r=>setTimeout(r,100));
-            if (window.supabase) {
+            for (let i=0; i<20 && !window.supabase && !supabase; i++) await new Promise(r=>setTimeout(r,100));
+            if (window.supabase || supabase) {
                 try { lit = await fetchLiterature(); } catch(e) { console.error(e); lit = []; }
             }
         } else {

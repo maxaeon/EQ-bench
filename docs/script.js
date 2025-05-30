@@ -69,31 +69,8 @@ function hideLoginForm() {
   if (loginOverlay) loginOverlay.classList.add('hidden');
 }
 
+// Authentication temporarily disabled
 async function authenticate() {
-  // If Supabase is configured, prefer email/password authentication
-  const client = await ensureSupabase();
-  if (client) {
-    const { data: { session } } = await client.auth.getSession();
-    if (session) return true;
-    const creds = await showLoginForm();
-    if (!creds) return false;
-    const { error } = await client.auth.signInWithPassword(creds);
-    if (error) {
-      alert('Incorrect credentials. Access denied.');
-      return false;
-    }
-    return true;
-  }
-
-  // Fallback to environment-provided password
-  const envPass = window.DOC_PASSWORD;
-  if (envPass) {
-    const creds = await showLoginForm();
-    if (!creds || creds.password !== envPass) {
-      alert('Incorrect password. Access denied.');
-      return false;
-    }
-  }
   return true;
 }
 

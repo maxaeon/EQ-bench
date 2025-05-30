@@ -58,7 +58,7 @@ Each skill is scored independently, revealing strengths and gaps, showing where 
         <section id="feedback">
             <h2>Share Feedback</h2>
             <p>We welcome feedback! <a href="https://github.com/maxaeon/EQ-bench/issues/new">Open an issue</a> or <a href="expert-collaborators.html">contact us</a> to contribute ideas.</p>
-            <button onclick="authenticate().then(ok => { if(ok) fetchConstructs().then(data => console.log(data)); })">View Constructs</button>
+            <button onclick="fetchConstructs().then(data => console.log(data));">View Constructs</button>
         </section>
         
     </main>

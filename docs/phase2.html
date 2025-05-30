@@ -56,7 +56,7 @@
             <hr>
             <h2>Tentative Starting Point</h2>
             <p>Undergoing development by an interdisciplinary team of experts in psychology, computer science, philosophy, and more.</p>
-            <p>Notice something missing? Authorized collaborators can log in and use the <strong>Add Construct</strong> button to submit new entries.</p>
+            <p>Notice something missing? Use the <strong>Add Construct</strong> button to submit new entries. Login is temporarily disabled.</p>
             <div class="search-controls">
                 <label for="construct-search">Search:</label>
                 <input type="search" id="construct-search" placeholder="Search constructs">
@@ -100,13 +100,12 @@
             </div>
         </section>
         <div class="construct-controls">
-            <button id="edit-construct-btn" class="button" disabled>Edit</button>
-            <button id="delete-construct-btn" class="button" disabled>Delete</button>
+            <button id="edit-construct-btn" class="button">Edit</button>
+            <button id="delete-construct-btn" class="button">Delete</button>
         </div>
 <section>
     <h2>Manage Constructs</h2>
-    <p>Authorized collaborators can edit or delete construct records.</p>
-    <button id="login-btn">Login to Edit</button>
+    <p>You can edit or delete construct records without logging in.</p>
 </section>
     </main>
 
@@ -277,17 +276,10 @@
     }
 
 document.addEventListener('DOMContentLoaded', loadConstructs);
-let authed = false;
+let authed = true;
 let selectedConstructRow = null;
 
-document.getElementById('login-btn').addEventListener('click', async () => {
-    if (await authenticate()) {
-        authed = true;
-        document.getElementById('login-btn').style.display = 'none';
-        document.getElementById('edit-construct-btn').disabled = false;
-        document.getElementById('delete-construct-btn').disabled = false;
-    }
-});
+
 
 function startEditConstruct() {
     if (selectedConstructRow === null) { alert('Select an entry first.'); return; }

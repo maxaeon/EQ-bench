@@ -163,6 +163,7 @@ function initStarRatings(selector, keyPrefix, updateFn) {
   document.querySelectorAll(selector).forEach(el => {
     const idx = el.dataset.index;
     const key = keyPrefix + '-' + idx;
+    // Read any previously stored rating and default to zero
     let stored = parseRating(localStorage.getItem(key));
     if (stored === null) stored = 0;
 
@@ -172,12 +173,16 @@ function initStarRatings(selector, keyPrefix, updateFn) {
         const s = document.createElement('span');
         s.className = 'star' + (i <= rating ? ' filled' : '');
         s.dataset.value = i;
+        s.setAttribute('aria-pressed', i <= rating ? 'true' : 'false');
         s.textContent = '★';
         el.appendChild(s);
       }
     };
 
+    // Render the widget using the stored rating so the correct
+    // number of stars are initially marked as selected
     render(stored);
+    // Recalculate the average to reflect this value on load
     updateFn(idx);
 
     el.addEventListener('click', (e) => {
@@ -187,6 +192,7 @@ function initStarRatings(selector, keyPrefix, updateFn) {
       if (val === null) return;
       localStorage.setItem(key, val);
       render(val);
+      // Trigger an update so the average rating recalculates
       updateFn(idx);
     });
   });

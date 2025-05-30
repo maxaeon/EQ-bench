@@ -105,6 +105,7 @@
         </section>
                     <div class="bibtex-controls">
                 <a class="button" href="#" id="bibtex-download">Download BibTeX</a>
+                <input type="file" id="bib-upload" accept=".bib">
             </div>
 
             <hr style="margin-top: 40px; margin-bottom: 20px;">
@@ -311,6 +312,31 @@
                 if (!items.length) return;
                 const content = items.map(toBibtex).join('\n\n');
                 downloadFile(content, 'references.bib');
+            });
+
+            document.getElementById('bib-upload').addEventListener('change', e => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const entries = parseBibtex(reader.result);
+                    const titles = new Set(literature.map(l => (l.title || '').toLowerCase()));
+                    const dois = new Set(literature.map(l => (l.url || '').replace(/https?:\/\/(dx\.)?doi.org\//i, '').toLowerCase()));
+                    let maxIndex = Math.max(0, ...literature.map(l => l.__index || 0));
+                    entries.forEach(en => {
+                        const t = (en.title || '').toLowerCase();
+                        const d = (en.doi || en.url || '').replace(/https?:\/\/(dx\.)?doi.org\//i, '').toLowerCase();
+                        if (titles.has(t) || (d && dois.has(d))) return;
+                        const obj = Object.assign({construct: '', axis: '', relevance: '', ratings: []}, en);
+                        obj.__index = ++maxIndex;
+                        literature.push(obj);
+                        titles.add(t);
+                        if (d) dois.add(d);
+                    });
+                    applyLitFilters();
+                    e.target.value = '';
+                };
+                reader.readAsText(file);
             });
 
         });

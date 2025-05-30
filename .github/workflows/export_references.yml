@@ -46,6 +46,56 @@ jobs:
             const json = JSON.stringify(data, null, 2);
             fs.writeFileSync('data/literature.json', json);
             fs.writeFileSync('docs/data/literature.json', json);
+      - name: Merge uploaded BibTeX
+        run: |
+          npm install bibtex-parse-js glob
+          node <<'EOF'
+          const fs = require('fs');
+          const glob = require('glob');
+          const parse = require('bibtex-parse-js');
+          let data = [];
+          try {
+            data = JSON.parse(fs.readFileSync('data/literature.json', 'utf8'));
+          } catch (e) {}
+          const byTitle = new Map();
+          const byDoi = new Map();
+          const norm = s => (s || '').toLowerCase();
+          const doiNorm = s => norm((s || '').replace(/https?:\/\/(dx\.)?doi.org\//, ''));
+          data.forEach(item => {
+            byTitle.set(norm(item.title), item);
+            if (item.url) byDoi.set(doiNorm(item.url), item);
+          });
+          glob.sync('data/**/*.bib').forEach(file => {
+            const content = fs.readFileSync(file, 'utf8');
+            parse.toJSON(content).forEach(entry => {
+              const f = entry.entryTags || {};
+              const obj = {
+                title: f.title || '',
+                authors: f.author || '',
+                year: f.year ? parseInt(f.year, 10) : undefined,
+                journal: f.journal || f.booktitle || '',
+                publisher: f.publisher || '',
+                address: f.address || '',
+                volume: f.volume || '',
+                number: f.number || '',
+                pages: f.pages || '',
+                url: f.url || (f.doi ? `https://doi.org/${f.doi}` : ''),
+                construct: '',
+                axis: '',
+                relevance: '',
+                ratings: []
+              };
+              const tKey = norm(obj.title);
+              const dKey = doiNorm(obj.url);
+              if (byTitle.has(tKey) || (dKey && byDoi.has(dKey))) return;
+              data.push(obj);
+              byTitle.set(tKey, obj);
+              if (dKey) byDoi.set(dKey, obj);
+            });
+          });
+          fs.writeFileSync('data/literature.json', JSON.stringify(data, null, 2));
+          fs.writeFileSync('docs/data/literature.json', JSON.stringify(data, null, 2));
+          EOF
       - name: Commit updates
         uses: EndBug/add-and-commit@v9
         with:

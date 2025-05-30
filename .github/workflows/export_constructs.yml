@@ -24,14 +24,23 @@ jobs:
               state: 'open',
               per_page: 100,
             });
-            const data = issues.map(i => ({
-              number: i.number,
-              title: i.title,
-              user: i.user.login,
-              url: i.html_url,
-              created_at: i.created_at,
-              body: i.body
-            }));
+              const map = {};
+              for (const issue of issues) {
+                const key = issue.title.toLowerCase();
+                const existing = map[key];
+                if (!existing || new Date(issue.updated_at) > new Date(existing.updated_at)) {
+                  map[key] = issue;
+                }
+              }
+              const deduped = Object.values(map);
+              const data = deduped.map(i => ({
+                number: i.number,
+                title: i.title,
+                user: i.user.login,
+                url: i.html_url,
+                created_at: i.created_at,
+                body: i.body
+              }));
             fs.mkdirSync('data', { recursive: true });
             fs.mkdirSync('docs', { recursive: true });
             const json = JSON.stringify(data, null, 2);

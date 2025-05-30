@@ -1,0 +1,3 @@
+sample_id,modalities,emotion_label,intensity,integration_notes
+mm001,"audio,text","disgust",7,"sarcastic tone with harsh wording"
+mm002,"video,audio,text","happiness",9,"smiling, upbeat voice, positive words"

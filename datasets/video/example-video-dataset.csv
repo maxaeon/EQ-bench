@@ -1,0 +1,3 @@
+video_id,duration,emotion_label,intensity,modality_notes
+vid001,12.4,"happiness",9,"smiling and excited tone"
+vid002,8.0,"fear",6,"shaky hands and raised voice"

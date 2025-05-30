@@ -191,6 +191,16 @@ ul li {
     gap: 0.5rem;
 }
 
+.add-source-controls {
+    margin: 0.5rem 0 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+label.button {
+    cursor: pointer;
+}
+
 select.select-open {
     overflow-y: auto;
 }

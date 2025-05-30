@@ -3,6 +3,19 @@ description: Add a peer-reviewed source to the literature database
 labels: ["reference"]
 assignees: []
 body:
+  - type: dropdown
+    id: entry_type
+    attributes:
+      label: BibTeX entry type
+      description: Select the closest reference category
+      options:
+        - article
+        - book
+        - inproceedings
+        - techreport
+        - misc
+    validations:
+      required: true
   - type: input
     id: title
     attributes:
@@ -15,19 +28,40 @@ body:
     attributes:
       label: Author(s)
       description: e.g., Smith J., Doe A.
+    validations:
+      required: true
   - type: input
     id: year
     attributes:
       label: Year
+    validations:
+      required: true
+  - type: input
+    id: journal
+    attributes:
+      label: Journal / Booktitle
+      description: Required for articles or conference papers
+  - type: input
+    id: publisher
+    attributes:
+      label: Publisher
+      description: Organization or publisher name (if applicable)
+  - type: input
+    id: address
+    attributes:
+      label: Address
+      description: City or location (if applicable)
   - type: input
     id: url
     attributes:
       label: DOI or URL
+    validations:
+      required: true
   - type: input
-    id: construct
+    id: related_constructs
     attributes:
       label: Related construct(s)
-      description: Which construct(s) does this reference inform?
+      description: Select existing constructs or enter new ones separated by commas
   - type: input
     id: axis
     attributes:

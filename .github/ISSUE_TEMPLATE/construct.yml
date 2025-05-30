@@ -75,6 +75,11 @@ body:
     attributes:
       value: |
         ## 📚 4. Recommended references
+  - type: input
+    id: related_publications
+    attributes:
+      label: Related publication(s)
+      description: Select existing references or enter new ones separated by commas
   - type: textarea
     id: references
     attributes:

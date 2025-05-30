@@ -279,6 +279,42 @@ document.addEventListener('DOMContentLoaded', loadConstructs);
 let authed = true;
 let selectedConstructRow = null;
 
+function startAddConstruct() {
+    document.getElementById('construct-add-row')?.remove();
+    const tbody = document.querySelector('#construct-table tbody');
+    const addRow = document.createElement('tr');
+    addRow.id = 'construct-add-row';
+    addRow.innerHTML = `<td colspan="6"><form id="construct-add-form">
+        <label>Title: <input type="text" name="title" required></label>
+        <label>Axes: <input type="text" name="axes"></label>
+        <label>Definition:<br><textarea name="definition" rows="3"></textarea></label>
+        <button type="submit">Add</button>
+        <button type="button" id="construct-add-cancel">Cancel</button>
+    </form></td>`;
+    tbody.prepend(addRow);
+    document.getElementById('construct-add-form').addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!authed) { if (!(await authenticate())) return; authed = true; }
+        const obj = {
+            title: e.target.title.value,
+            axes: e.target.axes.value,
+            definition: e.target.definition.value,
+            ratings: []
+        };
+        if (typeof addConstruct === 'function') {
+            try {
+                const res = await addConstruct(obj);
+                if (res && res[0]) Object.assign(obj, res[0]);
+            } catch (err) { console.error(err); }
+        }
+        obj.__index = Math.max(0, ...constructs.map(c => c.__index || 0)) + 1;
+        constructs.push(obj);
+        addRow.remove();
+        applyConstructFilters();
+    });
+    document.getElementById('construct-add-cancel').addEventListener('click', () => addRow.remove());
+}
+
 
 
 function startEditConstruct() {
@@ -326,6 +362,7 @@ async function deleteSelectedConstruct() {
 
 document.getElementById('edit-construct-btn').addEventListener('click', startEditConstruct);
 document.getElementById('delete-construct-btn').addEventListener('click', deleteSelectedConstruct);
+document.getElementById('add-construct-btn').addEventListener('click', startAddConstruct);
 
 // Confirm before saving new or updated constructs
 document.getElementById('construct-form')?.addEventListener('submit', e => {

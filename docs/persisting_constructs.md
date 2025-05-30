@@ -1,3 +1,8 @@
+---
+layout: default
+title: Persisting Construct Submissions
+---
+
 # 📦 Persisting Construct Submissions
 
 SERA-X collects community "construct" submissions using a GitHub issue template.

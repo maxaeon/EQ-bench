@@ -1,3 +1,7 @@
+---
+layout: default
+title: SERA-X Construct Sheet
+---
 
 # 🧩 SERA-X Construct Sheet
 *A user-friendly template for describing emotion-related constructs from your field of study.*

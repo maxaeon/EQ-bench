@@ -1,31 +1,5 @@
 [
   {
-    "number": 1,
-    "title": "Cognitive Appraisal Theory",
-    "synonyms": [
-      "Appraisal Theory",
-      "Cognitive Evaluation"
-    ],
-    "axes": "explain, respond, extended",
-    "user": "placeholder",
-    "url": "https://example.com",
-    "created_at": "2025-01-01T00:00:00Z",
-    "body": "From Nussbaum's Upheavals of Thought in philosophy, emotions are evaluative judgments. Field: philosophy",
-    "definition": "Emotions are evaluative judgments assessing events or objects as significant relative to personal well-being.",
-    "measurement": "NLP sentiment analysis; scenario-based evaluation; qualitative interpretation tasks.",
-    "related_terms": [
-      "Appraisal Processes",
-      "Evaluative Judgment"
-    ],
-    "example": "AI assistant identifies a user's anger about negative work feedback and validates their frustration.",
-    "verification_issues": "Subjective appraisals difficult to verify; context-specific evaluations hard to model.",
-    "references": "Nussbaum 2001",
-    "interdisciplinary": "philosophy, psychology",
-    "category": "Philosophy and Ethics",
-    "significance": 0,
-    "ratings": []
-  },
-  {
     "number": 2,
     "title": "Physiological Theory of Emotion",
     "synonyms": [
@@ -295,31 +269,6 @@
     "verification_issues": "Valence and arousal ratings may oversimplify emotional states and rely on self-report.",
     "references": "Russell 2003; Barrett & Russell 1998",
     "interdisciplinary": "psychology, neuroscience, affective science",
-    "category": "Psychology",
-    "significance": 0,
-    "ratings": []
-  },
-  {
-    "number": 19,
-    "title": "Action Readiness",
-    "synonyms": [
-      "Action Tendency"
-    ],
-    "axes": "respond, adapt",
-    "user": "placeholder",
-    "url": "https://example.com",
-    "created_at": "2025-01-01T00:00:00Z",
-    "body": "Frijda defines emotion as states preparing action, influencing adaptation. Field: psychology",
-    "definition": "Emotions prepare action tendencies in response to situations.",
-    "measurement": "Behavior observation and self-reported motivational states.",
-    "related_terms": [
-      "Motivational States",
-      "Behavior Tendency"
-    ],
-    "example": "Social media posts revealing mobilization after protests.",
-    "verification_issues": "Action tendencies are often internal and context dependent, making objective measurement hard.",
-    "references": "Frijda 1986; Frijda et al. 1989",
-    "interdisciplinary": "psychology, cognitive science, behavioral economics",
     "category": "Psychology",
     "significance": 0,
     "ratings": []

@@ -14,7 +14,8 @@
       "affective computing",
       "emotion recognition"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "The Rationality of Emotion",
@@ -31,7 +32,8 @@
       "salience",
       "philosophy"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "The Emotions: A Philosophical Exploration",
@@ -50,7 +52,8 @@
       "emotion",
       "philosophy"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User’s Manual",
@@ -68,7 +71,8 @@
       "emotional intelligence",
       "measurement"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "How Emotions Are Made",
@@ -84,7 +88,8 @@
       "core affect",
       "culture"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "EmpatheticDialogues",
@@ -100,7 +105,8 @@
       "dialogue dataset",
       "nlp"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Upheavals of Thought: The Intelligence of Emotions",
@@ -118,7 +124,8 @@
       "judgment",
       "emotion"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Descartes' Error: Emotion, Reason, and the Human Brain",
@@ -136,7 +143,8 @@
       "emotion-cognition",
       "somatic marker"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Gut Reactions",
@@ -152,7 +160,8 @@
       "perception",
       "philosophy"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "On the Morality of Artificial Agents",
@@ -172,7 +181,8 @@
       "ai ethics",
       "robots"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "AI Ethics",
@@ -188,7 +198,8 @@
       "ethics",
       "governance"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence",
@@ -206,7 +217,8 @@
       "power",
       "sociotechnical"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Antecedent- and Response-focused Emotion Regulation: Divergent Consequences for Experience, Expression, and Physiology",
@@ -226,7 +238,8 @@
       "strategy",
       "process model"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Does the Autistic Child Have a 'Theory of Mind'?",
@@ -246,7 +259,8 @@
       "false belief",
       "social cognition"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Emotion Recognition in Conversation",
@@ -262,7 +276,8 @@
       "conversation",
       "emotion recognition"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "The Emotional Brain",
@@ -278,7 +293,8 @@
       "neural circuits",
       "fear"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "The Extended Mind",
@@ -298,7 +314,8 @@
       "externalism",
       "embodiment"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "A Survey on Bias and Fairness in Machine Learning",
@@ -314,7 +331,8 @@
       "bias",
       "machine learning"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "An Argument for Basic Emotions",
@@ -333,7 +351,8 @@
       "basic emotions",
       "emotion theory"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "The Bar-On Model of Emotional-Social Intelligence (ESI)",
@@ -351,7 +370,8 @@
       "emotional intelligence",
       "bar-on"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   },
   {
     "title": "Handbook of Emotions",
@@ -368,6 +388,7 @@
       "emotion",
       "reference"
     ],
-    "significance": 0
+    "significance": 0,
+    "ratings": []
   }
 ]

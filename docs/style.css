@@ -326,6 +326,10 @@ tbody tr:nth-child(even) {
     padding: 0.5rem;
     background-color: #f9f9f9;
 }
+.lit-extra td {
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+}
 
 @media (prefers-color-scheme: dark) {
     body {
@@ -380,8 +384,12 @@ tbody tr:nth-child(even) {
     .construct-extra td {
         background-color: #222;
     }
+
     .construct-actions a {
         color: #58a6ff;
+=======
+    .lit-extra td {
+        background-color: #222;
     }
     .info-icon {
         background-color: #1f6feb;

@@ -39,7 +39,6 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 | --- | --- | --- | --- | --- |
 | Affective Computing | Computational methods for recognizing, interpreting, and simulating human emotions. | Computer Science | Picard, R. (1997). Affective Computing. MIT Press. | Provides computational models for sensing and interpreting emotion signals, shaping data collection and scoring rules for the Sense and Explain metrics. |
 | Ethical AI Development | Normative principles and ethical frameworks guiding fair, inclusive, and responsible development of AI systems. | Ethics, Philosophy | Coeckelbergh (2020). AI Ethics. MIT Press. | Defines review protocols and fairness audits that shape the evaluation methodology and metrics across all axes. |
-| Bias and Power Dynamics | Critical examination of bias, fairness, and social power imbalances inherent in AI algorithms and data. | Philosophy, Sociology, Ethics | Crawford, K. (2021). Atlas of AI. Yale University Press. | Guides how datasets and results are analyzed for unequal impacts and informs the weighting of bias-aware metrics. |
 | Extended Mind | Cognition extends beyond the individual to include tools and environment. | Philosophy, Cognitive Science | Clark, A., & Chalmers, D. (1998). The Extended Mind. *Analysis.* | Grounds the "Extended" axis and shapes human–AI interaction metrics by framing the system and user as a single cognitive loop. |
 
 

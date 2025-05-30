@@ -1,0 +1,40 @@
+name: New Dataset Submission
+description: Submit a new dataset for Emotional Intelligence benchmarking.
+labels: [new-dataset]
+body:
+  - type: input
+    attributes:
+      label: Dataset Name
+      description: "Provide a clear name for the dataset."
+      placeholder: "Multimodal Emotion Dataset"
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Modality
+      options:
+        - Audio
+        - Text
+        - Video
+        - Multimodal
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Dataset Description
+      description: "Briefly describe the content and purpose of the dataset."
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Link to Dataset (e.g., Google Drive, Dropbox, GitHub)
+      description: "Provide a direct link to your dataset files."
+      placeholder: "https://"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Notes or Information
+      description: "Include any special notes, licensing info, or ethical considerations."
+    validations:
+      required: false

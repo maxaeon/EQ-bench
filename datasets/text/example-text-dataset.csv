@@ -1,0 +1,3 @@
+text_id,content,emotion_label,intensity,context_notes
+txt001,"I can't believe how great this turned out!","happiness",9,"social media post, informal tone"
+txt002,"This situation is extremely disappointing.","sadness",8,"feedback form, formal context"

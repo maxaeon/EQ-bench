@@ -1,0 +1,355 @@
+[
+  {
+    "title": "Affective Computing",
+    "authors": "Rosalind W. Picard",
+    "year": 1997,
+    "publisher": "MIT Press",
+    "address": "Cambridge, MA",
+    "construct": "Affective computing",
+    "axis": "sense, explain",
+    "relevance": "Introduced the field of affective computing and emotion-aware systems",
+    "url": "",
+    "category": "Computer Science",
+    "keywords": [
+      "affective computing",
+      "emotion recognition"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "The Emotions: A Philosophical Exploration",
+    "authors": "Peter Goldie",
+    "year": 2000,
+    "publisher": "Oxford University Press",
+    "address": "Oxford",
+    "construct": "Feelings-towards",
+    "axis": "sense, explain",
+    "relevance": "Emotions directed at objects and values beyond bodily states; supports separate 'Sense' and 'Explain' axes",
+    "url": "https://doi.org/10.1093/0199253049.001.0001",
+    "category": "Philosophy and Ethics",
+    "keywords": [
+      "feelings",
+      "intentionality",
+      "emotion",
+      "philosophy"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User’s Manual",
+    "authors": "John D. Mayer, Peter Salovey, David R. Caruso",
+    "year": 2002,
+    "publisher": "MHS Publishers",
+    "address": "Toronto",
+    "construct": "Four-branch model of EI",
+    "axis": "sense, explain, respond, adapt",
+    "relevance": "Splits EI into perceive, use, understand and regulate; validated on large sample guiding multi-score approach",
+    "url": "https://doi.org/10.1037/t00344-000",
+    "category": "Psychology",
+    "keywords": [
+      "ability test",
+      "emotional intelligence",
+      "measurement"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "How Emotions Are Made",
+    "authors": "Barrett",
+    "year": 2017,
+    "construct": "Core affect",
+    "axis": "adapt",
+    "relevance": "Emotions depend on context, concepts and culture; informs Adapt axis and dataset design",
+    "url": "https://en.wikipedia.org/wiki/How_Emotions_Are_Made",
+    "category": "Psychology",
+    "keywords": [
+      "constructionism",
+      "core affect",
+      "culture"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "EmpatheticDialogues",
+    "authors": "Rashkin et al.",
+    "year": 2019,
+    "construct": "Empathic response",
+    "axis": "respond",
+    "relevance": "Dialogue dataset providing gold empathic responses; baseline for Respond axis",
+    "url": "https://doi.org/10.18653/v1/D19-1015",
+    "category": "Computer Science",
+    "keywords": [
+      "empathy",
+      "dialogue dataset",
+      "nlp"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Upheavals of Thought: The Intelligence of Emotions",
+    "authors": "Martha C. Nussbaum",
+    "year": 2001,
+    "publisher": "Cambridge University Press",
+    "address": "Cambridge",
+    "construct": "Evaluative judgment",
+    "axis": "explain",
+    "relevance": "Seminal cognitive account of emotions as evaluative judgments",
+    "url": "",
+    "category": "Philosophy and Ethics",
+    "keywords": [
+      "cognitive appraisal",
+      "judgment",
+      "emotion"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Descartes' Error: Emotion, Reason, and the Human Brain",
+    "authors": "Antonio R. Damasio",
+    "year": 1994,
+    "publisher": "Putnam",
+    "address": "New York",
+    "construct": "Emotion-cognition interaction",
+    "axis": "explain",
+    "relevance": "Influential exploration of interrelation between emotion and cognition",
+    "url": "",
+    "category": "Neuroscience",
+    "keywords": [
+      "neuroscience",
+      "emotion-cognition",
+      "somatic marker"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Gut Reactions",
+    "authors": "Prinz",
+    "year": 2004,
+    "construct": "Perceptual/bodily theory",
+    "axis": "sense, explain",
+    "relevance": "Contemporary philosophical defense of perceptual and bodily approaches",
+    "url": "",
+    "category": "Philosophy and Ethics",
+    "keywords": [
+      "bodily emotion",
+      "perception",
+      "philosophy"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "AI Ethics",
+    "authors": "Coeckelbergh",
+    "year": 2020,
+    "construct": "Ethical AI development",
+    "axis": "adapt",
+    "relevance": "Overview of responsible AI principles",
+    "url": "",
+    "category": "Philosophy and Ethics",
+    "keywords": [
+      "responsible ai",
+      "ethics",
+      "governance"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence",
+    "authors": "Kate Crawford",
+    "year": 2021,
+    "publisher": "Yale University Press",
+    "address": "New Haven, CT",
+    "construct": "Bias and power dynamics",
+    "axis": "extended",
+    "relevance": "Analyzes power and inequity in AI systems",
+    "url": "",
+    "category": "Philosophy and Ethics",
+    "keywords": [
+      "bias",
+      "power",
+      "sociotechnical"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Antecedent- and Response-focused Emotion Regulation: Divergent Consequences for Experience, Expression, and Physiology",
+    "authors": "James J. Gross",
+    "year": 1998,
+    "journal": "Journal of Personality and Social Psychology",
+    "volume": 74,
+    "number": 1,
+    "pages": "224--237",
+    "construct": "Emotion regulation",
+    "axis": "adapt",
+    "relevance": "Foundational paper on emotion regulation processes",
+    "url": "",
+    "category": "Psychology",
+    "keywords": [
+      "emotion regulation",
+      "strategy",
+      "process model"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Does the Autistic Child Have a 'Theory of Mind'?",
+    "authors": "Simon Baron-Cohen, Alan M. Leslie, Uta Frith",
+    "year": 1985,
+    "journal": "Cognition",
+    "volume": 21,
+    "number": 1,
+    "pages": "37--46",
+    "construct": "Theory of Mind",
+    "axis": "explain",
+    "relevance": "Introduces classic ToM test",
+    "url": "",
+    "category": "Psychology",
+    "keywords": [
+      "autism",
+      "false belief",
+      "social cognition"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Emotion Recognition in Conversation",
+    "authors": "Poria et al.",
+    "year": 2019,
+    "construct": "Multimodal emotion recognition",
+    "axis": "sense",
+    "relevance": "Benchmark for multimodal emotion recognition models",
+    "url": "",
+    "category": "Computer Science",
+    "keywords": [
+      "multimodal",
+      "conversation",
+      "emotion recognition"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "The Emotional Brain",
+    "authors": "LeDoux",
+    "year": 1998,
+    "construct": "Neural circuits of emotion",
+    "axis": "explain",
+    "relevance": "Neuroscience basis of emotion",
+    "url": "",
+    "category": "Neuroscience",
+    "keywords": [
+      "amygdala",
+      "neural circuits",
+      "fear"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "The Extended Mind",
+    "authors": "Andy Clark and David Chalmers",
+    "year": 1998,
+    "journal": "Analysis",
+    "volume": 58,
+    "number": 1,
+    "pages": "7--19",
+    "construct": "Extended or Distributed Mind",
+    "axis": "extended",
+    "relevance": "Seminal work on cognition extending into the environment",
+    "url": "",
+    "category": "Philosophy and Ethics",
+    "keywords": [
+      "distributed cognition",
+      "externalism",
+      "embodiment"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "A Survey on Bias and Fairness in Machine Learning",
+    "authors": "Mehrabi et al.",
+    "year": 2021,
+    "construct": "Bias and power dynamics",
+    "axis": "extended",
+    "relevance": "Comprehensive review of bias and fairness metrics in ML",
+    "url": "",
+    "category": "Computer Science",
+    "keywords": [
+      "fairness",
+      "bias",
+      "machine learning"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "An Argument for Basic Emotions",
+    "authors": "Paul Ekman",
+    "year": 1992,
+    "journal": "Cognition and Emotion",
+    "volume": 6,
+    "number": "3--4",
+    "pages": "169--200",
+    "construct": "Basic emotions",
+    "axis": "sense",
+    "relevance": "Seminal defense of the basic emotion approach",
+    "url": "",
+    "category": "Psychology",
+    "keywords": [
+      "basic emotions",
+      "emotion theory"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "The Bar-On Model of Emotional-Social Intelligence (ESI)",
+    "authors": "Reuven Bar-On",
+    "year": 2006,
+    "journal": "Psicothema",
+    "volume": 18,
+    "pages": "13--25",
+    "construct": "Emotional-social intelligence",
+    "axis": "explain",
+    "relevance": "Overview of the Bar-On model of emotional-social intelligence",
+    "url": "",
+    "category": "Psychology",
+    "keywords": [
+      "emotional intelligence",
+      "bar-on"
+    ],
+    "significance": 0,
+    "ratings": []
+  },
+  {
+    "title": "Handbook of Emotions",
+    "authors": "Michael Lewis, Jeannette M. Haviland-Jones, Lisa Feldman Barrett",
+    "year": 2008,
+    "publisher": "Guilford Press",
+    "address": "New York",
+    "construct": "Emotion reference",
+    "axis": "explain",
+    "relevance": "Comprehensive reference on emotion research",
+    "url": "",
+    "category": "Psychology",
+    "keywords": [
+      "emotion",
+      "reference"
+    ],
+    "significance": 0,
+    "ratings": []
+  }
+]

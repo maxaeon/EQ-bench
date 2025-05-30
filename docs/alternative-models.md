@@ -24,8 +24,10 @@ The **SERA-X Framework** explicitly integrates interdisciplinary insights from p
    Designed explicitly for AI benchmarking, SERA-X easily adapts to diverse computational systems (social robots, conversational AI, virtual assistants), which traditional human-focused models struggle with.
 4. **Transparency and Interpretability**  
    With explicit focus on explainability, SERA-X ensures AI systems not only detect and respond emotionally but also clearly communicate reasoning, a crucial component overlooked by traditional frameworks.
-5. **Strong Ethical Foundation**  
-   The explicit inclusion of an ethical ("Extended") axis ensures consistent, transparent evaluation of fairness, inclusivity, and societal impact—uniquely embedding ethical considerations directly into the benchmarking framework.
+5. **Extended Cognition Integration**
+The explicit inclusion of an "Extended" axis incorporates the philosophical perspective of extended cognition—recognizing emotional intelligence as not solely internal but as distributed across agents, technologies, and environments, thereby aligning closely with contemporary AI-human interaction paradigms.
+6. **Strong Ethical and Inclusive Foundations**
+Additionally, SERA-X explicitly adopts ethical and inclusive theoretical foundations. While not tied to a specific axis, these commitments inform every aspect of our methodology and benchmarking, ensuring fairness, inclusivity, and positive societal impact.
 
 ### 📝 **Conclusion of Defense**  
 In summary, SERA-X is clearly superior due to explicit interdisciplinary rigor, computational adaptability, transparency, and comprehensive coverage of emotional intelligence dimensions specifically suited to artificial intelligence contexts.

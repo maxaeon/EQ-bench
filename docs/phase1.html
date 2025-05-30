@@ -216,7 +216,10 @@
             extra.id = id;
             extra.style.display = 'none';
             extra.innerHTML = `
-                <td colspan="8">Authorized editors can modify or delete this entry after logging in.</td>`;
+                <td colspan="8">
+                    <button class="button edit-lit" data-index="${l.__index}">Edit</button>
+                    <button class="button delete-lit" data-index="${l.__index}">Delete</button>
+                </td>`;
             tbody.appendChild(row);
             tbody.appendChild(extra);
         });
@@ -236,6 +239,37 @@
                 } else {
                     target.style.display = 'none';
                 }
+            });
+        });
+        tbody.querySelectorAll('.edit-lit').forEach(btn => {
+            btn.addEventListener('click', async e => {
+                e.stopPropagation();
+                const idx = parseInt(btn.dataset.index, 10);
+                let lit = literature.find(l => l.__index == idx);
+                if (!authed) {
+                    if (!(await authenticate())) return;
+                    authed = true;
+                    document.getElementById('literature-section').style.display = 'block';
+                    document.getElementById('login-btn').style.display = 'none';
+                    renderLiterature();
+                }
+                if (lit) editLiterature(lit);
+            });
+        });
+        tbody.querySelectorAll('.delete-lit').forEach(btn => {
+            btn.addEventListener('click', async e => {
+                e.stopPropagation();
+                const idx = parseInt(btn.dataset.index, 10);
+                let lit = literature.find(l => l.__index == idx);
+                if (!lit) return;
+                if (!authed) {
+                    if (!(await authenticate())) return;
+                    authed = true;
+                    document.getElementById('literature-section').style.display = 'block';
+                    document.getElementById('login-btn').style.display = 'none';
+                    renderLiterature();
+                }
+                removeLiterature(lit);
             });
         });
         updateSelectAll();

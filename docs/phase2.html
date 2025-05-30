@@ -180,7 +180,10 @@
                 <strong>related terms:</strong> ${related}<br>
                 ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}<br>` : ''}
                 <strong>Potential Issues:</strong> ${issues}<br><br>
-                <div class="construct-actions">Authorized editors can modify or delete this entry after logging in.</div></td>`;
+                <div class="construct-actions">
+                    <button class="button edit-construct" data-index="${idx}">Edit</button>
+                    <button class="button delete-construct" data-index="${idx}">Delete</button>
+                </div></td>`;
 
             tbody.appendChild(row);
             tbody.appendChild(extra);
@@ -195,6 +198,37 @@
                 } else {
                     target.style.display = 'none';
                 }
+            });
+        });
+        tbody.querySelectorAll('.edit-construct').forEach(btn => {
+            btn.addEventListener('click', async e => {
+                e.stopPropagation();
+                const idx = parseInt(btn.dataset.index, 10);
+                const c = constructs[idx];
+                if (!authed) {
+                    if (!(await authenticate())) return;
+                    authed = true;
+                    document.getElementById('construct-section').style.display = 'block';
+                    document.getElementById('login-btn').style.display = 'none';
+                    renderConstructs();
+                }
+                if (c) editConstruct(c);
+            });
+        });
+        tbody.querySelectorAll('.delete-construct').forEach(btn => {
+            btn.addEventListener('click', async e => {
+                e.stopPropagation();
+                const idx = parseInt(btn.dataset.index, 10);
+                const c = constructs[idx];
+                if (!c) return;
+                if (!authed) {
+                    if (!(await authenticate())) return;
+                    authed = true;
+                    document.getElementById('construct-section').style.display = 'block';
+                    document.getElementById('login-btn').style.display = 'none';
+                    renderConstructs();
+                }
+                removeConstruct(c);
             });
         });
         initRatings('.construct-rating', 'construct-rating', idx => constructs[idx]);

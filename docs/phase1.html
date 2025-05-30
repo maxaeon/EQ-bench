@@ -34,7 +34,7 @@
             </ul>
         </nav>
     </header>
-    <main id="main">
+    <main id="main" class="wide">
         <section id="contribute">
             <h1>Phase 1: Framework Feedback and Literature Scan</h1>
             <hr>
@@ -196,7 +196,20 @@
             const stored = localStorage.getItem(key);
             if (stored !== null) input.value = stored;
             updateAvgRating(input.dataset.index);
+
+            const clamp = () => {
+                let v = parseFloat(input.value);
+                if (isNaN(v)) {
+                    input.value = '';
+                    return;
+                }
+                v = Math.min(5, Math.max(0, v));
+                input.value = v;
+            };
+
+            input.addEventListener('input', clamp);
             input.addEventListener('change', () => {
+                clamp();
                 localStorage.setItem(key, input.value);
                 updateAvgRating(input.dataset.index);
             });

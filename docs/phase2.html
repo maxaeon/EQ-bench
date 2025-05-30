@@ -35,7 +35,7 @@
         </nav>
     </header>
 
-    <main id="main">
+    <main id="main" class="wide">
         <section>
             <h1>Phase 2: Construct Refinement and Validation</h1>
             <div class="subsection">
@@ -204,7 +204,20 @@
             const stored = localStorage.getItem(key);
             if (stored !== null) input.value = stored;
             updateConstructAvg(input.dataset.index);
+
+            const clamp = () => {
+                let v = parseFloat(input.value);
+                if (isNaN(v)) {
+                    input.value = '';
+                    return;
+                }
+                v = Math.min(5, Math.max(0, v));
+                input.value = v;
+            };
+
+            input.addEventListener('input', clamp);
             input.addEventListener('change', () => {
+                clamp();
                 localStorage.setItem(key, input.value);
                 updateConstructAvg(input.dataset.index);
             });

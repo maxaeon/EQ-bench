@@ -1,8 +1,13 @@
 // Authentication helper for CRUD actions
 let supabase = null;
+// expose placeholder for legacy checks
+window.supabase = null;
 if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
   import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm').then(({ createClient }) => {
-    supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    const client = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    supabase = client;
+    // make available for inline scripts that check `window.supabase`
+    window.supabase = client;
   });
 }
 

@@ -233,8 +233,8 @@
         let data = [];
         const useSupabase = window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchConstructs === 'function';
         if (useSupabase) {
-            for (let i=0; i<20 && !window.supabase; i++) await new Promise(r=>setTimeout(r,100));
-            if (window.supabase) {
+            for (let i=0; i<20 && !window.supabase && !supabase; i++) await new Promise(r=>setTimeout(r,100));
+            if (window.supabase || supabase) {
                 try { data = await fetchConstructs(); } catch(e) { console.error(e); data = []; }
             }
         } else {

@@ -96,7 +96,7 @@
                         <th>Relevance</th>
                         <th>Construct</th>
                         <th>Axis</th>
-                        <th>Avg Rating <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
+                        <th>Avg Rating <span class="info-icon" title="1 star = not relevant, 5 stars = crucial">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -190,31 +190,6 @@
         if (span) span.textContent = computeAvg(item.ratings, user).toFixed(1);
     }
 
-    function initLitRatings() {
-        document.querySelectorAll('.lit-rating').forEach(input => {
-            const key = 'lit-rating-' + input.dataset.index;
-            const stored = localStorage.getItem(key);
-            if (stored !== null) input.value = stored;
-            updateAvgRating(input.dataset.index);
-
-            const clamp = () => {
-                let v = parseFloat(input.value);
-                if (isNaN(v)) {
-                    input.value = '';
-                    return;
-                }
-                v = Math.min(5, Math.max(0, v));
-                input.value = v;
-            };
-
-            input.addEventListener('input', clamp);
-            input.addEventListener('change', () => {
-                clamp();
-                localStorage.setItem(key, input.value);
-                updateAvgRating(input.dataset.index);
-            });
-        });
-    }
 
     function renderLit(items) {
         const tbody = document.querySelector('#lit-table tbody');
@@ -240,7 +215,7 @@
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${l.axis}</td>
-                <td><span class="avg-rating" data-index="${l.__index}"></span> <input type="number" min="0" max="5" class="rating-input lit-rating" data-index="${l.__index}" style="width:3em"></td>`;
+                <td><span class="avg-rating" data-index="${l.__index}"></span> <div class="star-rating lit-rating" data-index="${l.__index}"></div></td>`;
             extra.className = 'lit-extra';
             extra.id = id;
             extra.style.display = 'none';
@@ -259,7 +234,7 @@
         });
         tbody.querySelectorAll('.lit-row').forEach(r => {
             r.addEventListener('click', e => {
-                if (e.target.classList.contains('lit-check') || e.target.classList.contains('rating-input')) return;
+                if (e.target.classList.contains('lit-check') || e.target.closest('.star-rating')) return;
                 const target = document.getElementById(r.dataset.target);
                 if (target.style.display === 'none' || !target.style.display) {
                     target.style.display = 'table-row';
@@ -269,7 +244,7 @@
             });
         });
         updateSelectAll();
-        initLitRatings();
+        initStarRatings('.lit-rating', 'lit-rating', updateAvgRating);
     }
 
     function applyLitFilters() {

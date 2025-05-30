@@ -90,7 +90,7 @@
                         <th>Example</th>
                         <th>Axis</th>
                         <th>Authors &amp; Sources</th>
-                        <th>Avg Rating <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
+                        <th>Avg Rating <span class="info-icon" title="1 star = not relevant, 5 stars = crucial">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -153,7 +153,7 @@
                 <td>${c.example || ''}</td>
                 <td>${c.axis}</td>
                 <td></td>
-                <td><span class="avg-rating" data-index="${idx}"></span> <input type="number" min="0" max="5" class="rating-input construct-rating" data-index="${idx}" style="width:3em"></td>`;
+                <td><span class="avg-rating" data-index="${idx}"></span> <div class="star-rating construct-rating" data-index="${idx}"></div></td>`;
 
             extra.className = 'construct-extra';
             extra.id = id;
@@ -179,7 +179,8 @@
         });
 
         tbody.querySelectorAll('.construct-row').forEach(r => {
-            r.addEventListener('click', () => {
+            r.addEventListener('click', e => {
+                if (e.target.closest('.star-rating')) return;
                 const target = document.getElementById(r.dataset.target);
                 if (target.style.display === 'none' || !target.style.display) {
                     target.style.display = 'table-row';
@@ -188,7 +189,7 @@
                 }
             });
         });
-        initConstructRatings();
+        initStarRatings('.construct-rating', 'construct-rating', updateConstructAvg);
     }
 
     function computeAvg(base, user) {
@@ -207,31 +208,6 @@
         if (span) span.textContent = computeAvg(item.ratings, user).toFixed(1);
     }
 
-    function initConstructRatings() {
-        document.querySelectorAll('.construct-rating').forEach(input => {
-            const key = 'construct-rating-' + input.dataset.index;
-            const stored = localStorage.getItem(key);
-            if (stored !== null) input.value = stored;
-            updateConstructAvg(input.dataset.index);
-
-            const clamp = () => {
-                let v = parseFloat(input.value);
-                if (isNaN(v)) {
-                    input.value = '';
-                    return;
-                }
-                v = Math.min(5, Math.max(0, v));
-                input.value = v;
-            };
-
-            input.addEventListener('input', clamp);
-            input.addEventListener('change', () => {
-                clamp();
-                localStorage.setItem(key, input.value);
-                updateConstructAvg(input.dataset.index);
-            });
-        });
-    }
 
     function applyConstructFilters() {
         const q = document.getElementById('construct-search').value.trim().toLowerCase();

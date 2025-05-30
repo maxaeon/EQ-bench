@@ -70,8 +70,8 @@ This repository is organized as an AI EQ Benchmark Research Hub. Major sections 
 - virtualenv or venv
 
 bash
-git clone https://github.com/maxaeon/SERA-x.git
-cd SERA-x
+git clone https://github.com/maxaeon/EQ-bench.git
+cd EQ-bench
 # No additional Python packages required yet
 pytest               # metric unit-tests
 python src/cli.py    # view help
@@ -92,7 +92,7 @@ See the [Quick GitHub Guide](docs/quick_github_guide.md) for step-by-step screen
 ### Project website
 
 The `docs/` folder doubles as a GitHub Pages site.
-Visit <https://maxaeon.github.io/SERA-x/> for a short overview of the project and a quick link to submit new construct forms.
+Visit <https://maxaeon.github.io/EQ-bench/> for a short overview of the project and a quick link to submit new construct forms.
 Construct submissions filed via the **Add a Construct** issue template are automatically exported to `data/construct_submissions.json`. Peer-reviewed references submitted through the **Add a Source** template populate `docs/literature.json`. These flows run via GitHub Actions—see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Quick GitHub Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file.
 
 ---
@@ -109,18 +109,21 @@ Report bias or bug	Use Issue template Bug report, provide minimal repro.
 Please read CONTRIBUTING.md and our CODE_OF_CONDUCT.md before contributing.
 
 ---
-
 ## 7 Roadmap (v0 → v1)
-Month	Milestone
-M-1 (Weeks 1-2)	Literature briefs & construct sheets consolidated
-M-1 (Week 3)	Axes & pilot metrics frozen (design_dossier_v1)
-M-2	Pilot data (≈300 dialogue turns) annotated & baselines published
-M-3	Day-90 deliverables:
-• Pilot report (reports/)
-• Full-scale data-collection plan
-• System-card template
-• v0.2 tag
-Post-pilot	Expand to multimodal clips; public leaderboard; “Experience Pack 01”
+
+1. **M-1 (Weeks&nbsp;1–2)** — Literature briefs & construct sheets consolidated
+2. **M-1 (Week&nbsp;3)** — Axes & pilot metrics frozen (`design_dossier_v1`)
+3. **M-2** — Pilot data (≈300 dialogue turns) annotated & baselines published
+4. **M-3** — Day-90 deliverables:
+   - Pilot report (`reports/`)
+   - Full-scale data-collection plan
+   - System-card template
+   - v0.2 tag
+5. **Post-pilot** — Expand to multimodal clips; public leaderboard; “Experience Pack&nbsp;01”
+
+<p align="center">
+  <img src="docs/assets/images/gantt.png" width="600" alt="Gantt chart of first 90 days">
+</p>
 
 ## License
 - **Code**: MIT License – see `LICENSE`

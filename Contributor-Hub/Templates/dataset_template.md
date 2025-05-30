@@ -12,7 +12,7 @@ Use this template to propose a new dataset or evaluation script.
 
 **Link:** <https://example.com/empathy-chats>
 
-**License:** CC-BY 4.0
+**License:** Proprietary - no redistribution or commercial use without permission
 
 ## Evaluation Standards
 - Data must be legally shareable; specify license and permissions.

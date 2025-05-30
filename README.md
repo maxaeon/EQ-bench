@@ -154,21 +154,5 @@ This updates `data/literature.json` and mirrors it to `docs/data/literature.json
 </p>
 
 ## License
-- **Code**: MIT License – see `LICENSE`
-- **Docs & sample data**: CC-BY-4.0 – see `docs/LICENSE_DOCS` and `data/LICENSE_DATA`
-
-Licensing notice (v 0.1)
-
-For this early, community-building release we are using a dual-license approach:
-– Code → MIT License (permissive, easy to adopt)
-– Documentation & sample data → CC-BY 4.0 (attribution required)
-
-As the project matures the license terms may evolve to reflect new realities. Examples:
-
-Large, proprietary dialogue sets – If we ingest datasets that carry third-party restrictions, those portions will ship under a separate research-only data agreement or EULA while the open resources remain MIT / CC-BY.
-
-Patent-relevant metric code – Should any scoring algorithm become patentable, we may re-license that module under Apache-2.0, which retains openness while granting explicit patent rights.
-
-Reciprocal-sharing goals – If the community decides that future work must stay open under the same terms, we may adopt stronger copyleft licenses (e.g., GPL-3.0 for code, CC-BY-SA 4.0 for docs/data).
-
-Any change will be announced via a tagged release and a decision memo, ensuring contributors have clear, advance notice. For now, the MIT + CC-BY pairing keeps barriers low and maximises collaboration.
+- **Code, docs & sample data**: Provided for evaluation and internal research only.
+Redistribution or commercial use is prohibited without written permission. See `LICENSE`, `docs/LICENSE_DOCS`, and `data/LICENSE_DATA` for details.

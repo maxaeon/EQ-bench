@@ -173,22 +173,7 @@
         document.getElementById('lit-select-all').checked = allChecked;
     }
 
-    function computeAvg(base, user) {
-        const arr = Array.isArray(base) ? base.slice() : [];
-        if (user !== null && user !== '') arr.push(parseFloat(user));
-        if (!arr.length) return 0;
-        const sum = arr.reduce((a,b)=>a+parseFloat(b),0);
-        return sum / arr.length;
-    }
 
-    function updateAvgRating(idx) {
-        const item = literature.find(l => l.__index == idx);
-        if (!item) return;
-        const key = 'lit-rating-' + idx;
-        const user = localStorage.getItem(key);
-        const span = document.querySelector(`.avg-rating[data-index="${idx}"]`);
-        if (span) span.textContent = computeAvg(item.ratings, user).toFixed(1);
-    }
 
 
     function renderLit(items) {
@@ -244,7 +229,7 @@
             });
         });
         updateSelectAll();
-        initStarRatings('.lit-rating', 'lit-rating', updateAvgRating);
+        initRatings('.lit-rating', 'lit-rating', idx => literature.find(l => l.__index == idx));
     }
 
     function applyLitFilters() {

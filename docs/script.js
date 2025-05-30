@@ -1,20 +1,37 @@
-// Simple password prompt for CRUD actions
-const password = 'inflection.ai';
-function authenticate() {
-  const userPass = prompt('Enter password for editing:');
-  if (userPass !== password) {
-    alert('Incorrect password. Access denied.');
-    return false;
-  }
-  return true;
-}
-
-// Initialize Supabase client if credentials are provided via globals
+// Authentication helper for CRUD actions
 let supabase = null;
 if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
   import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm').then(({ createClient }) => {
     supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
   });
+}
+
+async function authenticate() {
+  // If Supabase is configured, prefer email/password authentication
+  if (supabase) {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) return true;
+    const email = prompt('Supabase email:');
+    const pass = prompt('Password:');
+    if (!email || !pass) return false;
+    const { error } = await supabase.auth.signInWithPassword({ email, password: pass });
+    if (error) {
+      alert('Incorrect credentials. Access denied.');
+      return false;
+    }
+    return true;
+  }
+
+  // Fallback to environment-provided password
+  const envPass = window.DOC_PASSWORD;
+  if (envPass) {
+    const userPass = prompt('Enter password for editing:');
+    if (userPass !== envPass) {
+      alert('Incorrect password. Access denied.');
+      return false;
+    }
+  }
+  return true;
 }
 
 async function fetchConstructs() {

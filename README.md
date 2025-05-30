@@ -106,6 +106,14 @@ window.SUPABASE_ANON_KEY = '<your anon key>'; // public anon key
 
 Store these values as GitHub repository secrets and inject them during build time (see `.github/workflows/export_constructs.yml`). The GitHub documentation on [encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) explains how to configure them. The keys are never committed to the repository.
 
+To require a simple password for editing when Supabase Auth is not used, define `window.DOC_PASSWORD` before loading `script.js`:
+
+```javascript
+window.DOC_PASSWORD = '<your editing password>';
+```
+
+When `SUPABASE_URL` and `SUPABASE_ANON_KEY` are provided, the site prompts for a Supabase email and password instead.
+
 ---
 
 ## 6 Contributing

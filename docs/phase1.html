@@ -42,21 +42,18 @@
             <h2>Axis Feedback</h2>
             <p>We are gathering input on the proposed SERA-X axes and compiling relevant peer‑reviewed literature. As an introductory project, contributors and collaborators are encouraged to familiarize themselves with existing emotional intelligence benchmarking frameworks. Please review our detailed comparison here:</p>
             <p><a href="alternative-models.html"><strong>Comparison of Alternative Emotional Intelligence Models</strong></a></p>
-            <p>Please explore the references below. If you have a new source, use the <em>Manually add source</em> button. For broader comments on the SERA-X framework, let us know via our feedback form.</p>
-            <p><a class="button" href="https://github.com/maxaeon/EQ-bench/issues/new?template=feedback.yml">Share feedback</a></p>
+            <p>Please explore the references below. Authorized collaborators may log in below to add or update sources directly in our Supabase database. For broader comments on the SERA-X framework, let us know via our feedback form.</p>
         </section>
 
 
         <section id="literature">
             <hr>
             <h2>Relevant Literature</h2>
-            <p>Notice something missing? Use the controls below to manually add source.</p>
+            <p>Notice something missing? Authorized collaborators can log in below to add new sources.</p>
             <div class="add-source-controls">
-                <a class="button" href="https://github.com/maxaeon/EQ-bench/issues/new?template=reference.yml">Manually add source</a>
                 <label for="bib-upload" class="button">Upload .bib</label>
                 <input id="bib-upload" type="file" accept=".bib" hidden>
             </div>
-            <p>Submitted issues are automatically exported to the shared JSON databases.<sup><a href="persisting_constructs.md" title="How submissions persist">?</a></sup></p>
 
             <div class="search-controls">
                 <label for="lit-search">Search:</label>
@@ -204,12 +201,6 @@
             const row = document.createElement('tr');
             const extra = document.createElement('tr');
             const id = `ldetail-${l.__index}`;
-            const delUrl =
-                'https://github.com/maxaeon/EQ-bench/issues/new?template=delete-publication.yml&title=' +
-                encodeURIComponent('Delete publication: ' + l.title);
-            const issueUrl =
-                'https://github.com/maxaeon/EQ-bench/issues/new?template=reference.yml&title=' +
-                encodeURIComponent(l.title);
             row.className = 'lit-row';
             row.dataset.target = id;
             row.innerHTML = `
@@ -225,8 +216,7 @@
             extra.id = id;
             extra.style.display = 'none';
             extra.innerHTML = `
-                <td colspan="8"><a href="${delUrl}" target="_blank">Request deletion</a> |
-                <a href="${issueUrl}" target="_blank">Report issue</a></td>`;
+                <td colspan="8">Authorized editors can modify or delete this entry after logging in.</td>`;
             tbody.appendChild(row);
             tbody.appendChild(extra);
         });
@@ -280,13 +270,13 @@
 
     async function loadLiterature() {
         let lit = [];
-        if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchLiterature === 'function') {
+        const useSupabase = window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchLiterature === 'function';
+        if (useSupabase) {
             for (let i=0; i<20 && !window.supabase; i++) await new Promise(r=>setTimeout(r,100));
             if (window.supabase) {
-                try { lit = await fetchLiterature(); } catch(e) { console.error(e); }
+                try { lit = await fetchLiterature(); } catch(e) { console.error(e); lit = []; }
             }
-        }
-        if (!Array.isArray(lit) || !lit.length) {
+        } else {
             try { lit = await (await fetch('data/literature.json')).json(); } catch(e) { lit = []; }
         }
 

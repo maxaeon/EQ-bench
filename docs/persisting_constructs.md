@@ -33,3 +33,11 @@ terms. The constructs page uses these values to make search more flexible.
 This lightweight method keeps contributions transparent while avoiding the
 maintenance burden of an external database. Future work may revisit a database
 if query or scale needs grow.
+
+## Removing entries
+
+If a construct or reference turns out to be incorrect or should no longer be
+listed, open a **Request deletion** issue using the appropriate template. A
+repository maintainer must approve the request before any entry is removed from
+the JSON files. This keeps the historical record intact and prevents accidental
+loss of data.

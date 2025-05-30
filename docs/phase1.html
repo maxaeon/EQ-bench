@@ -97,6 +97,7 @@
                         <th>Construct</th>
                         <th>Axis</th>
                         <th>Avg Rating <span class="info-icon" title="0 = not relevant, 5 = crucial">?</span></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -222,6 +223,9 @@
         items.forEach(l => {
             const checked = selectedLit.has(l.__index) ? 'checked' : '';
             const row = document.createElement('tr');
+            const delUrl =
+                'https://github.com/maxaeon/EQ-bench/issues/new?template=delete-publication.yml&title=' +
+                encodeURIComponent('Delete publication: ' + l.title);
             row.innerHTML = `
                 <td><input type="checkbox" class="lit-check" data-index="${l.__index}" ${checked}></td>
                 <td>${l.title}</td>
@@ -230,7 +234,8 @@
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${l.axis}</td>
-                <td><span class="avg-rating" data-index="${l.__index}"></span> <input type="number" min="0" max="5" class="rating-input lit-rating" data-index="${l.__index}" style="width:3em"></td>`;
+                <td><span class="avg-rating" data-index="${l.__index}"></span> <input type="number" min="0" max="5" class="rating-input lit-rating" data-index="${l.__index}" style="width:3em"></td>
+                <td><a href="${delUrl}" target="_blank" class="delete-link">Request deletion</a></td>`;
             tbody.appendChild(row);
         });
         tbody.querySelectorAll('.lit-check').forEach(cb => {

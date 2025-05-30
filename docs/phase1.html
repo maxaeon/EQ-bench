@@ -343,8 +343,50 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', loadLiterature);
+document.addEventListener('DOMContentLoaded', loadLiterature);
 let authed = true;
+
+function startAddLit() {
+    document.getElementById('lit-add-row')?.remove();
+    const tbody = document.querySelector('#lit-table tbody');
+    const addRow = document.createElement('tr');
+    addRow.id = 'lit-add-row';
+    addRow.innerHTML = `<td colspan="8"><form id="lit-add-form">
+        <label>Title: <input type="text" name="title" required></label>
+        <label>Authors: <input type="text" name="authors"></label>
+        <label>Year: <input type="number" name="year"></label>
+        <label>Construct: <input type="text" name="construct"></label>
+        <label>Axis: <input type="text" name="axis"></label>
+        <label>Relevance:<br><textarea name="relevance" rows="3"></textarea></label>
+        <button type="submit">Add</button>
+        <button type="button" id="lit-add-cancel">Cancel</button>
+    </form></td>`;
+    tbody.prepend(addRow);
+    document.getElementById('lit-add-form').addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!authed) { if (!(await authenticate())) return; authed = true; }
+        const obj = {
+            title: e.target.title.value,
+            authors: e.target.authors.value,
+            year: parseInt(e.target.year.value,10) || null,
+            construct: e.target.construct.value,
+            axis: e.target.axis.value,
+            relevance: e.target.relevance.value,
+            ratings: []
+        };
+        if (typeof addLiterature === 'function') {
+            try {
+                const res = await addLiterature(obj);
+                if (res && res[0]) Object.assign(obj, res[0]);
+            } catch (err) { console.error(err); }
+        }
+        obj.__index = Math.max(0, ...literature.map(l => l.__index || 0)) + 1;
+        literature.push(obj);
+        addRow.remove();
+        applyLitFilters();
+    });
+    document.getElementById('lit-add-cancel').addEventListener('click', () => addRow.remove());
+}
 
 function startEditLit() {
     if (selectedLitRow === null) { alert('Select an entry first.'); return; }
@@ -393,6 +435,7 @@ async function deleteSelectedLit() {
 
 document.getElementById('edit-lit-btn').addEventListener('click', startEditLit);
 document.getElementById('delete-lit-btn').addEventListener('click', deleteSelectedLit);
+document.getElementById('add-source-btn').addEventListener('click', startAddLit);
 
 // Confirm before saving new or updated literature
 document.getElementById('literature-form')?.addEventListener('submit', e => {

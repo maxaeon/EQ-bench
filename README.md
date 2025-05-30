@@ -7,7 +7,7 @@ GitHub Discussions are enabled for open dialogue and interdisciplinary collabora
 Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 1  Project Snapshot
-SERA-X is intended to be a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Visitors can use the issue templates **Add a Source** and **Add a Construct** to automatically append references and constructs to our Supabase tables (`literature` and `constructs`) and the mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
+SERA-X is intended to be a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Authorized visitors can log in on the project website and submit new sources or constructs directly through the provided forms. These entries are stored in our Supabase tables (`literature` and `constructs`) and mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
 
 | Project Attribute | Short description |
 |-------------------------|---------------------|
@@ -91,8 +91,7 @@ See the [Research Hub Contribution Guide](docs/quick_github_guide.md) for step-b
 ### Project website
 
 The `docs/` folder doubles as a GitHub Pages site.
-Visit <https://maxaeon.github.io/EQ-bench/> for a short overview of the project and a quick link to submit new construct forms.
-Construct submissions filed via the **Add a Construct** issue template are exported to `data/construct_submissions.json` and uploaded to the Supabase `constructs` table. Peer-reviewed references submitted through the **Add a Source** template populate `data/literature.json` and the Supabase `literature` table. These flows run via GitHub Actions—see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file. If you have a DOI, you can convert it to a BibTeX entry using online tools such as [bibtex.com](https://www.bibtex.com/c/doi-to-bibtex-converter/).
+Visit <https://maxaeon.github.io/EQ-bench/> for a short overview of the project and direct forms for submitting constructs or literature references. Entries submitted through these forms are stored in `data/construct_submissions.json` and `data/literature.json` and mirrored in our Supabase tables. See [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file. If you have a DOI, you can convert it to a BibTeX entry using online tools such as [bibtex.com](https://www.bibtex.com/c/doi-to-bibtex-converter/).
 The website also lets you rate how relevant each construct or paper is using a star widget.
 The scale runs from **1 star = not relevant** to **5 stars = crucial**.
 

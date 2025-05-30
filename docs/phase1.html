@@ -49,10 +49,11 @@
         <section id="literature">
             <hr>
             <h2>Relevant Literature</h2>
-            <p>Notice something missing? Authorized collaborators can log in below to add new sources.</p>
+            <p>Notice something missing? Authorized collaborators can log in and use the <strong>Add Source</strong> button to submit new references.</p>
             <div class="add-source-controls">
                 <label for="bib-upload" class="button">Upload .bib</label>
                 <input id="bib-upload" type="file" accept=".bib" hidden>
+                <button id="add-source-btn" class="button" type="button">Add Source</button>
             </div>
 
             <div class="search-controls">
@@ -465,6 +466,20 @@ document.getElementById('login-btn').addEventListener('click', async () => {
         document.getElementById('login-btn').style.display = 'none';
         renderLiterature();
     }
+});
+
+document.getElementById('add-source-btn').addEventListener('click', async () => {
+    if (!authed) {
+        if (!(await authenticate())) return;
+        authed = true;
+        document.getElementById('literature-section').style.display = 'block';
+        document.getElementById('login-btn').style.display = 'none';
+        renderLiterature();
+    }
+    document.getElementById('literature-form').reset();
+    document.getElementById('literature-id').value = '';
+    document.getElementById('literature-cancel').style.display = 'none';
+    document.getElementById('literature-section').scrollIntoView({behavior:'smooth'});
 });
     </script>
     <script src="script.js"></script>

@@ -13,19 +13,14 @@
       "definition": "Emotions arise from evaluations of events relative to personal goals.",
       "axes": ["explain", "respond"]
     },
-    {
-      "id": 2,
-      "title": "Emotion Regulation",
-      "definition": "Processes that influence how emotions are generated, experienced, and expressed.",
-      "axes": ["respond", "adapt"]
-    }
+...
   ],
   "benchmarks": [
     {
       "name": "Sample EQ Assessment",
       "description": "A small benchmark referencing the above constructs.",
       "axes_tested": ["sense", "explain", "respond", "adapt", "extended"],
-      "construct_ids": [1, 2]
+      "construct_ids": [1, 2,...]
     }
   ]
 }

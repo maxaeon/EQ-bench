@@ -1,5 +1,18 @@
 [
   {
+    "title": "Affective Computing",
+    "authors": "Picard",
+    "year": 1997,
+    "publisher": "MIT Press",
+    "address": "Cambridge, MA",
+    "construct": "Affective computing",
+    "axis": "sense, explain",
+    "relevance": "Introduced the field of affective computing and emotion-aware systems",
+    "url": "",
+    "category": "Computer Science",
+    "keywords": ["affective computing", "emotion recognition"]
+  },
+  {
     "title": "The Rationality of Emotion",
     "authors": "de Sousa",
     "year": 1987,
@@ -11,9 +24,11 @@
     "keywords": ["rationality", "emotion", "salience", "philosophy"]
   },
   {
-    "title": "The Emotions",
+    "title": "The Emotions: A Philosophical Exploration",
     "authors": "Goldie",
     "year": 2000,
+    "publisher": "Oxford University Press",
+    "address": "Oxford",
     "construct": "Feelings-towards",
     "axis": "sense, explain",
     "relevance": "Emotions directed at objects and values beyond bodily states; supports separate 'Sense' and 'Explain' axes",
@@ -22,9 +37,11 @@
     "keywords": ["feelings", "intentionality", "emotion", "philosophy"]
   },
   {
-    "title": "MSCEIT",
+    "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User’s Manual",
     "authors": "Mayer et al.",
-    "year": 2003,
+    "year": 2002,
+    "publisher": "MHS Publishers",
+    "address": "Toronto",
     "construct": "Four-branch model of EI",
     "axis": "sense, explain, respond, adapt",
     "relevance": "Splits EI into perceive, use, understand and regulate; validated on large sample guiding multi-score approach",
@@ -55,9 +72,11 @@
     "keywords": ["empathy", "dialogue dataset", "nlp"]
   },
   {
-    "title": "Upheavals of Thought",
+    "title": "Upheavals of Thought: The Intelligence of Emotions",
     "authors": "Nussbaum",
     "year": 2001,
+    "publisher": "Cambridge University Press",
+    "address": "Cambridge",
     "construct": "Evaluative judgment",
     "axis": "explain",
     "relevance": "Seminal cognitive account of emotions as evaluative judgments",
@@ -66,9 +85,11 @@
     "keywords": ["cognitive appraisal", "judgment", "emotion"]
   },
   {
-    "title": "Descartes' Error",
+    "title": "Descartes' Error: Emotion, Reason, and the Human Brain",
     "authors": "Damasio",
     "year": 1994,
+    "publisher": "Putnam",
+    "address": "New York",
     "construct": "Emotion-cognition interaction",
     "axis": "explain",
     "relevance": "Influential exploration of interrelation between emotion and cognition",
@@ -91,6 +112,10 @@
     "title": "On the Morality of Artificial Agents",
     "authors": "Floridi & Sanders",
     "year": 2004,
+    "journal": "Minds and Machines",
+    "volume": 14,
+    "number": 3,
+    "pages": "349--379",
     "construct": "Artificial moral agency",
     "axis": "respond",
     "relevance": "Seminal paper on attributing moral agency to AI systems",
@@ -110,9 +135,11 @@
     "keywords": ["responsible ai", "ethics", "governance"]
   },
   {
-    "title": "Atlas of AI",
+    "title": "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence",
     "authors": "Crawford",
     "year": 2021,
+    "publisher": "Yale University Press",
+    "address": "New Haven, CT",
     "construct": "Bias and power dynamics",
     "axis": "extended",
     "relevance": "Analyzes power and inequity in AI systems",
@@ -121,9 +148,13 @@
     "keywords": ["bias", "power", "sociotechnical"]
   },
   {
-    "title": "Antecedent- and Response-focused Emotion Regulation",
+    "title": "Antecedent- and Response-focused Emotion Regulation: Divergent Consequences for Experience, Expression, and Physiology",
     "authors": "Gross",
     "year": 1998,
+    "journal": "Journal of Personality and Social Psychology",
+    "volume": 74,
+    "number": 1,
+    "pages": "224--237",
     "construct": "Emotion regulation",
     "axis": "adapt",
     "relevance": "Foundational paper on emotion regulation processes",
@@ -132,9 +163,13 @@
     "keywords": ["emotion regulation", "strategy", "process model"]
   },
   {
-    "title": "Does the autistic child have a 'theory of mind'?",
+    "title": "Does the Autistic Child Have a 'Theory of Mind'?",
     "authors": "Baron-Cohen et al.",
     "year": 1985,
+    "journal": "Cognition",
+    "volume": 21,
+    "number": 1,
+    "pages": "37--46",
     "construct": "Theory of Mind",
     "axis": "explain",
     "relevance": "Introduces classic ToM test",
@@ -168,6 +203,10 @@
     "title": "The Extended Mind",
     "authors": "Clark & Chalmers",
     "year": 1998,
+    "journal": "Analysis",
+    "volume": 58,
+    "number": 1,
+    "pages": "7--19",
     "construct": "Extended or Distributed Mind",
     "axis": "extended",
     "relevance": "Seminal work on cognition extending into the environment",
@@ -196,5 +235,62 @@
     "url": "",
     "category": "Computer Science",
     "keywords": ["fairness", "bias", "machine learning"]
+  },
+  {
+    "title": "What Is an Emotion?",
+    "authors": "James",
+    "year": 1884,
+    "journal": "Mind",
+    "volume": 9,
+    "number": 34,
+    "pages": "188--205",
+    "construct": "Emotion theory",
+    "axis": "explain",
+    "relevance": "Classic essay questioning the nature of emotion",
+    "url": "",
+    "category": "Philosophy and Ethics",
+    "keywords": ["emotion", "philosophy"]
+  },
+  {
+    "title": "An Argument for Basic Emotions",
+    "authors": "Ekman",
+    "year": 1992,
+    "journal": "Cognition and Emotion",
+    "volume": 6,
+    "number": "3--4",
+    "pages": "169--200",
+    "construct": "Basic emotions",
+    "axis": "sense",
+    "relevance": "Seminal defense of the basic emotion approach",
+    "url": "",
+    "category": "Psychology",
+    "keywords": ["basic emotions", "emotion theory"]
+  },
+  {
+    "title": "The Bar-On Model of Emotional-Social Intelligence (ESI)",
+    "authors": "Bar-On",
+    "year": 2006,
+    "journal": "Psicothema",
+    "volume": 18,
+    "pages": "13--25",
+    "construct": "Emotional-social intelligence",
+    "axis": "explain",
+    "relevance": "Overview of the Bar-On model of emotional-social intelligence",
+    "url": "",
+    "category": "Psychology",
+    "keywords": ["emotional intelligence", "bar-on"]
+  },
+  {
+    "title": "Handbook of Emotions",
+    "authors": "Lewis et al.",
+    "year": 2008,
+    "publisher": "Guilford Press",
+    "address": "New York",
+    "construct": "Emotion reference",
+    "axis": "explain",
+    "relevance": "Comprehensive reference on emotion research",
+    "url": "",
+    "category": "Psychology",
+    "keywords": ["emotion", "reference"]
   }
 ]

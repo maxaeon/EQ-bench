@@ -96,14 +96,14 @@ The website also lets you rate how relevant each construct or paper is using a s
 The scale runs from **1 star = not relevant** to **5 stars = crucial**.
 
 ### Supabase integration
-The website fetches data from Supabase. Define the following JavaScript variables before loading `docs/script.js`:
+The website fetches data from Supabase. A small `env.js` file is created during deployment and loaded before `docs/script.js`:
 
 ```javascript
-window.SUPABASE_URL = 'https://pzmmgpzcnjhivkizcvpp.supabase.co';
-window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6bW1ncHpjbmpoaXZraXpjdnBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2MzA4ODEsImV4cCI6MjA2NDIwNjg4MX0.oeXfuk-Z2_BS4M7jU9vguedalcuw217gRRvxlg2t9Hc'; // public anon key
+window.SUPABASE_URL = '<https://pzmmgpzcnjhivkizcvpp.supabase.co>';
+window.SUPABASE_ANON_KEY = '<eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6bW1ncHpjbmpoaXZraXpjdnBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2MzA4ODEsImV4cCI6MjA2NDIwNjg4MX0.oeXfuk-Z2_BS4M7jU9vguedalcuw217gRRvxlg2t9Hc>'; // public anon key
 ```
 
-Store these values as GitHub repository secrets and inject them during build time (see `.github/workflows/export_constructs.yml`). The GitHub documentation on [encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) explains how to configure them. The keys are never committed to the repository.
+Store these values as GitHub repository secrets. The deployment workflow writes them into `docs/env.js` before publishing the site (see `.github/workflows/export_constructs.yml`). The GitHub documentation on [encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) explains how to configure them. The keys are never committed to the repository.
 
 To require a simple password for editing when Supabase Auth is not used, define `window.DOC_PASSWORD` before loading `script.js`:
 

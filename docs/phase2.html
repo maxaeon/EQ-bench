@@ -56,10 +56,13 @@
             <hr>
             <h2>Tentative Starting Point</h2>
             <p>Undergoing development by an interdisciplinary team of experts in psychology, computer science, philosophy, and more.</p>
-            <p>Notice something missing? Authorized collaborators can log in below to add or edit constructs directly in our Supabase database.</p>
+            <p>Notice something missing? Authorized collaborators can log in and use the <strong>Add Construct</strong> button to submit new entries.</p>
             <div class="search-controls">
                 <label for="construct-search">Search:</label>
                 <input type="search" id="construct-search" placeholder="Search constructs">
+            </div>
+            <div class="add-construct-controls">
+                <button id="add-construct-btn" class="button" type="button">Add Construct</button>
             </div>
             <div class="controls-row">
                 <div class="filter-controls">
@@ -388,6 +391,20 @@ document.getElementById('login-btn').addEventListener('click', async () => {
         document.getElementById('login-btn').style.display = 'none';
         renderConstructs();
     }
+});
+
+document.getElementById('add-construct-btn').addEventListener('click', async () => {
+    if (!authed) {
+        if (!(await authenticate())) return;
+        authed = true;
+        document.getElementById('construct-section').style.display = 'block';
+        document.getElementById('login-btn').style.display = 'none';
+        renderConstructs();
+    }
+    document.getElementById('construct-form').reset();
+    document.getElementById('construct-id').value = '';
+    document.getElementById('construct-cancel').style.display = 'none';
+    document.getElementById('construct-section').scrollIntoView({behavior:'smooth'});
 });
     </script>
     <script src="script.js"></script>

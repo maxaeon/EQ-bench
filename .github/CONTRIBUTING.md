@@ -23,8 +23,8 @@ This benchmark is designed to evolve as a **collaborative, interdisciplinary eff
 
 ```bash
 # Clone the repository
-git clone git@github.com:maxaeon/SERA-x.git
-cd SERA-x
+git clone git@github.com:maxaeon/EQ-bench.git
+cd EQ-bench
 
 # Create a virtual environment
 python3 -m venv .venv
@@ -61,7 +61,7 @@ pytest
 ## 🧠 Good First Issues
 
 We label beginner-friendly tasks as `good first issue`.  
-See: https://github.com/maxaeon/SERA-x/issues?q=is%3Aopen+label%3A%22good+first+issue%22
+See: https://github.com/maxaeon/EQ-bench/issues?q=is%3Aopen+label%3A%22good+first+issue%22
 
 ---
 

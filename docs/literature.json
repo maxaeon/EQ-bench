@@ -18,24 +18,6 @@
     "ratings": []
   },
   {
-    "title": "The Rationality of Emotion",
-    "authors": "de Sousa",
-    "year": 1987,
-    "construct": "Emotion as salience strategy",
-    "axis": "explain",
-    "relevance": "Emotions guide attention and reasoning non-propositionally; foundation for non-binary, gradient model of EI",
-    "url": "https://doi.org/10.1093/0198238829.001.0001",
-    "category": "Philosophy and Ethics",
-    "keywords": [
-      "rationality",
-      "emotion",
-      "salience",
-      "philosophy"
-    ],
-    "significance": 0,
-    "ratings": []
-  },
-  {
     "title": "The Emotions: A Philosophical Exploration",
     "authors": "Peter Goldie",
     "year": 2000,
@@ -159,27 +141,6 @@
       "bodily emotion",
       "perception",
       "philosophy"
-    ],
-    "significance": 0,
-    "ratings": []
-  },
-  {
-    "title": "On the Morality of Artificial Agents",
-    "authors": "Luciano Floridi and J. W. Sanders",
-    "year": 2004,
-    "journal": "Minds and Machines",
-    "volume": 14,
-    "number": 3,
-    "pages": "349--379",
-    "construct": "Artificial moral agency",
-    "axis": "respond",
-    "relevance": "Seminal paper on attributing moral agency to AI systems",
-    "url": "",
-    "category": "Philosophy and Ethics",
-    "keywords": [
-      "moral agency",
-      "ai ethics",
-      "robots"
     ],
     "significance": 0,
     "ratings": []

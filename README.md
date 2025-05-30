@@ -7,6 +7,8 @@ GitHub Discussions are enabled for open dialogue and interdisciplinary collabora
 Status: *early scaffold* (v0.0.1) - layout may change
 
 ## 1  Project Snapshot
+SERA-X is an open benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets. Visitors can use the issue templates **Add a Source** and **Add a Construct** to automatically append references and constructs to the datasets `docs/literature.json` and `data/construct_submissions.json`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Quick GitHub Guide](docs/quick_github_guide.md).
+
 | Project Attribute | Short description |
 |-------------------------|---------------------|
 | **Goal** | Provide an open, reproducible framework that measures how well large-language models (and, later, multimodal systems) *sense*, *explain*, *respond* to, and *adapt* around human emotions. |
@@ -15,7 +17,6 @@ Status: *early scaffold* (v0.0.1) - layout may change
 | **Inspiration** | *Humanity’s-Last-Exam*, HELM, EQ-Bench, ETHOS, EmpatheticDialogues |
 | **Lead org** | tentatively *Inflection AI* research group |
 | **Contact** | placeholder: Max Parks, research lead maxaeonparks@gmail.com |
-SERA-X is an open benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets. Visitors can use the issue templates **Add a Source** and **Add a Construct** to automatically append references and constructs to the datasets `docs/literature.json` and `data/construct_submissions.json`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Quick GitHub Guide](docs/quick_github_guide.md).
 
 ---
 

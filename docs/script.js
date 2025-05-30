@@ -152,3 +152,35 @@ function populateFoundationsTable(tbodyId) {
       tbody.innerHTML = '<tr><td colspan="5">Unable to load foundations.</td></tr>';
     });
 }
+
+// Initialize interactive star rating widgets
+function initStarRatings(selector, keyPrefix, updateFn) {
+  document.querySelectorAll(selector).forEach(el => {
+    const idx = el.dataset.index;
+    const key = keyPrefix + '-' + idx;
+    const stored = parseInt(localStorage.getItem(key) || '0', 10);
+
+    const render = (rating) => {
+      el.innerHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        const s = document.createElement('span');
+        s.className = 'star' + (i <= rating ? ' filled' : '');
+        s.dataset.value = i;
+        s.textContent = '★';
+        el.appendChild(s);
+      }
+    };
+
+    render(stored);
+    updateFn(idx);
+
+    el.addEventListener('click', (e) => {
+      const star = e.target.closest('.star');
+      if (!star) return;
+      const val = parseInt(star.dataset.value, 10);
+      localStorage.setItem(key, val);
+      render(val);
+      updateFn(idx);
+    });
+  });
+}

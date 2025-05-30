@@ -42,12 +42,14 @@ jobs:
                 body: i.body
               }));
             fs.mkdirSync('data', { recursive: true });
+            fs.mkdirSync('docs/data', { recursive: true });
             const json = JSON.stringify(data, null, 2);
-            fs.writeFileSync('data/literature_submissions.json', json);
+            fs.writeFileSync('data/literature.json', json);
+            fs.writeFileSync('docs/data/literature.json', json);
       - name: Commit updates
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'data/literature_submissions.json'
+          add: 'data/literature.json docs/data/literature.json'
           message: 'Update literature submissions'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

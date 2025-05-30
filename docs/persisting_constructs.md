@@ -19,7 +19,8 @@ For the early prototype we use **option 2**. A GitHub Actions workflow runs on
 issue events and periodically. It gathers all open issues labeled `construct` and
 writes their content to `data/construct_submissions.json`. This JSON file is
 committed back to the repository so changes are visible in pull requests and
-can be loaded directly by the website.
+can be loaded directly by the website. The GitHub Pages site reads from
+`docs/data/*.json`, so the workflow also mirrors each export there.
 
 Each record includes an `axes` field listing the relevant SERA skills
 (e.g., `"sense, explain"`). Pages like `sense.html` filter constructs by reading

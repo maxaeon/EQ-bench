@@ -62,13 +62,19 @@ function populateAxisConstructs(axis, containerId) {
         const delUrl =
           'https://github.com/maxaeon/EQ-bench/issues/new?template=delete-construct.yml&title=' +
           encodeURIComponent('Delete construct: ' + c.title);
+        const issueUrl =
+          'https://github.com/maxaeon/EQ-bench/issues/new?template=construct.yml&title=' +
+          encodeURIComponent('Feedback on ' + c.title);
         details.innerHTML = `
           <strong>synonyms:</strong> ${synonyms}<br>
           <strong>related terms:</strong> ${related}<br>
           ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation}<br>` : ''}
           <strong>Potential Issues:</strong> ${issues}<br><br>
           ${c.example ? `<em>${c.example}</em><br>` : ''}
-          <a href="${delUrl}" target="_blank" class="delete-link">Request deletion</a>`;
+          <div class="construct-actions">
+            <a href="${delUrl}" target="_blank" class="delete-link">Request deletion</a>
+            <a href="${issueUrl}" target="_blank" class="issue-link">Report issue</a>
+          </div>`;
         li.appendChild(btn);
         li.appendChild(details);
         ul.appendChild(li);

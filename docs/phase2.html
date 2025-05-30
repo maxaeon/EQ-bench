@@ -158,12 +158,21 @@
             extra.className = 'construct-extra';
             extra.id = id;
             extra.style.display = 'none';
+            const delUrl =
+                'https://github.com/maxaeon/EQ-bench/issues/new?template=delete-construct.yml&title=' +
+                encodeURIComponent('Delete construct: ' + c.title);
+            const issueUrl =
+                'https://github.com/maxaeon/EQ-bench/issues/new?template=construct.yml&title=' +
+                encodeURIComponent('Feedback on ' + c.title);
             extra.innerHTML = `
                 <td colspan="6"><strong>synonyms:</strong> ${synonyms}<br>
                 <strong>related terms:</strong> ${related}<br>
                 ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}<br>` : ''}
                 <strong>Potential Issues:</strong> ${issues}<br><br>
-                <a href="https://github.com/maxaeon/EQ-bench/issues/new?title=Feedback%20on%20${encodeURIComponent(c.title)}">Suggest an improvement</a></td>`;
+                <div class="construct-actions">
+                    <a href="${delUrl}" target="_blank" class="delete-link">Request deletion</a>
+                    <a href="${issueUrl}" target="_blank" class="issue-link">Report issue</a>
+                </div></td>`;
 
             tbody.appendChild(row);
             tbody.appendChild(extra);

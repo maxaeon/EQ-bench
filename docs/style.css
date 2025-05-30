@@ -313,6 +313,15 @@ tbody tr:nth-child(even) {
     font-size: 0.9em;
 }
 
+.construct-actions {
+    margin-top: 0.5rem;
+    font-size: 0.9em;
+}
+
+.construct-actions a {
+    margin-right: 0.5rem;
+}
+
 .construct-extra td {
     padding: 0.5rem;
     background-color: #f9f9f9;
@@ -370,6 +379,9 @@ tbody tr:nth-child(even) {
 
     .construct-extra td {
         background-color: #222;
+    }
+    .construct-actions a {
+        color: #58a6ff;
     }
     .info-icon {
         background-color: #1f6feb;

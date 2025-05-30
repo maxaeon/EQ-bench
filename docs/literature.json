@@ -1,7 +1,7 @@
 [
   {
     "title": "Affective Computing",
-    "authors": "Picard",
+    "authors": "Rosalind W. Picard",
     "year": 1997,
     "publisher": "MIT Press",
     "address": "Cambridge, MA",
@@ -25,7 +25,7 @@
   },
   {
     "title": "The Emotions: A Philosophical Exploration",
-    "authors": "Goldie",
+    "authors": "Peter Goldie",
     "year": 2000,
     "publisher": "Oxford University Press",
     "address": "Oxford",
@@ -38,7 +38,7 @@
   },
   {
     "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User’s Manual",
-    "authors": "Mayer et al.",
+    "authors": "John D. Mayer, Peter Salovey, David R. Caruso",
     "year": 2002,
     "publisher": "MHS Publishers",
     "address": "Toronto",
@@ -73,7 +73,7 @@
   },
   {
     "title": "Upheavals of Thought: The Intelligence of Emotions",
-    "authors": "Nussbaum",
+    "authors": "Martha C. Nussbaum",
     "year": 2001,
     "publisher": "Cambridge University Press",
     "address": "Cambridge",
@@ -86,7 +86,7 @@
   },
   {
     "title": "Descartes' Error: Emotion, Reason, and the Human Brain",
-    "authors": "Damasio",
+    "authors": "Antonio R. Damasio",
     "year": 1994,
     "publisher": "Putnam",
     "address": "New York",
@@ -110,7 +110,7 @@
   },
   {
     "title": "On the Morality of Artificial Agents",
-    "authors": "Floridi & Sanders",
+    "authors": "Luciano Floridi and J. W. Sanders",
     "year": 2004,
     "journal": "Minds and Machines",
     "volume": 14,
@@ -136,7 +136,7 @@
   },
   {
     "title": "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence",
-    "authors": "Crawford",
+    "authors": "Kate Crawford",
     "year": 2021,
     "publisher": "Yale University Press",
     "address": "New Haven, CT",
@@ -149,7 +149,7 @@
   },
   {
     "title": "Antecedent- and Response-focused Emotion Regulation: Divergent Consequences for Experience, Expression, and Physiology",
-    "authors": "Gross",
+    "authors": "James J. Gross",
     "year": 1998,
     "journal": "Journal of Personality and Social Psychology",
     "volume": 74,
@@ -164,7 +164,7 @@
   },
   {
     "title": "Does the Autistic Child Have a 'Theory of Mind'?",
-    "authors": "Baron-Cohen et al.",
+    "authors": "Simon Baron-Cohen, Alan M. Leslie, Uta Frith",
     "year": 1985,
     "journal": "Cognition",
     "volume": 21,
@@ -201,7 +201,7 @@
   },
   {
     "title": "The Extended Mind",
-    "authors": "Clark & Chalmers",
+    "authors": "Andy Clark and David Chalmers",
     "year": 1998,
     "journal": "Analysis",
     "volume": 58,
@@ -238,7 +238,7 @@
   },
   {
     "title": "What Is an Emotion?",
-    "authors": "James",
+    "authors": "William James",
     "year": 1884,
     "journal": "Mind",
     "volume": 9,
@@ -253,7 +253,7 @@
   },
   {
     "title": "An Argument for Basic Emotions",
-    "authors": "Ekman",
+    "authors": "Paul Ekman",
     "year": 1992,
     "journal": "Cognition and Emotion",
     "volume": 6,
@@ -268,7 +268,7 @@
   },
   {
     "title": "The Bar-On Model of Emotional-Social Intelligence (ESI)",
-    "authors": "Bar-On",
+    "authors": "Reuven Bar-On",
     "year": 2006,
     "journal": "Psicothema",
     "volume": 18,
@@ -282,7 +282,7 @@
   },
   {
     "title": "Handbook of Emotions",
-    "authors": "Lewis et al.",
+    "authors": "Michael Lewis, Jeannette M. Haviland-Jones, Lisa Feldman Barrett",
     "year": 2008,
     "publisher": "Guilford Press",
     "address": "New York",

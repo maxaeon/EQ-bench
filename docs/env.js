@@ -1,2 +1,2 @@
-window.SUPABASE_URL = '<https://pzmmgpzcnjhivkizcvpp.supabase.co>';
-window.SUPABASE_ANON_KEY = '<eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6bW1ncHpjbmpoaXZraXpjdnBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2MzA4ODEsImV4cCI6MjA2NDIwNjg4MX0.oeXfuk-Z2_BS4M7jU9vguedalcuw217gRRvxlg2t9Hc>';
+window.SUPABASE_URL = '<SUPABASE_URL>';
+window.SUPABASE_ANON_KEY = '<SUPABASE_ANON_KEY>';

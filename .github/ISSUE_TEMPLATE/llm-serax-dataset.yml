@@ -1,0 +1,30 @@
+name: LLM SERA-X Dataset Submission
+description: Provide a dataset focused on evaluating language models across the SERA-X axes.
+labels: [llm-serax-dataset]
+body:
+  - type: input
+    attributes:
+      label: Dataset Name
+      description: "Short name for the dataset."
+      placeholder: "Empathy prompts CSV"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Axes Covered
+      description: "Describe which SERA-X axes this dataset tests."
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Link to Dataset
+      description: "Public URL for downloading or viewing the dataset."
+      placeholder: "https://"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Ethical Considerations
+      description: "Note any privacy, consent, or bias issues."
+    validations:
+      required: false

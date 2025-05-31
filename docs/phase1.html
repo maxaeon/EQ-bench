@@ -52,7 +52,7 @@
         <section id="literature">
             <hr>
             <h2>Relevant Literature</h2>
-            <p>Notice something missing? Use the <strong>Add Source</strong> button to submit new references. You may also import a <code>.bib</code> file and the entries will be saved to our Supabase database. Login is temporarily disabled.</p>
+<p>Notice something missing? Use the <strong>Add Source</strong> button to submit new references. You may also import a <code>.bib</code> file and the entries will be saved to our Supabase database. You will be prompted to log in before adding entries.</p>
             <div class="add-source-controls">
                 <label for="bib-upload" class="button">Upload .bib</label>
                 <input id="bib-upload" type="file" accept=".bib" hidden>
@@ -348,7 +348,7 @@
     }
 
 document.addEventListener('DOMContentLoaded', loadLiterature);
-let authed = true;
+let authed = false;
 
 function startAddLit() {
     document.getElementById('lit-add-row')?.remove();

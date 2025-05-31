@@ -59,7 +59,7 @@
             <hr>
             <h2>Tentative Starting Point</h2>
             <p>Undergoing development by an interdisciplinary team of experts in psychology, computer science, philosophy, and more.</p>
-            <p>Notice something missing? Use the <strong>Add Construct</strong> button to submit new entries. Login is temporarily disabled.</p>
+<p>Notice something missing? Use the <strong>Add Construct</strong> button to submit new entries. You will be prompted to log in before adding entries.</p>
             <div class="search-controls">
                 <label for="construct-search">Search:</label>
                 <input type="search" id="construct-search" placeholder="Search constructs">
@@ -280,7 +280,7 @@
     }
 
 document.addEventListener('DOMContentLoaded', loadConstructs);
-let authed = true;
+let authed = false;
 let selectedConstructId = null;
 
 function startAddConstruct() {

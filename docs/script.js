@@ -69,8 +69,20 @@ function hideLoginForm() {
   if (loginOverlay) loginOverlay.classList.add('hidden');
 }
 
-// Authentication temporarily disabled
+// Prompt the user to log in if no session is active
 async function authenticate() {
+  const client = await ensureSupabase();
+  if (!client) return false;
+  const { data: { session } } = await client.auth.getSession();
+  if (session) return true;
+
+  const creds = await showLoginForm();
+  if (!creds) return false;
+  const { error } = await client.auth.signInWithPassword(creds);
+  if (error) {
+    alert('Login failed: ' + (error.message || error));
+    return false;
+  }
   return true;
 }
 

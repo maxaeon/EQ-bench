@@ -7,6 +7,8 @@ title: Research Hub Contribution Guide
 
 This guide shows how to contribute to the AI EQ Benchmark Research Hub using the GitHub interface and our collaborative Overleaf project. You can participate without installing any software.
 
+If you are unfamiliar with terms like "construct" or "axis," check the [Glossary](glossary.md).
+
 ## 1. Use the GitHub Pages interface
 
 1. Visit <https://maxaeon.github.io/EQ-bench/>.

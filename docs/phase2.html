@@ -150,7 +150,8 @@
         data.forEach((c, idx) => {
             const row = document.createElement('tr');
             row.className = 'construct-row';
-            row.id = `construct-row-${c.__index}`;
+            row.dataset.cid = c.id ?? c.__index;
+            row.id = `construct-row-${c.id ?? c.__index}`;
             const extra = document.createElement('tr');
             const id = `cdetail-${c.__index}`;
             const synonyms = Array.isArray(c.synonyms) ? c.synonyms.join(', ') : (c.synonyms || '');
@@ -184,7 +185,7 @@
                 if (e.target.closest('.star-rating')) return;
                 tbody.querySelectorAll('.construct-row').forEach(x => x.classList.remove('selected'));
                 r.classList.add('selected');
-                selectedConstructRow = parseInt(r.id.replace('construct-row-',''),10);
+                selectedConstructId = r.dataset.cid || r.id.replace('construct-row-','');
                 const target = document.getElementById(r.dataset.target);
                 if (target) {
                     target.style.display = target.style.display === 'none' || !target.style.display ? 'table-row' : 'none';
@@ -277,7 +278,7 @@
 
 document.addEventListener('DOMContentLoaded', loadConstructs);
 let authed = true;
-let selectedConstructRow = null;
+let selectedConstructId = null;
 
 function startAddConstruct() {
     document.getElementById('construct-add-row')?.remove();
@@ -318,10 +319,10 @@ function startAddConstruct() {
 
 
 function startEditConstruct() {
-    if (selectedConstructRow === null) { alert('Select an entry first.'); return; }
-    const item = constructs.find(c => c.__index === selectedConstructRow);
+    if (selectedConstructId === null) { alert('Select an entry first.'); return; }
+    const item = constructs.find(c => (c.id ?? c.__index) == selectedConstructId);
     if (!item) return;
-    const row = document.getElementById('construct-row-' + selectedConstructRow);
+    const row = document.getElementById('construct-row-' + selectedConstructId);
     document.getElementById('construct-edit-row')?.remove();
     const editRow = document.createElement('tr');
     editRow.id = 'construct-edit-row';
@@ -348,15 +349,15 @@ function startEditConstruct() {
 }
 
 async function deleteSelectedConstruct() {
-    if (selectedConstructRow === null) { alert('Select an entry first.'); return; }
-    const idx = constructs.findIndex(c => c.__index === selectedConstructRow);
+    if (selectedConstructId === null) { alert('Select an entry first.'); return; }
+    const idx = constructs.findIndex(c => (c.id ?? c.__index) == selectedConstructId);
     if (idx === -1) return;
     if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (!confirm('Delete this construct?')) return;
     const item = constructs[idx];
     if (item.id && typeof deleteConstruct === 'function') await deleteConstruct(item.id);
     constructs.splice(idx,1);
-    selectedConstructRow = null;
+    selectedConstructId = null;
     applyConstructFilters();
 }
 

@@ -161,6 +161,13 @@
         if (item.pages) entry += `,\n  pages = {${item.pages}}`;
         if (item.year) entry += `,\n  year = {${item.year}}`;
         if (item.url) entry += `,\n  url = {${item.url}}`;
+        if (item.construct) entry += `,\n  sera-construct = {${item.construct}}`;
+        if (item.axis) entry += `,\n  sera-axis = {${item.axis}}`;
+        if (item.keywords && item.keywords.length) {
+            const kw = Array.isArray(item.keywords) ? item.keywords.join(', ') : item.keywords;
+            entry += `,\n  keywords = {${kw}}`;
+        }
+        if (item.relevance) entry += `,\n  note = {${item.relevance}}`;
         entry += `\n}`;
         return entry;
     }

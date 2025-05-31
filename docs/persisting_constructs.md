@@ -30,7 +30,8 @@ Each workflow step uploads the JSON contents using
 `scripts/upload_to_supabase.js` with the credentials provided via repository
 secrets. Construct records are inserted into the `constructs` table, while
 
-literature entries go into the `literature` table.
+literature entries go into the `literature` table. Uploads should omit the
+`id` field so that Supabase can assign primary keys without conflicts.
 
 ### Configuration
 

@@ -108,6 +108,8 @@
         </section>
         <div class="bibtex-controls">
             <a class="button" href="#" id="bibtex-download">Download BibTeX</a>
+            <a class="button" href="#" id="bibtex-export-all">Export all as BibTeX</a>
+            <a class="button" href="#" id="bibtex-export-filtered" title="Export currently filtered list">Export filtered</a>
             <button id="edit-lit-btn" class="button">Edit</button>
             <button id="delete-lit-btn" class="button">Delete</button>
         </div>
@@ -139,6 +141,7 @@
     <script>
 
     let literature = [];
+    let filteredLiterature = [];
 
     function toTitle(text) {
         return text.replace(/(^|\s)\S/g, t => t.toUpperCase());
@@ -149,27 +152,39 @@
 
     function toBibtex(item) {
         const type = item.journal ? 'article' : 'book';
-        const keyAuthor = (item.authors || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '');
+        const keyAuthor = (item.authors || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '') || 'ref';
         const key = keyAuthor + (item.year || '');
-        let entry = `@${type}{${key},\n  title = {${item.title}}`;
-        if (item.authors) entry += `,\n  author = {${item.authors}}`;
-        if (item.journal) entry += `,\n  journal = {${item.journal}}`;
-        if (item.publisher) entry += `,\n  publisher = {${item.publisher}}`;
-        if (item.address) entry += `,\n  address = {${item.address}}`;
-        if (item.volume) entry += `,\n  volume = {${item.volume}}`;
-        if (item.number) entry += `,\n  number = {${item.number}}`;
-        if (item.pages) entry += `,\n  pages = {${item.pages}}`;
-        if (item.year) entry += `,\n  year = {${item.year}}`;
-        if (item.url) entry += `,\n  url = {${item.url}}`;
-        if (item.construct) entry += `,\n  sera-construct = {${item.construct}}`;
-        if (item.axis) entry += `,\n  sera-axis = {${item.axis}}`;
-        if (item.keywords && item.keywords.length) {
-            const kw = Array.isArray(item.keywords) ? item.keywords.join(', ') : item.keywords;
-            entry += `,\n  keywords = {${kw}}`;
+        const mapping = {
+            title: 'title',
+            authors: 'author',
+            journal: 'journal',
+            publisher: 'publisher',
+            address: 'address',
+            volume: 'volume',
+            number: 'number',
+            pages: 'pages',
+            year: 'year',
+            url: 'url',
+            doi: 'doi',
+            construct: 'sera-construct',
+            axis: 'sera-axis',
+            keywords: 'keywords',
+            relevance: 'note'
+        };
+        const fields = {};
+        for (const [prop, tag] of Object.entries(mapping)) {
+            let val = item[prop];
+            if (val === undefined || val === null || val === '' || (Array.isArray(val) && !val.length)) continue;
+            if (prop === 'keywords') val = Array.isArray(val) ? val.join(', ') : val;
+            fields[tag] = val;
         }
-        if (item.relevance) entry += `,\n  note = {${item.relevance}}`;
-        entry += `\n}`;
-        return entry;
+        for (const [k,v] of Object.entries(item)) {
+            if (!(k in mapping) && k !== '__index' && v !== undefined && v !== null && v !== '' && !(Array.isArray(v) && !v.length)) {
+                fields[k] = Array.isArray(v) ? v.join(', ') : v;
+            }
+        }
+        const body = Object.entries(fields).map(([k,v]) => `  ${k} = {${v}}`).join(',\n');
+        return `@${type}{${key},\n${body}\n}`;
     }
 
     function downloadFile(content, filename) {
@@ -255,6 +270,7 @@
         if (sortVal === 'title') items.sort((a,b)=>a.title.localeCompare(b.title));
         else if (sortVal === 'author') items.sort((a,b)=>a.authors.localeCompare(b.authors));
         else items.sort((a,b)=>(a.year||0)-(b.year||0));
+        filteredLiterature = items;
         renderLit(items);
     }
 
@@ -326,6 +342,21 @@
         document.getElementById('bibtex-download').addEventListener('click', e => {
             e.preventDefault();
             const items = Array.from(selectedLit).map(i => literature.find(l => l.__index === i)).filter(Boolean);
+            if (!items.length) return;
+            const content = items.map(toBibtex).join('\n\n');
+            downloadFile(content, 'references.bib');
+        });
+
+        document.getElementById('bibtex-export-all').addEventListener('click', e => {
+            e.preventDefault();
+            if (!literature.length) return;
+            const content = literature.map(toBibtex).join('\n\n');
+            downloadFile(content, 'references.bib');
+        });
+
+        document.getElementById('bibtex-export-filtered').addEventListener('click', e => {
+            e.preventDefault();
+            const items = filteredLiterature.length ? filteredLiterature : literature;
             if (!items.length) return;
             const content = items.map(toBibtex).join('\n\n');
             downloadFile(content, 'references.bib');

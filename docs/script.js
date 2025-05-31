@@ -27,6 +27,7 @@ ensureSupabase();
 
 let loginOverlay = null;
 let loginResolve = null;
+let editOverlay = null;
 
 function createLoginForm() {
   if (loginOverlay) return;
@@ -67,6 +68,25 @@ function showLoginForm() {
 
 function hideLoginForm() {
   if (loginOverlay) loginOverlay.classList.add('hidden');
+}
+
+function createEditOverlay() {
+  if (editOverlay) return;
+  editOverlay = document.createElement('div');
+  editOverlay.id = 'edit-overlay';
+  editOverlay.className = 'hidden';
+  document.body.appendChild(editOverlay);
+}
+
+function showEditOverlay(html) {
+  createEditOverlay();
+  editOverlay.innerHTML = html;
+  editOverlay.classList.remove('hidden');
+  return editOverlay.querySelector('form');
+}
+
+function hideEditOverlay() {
+  if (editOverlay) editOverlay.classList.add('hidden');
 }
 
 // Prompt the user to log in if no session is active

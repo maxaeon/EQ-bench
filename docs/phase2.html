@@ -181,7 +181,10 @@
                 <td colspan="6"><strong>synonyms:</strong> ${synonyms}<br>
                 <strong>related terms:</strong> ${related}<br>
                 ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}<br>` : ''}
-                <strong>Potential Issues:</strong> ${issues}</td>`;
+                <strong>Potential Issues:</strong> ${issues}<br>
+                ${c.interdisciplinary ? `<strong>Interdisciplinary:</strong> ${c.interdisciplinary}<br>` : ''}
+                ${c.category ? `<strong>Category:</strong> ${c.category}<br>` : ''}
+                ${c.url ? `<strong>URL:</strong> <a href="${c.url}">${c.url}</a>` : ''}</td>`;
 
             tbody.appendChild(row);
             tbody.appendChild(extra);
@@ -370,53 +373,50 @@ function startEditConstruct() {
     if (selectedConstructId === null) { alert('Select an entry first.'); return; }
     const item = constructs.find(c => (c.id ?? c.__index) == selectedConstructId);
     if (!item) return;
-    const row = document.getElementById('construct-row-' + selectedConstructId);
-    document.getElementById('construct-edit-row')?.remove();
-    const editRow = document.createElement('tr');
-    editRow.id = 'construct-edit-row';
     const axesVals = Array.isArray(item.axes) ? item.axes : (item.axes || '').split(',').map(a=>a.trim());
-    editRow.innerHTML = `<td colspan="6"><form id="construct-edit-form">
-        <label>Title: <input type="text" name="title" value="${item.title}"></label>
-        <label>Axes: <select name="axes" multiple size="1">
+    const formHtml = `<form id="construct-edit-form">
+        <label>Title:<br><input type="text" name="title" value="${item.title}" placeholder="Construct name"></label>
+        <label>Axes:<br><select name="axes" multiple size="1">
             <option value="sense" ${axesVals.includes('sense') ? 'selected' : ''}>Sense</option>
             <option value="explain" ${axesVals.includes('explain') ? 'selected' : ''}>Explain</option>
             <option value="respond" ${axesVals.includes('respond') ? 'selected' : ''}>Respond</option>
             <option value="adapt" ${axesVals.includes('adapt') ? 'selected' : ''}>Adapt</option>
             <option value="extended" ${axesVals.includes('extended') ? 'selected' : ''}>Extended</option>
         </select></label>
-        <label>Definition:<br><textarea name="definition" rows="3">${item.definition || ''}</textarea></label>
-        <label>Example:<br><textarea name="example" rows="2">${item.example || ''}</textarea></label>
-        <label>Synonyms:<br><input type="text" name="synonyms" value="${Array.isArray(item.synonyms) ? item.synonyms.join(', ') : (item.synonyms || '')}"></label>
-        <label>Related Terms:<br><input type="text" name="related_terms" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
-        <label>Evaluation/Measurement:<br><textarea name="measurement" rows="2">${item.measurement || ''}</textarea></label>
-        <label>Potential Issues:<br><textarea name="verification_issues" rows="2">${item.verification_issues || ''}</textarea></label>
-        <label>Interdisciplinary:<br><input type="text" name="interdisciplinary" value="${item.interdisciplinary || ''}"></label>
-        <label>Category:<br><input type="text" name="category" value="${item.category || ''}"></label>
-        <label>URL:<br><input type="url" name="url" value="${item.url || ''}"></label>
-        <button type="submit">Save</button>
-        <button type="button" id="construct-edit-cancel">Cancel</button>
-    </form></td>`;
-    row.insertAdjacentElement('afterend', editRow);
-    const editForm = document.getElementById('construct-edit-form');
-    enableMultiSelectDropdown(editForm.elements.axes);
-    editForm.addEventListener('submit', async e => {
+        <label>Definition:<br><textarea name="definition" rows="3" placeholder="Short description">${item.definition || ''}</textarea></label>
+        <label>Example:<br><textarea name="example" rows="2" placeholder="Brief example">${item.example || ''}</textarea></label>
+        <label>Synonyms:<br><input type="text" name="synonyms" placeholder="comma separated" value="${Array.isArray(item.synonyms) ? item.synonyms.join(', ') : (item.synonyms || '')}"></label>
+        <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
+        <label>Evaluation/Measurement:<br><textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
+        <label>Potential Issues:<br><textarea name="verification_issues" rows="2" placeholder="Verification caveats">${item.verification_issues || ''}</textarea></label>
+        <label>Interdisciplinary:<br><input type="text" name="interdisciplinary" placeholder="e.g. psychology" value="${item.interdisciplinary || ''}"></label>
+        <label>Category:<br><input type="text" name="category" placeholder="Field" value="${item.category || ''}"></label>
+        <label>URL:<br><input type="url" name="url" placeholder="Source link" value="${item.url || ''}"></label>
+        <div class="edit-buttons">
+            <button type="submit" class="button">Save</button>
+            <button type="button" id="construct-edit-cancel" class="button">Cancel</button>
+        </div>
+    </form>`;
+    const form = showEditOverlay(formHtml);
+    enableMultiSelectDropdown(form.elements.axes);
+    form.addEventListener('submit', async e => {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!confirm('Save changes?')) return;
-        const axesArr = Array.from(editForm.elements.axes.selectedOptions).map(o => o.value);
+        const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
         const parseList = str => str.split(',').map(v => v.trim()).filter(Boolean);
-        item.title = e.target.title.value;
+        item.title = form.title.value;
         item.axes = axesArr;
         item.axis = axesArr.join(', ');
-        item.definition = e.target.definition.value;
-        item.example = e.target.example.value;
-        item.synonyms = parseList(e.target.synonyms.value);
-        item.related_terms = parseList(e.target.related_terms.value);
-        item.measurement = e.target.measurement.value;
-        item.verification_issues = e.target.verification_issues.value;
-        item.interdisciplinary = e.target.interdisciplinary.value;
-        item.category = e.target.category.value;
-        item.url = e.target.url.value;
+        item.definition = form.definition.value;
+        item.example = form.example.value;
+        item.synonyms = parseList(form.synonyms.value);
+        item.related_terms = parseList(form.related_terms.value);
+        item.measurement = form.measurement.value;
+        item.verification_issues = form.verification_issues.value;
+        item.interdisciplinary = form.interdisciplinary.value;
+        item.category = form.category.value;
+        item.url = form.url.value;
         if (item.id && typeof updateConstruct === 'function') await updateConstruct(item.id, {
             title: item.title,
             axes: axesArr,
@@ -430,10 +430,10 @@ function startEditConstruct() {
             category: item.category,
             url: item.url
         });
-        editRow.remove();
+        hideEditOverlay();
         applyConstructFilters();
     });
-    document.getElementById('construct-edit-cancel').addEventListener('click', () => editRow.remove());
+    document.getElementById('construct-edit-cancel').addEventListener('click', hideEditOverlay);
 }
 
 async function deleteSelectedConstruct() {

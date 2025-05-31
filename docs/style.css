@@ -505,6 +505,30 @@ tbody tr:nth-child(even) {
     max-width: 300px;
     width: 90%;
 }
+#edit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+#edit-overlay form {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    max-width: 600px;
+    width: 90%;
+}
+#edit-overlay .edit-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
 #login-overlay .login-buttons {
     margin-top: 0.5rem;
     display: flex;
@@ -512,6 +536,10 @@ tbody tr:nth-child(even) {
 }
 @media (prefers-color-scheme: dark) {
     #login-overlay form {
+        background: #222;
+        color: #eee;
+    }
+    #edit-overlay form {
         background: #222;
         color: #eee;
     }

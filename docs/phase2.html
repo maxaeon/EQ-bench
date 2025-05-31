@@ -95,7 +95,7 @@
                         <th>Example</th>
                         <th>Axis</th>
                         <th>Authors &amp; Sources</th>
-                        <th>Avg Rating <span class="info-icon" title="1 star = not relevant, 5 stars = crucial">?</span></th>
+                        <th>Significance <span class="info-icon" title="0 = not significant, 5 = highly significant">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -168,7 +168,7 @@
                 <td>${c.example || ''}</td>
                 <td>${c.axis}</td>
                 <td></td>
-                <td><span class="avg-rating" data-index="${c.__index}"></span> <div class="star-rating construct-rating" data-index="${c.__index}"></div></td>`;
+                <td><div class="star-rating construct-rating" data-index="${c.__index}"></div></td>`;
 
             extra.className = 'construct-extra';
             extra.id = id;
@@ -195,7 +195,7 @@
                 }
             });
         });
-        initRatings('.construct-rating', 'construct-rating', idx => constructs[idx]);
+        initRatings('.construct-rating', 'construct-rating');
     }
 
 
@@ -243,7 +243,7 @@
         } else {
             try { data = await (await fetch('data/construct_submissions.json')).json(); } catch(e) { data = []; }
         }
-        data.forEach((c, i) => { parseMeta(c); c.ratings = c.ratings || []; c.__index = i; });
+        data.forEach((c, i) => { parseMeta(c); c.significance = c.significance || 0; c.__index = i; });
         constructs = data;
 
             const axisSet = new Set();
@@ -303,7 +303,7 @@ function startAddConstruct() {
             title: e.target.title.value,
             axes: e.target.axes.value,
             definition: e.target.definition.value,
-            ratings: []
+            significance: 0
         };
         if (typeof addConstruct === 'function') {
             try {

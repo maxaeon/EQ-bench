@@ -20,8 +20,7 @@
     "verification_issues": "Physiological signals may be ambiguous or noisy; hard to distinguish emotions solely from bodily data.",
     "interdisciplinary": "philosophy, neuroscience",
     "category": "Philosophy and Ethics",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 3,
@@ -45,8 +44,7 @@
     "references": "Goldie 2000",
     "interdisciplinary": "philosophy, psychology",
     "category": "Philosophy and Ethics",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 4,
@@ -70,8 +68,7 @@
     "references": "Damasio 1994",
     "interdisciplinary": "neuroscience, philosophy",
     "category": "Philosophy and Ethics",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 10,
@@ -95,8 +92,7 @@
     "references": "Gross 1998",
     "interdisciplinary": "psychology, computational modeling",
     "category": "Psychology",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 11,
@@ -120,8 +116,7 @@
     "references": "Baron-Cohen et al. 1985",
     "interdisciplinary": "psychology, computational cognition",
     "category": "Psychology",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 12,
@@ -145,8 +140,7 @@
     "references": "Ekman 1992; Izard 1971",
     "interdisciplinary": "psychology, anthropology, neuroscience",
     "category": "Psychology",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 13,
@@ -170,8 +164,7 @@
     "references": "Poria et al. 2019",
     "interdisciplinary": "computer science, psychology",
     "category": "Computer Science",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 15,
@@ -195,8 +188,7 @@
     "references": "LeDoux 1998",
     "interdisciplinary": "neuroscience, computational neuroscience",
     "category": "Neuroscience",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 16,
@@ -220,8 +212,7 @@
     "references": "Panksepp 1998; Panksepp & Biven 2012",
     "interdisciplinary": "neuroscience, comparative psychology, evolutionary biology",
     "category": "Neuroscience",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 17,
@@ -245,8 +236,7 @@
     "references": "Adolphs 2002; Haxby et al. 2000",
     "interdisciplinary": "neuroscience, psychology, computer vision",
     "category": "Neuroscience",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 18,
@@ -270,8 +260,7 @@
     "references": "Russell 2003; Barrett & Russell 1998",
     "interdisciplinary": "psychology, neuroscience, affective science",
     "category": "Psychology",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   },
   {
     "number": 20,
@@ -295,7 +284,6 @@
     "references": "Clark & Chalmers 1998",
     "interdisciplinary": "philosophy, cognitive science, computational modeling",
     "category": "Philosophy and Ethics",
-    "significance": 0,
-    "ratings": []
+    "significance": 0
   }
 ]

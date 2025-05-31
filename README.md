@@ -135,6 +135,12 @@ python scripts/merge_bibtex.py path/to/references.bib
 
 This updates `data/literature.json` and mirrors it to `docs/data/literature.json` after deduplicating entries by title and DOI.
 
+To export the curated JSON back into a single BibTeX file run:
+
+```bash
+python scripts/export_bibtex.py references.bib
+```
+
 ### Migrating JSON snapshots to Supabase
 If you need to seed the Supabase tables from the versioned JSON files, run:
 

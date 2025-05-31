@@ -332,8 +332,8 @@
                     obj.__index = ++maxIndex;
                     if (authed && typeof addLiterature === 'function') {
                         try {
-                            const res = await addLiterature(obj);
-                            if (res && res[0]) Object.assign(obj, res[0]);
+                            const { data, error } = await addLiterature(obj);
+                            if (!error && data && data[0]) Object.assign(obj, data[0]);
                         } catch (err) { console.error(err); }
                     }
                     literature.push(obj);
@@ -364,10 +364,15 @@ function startAddLit() {
         <label>Relevance:<br><textarea name="relevance" rows="3"></textarea></label>
         <button type="submit">Add</button>
         <button type="button" id="lit-add-cancel">Cancel</button>
+        <div class="form-error" style="display:none"></div>
     </form></td>`;
     tbody.prepend(addRow);
-    document.getElementById('lit-add-form').addEventListener('submit', async e => {
+    const form = document.getElementById('lit-add-form');
+    const errorDiv = form.querySelector('.form-error');
+    form.addEventListener('submit', async e => {
         e.preventDefault();
+        errorDiv.textContent = '';
+        errorDiv.style.display = 'none';
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         const obj = {
             title: e.target.title.value,
@@ -380,9 +385,19 @@ function startAddLit() {
         };
         if (typeof addLiterature === 'function') {
             try {
-                const res = await addLiterature(obj);
-                if (res && res[0]) Object.assign(obj, res[0]);
-            } catch (err) { console.error(err); }
+                const { data, error } = await addLiterature(obj);
+                if (error) {
+                    errorDiv.textContent = error.message || error;
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                if (data && data[0]) Object.assign(obj, data[0]);
+            } catch (err) {
+                console.error(err);
+                errorDiv.textContent = err.message || err;
+                errorDiv.style.display = 'block';
+                return;
+            }
         }
         obj.__index = Math.max(0, ...literature.map(l => l.__index || 0)) + 1;
         literature.push(obj);

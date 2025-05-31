@@ -103,13 +103,15 @@ async function fetchConstructs() {
 
 async function addConstruct(construct) {
   const client = await ensureSupabase();
-  if (!client) return null;
+  if (!client) {
+    const error = new Error('Supabase unavailable');
+    return { data: null, error };
+  }
   const { data, error } = await client.from('constructs').insert([construct]);
   if (error) {
     console.error('Error adding construct:', error);
-    return null;
   }
-  return data;
+  return { data, error };
 }
 
 async function updateConstruct(id, updates) {
@@ -147,13 +149,15 @@ async function fetchLiterature() {
 
 async function addLiterature(entry) {
   const client = await ensureSupabase();
-  if (!client) return null;
+  if (!client) {
+    const error = new Error('Supabase unavailable');
+    return { data: null, error };
+  }
   const { data, error } = await client.from('literature').insert([entry]);
   if (error) {
     console.error('Error adding literature:', error);
-    return null;
   }
-  return data;
+  return { data, error };
 }
 
 async function updateLiterature(id, updates) {

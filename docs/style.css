@@ -516,3 +516,9 @@ tbody tr:nth-child(even) {
         color: #eee;
     }
 }
+
+.form-error {
+    color: #b00020;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}

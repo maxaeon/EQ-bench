@@ -259,6 +259,15 @@
     }
 
     async function loadLiterature() {
+        if (!window.bibtexParse) {
+            try {
+                const mod = await import('https://cdn.jsdelivr.net/npm/bibtex-parse-js/+esm');
+                window.bibtexParse = mod.default || mod;
+            } catch (e) {
+                console.error('Failed to load BibTeX parser', e);
+            }
+        }
+
         let lit = [];
         const useSupabase = window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchLiterature === 'function';
         if (useSupabase) {

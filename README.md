@@ -146,6 +146,16 @@ node scripts/upload_to_supabase.js
 The script reads `data/construct_submissions.json` and `data/literature.json`,
 inserting them into the `constructs` and `literature` tables respectively.
 
+To generate CSV files for Supabase's bulk import tool instead of using the API,
+run:
+
+```bash
+python scripts/json_to_csv.py
+```
+
+This writes `data/construct_submissions.csv` and `data/literature.csv` that can
+be uploaded through the Supabase dashboard.
+
 
 ---
 ## 7 Roadmap (v0 → v1)

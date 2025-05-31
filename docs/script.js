@@ -218,9 +218,9 @@ function populateAxisConstructs(axis, containerId) {
       const axisLower = axis.toLowerCase();
       const items = data.filter(c => {
         if (c.axes) {
-          const axes = c.axes
-            .split(',')
-            .map(a => a.trim().toLowerCase());
+          const axes = Array.isArray(c.axes)
+            ? c.axes.map(a => String(a).trim().toLowerCase())
+            : c.axes.split(',').map(a => a.trim().toLowerCase());
           if (axes.includes(axisLower)) return true;
         }
         return c.body && c.body.toLowerCase().includes(axisLower);

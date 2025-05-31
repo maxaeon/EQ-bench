@@ -336,7 +336,7 @@ function populateFoundationsTable(tbodyId) {
 // Initialize interactive star rating widgets
 function parseRating(val) {
   const n = parseInt(val, 10);
-  return Number.isInteger(n) && n >= 1 && n <= 5 ? n : null;
+  return Number.isInteger(n) && n >= 0 && n <= 5 ? n : null;
 }
 
 function initStarRatings(selector, keyPrefix, updateFn) {
@@ -362,8 +362,7 @@ function initStarRatings(selector, keyPrefix, updateFn) {
     // Render the widget using the stored rating so the correct
     // number of stars are initially marked as selected
     render(stored);
-    // Recalculate the average to reflect this value on load
-    updateFn(idx);
+    if (typeof updateFn === 'function') updateFn(idx);
 
     el.addEventListener('click', (e) => {
       const star = e.target.closest('.star');
@@ -372,42 +371,16 @@ function initStarRatings(selector, keyPrefix, updateFn) {
       if (val === null) return;
       localStorage.setItem(key, val);
       render(val);
-      // Trigger an update so the average rating recalculates
-      updateFn(idx);
+      if (typeof updateFn === 'function') updateFn(idx);
     });
   });
 }
 
-// Calculate average rating from existing values and optional user value
-function computeAverage(base, user) {
-  const arr = [];
-  if (Array.isArray(base)) {
-    base.forEach(v => {
-      const n = parseRating(v);
-      if (n !== null) arr.push(n);
-    });
-  }
-  const u = parseRating(user);
-  if (u !== null) arr.push(u);
-  if (!arr.length) return 0;
-  return arr.reduce((a, b) => a + b, 0) / arr.length;
-}
-
-// Setup star widgets and update corresponding averages
+// Setup star rating widgets for significance values
 // selector: rating widget selector
 // storagePrefix: prefix for localStorage keys
-// getItemFn: function that returns the data item for a given index
-function initRatings(selector, storagePrefix, getItemFn) {
-  const update = (idx) => {
-    if (typeof getItemFn !== 'function') return;
-    const item = getItemFn(idx);
-    if (!item) return;
-    const key = storagePrefix + '-' + idx;
-    const user = localStorage.getItem(key);
-    const span = document.querySelector(`.avg-rating[data-index="${idx}"]`);
-    if (span) span.textContent = computeAverage(item.ratings, user).toFixed(1);
-  };
-  initStarRatings(selector, storagePrefix, update);
+function initRatings(selector, storagePrefix) {
+  initStarRatings(selector, storagePrefix, null);
 }
 
 // Parse BibTeX text into reference objects matching literature.json fields

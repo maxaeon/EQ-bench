@@ -99,7 +99,7 @@
                         <th>Relevance</th>
                         <th>Construct</th>
                         <th>Axis</th>
-                        <th>Avg Rating <span class="info-icon" title="1 star = not relevant, 5 stars = crucial">?</span></th>
+                        <th>Significance <span class="info-icon" title="0 = not significant, 5 = highly significant">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -203,7 +203,7 @@
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${l.axis}</td>
-                <td><span class="avg-rating" data-index="${l.__index}"></span> <div class="star-rating lit-rating" data-index="${l.__index}"></div></td>`;
+                <td><div class="star-rating lit-rating" data-index="${l.__index}"></div></td>`;
             tbody.appendChild(row);
         });
         tbody.querySelectorAll('.lit-check').forEach(cb => {
@@ -222,7 +222,7 @@
             });
         });
         updateSelectAll();
-        initRatings('.lit-rating', 'lit-rating', idx => literature.find(l => l.__index == idx));
+        initRatings('.lit-rating', 'lit-rating');
     }
 
     function applyLitFilters() {
@@ -263,7 +263,7 @@
             try { lit = await (await fetch('data/literature.json')).json(); } catch(e) { lit = []; }
         }
 
-        literature = lit.map((l, i) => Object.assign({__index: i, ratings: l.ratings || []}, l));
+        literature = lit.map((l, i) => Object.assign({__index: i, significance: l.significance || 0}, l));
 
         const axisSet = new Set();
         const fieldSet = new Set();
@@ -328,7 +328,7 @@
                     const t = (en.title || '').toLowerCase();
                     const d = (en.doi || en.url || '').replace(/https?:\/\/(dx\.)?doi.org\//i, '').toLowerCase();
                     if (titles.has(t) || (d && dois.has(d))) continue;
-                    const obj = Object.assign({construct: '', axis: '', relevance: '', ratings: []}, en);
+                    const obj = Object.assign({construct: '', axis: '', relevance: '', significance: 0}, en);
                     obj.__index = ++maxIndex;
                     if (authed && typeof addLiterature === 'function') {
                         try {
@@ -376,7 +376,7 @@ function startAddLit() {
             construct: e.target.construct.value,
             axis: e.target.axis.value,
             relevance: e.target.relevance.value,
-            ratings: []
+            significance: 0
         };
         if (typeof addLiterature === 'function') {
             try {

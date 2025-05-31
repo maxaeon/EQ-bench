@@ -61,7 +61,7 @@ def merge_entries(entries, data):
             "construct": "",
             "axis": "",
             "relevance": "",
-            "ratings": []
+            "significance": 0
         }
         data.append(obj)
         by_title[t_key] = obj

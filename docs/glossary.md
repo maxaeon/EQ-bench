@@ -17,3 +17,7 @@ title: Glossary
 **Supabase**
 : An open-source backend service used by this project to store submitted constructs and literature references. Form data from the project website is synced to Supabase tables for collaborative editing.
 
+---
+
+Missing a term? Open a **Glossary term request** issue to suggest new definitions.
+

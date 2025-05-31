@@ -54,46 +54,30 @@
                 </ul>
             </div>
             <!-- SERA-X Database Connection Visualization -->
-            <div style="padding: 20px; border-radius: 8px; border: 1px solid #ddd; background-color: #fdfdfd;">
-                <h2 style="margin-bottom: 15px;">Tentative Database Structure: Linking Constructs, Literature, and SERA-X Validation</h2>
-                <!-- Constructs Example -->
-                <h3>Example Construct Entry</h3>
-                <div style="padding: 15px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;">
-                    <strong>Name:</strong> Emotion Regulation<br>
-                    <strong>Description:</strong> Ability of AI to effectively regulate emotional responses based on contextual cues.<br>
-                    <strong>SERA-X Axes Validated:</strong>
-                    <ul>
-                        <li><strong>Responding:</strong> Measures how appropriately the AI responds to human emotional signals.</li>
-                        <li><strong>Adapting:</strong> Evaluates AI’s ability to adjust responses dynamically to evolving emotional contexts.</li>
-                    </ul>
-                    <strong>Associated Literature:</strong>
-                    <ul>
-                        <li>
-                            Gross, J. J. (1998). "The Emerging Field of Emotion Regulation: An Integrative Review."
-                            <em>Review of General Psychology</em>, 2(3), 271–299.
-                        </li>
-                        <li>
-                            Picard, R. W. (1997). <em>Affective Computing</em>. MIT Press.
-                        </li>
-                    </ul>
-                </div>
-                <!-- Literature Entry with Linked Constructs -->
-                <h3>Example Literature Entry</h3>
-                <div style="padding: 15px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 20px;">
-                    <strong>Title:</strong> Affective Computing<br>
-                    <strong>Authors:</strong> Rosalind W. Picard<br>
-                    <strong>Year:</strong> 1997<br>
-                    <strong>Linked Constructs:</strong>
-                    <ul>
-                        <li>Emotion Recognition (Sensing)</li>
-                        <li>Emotion Regulation (Responding, Adapting)</li>
-                    </ul>
-                    <strong>Relevance:</strong> High<br>
-                    <strong>Ratings (validated importance):</strong> ★★★★☆ (4/5)
-                </div>
-                <!-- Visualization of Data Relationships -->
-                <h3>Data Relationship Visualization (Conceptual)</h3>
-                <pre style="background-color:#f0f0f0; padding:15px; border-radius:6px;">Constructs├── Emotion Regulation│   ├── Linked Axes: Responding, Adapting│   ├── Validated by Literature:│   │   ├── Gross (1998)│   │   └── Picard (1997)│   └── Validated Benchmarks:│       └── LLM Evaluation Scores (GPT-4, Claude)│├── Emotion Recognition│   ├── Linked Axes: Sensing│   ├── Validated by Literature:│   │   └── Picard (1997)│   └── Validated Benchmarks:│       └── Empathy Dataset (GoEmotions)│Literature├── Gross (1998)│   └── Constructs Supported: Emotion Regulation│└── Picard (1997)    ├── Constructs Supported: Emotion Recognition, Emotion Regulation    └── Axes Validated: Sensing, Responding, Adapting  </pre>
+            <div>
+                <h2>Tentative Database Structure: Linking Constructs, Literature, and SERA-X Validation</h2>
+                <pre>
+Constructs
+├── Emotion Regulation
+│   ├── Linked Axes: Responding, Adapting
+│   ├── Validated by Literature:
+│   │   ├── Gross (1998)
+│   │   └── Picard (1997)
+│   └── Validated Benchmarks:
+│       └── LLM Evaluation Scores (GPT-4, Claude)
+├── Emotion Recognition
+│   ├── Linked Axes: Sensing
+│   ├── Validated by Literature:
+│   │   └── Picard (1997)
+│   └── Validated Benchmarks:
+│       └── Empathy Dataset (GoEmotions)
+Literature
+├── Gross (1998)
+│   └── Constructs Supported: Emotion Regulation
+└── Picard (1997)
+    ├── Constructs Supported: Emotion Recognition, Emotion Regulation
+    └── Axes Validated: Sensing, Responding, Adapting
+                </pre>
                 <!-- Explanation of Validation -->
                 <h3>SERA-X Validation Methodology (Tentative)</h3>
                 <p>

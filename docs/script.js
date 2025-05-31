@@ -424,7 +424,14 @@ function parseBibtex(text) {
       number: fields.number || '',
       pages: fields.pages || '',
       url: fields.url || (fields.doi ? `https://doi.org/${fields.doi}` : ''),
-      doi: fields.doi || ''
+      doi: fields.doi || '',
+      construct: fields['sera-construct'] || fields.construct || '',
+      axis: fields['sera-axis'] || fields.axis || '',
+      keywords: (fields.keywords || fields.keyword || '')
+        .split(/[,;]+/)
+        .map(k => k.trim())
+        .filter(Boolean),
+      relevance: fields.note || ''
     });
   }
   return entries;

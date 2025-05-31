@@ -92,6 +92,7 @@ See the [Research Hub Contribution Guide](docs/quick_github_guide.md) for step-b
 
 The `docs/` folder doubles as a GitHub Pages site.
 Visit <https://maxaeon.github.io/EQ-bench/> for a short overview of the project and direct forms for submitting constructs or literature references. Entries submitted through these forms are stored in `data/construct_submissions.json` and `data/literature.json` and mirrored in our Supabase tables. See [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file. If you have a DOI, you can convert it to a BibTeX entry using online tools such as [bibtex.com](https://www.bibtex.com/c/doi-to-bibtex-converter/).
+When exporting, the construct name and axis are stored under the custom BibTeX fields `sera-construct` and `sera-axis`, while any keywords are written to the standard `keywords` tag and relevance notes appear under `note`. The site parses these tags back into the JSON fields on upload.
 The website also lets you rate how relevant each construct or paper is using a star widget.
 The scale runs from **1 star = not relevant** to **5 stars = crucial**.
 

@@ -50,15 +50,15 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 ## 3  Repository Layout
 This repository is organized as an AI EQ Benchmark Research Hub. Major sections include:
 
-- **Benchmarks/** – details of the SERA-X benchmark and comparisons to alternative models (see [docs/alternative-models.html](docs/alternative-models.html)).
-- **Resources-and-Tools/** – datasets, scripts, and utilities for running EQ evaluations.
-- **Research-and-Publications/** – links to papers and articles related to emotional intelligence benchmarking.
-- **Community-and-Collaboration/** – information on participating via GitHub Discussions or chat channels.
-- **Contributor-Hub/** – guidelines and Markdown templates for submitting new constructs, datasets, and publications.
-- **docs/ethics/** – frameworks that guide responsible research.
+- [**Benchmarks/**](Benchmarks/) – details of the SERA-X benchmark and comparisons to alternative models (see [docs/alternative-models.html](docs/alternative-models.html)).
+- [**Resources-and-Tools/**](Resources-and-Tools/) – datasets, scripts, and utilities for running EQ evaluations.
+- [**Research-and-Publications/**](Research-and-Publications/) – links to papers and articles related to emotional intelligence benchmarking.
+- [**Community-and-Collaboration/**](Community-and-Collaboration/) – information on participating via GitHub Discussions or chat channels.
+- [**Contributor-Hub/**](Contributor-Hub/) – guidelines and Markdown templates for submitting new constructs, datasets, and publications.
+- [**docs/ethics/**](docs/ethics/) – frameworks that guide responsible research.
 - 🔗 [Ethics and Inclusivity Standards](docs/ethics/inclusivity.md)
-- **Outreach-and-Dissemination/** – upcoming events and announcements.
-- **Visualizations/** – placeholders for interactive graphs.
+- [**Outreach-and-Dissemination/**](Outreach-and-Dissemination/) – upcoming events and announcements.
+- [**Visualizations/**](Visualizations/) – placeholders for interactive graphs.
 - [**updates.md**](updates.md) – log of recent news and milestones.
 
 

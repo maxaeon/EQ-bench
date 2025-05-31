@@ -302,6 +302,14 @@ function startAddConstruct() {
             <option value="extended">Extended</option>
         </select></label>
         <label>Definition:<br><textarea name="definition" rows="3"></textarea></label>
+        <label>Example:<br><textarea name="example" rows="2"></textarea></label>
+        <label>Synonyms:<br><input type="text" name="synonyms" placeholder="comma separated"></label>
+        <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated"></label>
+        <label>Evaluation/Measurement:<br><textarea name="measurement" rows="2"></textarea></label>
+        <label>Potential Issues:<br><textarea name="verification_issues" rows="2"></textarea></label>
+        <label>Interdisciplinary:<br><input type="text" name="interdisciplinary"></label>
+        <label>Category:<br><input type="text" name="category"></label>
+        <label>URL:<br><input type="url" name="url"></label>
         <button type="submit">Add</button>
         <button type="button" id="construct-add-cancel">Cancel</button>
         <div class="form-error" style="display:none"></div>
@@ -316,10 +324,19 @@ function startAddConstruct() {
         errorDiv.style.display = 'none';
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
+        const parseList = str => str.split(',').map(v => v.trim()).filter(Boolean);
         const obj = {
             title: e.target.title.value,
             axes: axesArr,
             definition: e.target.definition.value,
+            example: e.target.example.value,
+            synonyms: parseList(e.target.synonyms.value),
+            related_terms: parseList(e.target.related_terms.value),
+            measurement: e.target.measurement.value,
+            verification_issues: e.target.verification_issues.value,
+            interdisciplinary: e.target.interdisciplinary.value,
+            category: e.target.category.value,
+            url: e.target.url.value,
             significance: 0
         };
         if (typeof addConstruct === 'function') {
@@ -368,6 +385,14 @@ function startEditConstruct() {
             <option value="extended" ${axesVals.includes('extended') ? 'selected' : ''}>Extended</option>
         </select></label>
         <label>Definition:<br><textarea name="definition" rows="3">${item.definition || ''}</textarea></label>
+        <label>Example:<br><textarea name="example" rows="2">${item.example || ''}</textarea></label>
+        <label>Synonyms:<br><input type="text" name="synonyms" value="${Array.isArray(item.synonyms) ? item.synonyms.join(', ') : (item.synonyms || '')}"></label>
+        <label>Related Terms:<br><input type="text" name="related_terms" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
+        <label>Evaluation/Measurement:<br><textarea name="measurement" rows="2">${item.measurement || ''}</textarea></label>
+        <label>Potential Issues:<br><textarea name="verification_issues" rows="2">${item.verification_issues || ''}</textarea></label>
+        <label>Interdisciplinary:<br><input type="text" name="interdisciplinary" value="${item.interdisciplinary || ''}"></label>
+        <label>Category:<br><input type="text" name="category" value="${item.category || ''}"></label>
+        <label>URL:<br><input type="url" name="url" value="${item.url || ''}"></label>
         <button type="submit">Save</button>
         <button type="button" id="construct-edit-cancel">Cancel</button>
     </form></td>`;
@@ -378,12 +403,33 @@ function startEditConstruct() {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!confirm('Save changes?')) return;
-        item.title = e.target.title.value;
         const axesArr = Array.from(editForm.elements.axes.selectedOptions).map(o => o.value);
+        const parseList = str => str.split(',').map(v => v.trim()).filter(Boolean);
+        item.title = e.target.title.value;
         item.axes = axesArr;
         item.axis = axesArr.join(', ');
         item.definition = e.target.definition.value;
-        if (item.id && typeof updateConstruct === 'function') await updateConstruct(item.id, {title:item.title, axes:axesArr, definition:item.definition});
+        item.example = e.target.example.value;
+        item.synonyms = parseList(e.target.synonyms.value);
+        item.related_terms = parseList(e.target.related_terms.value);
+        item.measurement = e.target.measurement.value;
+        item.verification_issues = e.target.verification_issues.value;
+        item.interdisciplinary = e.target.interdisciplinary.value;
+        item.category = e.target.category.value;
+        item.url = e.target.url.value;
+        if (item.id && typeof updateConstruct === 'function') await updateConstruct(item.id, {
+            title: item.title,
+            axes: axesArr,
+            definition: item.definition,
+            example: item.example,
+            synonyms: item.synonyms,
+            related_terms: item.related_terms,
+            measurement: item.measurement,
+            verification_issues: item.verification_issues,
+            interdisciplinary: item.interdisciplinary,
+            category: item.category,
+            url: item.url
+        });
         editRow.remove();
         applyConstructFilters();
     });

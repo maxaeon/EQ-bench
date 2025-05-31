@@ -78,12 +78,16 @@ async function authenticate() {
 
   const creds = await showLoginForm();
   if (!creds) return false;
-  const { error } = await client.auth.signInWithPassword(creds);
-  if (error) {
-    alert('Login failed: ' + (error.message || error));
-    return false;
+  try {
+    const { error } = await client.auth.signInWithPassword(creds);
+    if (error) {
+      alert('Login failed: ' + (error.message || error));
+      return false;
+    }
+    return true;
+  } finally {
+    hideLoginForm();
   }
-  return true;
 }
 
 async function fetchConstructs() {

@@ -142,7 +142,7 @@
     }
 
     const selectedLit = new Set();
-    let selectedLitRow = null;
+    let selectedLitId = null;
 
     function toBibtex(item) {
         const type = item.journal ? 'article' : 'book';
@@ -190,7 +190,8 @@
             const checked = selectedLit.has(l.__index) ? 'checked' : '';
             const row = document.createElement('tr');
             row.className = 'lit-row';
-            row.id = `lit-row-${l.__index}`;
+            row.dataset.lid = l.id ?? l.__index;
+            row.id = `lit-row-${l.id ?? l.__index}`;
             row.innerHTML = `
                 <td><input type="checkbox" class="lit-check" data-index="${l.__index}" ${checked}></td>
                 <td>${l.title}</td>
@@ -214,7 +215,7 @@
                 if (e.target.classList.contains('lit-check') || e.target.closest('.star-rating')) return;
                 tbody.querySelectorAll('.lit-row').forEach(x => x.classList.remove('selected'));
                 r.classList.add('selected');
-                selectedLitRow = parseInt(r.id.replace('lit-row-',''),10);
+                selectedLitId = r.dataset.lid || r.id.replace('lit-row-','');
             });
         });
         updateSelectAll();
@@ -389,10 +390,10 @@ function startAddLit() {
 }
 
 function startEditLit() {
-    if (selectedLitRow === null) { alert('Select an entry first.'); return; }
-    const item = literature.find(l => l.__index === selectedLitRow);
+    if (selectedLitId === null) { alert('Select an entry first.'); return; }
+    const item = literature.find(l => (l.id ?? l.__index) == selectedLitId);
     if (!item) return;
-    const row = document.getElementById('lit-row-' + selectedLitRow);
+    const row = document.getElementById('lit-row-' + selectedLitId);
     document.getElementById('lit-edit-row')?.remove();
     const editRow = document.createElement('tr');
     editRow.id = 'lit-edit-row';
@@ -419,15 +420,15 @@ function startEditLit() {
 }
 
 async function deleteSelectedLit() {
-    if (selectedLitRow === null) { alert('Select an entry first.'); return; }
-    const idx = literature.findIndex(l => l.__index === selectedLitRow);
+    if (selectedLitId === null) { alert('Select an entry first.'); return; }
+    const idx = literature.findIndex(l => (l.id ?? l.__index) == selectedLitId);
     if (idx === -1) return;
     if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (!confirm('Delete this entry?')) return;
     const item = literature[idx];
     if (item.id && typeof deleteLiterature === 'function') await deleteLiterature(item.id);
     literature.splice(idx,1);
-    selectedLitRow = null;
+    selectedLitId = null;
     applyLitFilters();
 }
 

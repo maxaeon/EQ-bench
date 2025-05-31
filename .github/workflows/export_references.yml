@@ -41,6 +41,7 @@ jobs:
               }
               const deduped = Object.values(map);
               const data = deduped.map(i => ({
+                id: i.number,
                 number: i.number,
                 title: i.title,
                 user: i.user.login,
@@ -64,6 +65,8 @@ jobs:
           try {
             data = JSON.parse(fs.readFileSync('data/literature.json', 'utf8'));
           } catch (e) {}
+          let maxId = 0;
+          data.forEach(item => { if (item.id && item.id > maxId) maxId = item.id; });
           const byTitle = new Map();
           const byDoi = new Map();
           const norm = s => (s || '').toLowerCase();
@@ -77,6 +80,7 @@ jobs:
             parse.toJSON(content).forEach(entry => {
               const f = entry.entryTags || {};
               const obj = {
+                id: ++maxId,
                 title: f.title || '',
                 authors: f.author || '',
                 year: f.year ? parseInt(f.year, 10) : undefined,

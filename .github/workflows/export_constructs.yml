@@ -41,6 +41,7 @@ jobs:
               }
               const deduped = Object.values(map);
               const data = deduped.map(i => ({
+                id: i.number,
                 number: i.number,
                 title: i.title,
                 user: i.user.login,

@@ -1,6 +1,6 @@
-# AI EQ Benchmark Research Hub
+# EQ AI Research Hub
 
-Welcome to the **AI Emotional Intelligence (EQ) Benchmark Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems, anchored around the leading **SERA-X** model.
+Welcome to the **EQ AI Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems, anchored around the leading **SERA-X** model.
 
 GitHub Discussions are enabled for open dialogue and interdisciplinary collaboration.
 
@@ -48,7 +48,7 @@ Underlying this interdisciplinary methodology are several Theoretical Foundation
 ---
 
 ## 3  Repository Layout
-This repository is organized as an AI EQ Benchmark Research Hub. Major sections include:
+This repository is organized as an EQ AI Research Hub. Major sections include:
 
 - [**Benchmarks/**](Benchmarks/) – details of the SERA-X benchmark and comparisons to alternative models (see [docs/alternative-models.html](docs/alternative-models.html)).
 - [**Resources-and-Tools/**](Resources-and-Tools/) – datasets, scripts, and utilities for running EQ evaluations.

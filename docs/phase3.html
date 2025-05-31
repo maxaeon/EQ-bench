@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI EQ - Phase 3</title>
+    <title>EQ AI Research Hub - Phase 3</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/images/favicon.png">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1><a class="logo" href="#" id="logo-link">AI EQ Benchmark Framework</a></h1>
+        <h1><a class="logo" href="#" id="logo-link">EQ AI Research Hub</a></h1>
         <div id="logo-menu" class="logo-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -55,28 +55,103 @@
             </div>
             <!-- SERA-X Database Connection Visualization -->
             <div>
-                <h2>Tentative Database Structure: Linking Constructs, Literature, and SERA-X Validation</h2>
-                <pre>
+<h2>Tentative Database Structure: Constructs, Literature, Evaluation Methods, and SERA-X Validation</h2>
+
+<table style="width:100%; border-collapse:collapse; border:1px solid #ccc;">
+  <thead>
+    <tr style="background-color:#e8e8e8;">
+      <th style="border:1px solid #ccc; padding:10px;">Construct</th>
+      <th style="border:1px solid #ccc; padding:10px;">Linked Axes (SERA-X)</th>
+      <th style="border:1px solid #ccc; padding:10px;">Supporting Literature</th>
+      <th style="border:1px solid #ccc; padding:10px;">Evaluation Methods (AI systems)</th>
+      <th style="border:1px solid #ccc; padding:10px;">Validated Benchmarks (Examples)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Construct Example 1 -->
+    <tr>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        Emotion Regulation
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        Responding, Adapting
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        <ul style="margin:0; padding-left:20px;">
+          <li>Gross (1998)</li>
+          <li>Picard (1997)</li>
+        </ul>
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        <ul style="margin:0; padding-left:20px;">
+          <li><strong>Human-annotated response quality:</strong> Experts rate AI-generated emotional responses for appropriateness.</li>
+          <li><strong>Dynamic contextual adaptability:</strong> Multi-turn dialogue tests evaluating shifts in AI's emotional output based on context changes.</li>
+        </ul>
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        GPT-4, Claude (LLM Dialogue Scores)
+      </td>
+    </tr>
+
+    <!-- Construct Example 2 -->
+    <tr style="background-color:#f9f9f9;">
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        Emotion Recognition
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        Sensing
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        Picard (1997)
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        <ul style="margin:0; padding-left:20px;">
+          <li><strong>Classification accuracy:</strong> Evaluating AI emotion detection accuracy on standardized emotion datasets (e.g., GoEmotions).</li>
+          <li><strong>Precision and recall metrics:</strong> Statistical analysis of AI’s ability to correctly identify nuanced emotional expressions.</li>
+        </ul>
+      </td>
+      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
+        Empathy Dataset (GoEmotions)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Conceptual Visualization of Data Relationships (Updated)</h3>
+<pre style="background-color:#f0f0f0; padding:15px; border-radius:6px;">
 Constructs
 ├── Emotion Regulation
-│   ├── Linked Axes: Responding, Adapting
-│   ├── Validated by Literature:
+│   ├── Axes: Responding, Adapting
+│   ├── Literature:
 │   │   ├── Gross (1998)
 │   │   └── Picard (1997)
-│   └── Validated Benchmarks:
-│       └── LLM Evaluation Scores (GPT-4, Claude)
+│   ├── Evaluation Methods:
+│   │   ├── Human-annotated response quality
+│   │   └── Dynamic contextual adaptability (multi-turn dialogue tests)
+│   └── Benchmarks:
+│       └── GPT-4, Claude (LLM scores)
+│
 ├── Emotion Recognition
-│   ├── Linked Axes: Sensing
-│   ├── Validated by Literature:
+│   ├── Axes: Sensing
+│   ├── Literature:
 │   │   └── Picard (1997)
-│   └── Validated Benchmarks:
+│   ├── Evaluation Methods:
+│   │   ├── Classification accuracy (standardized datasets)
+│   │   └── Precision and recall metrics
+│   └── Benchmarks:
 │       └── Empathy Dataset (GoEmotions)
+│
 Literature
 ├── Gross (1998)
-│   └── Constructs Supported: Emotion Regulation
+│   └── Constructs: Emotion Regulation
+│
 └── Picard (1997)
-    ├── Constructs Supported: Emotion Recognition, Emotion Regulation
-    └── Axes Validated: Sensing, Responding, Adapting
+    ├── Constructs: Emotion Recognition, Emotion Regulation
+    └── Axes: Sensing, Responding, Adapting
+</pre>
+
+---
+
                 </pre>
                 <!-- Explanation of Validation -->
                 <h3>SERA-X Validation Methodology (Tentative)</h3>

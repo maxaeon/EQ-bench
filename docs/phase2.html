@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI EQ - Phase 2</title>
+    <title>EQ AI Research Hub - Phase 2</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/images/favicon.png">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1><a class="logo" href="#" id="logo-link">AI EQ Benchmark Framework</a></h1>
+        <h1><a class="logo" href="#" id="logo-link">EQ AI Research Hub</a></h1>
         <div id="logo-menu" class="logo-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -106,10 +106,7 @@
             <button id="edit-construct-btn" class="button">Edit</button>
             <button id="delete-construct-btn" class="button">Delete</button>
         </div>
-<section>
-    <h2>Manage Constructs</h2>
-    <p>You can edit or delete construct records without logging in.</p>
-</section>
+
     </main>
 
     <footer>
@@ -296,8 +293,8 @@ function startAddConstruct() {
     const addRow = document.createElement('tr');
     addRow.id = 'construct-add-row';
     addRow.innerHTML = `<td colspan="6"><form id="construct-add-form">
-        <label>Title: <input type="text" name="title" required></label>
-        <label>Axes: <select name="axes" multiple size="1">
+        <label>Title:<br><input type="text" name="title" required></label>
+        <label>Axes:<br><select name="axes" multiple size="1">
             <option value="sense">Sense</option>
             <option value="explain">Explain</option>
             <option value="respond">Respond</option>

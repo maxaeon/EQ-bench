@@ -1,6 +1,6 @@
 # Interdisciplinary Onboarding
 
-Welcome to the AI EQ Benchmark project. This short guide explains how researchers from many fields can collaborate.
+Welcome to the EQ AI Research Hub project. This short guide explains how researchers from many fields can collaborate.
 
 ## How you can contribute
 - **Psychologists** – propose constructs and help interpret results. Use the [reference](../.github/ISSUE_TEMPLATE/reference.yml) and [construct](../.github/ISSUE_TEMPLATE/construct.yml) issue templates to submit sources and experiment ideas.

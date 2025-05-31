@@ -1,0 +1,28 @@
+name: Glossary term request
+description: Suggest a term that should be defined in the project glossary
+labels: ["documentation", "glossary"]
+assignees: []
+body:
+  - type: input
+    id: term
+    attributes:
+      label: Term
+      description: Word or phrase to define
+      placeholder: "affective computing"
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_definition
+    attributes:
+      label: Proposed definition
+      description: Provide a short definition or explanation
+  - type: textarea
+    id: references
+    attributes:
+      label: Supporting references or context
+      description: Cite sources or explain where this term is used
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Anything else reviewers should know

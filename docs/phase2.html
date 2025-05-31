@@ -123,7 +123,11 @@
         const axes = ['sense','explain','respond','adapt','extended'];
         let foundAxes = [];
         if (c.axes) {
-            foundAxes = c.axes.split(',').map(a => a.trim().toLowerCase());
+            if (Array.isArray(c.axes)) {
+                foundAxes = c.axes.map(a => String(a).trim().toLowerCase());
+            } else {
+                foundAxes = c.axes.split(',').map(a => a.trim().toLowerCase());
+            }
         } else {
             foundAxes = axes.filter(a => body.includes(a));
         }
@@ -290,7 +294,13 @@ function startAddConstruct() {
     addRow.id = 'construct-add-row';
     addRow.innerHTML = `<td colspan="6"><form id="construct-add-form">
         <label>Title: <input type="text" name="title" required></label>
-        <label>Axes: <input type="text" name="axes"></label>
+        <label>Axes: <select name="axes" multiple size="1">
+            <option value="sense">Sense</option>
+            <option value="explain">Explain</option>
+            <option value="respond">Respond</option>
+            <option value="adapt">Adapt</option>
+            <option value="extended">Extended</option>
+        </select></label>
         <label>Definition:<br><textarea name="definition" rows="3"></textarea></label>
         <button type="submit">Add</button>
         <button type="button" id="construct-add-cancel">Cancel</button>
@@ -299,14 +309,16 @@ function startAddConstruct() {
     tbody.prepend(addRow);
     const form = document.getElementById('construct-add-form');
     const errorDiv = form.querySelector('.form-error');
+    enableMultiSelectDropdown(form.elements.axes);
     form.addEventListener('submit', async e => {
         e.preventDefault();
         errorDiv.textContent = '';
         errorDiv.style.display = 'none';
         if (!authed) { if (!(await authenticate())) return; authed = true; }
+        const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
         const obj = {
             title: e.target.title.value,
-            axes: e.target.axes.value,
+            axes: axesArr,
             definition: e.target.definition.value,
             significance: 0
         };
@@ -326,6 +338,7 @@ function startAddConstruct() {
                 return;
             }
         }
+        obj.axis = axesArr.join(', ');
         obj.__index = Math.max(0, ...constructs.map(c => c.__index || 0)) + 1;
         constructs.push(obj);
         addRow.remove();
@@ -344,22 +357,33 @@ function startEditConstruct() {
     document.getElementById('construct-edit-row')?.remove();
     const editRow = document.createElement('tr');
     editRow.id = 'construct-edit-row';
+    const axesVals = Array.isArray(item.axes) ? item.axes : (item.axes || '').split(',').map(a=>a.trim());
     editRow.innerHTML = `<td colspan="6"><form id="construct-edit-form">
         <label>Title: <input type="text" name="title" value="${item.title}"></label>
-        <label>Axes: <input type="text" name="axes" value="${item.axes || ''}"></label>
+        <label>Axes: <select name="axes" multiple size="1">
+            <option value="sense" ${axesVals.includes('sense') ? 'selected' : ''}>Sense</option>
+            <option value="explain" ${axesVals.includes('explain') ? 'selected' : ''}>Explain</option>
+            <option value="respond" ${axesVals.includes('respond') ? 'selected' : ''}>Respond</option>
+            <option value="adapt" ${axesVals.includes('adapt') ? 'selected' : ''}>Adapt</option>
+            <option value="extended" ${axesVals.includes('extended') ? 'selected' : ''}>Extended</option>
+        </select></label>
         <label>Definition:<br><textarea name="definition" rows="3">${item.definition || ''}</textarea></label>
         <button type="submit">Save</button>
         <button type="button" id="construct-edit-cancel">Cancel</button>
     </form></td>`;
     row.insertAdjacentElement('afterend', editRow);
-    document.getElementById('construct-edit-form').addEventListener('submit', async e => {
+    const editForm = document.getElementById('construct-edit-form');
+    enableMultiSelectDropdown(editForm.elements.axes);
+    editForm.addEventListener('submit', async e => {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!confirm('Save changes?')) return;
         item.title = e.target.title.value;
-        item.axes = e.target.axes.value;
+        const axesArr = Array.from(editForm.elements.axes.selectedOptions).map(o => o.value);
+        item.axes = axesArr;
+        item.axis = axesArr.join(', ');
         item.definition = e.target.definition.value;
-        if (item.id && typeof updateConstruct === 'function') await updateConstruct(item.id, {title:item.title, axes:item.axes, definition:item.definition});
+        if (item.id && typeof updateConstruct === 'function') await updateConstruct(item.id, {title:item.title, axes:axesArr, definition:item.definition});
         editRow.remove();
         applyConstructFilters();
     });

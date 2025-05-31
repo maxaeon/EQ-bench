@@ -72,8 +72,7 @@ bash
 git clone https://github.com/maxaeon/EQ-bench.git
 cd EQ-bench
 # No additional Python packages required yet
-pytest               # metric unit-tests
-python src/cli.py    # view help
+pytest               # tests not yet available
 
 ---
 

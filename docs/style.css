@@ -458,6 +458,11 @@ tbody tr:nth-child(even) {
         background-color: #1f6feb;
         color: #fff;
     }
+
+    pre {
+        background-color: #222;
+        color: #ccc;
+    }
 }
 
 /* Star rating widget */

@@ -294,10 +294,15 @@ function startAddConstruct() {
         <label>Definition:<br><textarea name="definition" rows="3"></textarea></label>
         <button type="submit">Add</button>
         <button type="button" id="construct-add-cancel">Cancel</button>
+        <div class="form-error" style="display:none"></div>
     </form></td>`;
     tbody.prepend(addRow);
-    document.getElementById('construct-add-form').addEventListener('submit', async e => {
+    const form = document.getElementById('construct-add-form');
+    const errorDiv = form.querySelector('.form-error');
+    form.addEventListener('submit', async e => {
         e.preventDefault();
+        errorDiv.textContent = '';
+        errorDiv.style.display = 'none';
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         const obj = {
             title: e.target.title.value,
@@ -307,9 +312,19 @@ function startAddConstruct() {
         };
         if (typeof addConstruct === 'function') {
             try {
-                const res = await addConstruct(obj);
-                if (res && res[0]) Object.assign(obj, res[0]);
-            } catch (err) { console.error(err); }
+                const { data, error } = await addConstruct(obj);
+                if (error) {
+                    errorDiv.textContent = error.message || error;
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                if (data && data[0]) Object.assign(obj, data[0]);
+            } catch (err) {
+                console.error(err);
+                errorDiv.textContent = err.message || err;
+                errorDiv.style.display = 'block';
+                return;
+            }
         }
         obj.__index = Math.max(0, ...constructs.map(c => c.__index || 0)) + 1;
         constructs.push(obj);

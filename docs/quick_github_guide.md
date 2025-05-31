@@ -18,13 +18,17 @@ This guide shows how to contribute to the AI EQ Benchmark Research Hub using the
 
 When filling out a literature issue or sharing your own bibliography, convert each reference to a standard BibTeX entry. A quick way is to paste the DOI into an online converter such as [bibtex.com](https://www.bibtex.com/c/doi-to-bibtex-converter/). Copy the generated BibTeX text into a `.bib` file or the issue form.
 
-## 3. Edit the literature review in Overleaf
+## 3. Importing and exporting `.bib` files
+
+On the **Phase&nbsp;1** page you can upload a local `.bib` file to quickly populate the submission form. Entries are parsed and stored with custom fields such as `sera-axis` and `sera-construct` to capture the construct name and axis. After editing, click **Export BibTeX** to download the selected entries with these tags preserved. Maintainers can also run `python scripts/export_bibtex.py references.bib` to export the same data directly from the JSON files.
+
+## 4. Edit the literature review in Overleaf
 
 1. On the Research Hub website, follow the link labeled "Access the collaborative Overleaf document."
 2. Overleaf opens in Visual mode, so you can edit without knowing LaTeX.
 3. Add your references or comments and press **Save**. Your changes are stored in the shared project.
 
-## 4. Optional: Edit files on GitHub
+## 5. Optional: Edit files on GitHub
 
 1. Browse to any Markdown file in this repository.
 2. Click the **pencil** icon to open GitHub's editor.

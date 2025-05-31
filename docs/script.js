@@ -390,30 +390,11 @@ function initRatings(selector, storagePrefix) {
 
 // Parse BibTeX text into reference objects matching literature.json fields
 function parseBibtex(text) {
-  const entries = [];
-  if (!text) return entries;
-  const entryRe = /@([a-zA-Z]+)\s*{\s*([^,]+),/g;
-  let match;
-  while ((match = entryRe.exec(text)) !== null) {
-    let start = match.index + match[0].length;
-    let braces = 1;
-    let i = start;
-    while (i < text.length && braces > 0) {
-      if (text[i] === '{') braces++; else if (text[i] === '}') braces--;
-      i++;
-    }
-    const body = text.slice(start, i - 1);
-    entryRe.lastIndex = i;
-    const fields = {};
-    const fieldRe = /(\w+)\s*=\s*(\{[^\}]*\}|"[^"]*"|[^,\n]+),?/g;
-    let f;
-    while ((f = fieldRe.exec(body)) !== null) {
-      let val = f[2].trim();
-      if ((val.startsWith('{') && val.endsWith('}')) || (val.startsWith('"') && val.endsWith('"')))
-        val = val.slice(1, -1);
-      fields[f[1].toLowerCase()] = val;
-    }
-    entries.push({
+  if (!text || !window.bibtexParse || !window.bibtexParse.toJSON) return [];
+  const rawEntries = window.bibtexParse.toJSON(text);
+  return rawEntries.map(entry => {
+    const fields = entry.entryTags || {};
+    const obj = {
       title: fields.title || '',
       authors: fields.author || fields.authors || '',
       year: fields.year || '',
@@ -432,7 +413,11 @@ function parseBibtex(text) {
         .map(k => k.trim())
         .filter(Boolean),
       relevance: fields.note || ''
-    });
-  }
-  return entries;
+    };
+    // Preserve any additional fields not explicitly handled
+    for (const [k, v] of Object.entries(fields)) {
+      if (!(k in obj)) obj[k] = v;
+    }
+    return obj;
+  });
 }

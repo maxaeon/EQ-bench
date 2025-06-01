@@ -178,7 +178,7 @@
             extra.innerHTML = `
                 <td colspan="6"><strong>synonyms:</strong> ${synonyms}<br>
                 <strong>related terms:</strong> ${related}<br>
-                ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation}<br>` : ''}
+                ${c.evaluation ? `<strong>How to Measure:</strong> ${c.evaluation}<br>` : ''}
                 <strong>Potential Issues:</strong> ${issues}<br>
                 ${c.interdisciplinary ? `<strong>Interdisciplinary:</strong> ${c.interdisciplinary}<br>` : ''}
                 ${c.category ? `<strong>Category:</strong> ${c.category}<br>` : ''}
@@ -306,7 +306,7 @@ function startAddConstruct() {
         <label>Example:<br><textarea name="example" rows="2"></textarea></label>
         <label>Synonyms:<br><input type="text" name="synonyms" placeholder="comma separated"></label>
         <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated"></label>
-        <label>Evaluation/Measurement:<br><textarea name="measurement" rows="2"></textarea></label>
+        <label>How to Measure:<br><textarea name="measurement" rows="2"></textarea></label>
         <label>Potential Issues:<br><textarea name="verification_issues" rows="2"></textarea></label>
         <label>Interdisciplinary:<br><input type="text" name="interdisciplinary"></label>
         <label>Category:<br><input type="text" name="category"></label>
@@ -385,7 +385,7 @@ function startEditConstruct() {
         <label>Example:<br><textarea name="example" rows="2" placeholder="Brief example">${item.example || ''}</textarea></label>
         <label>Synonyms:<br><input type="text" name="synonyms" placeholder="comma separated" value="${Array.isArray(item.synonyms) ? item.synonyms.join(', ') : (item.synonyms || '')}"></label>
         <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
-        <label>Evaluation/Measurement:<br><textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
+        <label>How to Measure:<br><textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
         <label>Potential Issues:<br><textarea name="verification_issues" rows="2" placeholder="Verification caveats">${item.verification_issues || ''}</textarea></label>
         <label>Interdisciplinary:<br><input type="text" name="interdisciplinary" placeholder="e.g. psychology" value="${item.interdisciplinary || ''}"></label>
         <label>Category:<br><input type="text" name="category" placeholder="Field" value="${item.category || ''}"></label>

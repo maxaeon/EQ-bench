@@ -273,7 +273,7 @@ function populateAxisConstructs(axis, containerId) {
         details.innerHTML = `
           <strong>synonyms:</strong> ${synonyms}<br>
           <strong>related terms:</strong> ${related}<br>
-          ${c.evaluation ? `<strong>How to Evaluate:</strong> ${c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation}<br>` : ''}
+          ${c.evaluation ? `<strong>How to Measure:</strong> ${c.evaluation.length > 250 ? c.evaluation.slice(0,250)+'…' : c.evaluation}<br>` : ''}
           <strong>Potential Issues:</strong> ${issues}<br><br>
           ${c.example ? `<em>${c.example}</em><br>` : ''}
           <div class="construct-actions">

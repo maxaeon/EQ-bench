@@ -94,6 +94,14 @@ nav ul li {
     margin-bottom: 0;
 }
 
+.nav-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    color: #fff;
+}
+
 .nav-toggle {
     display: none;
     background: none;

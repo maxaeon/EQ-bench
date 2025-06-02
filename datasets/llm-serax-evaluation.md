@@ -73,3 +73,15 @@ Example prompt: *"Sam has been quiet for days and finally says, 'I'll catch you 
 | **2** | "Sam could be stressed, but I'm not sure." |
 | **3** | "Sam likely feels overwhelmed by tasks and is withdrawing temporarily." |
 | **4** | "Sam appears overloaded and is distancing themself to cope. A short supportive check-in may help." |
+
+## Benchmark Alignment
+
+Phase 3 benchmarks use this rubric to score model performance on each axis:
+
+- **Sense** tasks are rated on how accurately the model identifies emotional tone.
+- **Explain** tasks examine how well the model articulates underlying causes or appraisals.
+- **Respond** tasks measure the helpfulness and empathy of replies.
+- **Adapt** tasks consider flexibility across cultural or situational changes.
+- **Extended** tasks assess consistency over long interactions and collaborative goals.
+
+Annotators assign a 0–4 score per axis following the scale above so results remain comparable across benchmarks.

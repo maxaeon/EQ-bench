@@ -334,23 +334,23 @@ async function startAddConstruct() {
     const addRow = document.createElement('tr');
     addRow.id = 'construct-add-row';
     addRow.innerHTML = `<td colspan="6"><form id="construct-add-form">
-        <label>Title:<br><input type="text" name="title" required></label>
-        <label>Axes:<br><select name="axes" multiple size="1">
+        <label>Title: <input type="text" name="title" required></label>
+        <label>Axes: <select name="axes" multiple size="1">
             <option value="sense">Sense</option>
             <option value="explain">Explain</option>
             <option value="respond">Respond</option>
             <option value="adapt">Adapt</option>
             <option value="extended">Extended</option>
         </select></label>
-        <label>Definition:<br><textarea name="definition" rows="3"></textarea></label>
-        <label>Example:<br><textarea name="example" rows="2"></textarea></label>
-        <label>Synonyms:<br><input type="text" name="synonyms" placeholder="comma separated"></label>
-        <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated"></label>
-        <label>How to Measure:<br><textarea name="measurement" rows="2"></textarea></label>
-        <label>Potential Issues:<br><textarea name="verification_issues" rows="2"></textarea></label>
-        <label>Category:<br><input type="text" name="category"></label>
-        <label>Related Literature:<br><select name="references" multiple size="1"></select></label>
-        <label>URL:<br><input type="url" name="url"></label>
+        <label>Definition: <textarea name="definition" rows="3"></textarea></label>
+        <label>Example: <textarea name="example" rows="2"></textarea></label>
+        <label>Synonyms: <input type="text" name="synonyms" placeholder="comma separated"></label>
+        <label>Related Terms: <input type="text" name="related_terms" placeholder="comma separated"></label>
+        <label>How to Measure: <textarea name="measurement" rows="2"></textarea></label>
+        <label>Potential Issues: <textarea name="verification_issues" rows="2"></textarea></label>
+        <label>Category: <input type="text" name="category"></label>
+        <label>Related Literature: <select name="references" multiple size="1"></select></label>
+        <label>URL: <input type="url" name="url"></label>
         <button type="submit">Add</button>
         <button type="button" id="construct-add-cancel">Cancel</button>
         <div class="form-error" style="display:none"></div>
@@ -416,23 +416,23 @@ async function startEditConstruct() {
     if (!item) return;
     const axesVals = Array.isArray(item.axes) ? item.axes : (item.axes || '').split(',').map(a=>a.trim());
     const formHtml = `<form id="construct-edit-form">
-        <label>Title:<br><input type="text" name="title" value="${item.title}" placeholder="Construct name"></label>
-        <label>Axes:<br><select name="axes" multiple size="1">
+        <label>Title: <input type="text" name="title" value="${item.title}" placeholder="Construct name"></label>
+        <label>Axes: <select name="axes" multiple size="1">
             <option value="sense" ${axesVals.includes('sense') ? 'selected' : ''}>Sense</option>
             <option value="explain" ${axesVals.includes('explain') ? 'selected' : ''}>Explain</option>
             <option value="respond" ${axesVals.includes('respond') ? 'selected' : ''}>Respond</option>
             <option value="adapt" ${axesVals.includes('adapt') ? 'selected' : ''}>Adapt</option>
             <option value="extended" ${axesVals.includes('extended') ? 'selected' : ''}>Extended</option>
         </select></label>
-        <label>Definition:<br><textarea name="definition" rows="3" placeholder="Short description">${item.definition || ''}</textarea></label>
-        <label>Example:<br><textarea name="example" rows="2" placeholder="Brief example">${item.example || ''}</textarea></label>
-        <label>Synonyms:<br><input type="text" name="synonyms" placeholder="comma separated" value="${Array.isArray(item.synonyms) ? item.synonyms.join(', ') : (item.synonyms || '')}"></label>
-        <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
-        <label>How to Measure:<br><textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
-        <label>Potential Issues:<br><textarea name="verification_issues" rows="2" placeholder="Verification caveats">${item.verification_issues || ''}</textarea></label>
-        <label>Category:<br><input type="text" name="category" placeholder="Field" value="${item.category || ''}"></label>
-        <label>Related Literature:<br><select name="references" multiple size="1"></select></label>
-        <label>URL:<br><input type="url" name="url" placeholder="Source link" value="${item.url || ''}"></label>
+        <label>Definition: <textarea name="definition" rows="3" placeholder="Short description">${item.definition || ''}</textarea></label>
+        <label>Example: <textarea name="example" rows="2" placeholder="Brief example">${item.example || ''}</textarea></label>
+        <label>Synonyms: <input type="text" name="synonyms" placeholder="comma separated" value="${Array.isArray(item.synonyms) ? item.synonyms.join(', ') : (item.synonyms || '')}"></label>
+        <label>Related Terms: <input type="text" name="related_terms" placeholder="comma separated" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
+        <label>How to Measure: <textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
+        <label>Potential Issues: <textarea name="verification_issues" rows="2" placeholder="Verification caveats">${item.verification_issues || ''}</textarea></label>
+        <label>Category: <input type="text" name="category" placeholder="Field" value="${item.category || ''}"></label>
+        <label>Related Literature: <select name="references" multiple size="1"></select></label>
+        <label>URL: <input type="url" name="url" placeholder="Source link" value="${item.url || ''}"></label>
         <div class="edit-buttons">
             <button type="submit" class="button">Save</button>
             <button type="button" id="construct-edit-cancel" class="button">Cancel</button>

@@ -563,3 +563,15 @@ tbody tr:nth-child(even) {
     margin-top: 0.5rem;
     font-size: 0.9rem;
 }
+
+/* Inline form layout */
+form label {
+    display: block;
+    margin-bottom: 4px;
+}
+form label > input,
+form label > select,
+form label > textarea {
+    margin-left: 0.25rem;
+}
+

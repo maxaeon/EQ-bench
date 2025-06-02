@@ -28,11 +28,8 @@ body {
 header {
     background-color: #0d6efd;
     color: #fff;
-    padding: 1.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    padding: 0.5rem 0;
+    text-align: center;
     position: relative;
 }
 
@@ -44,56 +41,66 @@ h1 {
     font-size: 2.5rem;
 }
 
-header .logo {
-    color: #fff;
-    text-decoration: none;
-}
 
-nav ul {
+nav.site-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 1rem;
     justify-content: center;
     position: relative;
 }
 
-nav ul li {
-    margin-bottom: 0;
+nav.site-nav li {
+    margin: 0;
     position: relative;
 }
 
-nav ul li.dropdown:hover > ul {
+nav.site-nav > ul > li > a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0d6efd;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+nav.site-nav > ul > li + li > a {
+    margin-left: 0.25rem;
+}
+
+nav.site-nav li.dropdown:hover > ul {
     display: block;
 }
 
-nav ul li ul {
+nav.site-nav li ul {
     display: none;
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     background-color: #0d6efd;
-    padding: 0.5rem 0;
-    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    border-radius: 6px;
     min-width: 140px;
-    text-align: center;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     z-index: 100;
 }
 
-nav ul li ul li {
+nav.site-nav li ul li {
     margin: 0;
 }
 
-nav ul li ul a {
+nav.site-nav li ul a {
     color: #fff;
     text-decoration: none;
     display: block;
     padding: 0.4rem 1rem;
 }
 
-nav ul li ul a:hover {
+nav.site-nav li ul a:hover {
     background-color: #0b5ed7;
 }
 
@@ -121,17 +128,17 @@ nav ul li ul a:hover {
     .nav-toggle {
         display: block;
     }
-    nav ul {
+    nav.site-nav ul {
         flex-direction: column;
         gap: 0.25rem;
     }
-    nav ul li ul {
+    nav.site-nav ul li ul {
         position: static;
         transform: none;
         background-color: transparent;
         padding: 0;
     }
-    nav ul li ul a {
+    nav.site-nav ul li ul a {
         color: #fff;
         padding: 0.25rem 1rem;
     }
@@ -435,8 +442,6 @@ tbody tr:nth-child(even) {
         background-color: #1158c7;
     }
 
-    header .logo {
-        color: #fff;
     .toggle-details {
         color: inherit;
     }

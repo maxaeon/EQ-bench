@@ -49,6 +49,13 @@ falls back to searching the issue text.
 Records may also include a `synonyms` array with alternate names or related
 terms. The constructs page uses these values to make search more flexible.
 
+Construct submissions can reference supporting papers using the `references`
+field. This is an array of literature IDs (or titles) chosen from the existing
+entries in the database. When adding a new construct via the website, the form
+presents a multi-select dropdown populated with literature titles. Select the
+relevant sources or leave it blank. If a needed reference is missing, add it to
+the literature table first so it appears in the list.
+
 This hybrid method keeps contributions transparent via the JSON snapshots while
 allowing richer queries and edits through the Supabase backend.
 

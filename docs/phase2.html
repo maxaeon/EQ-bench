@@ -214,7 +214,6 @@
                 <strong>Related Literature:</strong> ${refs}<br>
                 ${c.evaluation ? `<strong>How to Measure:</strong> ${c.evaluation}<br>` : ''}
                 <strong>Potential Issues:</strong> ${issues}<br>
-                ${c.interdisciplinary ? `<strong>Interdisciplinary:</strong> ${c.interdisciplinary}<br>` : ''}
                 ${c.category ? `<strong>Category:</strong> ${c.category}<br>` : ''}
                 ${c.url ? `<strong>URL:</strong> <a href="${c.url}">${c.url}</a>` : ''}</td>`;
 
@@ -349,7 +348,6 @@ async function startAddConstruct() {
         <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated"></label>
         <label>How to Measure:<br><textarea name="measurement" rows="2"></textarea></label>
         <label>Potential Issues:<br><textarea name="verification_issues" rows="2"></textarea></label>
-        <label>Interdisciplinary:<br><input type="text" name="interdisciplinary"></label>
         <label>Category:<br><input type="text" name="category"></label>
         <label>Related Literature:<br><select name="references" multiple size="1"></select></label>
         <label>URL:<br><input type="url" name="url"></label>
@@ -380,7 +378,6 @@ async function startAddConstruct() {
             related_terms: parseList(e.target.related_terms.value),
             measurement: e.target.measurement.value,
             verification_issues: e.target.verification_issues.value,
-            interdisciplinary: e.target.interdisciplinary.value,
             category: e.target.category.value,
             url: e.target.url.value,
             significance: 0
@@ -433,7 +430,6 @@ async function startEditConstruct() {
         <label>Related Terms:<br><input type="text" name="related_terms" placeholder="comma separated" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
         <label>How to Measure:<br><textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
         <label>Potential Issues:<br><textarea name="verification_issues" rows="2" placeholder="Verification caveats">${item.verification_issues || ''}</textarea></label>
-        <label>Interdisciplinary:<br><input type="text" name="interdisciplinary" placeholder="e.g. psychology" value="${item.interdisciplinary || ''}"></label>
         <label>Category:<br><input type="text" name="category" placeholder="Field" value="${item.category || ''}"></label>
         <label>Related Literature:<br><select name="references" multiple size="1"></select></label>
         <label>URL:<br><input type="url" name="url" placeholder="Source link" value="${item.url || ''}"></label>
@@ -462,7 +458,6 @@ async function startEditConstruct() {
         item.related_terms = parseList(form.related_terms.value);
         item.measurement = form.measurement.value;
         item.verification_issues = form.verification_issues.value;
-        item.interdisciplinary = form.interdisciplinary.value;
         item.category = form.category.value;
         item.url = form.url.value;
         item.references = refsArr;
@@ -475,7 +470,6 @@ async function startEditConstruct() {
             related_terms: item.related_terms,
             measurement: item.measurement,
             verification_issues: item.verification_issues,
-            interdisciplinary: item.interdisciplinary,
             category: item.category,
             url: item.url,
             references: refsArr

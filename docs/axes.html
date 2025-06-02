@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EQ AI Research Hub - SERA-X Axes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/images/favicon.png">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+        <h1><a class="logo" href="index.html">EQ AI Research Hub</a></h1>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <nav class="site-nav" aria-label="Primary">
+            <ul>
+                <li><a href="research.html">Our Research Project</a></li>
+                <li class="sub-item"><a href="phase1.html">Phase 1</a></li>
+                <li class="sub-item"><a href="phase2.html">Phase 2</a></li>
+                <li class="sub-item"><a href="phase3.html">Phase 3</a></li>
+                <li class="sub-item"><a href="phase4.html">Phase 4</a></li>
+                <li><a href="expert-collaborators.html">Our Team of Experts</a></li>
+                <li><a href="https://github.com/maxaeon/EQ-bench">GitHub Repository</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+        <img src="assets/images/sera.png" alt="SERA-X axes diagram">
+        <p class="axes-intro">tentative axes:<br><br>
+            <span class="axis-toggle" data-target="sense-info">Sense</span> -
+            <span class="axis-toggle" data-target="explain-info">Explain</span> -
+            <span class="axis-toggle" data-target="respond-info">Respond</span> -
+            <span class="axis-toggle" data-target="adapt-info">Adapt</span> -
+            <span class="axis-toggle" data-target="extended-info">Extended</span>
+        </p>
+        <section id="sense-info" class="axis-detail">
+            <h2>Sense</h2>
+            <p><strong>This axis evaluates an AI system’s ability to detect and recognize emotional content from input.</strong></p>
+            <h3>What We Evaluate</h3>
+            <p>Can the model identify expressed or implied emotions from user dialogue, even when indirect or masked?</p>
+            <h3>Example Tasks</h3>
+            <ul>
+                <li>Classify a text utterance as expressing one of 10 emotion categories.</li>
+                <li>Estimate continuous valence/arousal from user messages.</li>
+                <li>Distinguish between literal vs. sarcastic emotional tone.</li>
+            </ul>
+            <h3>Metrics Used</h3>
+            <p>Macro-F1 for emotion label classification, CCC for valence/arousal regression.</p>
+        </section>
+        <section id="explain-info" class="axis-detail">
+            <h2>Explain</h2>
+            <p><strong>This axis tests whether the system can infer the causes or appraisals that explain an emotion.</strong></p>
+            <h3>What We Evaluate</h3>
+            <p>Can the system identify what situational factors or beliefs caused an emotion?</p>
+            <h3>Example Tasks</h3>
+            <ul>
+                <li>Given a story and emotion, identify the core appraisal.</li>
+                <li>Predict what the character will feel next if new information is revealed.</li>
+                <li>Classify the formal object of an emotion (e.g., danger, loss, betrayal).</li>
+            </ul>
+            <h3>Metrics Used</h3>
+            <p>Appraisal vector accuracy, cause-label accuracy, partial credit for next-emotion inference.</p>
+        </section>
+        <section id="respond-info" class="axis-detail">
+            <h2>Respond</h2>
+            <p><strong>This axis evaluates whether the AI can generate helpful, emotionally appropriate responses.</strong></p>
+            <h3>What We Evaluate</h3>
+            <p>Do responses show empathy, helpfulness, and alignment with the user’s affective state?</p>
+            <h3>Example Tasks</h3>
+            <ul>
+                <li>Complete a response to a user expressing fear, sadness, or frustration.</li>
+                <li>Choose or rephrase the most supportive reply from multiple candidates.</li>
+                <li>Match tone and emotion style.</li>
+            </ul>
+            <h3>Metrics Used</h3>
+            <p>Human Empathy Score (HES) rated on 1–5 scale.</p>
+        </section>
+        <section id="adapt-info" class="axis-detail">
+            <h2>Adapt</h2>
+            <p><strong>This axis measures how well the model adjusts to new cultural, linguistic, or situational emotion norms.</strong></p>
+            <h3>What We Evaluate</h3>
+            <p>Does the system retain old skills while adapting to new affective expressions and norms?</p>
+            <h3>Example Tasks</h3>
+            <ul>
+                <li>Classify emotions in a dataset using culturally specific idioms.</li>
+                <li>Respond empathetically to unfamiliar dialogue styles or memes.</li>
+                <li>Compare performance before and after fine-tuning on a new domain.</li>
+            </ul>
+            <h3>Metrics Used</h3>
+            <p>Forward transfer gain and catastrophic forgetting in “Experience Pack” tasks.</p>
+        </section>
+        <section id="extended-info" class="axis-detail">
+            <h2>Extended</h2>
+            <p><strong>The framework evaluates systems at different levels of human-AI interaction, ensuring emotional intelligence holds up over longer conversations and diverse contexts.</strong></p>
+            <h3>What We Evaluate</h3>
+            <p>Emotional intelligence isn’t just what the model outputs—it’s what the whole system enables.</p>
+            <h3>Example Tasks</h3>
+            <ul>
+                <li>Measure how much an operator improves model responses in a dyad.</li>
+                <li>Score empathic quality before and after UI edits.</li>
+                <li>Track interaction cost for human fixes.</li>
+            </ul>
+            <h3>Metrics Used</h3>
+            <p>Human-AI Dyad empathy gain, interaction-cost, scenario goal-completion.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; EQ AI Research Collaborative</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+    document.querySelectorAll('.axis-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.axis-detail').forEach(sec => sec.style.display = 'none');
+            const target = document.getElementById(btn.dataset.target);
+            if (target) target.style.display = 'block';
+        });
+    });
+    </script>
+</body>
+</html>

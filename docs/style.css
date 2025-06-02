@@ -36,39 +36,7 @@ header {
     position: relative;
 }
 
-/* Dropdown menu shown when clicking the SERA-X logo */
-#logo-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #0d6efd;
-    display: none;
-    padding: 0.5rem 0;
-    z-index: 100;
-}
-
-#logo-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-#logo-menu ul ul {
-    padding-left: 1rem;
-}
-
-#logo-menu li a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    padding: 0.25rem 1rem;
-}
-
-#logo-menu li a:hover {
-    background-color: #0b5ed7;
-}
-
-#logo-menu.show {
-    display: block;
+ shown when clicking the SERA-X logo */
 }
 
 h1 {
@@ -93,14 +61,10 @@ nav ul {
 nav ul li {
     margin-bottom: 0;
 }
-
-.nav-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-    text-align: center;
-    color: #fff;
+nav ul li.sub-item {
+    padding-left: 1rem;
 }
+
 
 .nav-toggle {
     display: none;
@@ -425,16 +389,6 @@ tbody tr:nth-child(even) {
 
     header .logo {
         color: #fff;
-    }
-
-    #logo-menu {
-        background-color: #1f6feb;
-    }
-
-    #logo-menu li a:hover {
-        background-color: #1158c7;
-    }
-
     .toggle-details {
         color: inherit;
     }
@@ -459,12 +413,6 @@ tbody tr:nth-child(even) {
     .construct-actions a {
         color: #58a6ff;
     }
-    .lit-extra td {
-        background-color: #222;
-    }
-    .info-icon {
-        background-color: #1f6feb;
-        color: #fff;
     }
 
     pre {
@@ -575,3 +523,14 @@ form label > textarea {
     margin-left: 0.25rem;
 }
 
+
+.axis-toggle {
+    cursor: pointer;
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+.axis-detail {
+    display: none;
+    margin-top: 1rem;
+}

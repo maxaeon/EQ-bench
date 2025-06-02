@@ -272,7 +272,8 @@
         const fieldVals = Array.from(document.getElementById('lit-field-filter').selectedOptions).map(o=>o.value).filter(Boolean);
         let items = literature.filter(l => {
             if (axisVals.length && !axisVals.some(a => (l.axis || '').toLowerCase().includes(a))) return false;
-            if (fieldVals.length && !fieldVals.some(f => (l.category || '').toLowerCase().includes(f))) return false;
+            const catList = Array.isArray(l.category) ? l.category : (l.category || '').split(',').map(c=>c.trim().toLowerCase()).filter(Boolean);
+            if (fieldVals.length && !fieldVals.some(f => catList.includes(f))) return false;
             if (constructVals.length) {
                 const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
                 if (!constructVals.some(v => list.some(c => c.trim().toLowerCase() === v))) return false;
@@ -320,7 +321,10 @@
         const constructSet = new Set();
         literature.forEach(l => {
             if (l.axis) l.axis.split(',').forEach(a => axisSet.add(a.trim()));
-            if (l.category) fieldSet.add(l.category.trim().toLowerCase());
+            if (l.category) {
+                const cats = Array.isArray(l.category) ? l.category : l.category.split(',');
+                cats.forEach(c => fieldSet.add(c.trim().toLowerCase()));
+            }
             const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
             list.forEach(c => constructSet.add(c.trim()));
         });
@@ -329,7 +333,7 @@
         const axisOrder = ['sense','explain','respond','adapt','extended'];
         axisOrder.forEach(a => { if (axisSet.has(a)) axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)); });
         const fieldF = document.getElementById('lit-field-filter');
-        const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
+        const fieldOrder = ['psychology','philosophy of mind','computer science','ethics','other'];
         fieldOrder.forEach(f => { if (fieldSet.has(f)) fieldF.appendChild(new Option(toTitle(f), f)); });
         const constructF = document.getElementById('lit-construct-filter');
         Array.from(constructSet)
@@ -432,7 +436,13 @@ async function startAddLit() {
         <label>Number: <input type="text" name="number"></label>
         <label>Pages: <input type="text" name="pages"></label>
         <label>URL: <input type="text" name="url"></label>
-        <label>Category: <input type="text" name="category"></label>
+        <label>Category: <select name="category" multiple size="1">
+            <option value="psychology">Psychology</option>
+            <option value="philosophy of mind">Philosophy of Mind</option>
+            <option value="computer science">Computer Science</option>
+            <option value="ethics">Ethics</option>
+            <option value="other">Other</option>
+        </select></label>
         <label>Keywords: <input type="text" name="keywords" placeholder="comma separated"></label>
         <label>Construct: <input type="text" name="construct"></label>
         <label>Axis: <select name="axis" multiple size="1">
@@ -451,12 +461,14 @@ async function startAddLit() {
     const form = document.getElementById('lit-add-form');
     const errorDiv = form.querySelector('.form-error');
     enableMultiSelectDropdown(form.elements.axis);
+    enableMultiSelectDropdown(form.elements.category);
     form.addEventListener('submit', async e => {
         e.preventDefault();
         errorDiv.textContent = '';
         errorDiv.style.display = 'none';
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         const axisArr = Array.from(form.elements.axis.selectedOptions).map(o => o.value);
+        const catArr = Array.from(form.elements.category.selectedOptions).map(o => o.value);
         const obj = {
             title: e.target.title.value,
             authors: e.target.authors.value,
@@ -468,7 +480,7 @@ async function startAddLit() {
             number: e.target.number.value,
             pages: e.target.pages.value,
             url: e.target.url.value,
-            category: e.target.category.value,
+            category: catArr.join(', '),
             keywords: e.target.keywords.value.split(',').map(s=>s.trim()).filter(Boolean),
             construct: e.target.construct.value,
             axis: axisArr,
@@ -517,7 +529,13 @@ async function startEditLit() {
         <label>Number: <input type="text" name="number" value="${item.number || ''}" placeholder="Number"></label>
         <label>Pages: <input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages"></label>
         <label>URL: <input type="url" name="url" value="${item.url || ''}" placeholder="https://..."></label>
-        <label>Category: <input type="text" name="category" value="${item.category || ''}" placeholder="Field"></label>
+        <label>Category: <select name="category" multiple size="1">
+            <option value="psychology" ${item.category && item.category.toLowerCase().includes('psychology') ? 'selected' : ''}>Psychology</option>
+            <option value="philosophy of mind" ${item.category && item.category.toLowerCase().includes('philosophy of mind') ? 'selected' : ''}>Philosophy of Mind</option>
+            <option value="computer science" ${item.category && item.category.toLowerCase().includes('computer science') ? 'selected' : ''}>Computer Science</option>
+            <option value="ethics" ${item.category && item.category.toLowerCase().includes('ethics') ? 'selected' : ''}>Ethics</option>
+            <option value="other" ${item.category && item.category.toLowerCase().includes('other') ? 'selected' : ''}>Other</option>
+        </select></label>
         <label>Keywords: <input type="text" name="keywords" value="${Array.isArray(item.keywords) ? item.keywords.join(', ') : (item.keywords || '')}" placeholder="comma separated"></label>
         <label>Axis: <select name="axis" multiple size="1">
             <option value="sense" ${axisVals.includes('sense') ? 'selected' : ''}>Sense</option>
@@ -533,6 +551,7 @@ async function startEditLit() {
     </form>`;
     const form = showEditOverlay(formHtml);
     enableMultiSelectDropdown(form.elements.axis);
+    enableMultiSelectDropdown(form.elements.category);
     form.addEventListener('submit', async e => {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
@@ -547,7 +566,8 @@ async function startEditLit() {
         item.number = form.number.value;
         item.pages = form.pages.value;
         item.url = form.url.value;
-        item.category = form.category.value;
+        const catArrEdit = Array.from(form.elements.category.selectedOptions).map(o => o.value);
+        item.category = catArrEdit.join(', ');
         item.keywords = form.keywords.value.split(',').map(s=>s.trim()).filter(Boolean);
         const axisArr = Array.from(form.elements.axis.selectedOptions).map(o => o.value);
         item.axis = axisArr.join(', ');

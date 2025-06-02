@@ -132,11 +132,15 @@
         }
         c.axis = foundAxes.join(', ');
         if (c.category) {
-            c.field = c.category.toLowerCase();
+            const cats = Array.isArray(c.category) ? c.category : c.category.split(',');
+            const lowered = cats.map(x => x.trim().toLowerCase()).filter(Boolean);
+            c.field = lowered.join(', ');
+            c.category = lowered.join(', ');
         } else {
-            const fields = ['psychology','philosophy and ethics','neuroscience','computer science'];
+            const fields = ['psychology','philosophy of mind','computer science','ethics'];
             const foundFields = fields.filter(f => body.includes(f));
             c.field = foundFields.length ? foundFields.join(', ') : 'other';
+            c.category = c.field;
         }
         if (c.measurement) {
             c.evaluation = c.measurement;
@@ -253,7 +257,8 @@
         const fieldSel = Array.from(document.getElementById('field-filter').selectedOptions).map(o=>o.value).filter(Boolean);
         let items = constructs.filter(c => {
             if (axisSel.length && !axisSel.some(a => (c.axis || '').toLowerCase().includes(a))) return false;
-            if (fieldSel.length && !fieldSel.some(f => (c.field || '').toLowerCase().includes(f))) return false;
+            const catList = (c.field || '').split(',').map(f => f.trim().toLowerCase()).filter(Boolean);
+            if (fieldSel.length && !fieldSel.some(f => catList.includes(f))) return false;
             if (q) {
                 const title = (c.title || '').toLowerCase();
                 const def = (c.definition || '').toLowerCase();
@@ -303,7 +308,7 @@
             const fieldSet = new Set();
             constructs.forEach(c => {
                 c.axis.split(',').forEach(a => axisSet.add(a.trim()));
-                if (c.field) fieldSet.add(c.field.trim().toLowerCase());
+                if (c.field) c.field.split(',').forEach(f => fieldSet.add(f.trim().toLowerCase()));
             });
 
             const axisFilter = document.getElementById('axis-filter');
@@ -314,7 +319,7 @@
             });
 
             const fieldFilter = document.getElementById('field-filter');
-            const fieldOrder = ['philosophy and ethics','psychology','computer science','neuroscience','other'];
+            const fieldOrder = ['psychology','philosophy of mind','computer science','ethics','other'];
             fieldOrder.forEach(f => {
                 if (fieldSet.has(f))
                     fieldFilter.appendChild(new Option(toTitle(f), f));
@@ -357,7 +362,13 @@ async function startAddConstruct() {
         <label>Related Terms: <input type="text" name="related_terms" placeholder="comma separated"></label>
         <label>How to Measure: <textarea name="measurement" rows="2"></textarea></label>
         <label>Potential Issues: <textarea name="verification_issues" rows="2"></textarea></label>
-        <label>Category: <input type="text" name="category"></label>
+        <label>Category: <select name="category" multiple size="1">
+            <option value="psychology">Psychology</option>
+            <option value="philosophy of mind">Philosophy of Mind</option>
+            <option value="computer science">Computer Science</option>
+            <option value="ethics">Ethics</option>
+            <option value="other">Other</option>
+        </select></label>
         <label>Related Literature: <select name="references" multiple size="1"></select></label>
         <label>URL: <input type="url" name="url"></label>
         <button type="submit">Add</button>
@@ -368,6 +379,8 @@ async function startAddConstruct() {
     const form = document.getElementById('construct-add-form');
     const errorDiv = form.querySelector('.form-error');
     enableMultiSelectDropdown(form.elements.axes);
+    enableMultiSelectDropdown(form.elements.category);
+    enableMultiSelectDropdown(form.elements.category);
     populateLiteratureSelect(form.elements.references);
     form.addEventListener('submit', async e => {
         e.preventDefault();
@@ -376,6 +389,7 @@ async function startAddConstruct() {
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
         const refsArr = Array.from(form.elements.references.selectedOptions).map(o => o.value);
+        const catArr = Array.from(form.elements.category.selectedOptions).map(o => o.value);
         const parseList = str => str.split(',').map(v => v.trim()).filter(Boolean);
         const obj = {
             title: e.target.title.value,
@@ -387,7 +401,7 @@ async function startAddConstruct() {
             related_terms: parseList(e.target.related_terms.value),
             measurement: e.target.measurement.value,
             verification_issues: e.target.verification_issues.value,
-            category: e.target.category.value,
+            category: catArr.join(', '),
             url: e.target.url.value,
             significance: 0
         };
@@ -439,7 +453,13 @@ async function startEditConstruct() {
         <label>Related Terms: <input type="text" name="related_terms" placeholder="comma separated" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
         <label>How to Measure: <textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
         <label>Potential Issues: <textarea name="verification_issues" rows="2" placeholder="Verification caveats">${item.verification_issues || ''}</textarea></label>
-        <label>Category: <input type="text" name="category" placeholder="Field" value="${item.category || ''}"></label>
+        <label>Category: <select name="category" multiple size="1">
+            <option value="psychology" ${item.category && item.category.toLowerCase().includes('psychology') ? 'selected' : ''}>Psychology</option>
+            <option value="philosophy of mind" ${item.category && item.category.toLowerCase().includes('philosophy of mind') ? 'selected' : ''}>Philosophy of Mind</option>
+            <option value="computer science" ${item.category && item.category.toLowerCase().includes('computer science') ? 'selected' : ''}>Computer Science</option>
+            <option value="ethics" ${item.category && item.category.toLowerCase().includes('ethics') ? 'selected' : ''}>Ethics</option>
+            <option value="other" ${item.category && item.category.toLowerCase().includes('other') ? 'selected' : ''}>Other</option>
+        </select></label>
         <label>Related Literature: <select name="references" multiple size="1"></select></label>
         <label>URL: <input type="url" name="url" placeholder="Source link" value="${item.url || ''}"></label>
         <div class="edit-buttons">
@@ -457,6 +477,7 @@ async function startEditConstruct() {
         if (!confirm('Save changes?')) return;
         const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
         const refsArr = Array.from(form.elements.references.selectedOptions).map(o => o.value);
+        const catArrEdit = Array.from(form.elements.category.selectedOptions).map(o => o.value);
         const parseList = str => str.split(',').map(v => v.trim()).filter(Boolean);
         item.title = form.title.value;
         item.axes = axesArr;
@@ -467,7 +488,7 @@ async function startEditConstruct() {
         item.related_terms = parseList(form.related_terms.value);
         item.measurement = form.measurement.value;
         item.verification_issues = form.verification_issues.value;
-        item.category = form.category.value;
+        item.category = catArrEdit.join(', ');
         item.url = form.url.value;
         item.references = refsArr;
         if (item.id && typeof updateConstruct === 'function') await updateConstruct(item.id, {

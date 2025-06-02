@@ -465,7 +465,8 @@ function parseBibtex(text) {
         .split(/[,;]+/)
         .map(k => k.trim())
         .filter(Boolean),
-      relevance: fields.note || ''
+      relevance: fields.note || '',
+      methodology_supported: fields.methodology_supported || ''
     };
     // Preserve any additional fields not explicitly handled
     for (const [k, v] of Object.entries(fields)) {

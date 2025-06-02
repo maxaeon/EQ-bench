@@ -47,102 +47,32 @@
             </div>
             <!-- SERA-X Database Connection Visualization -->
             <div>
-<h2>Tentative Database Structure: Constructs, Literature, Evaluation Methods, and SERA-X Validation</h2>
+<h2>Tentative Database Structure: Constructs, Literature, and Evaluation Methods</h2>
 
-<table style="width:100%; border-collapse:collapse; border:1px solid #ccc;">
+<p>The records below are loaded directly from our Supabase database. Contributors can add new evaluation methods or edit existing ones after logging in.</p>
+
+<div class="add-benchmark-controls" style="margin-bottom:10px;">
+    <button id="add-benchmark-btn" class="button" type="button">Add Entry</button>
+</div>
+<div class="table-scroll">
+<table id="benchmark-table" style="width:100%; border-collapse:collapse; border:1px solid #ccc;">
   <thead>
     <tr>
-      <th style="border:1px solid #ccc; padding:10px;">Construct</th>
-      <th style="border:1px solid #ccc; padding:10px;">Linked Axes (SERA-X)</th>
-      <th style="border:1px solid #ccc; padding:10px;">Supporting Literature</th>
-      <th style="border:1px solid #ccc; padding:10px;">Evaluation Methods (AI systems)</th>
-      <th style="border:1px solid #ccc; padding:10px;">Validated Benchmarks (Examples)</th>
+      <th>Axis</th>
+      <th>Construct</th>
+      <th>Prompt</th>
+      <th>Expected Response</th>
+      <th>Difficulty</th>
+      <th>Notes</th>
     </tr>
   </thead>
-  <tbody>
-    <!-- Construct Example 1 -->
-    <tr>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        Emotion Regulation
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        Responding, Adapting
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        <ul style="margin:0; padding-left:20px;">
-          <li>Gross (1998)</li>
-          <li>Picard (1997)</li>
-        </ul>
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        <ul style="margin:0; padding-left:20px;">
-          <li><strong>Human-annotated response quality:</strong> Experts rate AI-generated emotional responses for appropriateness.</li>
-          <li><strong>Dynamic contextual adaptability:</strong> Multi-turn dialogue tests evaluating shifts in AI's emotional output based on context changes.</li>
-        </ul>
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        GPT-4, Claude (LLM Dialogue Scores)
-      </td>
-    </tr>
-
-    <!-- Construct Example 2 -->
-    <tr>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        Emotion Recognition
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        Sensing
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        Picard (1997)
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        <ul style="margin:0; padding-left:20px;">
-          <li><strong>Classification accuracy:</strong> Evaluating AI emotion detection accuracy on standardized emotion datasets (e.g., GoEmotions).</li>
-          <li><strong>Precision and recall metrics:</strong> Statistical analysis of AI’s ability to correctly identify nuanced emotional expressions.</li>
-        </ul>
-      </td>
-      <td style="border:1px solid #ccc; padding:10px; vertical-align:top;">
-        Empathy Dataset (GoEmotions)
-      </td>
-    </tr>
-  </tbody>
+  <tbody></tbody>
 </table>
-
-<h3>Conceptual Visualization of Data Relationships (Updated)</h3>
-<pre style="padding:15px; border-radius:6px;">
-Constructs
-├── Emotion Regulation
-│   ├── Axes: Responding, Adapting
-│   ├── Literature:
-│   │   ├── Gross (1998)
-│   │   └── Picard (1997)
-│   ├── Evaluation Methods:
-│   │   ├── Human-annotated response quality
-│   │   └── Dynamic contextual adaptability (multi-turn dialogue tests)
-│   └── Benchmarks:
-│       └── GPT-4, Claude (LLM scores)
-│
-├── Emotion Recognition
-│   ├── Axes: Sensing
-│   ├── Literature:
-│   │   └── Picard (1997)
-│   ├── Evaluation Methods:
-│   │   ├── Classification accuracy (standardized datasets)
-│   │   └── Precision and recall metrics
-│   └── Benchmarks:
-│       └── Empathy Dataset (GoEmotions)
-│
-Literature
-├── Gross (1998)
-│   └── Constructs: Emotion Regulation
-│
-└── Picard (1997)
-    ├── Constructs: Emotion Recognition, Emotion Regulation
-    └── Axes: Sensing, Responding, Adapting
-</pre>
-
----
+</div>
+<div class="benchmark-controls">
+    <button id="edit-benchmark-btn" class="button">Edit</button>
+    <button id="delete-benchmark-btn" class="button">Delete</button>
+</div>
 
                 <!-- Explanation of Validation -->
                 <h3>SERA-X Validation Methodology (Tentative)</h3>
@@ -162,33 +92,7 @@ Literature
             </div>
         </section>
 
-        <section id="benchmarks">
-            <hr>
-            <h2>Sample Benchmarks</h2>
-            <p>You can view and edit benchmark tasks that link constructs to SERA-X axes. Use the <strong>Add Benchmark</strong> button to submit new entries.</p>
-            <div class="add-benchmark-controls">
-                <button id="add-benchmark-btn" class="button" type="button">Add Benchmark</button>
-            </div>
-            <div class="table-scroll">
-            <table id="benchmark-table">
-                <thead>
-                    <tr>
-                        <th>Axis</th>
-                        <th>Construct</th>
-                        <th>Prompt</th>
-                        <th>Expected Response</th>
-                        <th>Difficulty</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            </div>
-        </section>
-        <div class="benchmark-controls">
-            <button id="edit-benchmark-btn" class="button">Edit</button>
-            <button id="delete-benchmark-btn" class="button">Delete</button>
-        </div>
+        <!-- former benchmark section removed: table now shown above -->
     </main>
 
     <footer>
@@ -196,8 +100,30 @@ Literature
     </footer>
     <script>
     let benchmarks = [];
+    let constructs = [];
     let authed = false;
     let selectedBenchmarkId = null;
+
+    async function loadConstructOptions(select, selected='') {
+        if (!constructs.length) {
+            const useSupabase = window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchConstructs === 'function';
+            if (useSupabase) {
+                for (let i=0;i<20 && !window.supabase && !supabase;i++) await new Promise(r=>setTimeout(r,100));
+                if (window.supabase || supabase) {
+                    try { constructs = await fetchConstructs(); } catch(e) { constructs = []; }
+                }
+            } else {
+                try { constructs = await (await fetch('data/construct_submissions.json')).json(); } catch(e) { constructs = []; }
+            }
+        }
+        select.innerHTML = '<option value="">Select construct</option>';
+        constructs.forEach(c => {
+            const val = c.id ?? c.title;
+            const opt = new Option(c.title, val);
+            if (String(selected) === String(val)) opt.selected = true;
+            select.appendChild(opt);
+        });
+    }
 
     function renderBenchmarks(items) {
         const tbody = document.querySelector('#benchmark-table tbody');
@@ -249,7 +175,7 @@ Literature
                 <option value="adapt">Adapt</option>
                 <option value="extended">Extended</option>
             </select></label>
-            <label>Construct ID: <input type="text" name="construct_id"></label>
+            <label>Construct: <select name="construct_id"></select></label>
             <label>Prompt: <textarea name="prompt" rows="2"></textarea></label>
             <label>Expected Response: <textarea name="expected_response" rows="2"></textarea></label>
             <label>Difficulty: <input type="number" name="difficulty_level" min="1" max="5"></label>
@@ -261,6 +187,7 @@ Literature
         tbody.prepend(row);
         const form = document.getElementById('benchmark-add-form');
         const errorDiv = form.querySelector('.form-error');
+        loadConstructOptions(form.elements.construct_id);
         form.addEventListener('submit', async e => {
             e.preventDefault();
             errorDiv.textContent='';
@@ -301,7 +228,7 @@ Literature
                 <option value="adapt" ${item.axis_id==='adapt'?'selected':''}>Adapt</option>
                 <option value="extended" ${item.axis_id==='extended'?'selected':''}>Extended</option>
             </select></label>
-            <label>Construct ID: <input type="text" name="construct_id" value="${item.construct_id || ''}"></label>
+            <label>Construct: <select name="construct_id"></select></label>
             <label>Prompt: <textarea name="prompt" rows="2">${item.prompt || ''}</textarea></label>
             <label>Expected Response: <textarea name="expected_response" rows="2">${item.expected_response || ''}</textarea></label>
             <label>Difficulty: <input type="number" name="difficulty_level" min="1" max="5" value="${item.difficulty_level || ''}"></label>
@@ -312,6 +239,7 @@ Literature
             </div>
         </form>`;
         const form = showEditOverlay(formHtml);
+        loadConstructOptions(form.elements.construct_id, item.construct_id);
         form.addEventListener('submit', async e => {
             e.preventDefault();
             item.axis_id = form.axis_id.value;

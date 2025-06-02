@@ -442,7 +442,7 @@ async function startAddLit() {
             <option value="adapt">Adapt</option>
             <option value="extended">Extended</option>
         </select></label>
-        <label>Relevance:<br><textarea name="relevance" rows="3"></textarea></label>
+        <label>Relevance: <textarea name="relevance" rows="3"></textarea></label>
         <button type="submit">Add</button>
         <button type="button" id="lit-add-cancel">Cancel</button>
         <div class="form-error" style="display:none"></div>
@@ -507,19 +507,19 @@ async function startEditLit() {
     if (!item) return;
     const axisVals = Array.isArray(item.axis) ? item.axis : (item.axis || '').split(',').map(a=>a.trim());
     const formHtml = `<form id="lit-edit-form">
-        <label>Title:<br><input type="text" name="title" value="${item.title}" placeholder="Paper title"></label>
-        <label>Authors:<br><input type="text" name="authors" value="${item.authors || ''}" placeholder="Author list"></label>
-        <label>Year:<br><input type="number" name="year" value="${item.year || ''}" placeholder="2024"></label>
-        <label>Publisher:<br><input type="text" name="publisher" value="${item.publisher || ''}" placeholder="Publisher"></label>
-        <label>Address:<br><input type="text" name="address" value="${item.address || ''}" placeholder="Location"></label>
-        <label>Journal:<br><input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
-        <label>Volume:<br><input type="text" name="volume" value="${item.volume || ''}" placeholder="Volume"></label>
-        <label>Number:<br><input type="text" name="number" value="${item.number || ''}" placeholder="Number"></label>
-        <label>Pages:<br><input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages"></label>
-        <label>URL:<br><input type="url" name="url" value="${item.url || ''}" placeholder="https://..."></label>
-        <label>Category:<br><input type="text" name="category" value="${item.category || ''}" placeholder="Field"></label>
-        <label>Keywords:<br><input type="text" name="keywords" value="${Array.isArray(item.keywords) ? item.keywords.join(', ') : (item.keywords || '')}" placeholder="comma separated"></label>
-        <label>Axis:<br><select name="axis" multiple size="1">
+        <label>Title: <input type="text" name="title" value="${item.title}" placeholder="Paper title"></label>
+        <label>Authors: <input type="text" name="authors" value="${item.authors || ''}" placeholder="Author list"></label>
+        <label>Year: <input type="number" name="year" value="${item.year || ''}" placeholder="2024"></label>
+        <label>Publisher: <input type="text" name="publisher" value="${item.publisher || ''}" placeholder="Publisher"></label>
+        <label>Address: <input type="text" name="address" value="${item.address || ''}" placeholder="Location"></label>
+        <label>Journal: <input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
+        <label>Volume: <input type="text" name="volume" value="${item.volume || ''}" placeholder="Volume"></label>
+        <label>Number: <input type="text" name="number" value="${item.number || ''}" placeholder="Number"></label>
+        <label>Pages: <input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages"></label>
+        <label>URL: <input type="url" name="url" value="${item.url || ''}" placeholder="https://..."></label>
+        <label>Category: <input type="text" name="category" value="${item.category || ''}" placeholder="Field"></label>
+        <label>Keywords: <input type="text" name="keywords" value="${Array.isArray(item.keywords) ? item.keywords.join(', ') : (item.keywords || '')}" placeholder="comma separated"></label>
+        <label>Axis: <select name="axis" multiple size="1">
             <option value="sense" ${axisVals.includes('sense') ? 'selected' : ''}>Sense</option>
             <option value="explain" ${axisVals.includes('explain') ? 'selected' : ''}>Explain</option>
             <option value="respond" ${axisVals.includes('respond') ? 'selected' : ''}>Respond</option>

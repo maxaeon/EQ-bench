@@ -53,7 +53,6 @@ def merge_entries(entries, data):
             "year": int(entry.get("year")) if entry.get("year", "").isdigit() else entry.get("year"),
             "journal": entry.get("journal") or entry.get("booktitle", ""),
             "publisher": entry.get("publisher", ""),
-            "address": entry.get("address", ""),
             "volume": entry.get("volume", ""),
             "number": entry.get("number", ""),
             "pages": entry.get("pages", ""),

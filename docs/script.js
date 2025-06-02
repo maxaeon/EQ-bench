@@ -408,7 +408,6 @@ function parseBibtex(text) {
       year: fields.year || '',
       journal: fields.journal || fields.booktitle || '',
       publisher: fields.publisher || '',
-      address: fields.address || '',
       volume: fields.volume || '',
       number: fields.number || '',
       pages: fields.pages || '',

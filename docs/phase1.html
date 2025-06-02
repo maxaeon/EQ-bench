@@ -103,7 +103,6 @@
                         <th>Construct</th>
                         <th>Axis</th>
                         <th>Methodology Supported</th>
-                        <th>Significance <span class="info-icon" title="0 = not significant, 5 = highly significant">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -225,8 +224,7 @@
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${l.axis}</td>
-                <td>${l.methodology_supported || ''}</td>
-                <td><div class="star-rating lit-rating" data-index="${l.__index}"></div></td>`;
+                <td>${l.methodology_supported || ''}</td>`;
             const extra = document.createElement('tr');
             const id = `ldetail-${l.__index}`;
             row.dataset.target = id;
@@ -235,7 +233,7 @@
             extra.style.display = 'none';
             const keywords = Array.isArray(l.keywords) ? l.keywords.join(', ') : (l.keywords || '');
             extra.innerHTML = `
-                <td colspan="9">${l.publisher ? `<strong>Publisher:</strong> ${l.publisher}<br>` : ''}
+                <td colspan="8">${l.publisher ? `<strong>Publisher:</strong> ${l.publisher}<br>` : ''}
                 ${l.journal ? `<strong>Journal:</strong> ${l.journal}<br>` : ''}
                 ${l.volume ? `<strong>Volume:</strong> ${l.volume} ` : ''}${l.number ? ` <strong>Number:</strong> ${l.number}` : ''}${(l.volume||l.number)?'<br>':''}
                 ${l.pages ? `<strong>Pages:</strong> ${l.pages}<br>` : ''}
@@ -254,7 +252,7 @@
         });
         tbody.querySelectorAll('.lit-row').forEach(r => {
             r.addEventListener('click', e => {
-                if (e.target.classList.contains('lit-check') || e.target.closest('.star-rating')) return;
+                if (e.target.classList.contains('lit-check')) return;
                 tbody.querySelectorAll('.lit-row').forEach(x => x.classList.remove('selected'));
                 r.classList.add('selected');
                 selectedLitId = r.dataset.lid || r.id.replace('lit-row-','');
@@ -265,7 +263,6 @@
             });
         });
         updateSelectAll();
-        initRatings('.lit-rating', 'lit-rating');
     }
 
     function applyLitFilters() {
@@ -432,7 +429,7 @@ async function startAddLit() {
     const tbody = document.querySelector('#lit-table tbody');
     const addRow = document.createElement('tr');
     addRow.id = 'lit-add-row';
-    addRow.innerHTML = `<td colspan="9"><form id="lit-add-form">
+    addRow.innerHTML = `<td colspan="8"><form id="lit-add-form">
         <label>Title: <input type="text" name="title" required></label>
         <label>Authors: <input type="text" name="authors"></label>
         <label>Year: <input type="number" name="year"></label>

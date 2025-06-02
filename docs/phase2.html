@@ -86,7 +86,6 @@
                         <th>Example</th>
                         <th>Axis</th>
                         <th>Authors &amp; Sources</th>
-                        <th>Significance <span class="info-icon" title="0 = not significant, 5 = highly significant">?</span></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -205,14 +204,13 @@
                 <td>${c.definition || ''}</td>
                 <td>${c.example || ''}</td>
                 <td>${c.axis}</td>
-                <td></td>
-                <td><div class="star-rating construct-rating" data-index="${c.__index}"></div></td>`;
+                <td></td>`;
 
             extra.className = 'construct-extra';
             extra.id = id;
             extra.style.display = 'none';
             extra.innerHTML = `
-                <td colspan="6"><strong>synonyms:</strong> ${synonyms}<br>
+                <td colspan="5"><strong>synonyms:</strong> ${synonyms}<br>
                 <strong>related terms:</strong> ${related}<br>
                 <strong>Related Literature:</strong> ${refs}<br>
                 ${c.evaluation ? `<strong>How to Measure:</strong> ${c.evaluation}<br>` : ''}
@@ -225,7 +223,6 @@
 
         tbody.querySelectorAll('.construct-row').forEach(r => {
             r.addEventListener('click', e => {
-                if (e.target.closest('.star-rating')) return;
                 tbody.querySelectorAll('.construct-row').forEach(x => x.classList.remove('selected'));
                 r.classList.add('selected');
                 selectedConstructId = r.dataset.cid || r.id.replace('construct-row-','');
@@ -235,7 +232,6 @@
                 }
             });
         });
-        initRatings('.construct-rating', 'construct-rating');
     }
 
 
@@ -336,7 +332,7 @@ async function startAddConstruct() {
     const tbody = document.querySelector('#construct-table tbody');
     const addRow = document.createElement('tr');
     addRow.id = 'construct-add-row';
-    addRow.innerHTML = `<td colspan="6"><form id="construct-add-form">
+    addRow.innerHTML = `<td colspan="5"><form id="construct-add-form">
         <label>Title: <input type="text" name="title" required></label>
         <label>Axes: <select name="axes" multiple size="1">
             <option value="sense">Sense</option>

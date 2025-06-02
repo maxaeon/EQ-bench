@@ -415,7 +415,8 @@
 document.addEventListener('DOMContentLoaded', loadLiterature);
 let authed = false;
 
-function startAddLit() {
+async function startAddLit() {
+    if (!authed) { if (!(await authenticate())) return; authed = true; }
     document.getElementById('lit-add-row')?.remove();
     const tbody = document.querySelector('#lit-table tbody');
     const addRow = document.createElement('tr');
@@ -499,7 +500,8 @@ function startAddLit() {
     document.getElementById('lit-add-cancel').addEventListener('click', () => addRow.remove());
 }
 
-function startEditLit() {
+async function startEditLit() {
+    if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (selectedLitId === null) { alert('Select an entry first.'); return; }
     const item = literature.find(l => (l.id ?? l.__index) == selectedLitId);
     if (!item) return;

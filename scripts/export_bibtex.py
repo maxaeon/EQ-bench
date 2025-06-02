@@ -30,8 +30,6 @@ def to_bibtex(item: dict) -> str:
         entry += f",\n  journal = {{{item['journal']}}}"
     if item.get("publisher"):
         entry += f",\n  publisher = {{{item['publisher']}}}"
-    if item.get("address"):
-        entry += f",\n  address = {{{item['address']}}}"
     if item.get("volume"):
         entry += f",\n  volume = {{{item['volume']}}}"
     if item.get("number"):

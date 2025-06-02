@@ -147,7 +147,6 @@
             authors: 'author',
             journal: 'journal',
             publisher: 'publisher',
-            address: 'address',
             volume: 'volume',
             number: 'number',
             pages: 'pages',
@@ -224,7 +223,6 @@
             extra.innerHTML = `
                 <td colspan="8">${l.publisher ? `<strong>Publisher:</strong> ${l.publisher}<br>` : ''}
                 ${l.journal ? `<strong>Journal:</strong> ${l.journal}<br>` : ''}
-                ${l.address ? `<strong>Address:</strong> ${l.address}<br>` : ''}
                 ${l.volume ? `<strong>Volume:</strong> ${l.volume} ` : ''}${l.number ? ` <strong>Number:</strong> ${l.number}` : ''}${(l.volume||l.number)?'<br>':''}
                 ${l.pages ? `<strong>Pages:</strong> ${l.pages}<br>` : ''}
                 ${l.url ? `<strong>URL:</strong> <a href="${l.url}">${l.url}</a><br>` : ''}
@@ -421,7 +419,6 @@ async function startAddLit() {
         <label>Authors: <input type="text" name="authors"></label>
         <label>Year: <input type="number" name="year"></label>
         <label>Publisher: <input type="text" name="publisher"></label>
-        <label>Address: <input type="text" name="address"></label>
         <label>Journal: <input type="text" name="journal"></label>
         <label>Volume: <input type="text" name="volume"></label>
         <label>Number: <input type="text" name="number"></label>
@@ -465,7 +462,6 @@ async function startAddLit() {
             authors: e.target.authors.value,
             year: parseInt(e.target.year.value,10) || null,
             publisher: e.target.publisher.value,
-            address: e.target.address.value,
             journal: e.target.journal.value,
             volume: e.target.volume.value,
             number: e.target.number.value,
@@ -514,7 +510,6 @@ async function startEditLit() {
         <label>Authors: <input type="text" name="authors" value="${item.authors || ''}" placeholder="Author list"></label>
         <label>Year: <input type="number" name="year" value="${item.year || ''}" placeholder="2024"></label>
         <label>Publisher: <input type="text" name="publisher" value="${item.publisher || ''}" placeholder="Publisher"></label>
-        <label>Address: <input type="text" name="address" value="${item.address || ''}" placeholder="Location"></label>
         <label>Journal: <input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
         <label>Volume: <input type="text" name="volume" value="${item.volume || ''}" placeholder="Volume"></label>
         <label>Number: <input type="text" name="number" value="${item.number || ''}" placeholder="Number"></label>
@@ -551,7 +546,6 @@ async function startEditLit() {
         item.authors = form.authors.value;
         item.year = parseInt(form.year.value,10) || null;
         item.publisher = form.publisher.value;
-        item.address = form.address.value;
         item.journal = form.journal.value;
         item.volume = form.volume.value;
         item.number = form.number.value;
@@ -567,7 +561,6 @@ async function startEditLit() {
             authors: item.authors,
             year: item.year,
             publisher: item.publisher,
-            address: item.address,
             journal: item.journal,
             volume: item.volume,
             number: item.number,

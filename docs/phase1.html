@@ -303,7 +303,7 @@
             try { lit = await (await fetch('data/literature.json')).json(); } catch(e) { lit = []; }
         }
 
-        literature = lit.map((l, i) => Object.assign({__index: i, significance: l.significance || 0}, l));
+        literature = lit.map((l, i) => Object.assign({__index: i}, l));
 
         const axisSet = new Set();
         const fieldSet = new Set();
@@ -387,7 +387,7 @@
                     const t = (en.title || '').toLowerCase();
                     const d = (en.doi || en.url || '').replace(/https?:\/\/(dx\.)?doi.org\//i, '').toLowerCase();
                     if (titles.has(t) || (d && dois.has(d))) continue;
-                    const obj = Object.assign({construct: '', axis: '', relevance: '', significance: 0}, en);
+                    const obj = Object.assign({construct: '', axis: '', relevance: ''}, en);
                     obj.__index = ++maxIndex;
                     if (authed && typeof addLiterature === 'function') {
                         try {
@@ -472,8 +472,7 @@ async function startAddLit() {
             keywords: e.target.keywords.value.split(',').map(s=>s.trim()).filter(Boolean),
             construct: e.target.construct.value,
             axis: axisArr,
-            relevance: e.target.relevance.value,
-            significance: 0
+            relevance: e.target.relevance.value
         };
         if (typeof addLiterature === 'function') {
             try {

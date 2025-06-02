@@ -96,17 +96,18 @@ async function authenticate() {
   const { data: { session } } = await client.auth.getSession();
   if (session) return true;
 
-  const creds = await showLoginForm();
-  if (!creds) return false;
-  try {
+  while (true) {
+    const creds = await showLoginForm();
+    if (!creds) return false;
     const { error } = await client.auth.signInWithPassword(creds);
-    if (error) {
-      alert('Login failed: ' + (error.message || error));
-      return false;
-    }
-    return true;
-  } finally {
     hideLoginForm();
+    if (!error) return true;
+    const retry = confirm(
+      'Login failed: ' + (error.message || error) +
+      '\nIf you forgot your login information or encounter issues, please email maxaeonparks@gmail.com.' +
+      '\n\nClick OK to try again, or Cancel to return.'
+    );
+    if (!retry) return false;
   }
 }
 

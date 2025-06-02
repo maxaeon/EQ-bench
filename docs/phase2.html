@@ -328,7 +328,8 @@ document.addEventListener('DOMContentLoaded', loadConstructs);
 let authed = false;
 let selectedConstructId = null;
 
-function startAddConstruct() {
+async function startAddConstruct() {
+    if (!authed) { if (!(await authenticate())) return; authed = true; }
     document.getElementById('construct-add-row')?.remove();
     const tbody = document.querySelector('#construct-table tbody');
     const addRow = document.createElement('tr');
@@ -411,7 +412,8 @@ function startAddConstruct() {
 
 
 
-function startEditConstruct() {
+async function startEditConstruct() {
+    if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (selectedConstructId === null) { alert('Select an entry first.'); return; }
     const item = constructs.find(c => (c.id ?? c.__index) == selectedConstructId);
     if (!item) return;

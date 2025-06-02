@@ -41,6 +41,9 @@ if (require.main === module) {
     (async () => {
       await upload('data/construct_submissions.json', 'constructs');
       await upload('data/literature.json', 'literature');
+      if (fs.existsSync('data/benchmarks.json')) {
+        await upload('data/benchmarks.json', 'benchmarks');
+      }
     })();
   }
 }

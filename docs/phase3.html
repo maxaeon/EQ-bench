@@ -160,11 +160,199 @@ Literature
                 </p>
             </div>
         </section>
+
+        <section id="benchmarks">
+            <hr>
+            <h2>Sample Benchmarks</h2>
+            <p>You can view and edit benchmark tasks that link constructs to SERA-X axes. Use the <strong>Add Benchmark</strong> button to submit new entries.</p>
+            <div class="add-benchmark-controls">
+                <button id="add-benchmark-btn" class="button" type="button">Add Benchmark</button>
+            </div>
+            <div class="table-scroll">
+            <table id="benchmark-table">
+                <thead>
+                    <tr>
+                        <th>Axis</th>
+                        <th>Construct</th>
+                        <th>Prompt</th>
+                        <th>Expected Response</th>
+                        <th>Difficulty</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            </div>
+        </section>
+        <div class="benchmark-controls">
+            <button id="edit-benchmark-btn" class="button">Edit</button>
+            <button id="delete-benchmark-btn" class="button">Delete</button>
+        </div>
     </main>
 
     <footer>
         <p>&copy; EQ AI Research Collaborative</p>
     </footer>
+    <script>
+    let benchmarks = [];
+    let authed = false;
+    let selectedBenchmarkId = null;
+
+    function renderBenchmarks(items) {
+        const tbody = document.querySelector('#benchmark-table tbody');
+        tbody.innerHTML = '';
+        items.forEach((b,i) => {
+            const row = document.createElement('tr');
+            row.className = 'bm-row';
+            row.dataset.bid = b.id ?? b.__index;
+            row.innerHTML = `<td>${b.axis_id}</td><td>${b.construct_id}</td><td>${b.prompt}</td><td>${b.expected_response}</td><td>${b.difficulty_level ?? ''}</td><td>${b.notes || ''}</td>`;
+            tbody.appendChild(row);
+        });
+        tbody.querySelectorAll('.bm-row').forEach(r => {
+            r.addEventListener('click', () => {
+                tbody.querySelectorAll('.bm-row').forEach(x=>x.classList.remove('selected'));
+                r.classList.add('selected');
+                selectedBenchmarkId = r.dataset.bid;
+            });
+        });
+    }
+
+    async function loadBenchmarks() {
+        let data = [];
+        const useSupabase = window.SUPABASE_URL && window.SUPABASE_ANON_KEY && typeof fetchBenchmarks === 'function';
+        if (useSupabase) {
+            for (let i=0;i<20 && !window.supabase && !supabase;i++) await new Promise(r=>setTimeout(r,100));
+            if (window.supabase || supabase) {
+                try { data = await fetchBenchmarks(); } catch(e) { console.error(e); data=[]; }
+            }
+        } else {
+            try { data = await (await fetch('data/benchmarks.json')).json(); } catch(e) { data=[]; }
+        }
+        benchmarks = data.map((b,i)=>Object.assign({__index:i}, b));
+        renderBenchmarks(benchmarks);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadBenchmarks);
+
+    async function startAddBenchmark() {
+        if (!authed) { if (!(await authenticate())) return; authed = true; }
+        document.getElementById('benchmark-add-row')?.remove();
+        const tbody = document.querySelector('#benchmark-table tbody');
+        const row = document.createElement('tr');
+        row.id = 'benchmark-add-row';
+        row.innerHTML = `<td colspan="6"><form id="benchmark-add-form">
+            <label>Axis: <select name="axis_id">
+                <option value="sense">Sense</option>
+                <option value="explain">Explain</option>
+                <option value="respond">Respond</option>
+                <option value="adapt">Adapt</option>
+                <option value="extended">Extended</option>
+            </select></label>
+            <label>Construct ID: <input type="text" name="construct_id"></label>
+            <label>Prompt: <textarea name="prompt" rows="2"></textarea></label>
+            <label>Expected Response: <textarea name="expected_response" rows="2"></textarea></label>
+            <label>Difficulty: <input type="number" name="difficulty_level" min="1" max="5"></label>
+            <label>Notes: <textarea name="notes" rows="2"></textarea></label>
+            <button type="submit">Add</button>
+            <button type="button" id="benchmark-add-cancel">Cancel</button>
+            <div class="form-error" style="display:none"></div>
+        </form></td>`;
+        tbody.prepend(row);
+        const form = document.getElementById('benchmark-add-form');
+        const errorDiv = form.querySelector('.form-error');
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            errorDiv.textContent='';
+            errorDiv.style.display='none';
+            const obj = {
+                axis_id: form.axis_id.value,
+                construct_id: form.construct_id.value,
+                prompt: form.prompt.value,
+                expected_response: form.expected_response.value,
+                difficulty_level: parseInt(form.difficulty_level.value,10) || null,
+                notes: form.notes.value
+            };
+            if (typeof addBenchmark === 'function') {
+                try {
+                    const { data, error } = await addBenchmark(obj);
+                    if (error) { errorDiv.textContent = error.message || error; errorDiv.style.display='block'; return; }
+                    if (data && data[0]) Object.assign(obj, data[0]);
+                } catch(err) { console.error(err); errorDiv.textContent = err.message || err; errorDiv.style.display='block'; return; }
+            }
+            obj.__index = Math.max(0,...benchmarks.map(b=>b.__index||0))+1;
+            benchmarks.push(obj);
+            row.remove();
+            renderBenchmarks(benchmarks);
+        });
+        document.getElementById('benchmark-add-cancel').addEventListener('click',()=>row.remove());
+    }
+
+    async function startEditBenchmark() {
+        if (!authed) { if (!(await authenticate())) return; authed = true; }
+        if (selectedBenchmarkId === null) { alert('Select an entry first.'); return; }
+        const item = benchmarks.find(b => (b.id ?? b.__index) == selectedBenchmarkId);
+        if (!item) return;
+        const formHtml = `<form id="benchmark-edit-form">
+            <label>Axis: <select name="axis_id">
+                <option value="sense" ${item.axis_id==='sense'?'selected':''}>Sense</option>
+                <option value="explain" ${item.axis_id==='explain'?'selected':''}>Explain</option>
+                <option value="respond" ${item.axis_id==='respond'?'selected':''}>Respond</option>
+                <option value="adapt" ${item.axis_id==='adapt'?'selected':''}>Adapt</option>
+                <option value="extended" ${item.axis_id==='extended'?'selected':''}>Extended</option>
+            </select></label>
+            <label>Construct ID: <input type="text" name="construct_id" value="${item.construct_id || ''}"></label>
+            <label>Prompt: <textarea name="prompt" rows="2">${item.prompt || ''}</textarea></label>
+            <label>Expected Response: <textarea name="expected_response" rows="2">${item.expected_response || ''}</textarea></label>
+            <label>Difficulty: <input type="number" name="difficulty_level" min="1" max="5" value="${item.difficulty_level || ''}"></label>
+            <label>Notes: <textarea name="notes" rows="2">${item.notes || ''}</textarea></label>
+            <div class="edit-buttons">
+                <button type="submit" class="button">Save</button>
+                <button type="button" id="benchmark-edit-cancel" class="button">Cancel</button>
+            </div>
+        </form>`;
+        const form = showEditOverlay(formHtml);
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            item.axis_id = form.axis_id.value;
+            item.construct_id = form.construct_id.value;
+            item.prompt = form.prompt.value;
+            item.expected_response = form.expected_response.value;
+            item.difficulty_level = parseInt(form.difficulty_level.value,10) || null;
+            item.notes = form.notes.value;
+            if (item.id && typeof updateBenchmark === 'function') {
+                await updateBenchmark(item.id, {
+                    axis_id: item.axis_id,
+                    construct_id: item.construct_id,
+                    prompt: item.prompt,
+                    expected_response: item.expected_response,
+                    difficulty_level: item.difficulty_level,
+                    notes: item.notes
+                });
+            }
+            hideEditOverlay();
+            renderBenchmarks(benchmarks);
+        });
+        document.getElementById('benchmark-edit-cancel').addEventListener('click', hideEditOverlay);
+    }
+
+    async function deleteSelectedBenchmark() {
+        if (selectedBenchmarkId === null) { alert('Select an entry first.'); return; }
+        const idx = benchmarks.findIndex(b => (b.id ?? b.__index) == selectedBenchmarkId);
+        if (idx === -1) return;
+        if (!authed) { if (!(await authenticate())) return; authed = true; }
+        if (!confirm('Delete this benchmark?')) return;
+        const item = benchmarks[idx];
+        if (item.id && typeof deleteBenchmark === 'function') await deleteBenchmark(item.id);
+        benchmarks.splice(idx,1);
+        selectedBenchmarkId = null;
+        renderBenchmarks(benchmarks);
+    }
+
+    document.getElementById('add-benchmark-btn').addEventListener('click', startAddBenchmark);
+    document.getElementById('edit-benchmark-btn').addEventListener('click', startEditBenchmark);
+    document.getElementById('delete-benchmark-btn').addEventListener('click', deleteSelectedBenchmark);
+    </script>
+    <script src="env.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

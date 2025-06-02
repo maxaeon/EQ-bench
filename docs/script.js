@@ -86,7 +86,22 @@ function showEditOverlay(html) {
 }
 
 function hideEditOverlay() {
-  if (editOverlay) editOverlay.classList.add('hidden');
+  if (editOverlay) {
+    editOverlay.classList.add('hidden');
+    editOverlay.innerHTML = '';
+  }
+}
+
+function showToast(message, duration = 3000) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, duration);
 }
 
 // Prompt the user to log in if no session is active

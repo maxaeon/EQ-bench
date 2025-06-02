@@ -350,7 +350,8 @@
             });
         });
 
-        document.getElementById('bibtex-download').addEventListener('click', e => {
+        const bibtexDownloadBtn = document.getElementById('bibtex-download');
+        bibtexDownloadBtn?.addEventListener('click', e => {
             e.preventDefault();
             const items = Array.from(selectedLit).map(i => literature.find(l => l.__index === i)).filter(Boolean);
             if (!items.length) return;

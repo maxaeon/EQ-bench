@@ -214,19 +214,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const logoLink = document.querySelector('#logo-link');
-  const logoMenu = document.querySelector('#logo-menu');
-  if (logoLink && logoMenu) {
-    logoLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      logoMenu.classList.toggle('show');
-    });
-    document.addEventListener('click', (e) => {
-      if (!logoMenu.contains(e.target) && e.target !== logoLink) {
-        logoMenu.classList.remove('show');
-      }
-    });
-  }
 });
 
 // Populate constructs for a given axis onto the page

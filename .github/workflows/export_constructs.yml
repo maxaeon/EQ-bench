@@ -57,12 +57,17 @@ jobs:
       - name: Commit updates
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'data/construct_submissions.json docs/data/construct_submissions.json'
+          add: 'data/construct_submissions.json docs/data/construct_submissions.json data/benchmarks.json docs/data/benchmarks.json'
           message: 'Update construct submissions'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload to Supabase
+      - name: Upload Constructs
         run: node scripts/upload_to_supabase.js data/construct_submissions.json constructs
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      - name: Upload Benchmarks
+        run: if [ -f data/benchmarks.json ]; then node scripts/upload_to_supabase.js data/benchmarks.json benchmarks; fi
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}

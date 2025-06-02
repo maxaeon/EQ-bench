@@ -204,6 +204,52 @@ async function deleteLiterature(id) {
   return data;
 }
 
+async function fetchBenchmarks() {
+  const client = await ensureSupabase();
+  if (!client) return [];
+  const { data, error } = await client.from('benchmarks').select('*');
+  if (error) {
+    console.error('Error fetching benchmarks:', error);
+    return [];
+  }
+  return data;
+}
+
+async function addBenchmark(entry) {
+  const client = await ensureSupabase();
+  if (!client) {
+    const error = new Error('Supabase unavailable');
+    return { data: null, error };
+  }
+  const { data, error } = await client.from('benchmarks').insert([entry]);
+  if (error) {
+    console.error('Error adding benchmark:', error);
+  }
+  return { data, error };
+}
+
+async function updateBenchmark(id, updates) {
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('benchmarks').update(updates).eq('id', id);
+  if (error) {
+    console.error('Error updating benchmark:', error);
+    return null;
+  }
+  return data;
+}
+
+async function deleteBenchmark(id) {
+  const client = await ensureSupabase();
+  if (!client) return null;
+  const { data, error } = await client.from('benchmarks').delete().eq('id', id);
+  if (error) {
+    console.error('Error deleting benchmark:', error);
+    return null;
+  }
+  return data;
+}
+
 // Navigation menu toggle for small screens
 window.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');

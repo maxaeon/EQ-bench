@@ -1,0 +1,20 @@
+[
+  {
+    "benchmark_id": "b001",
+    "axis_id": "respond",
+    "construct_id": "c001",
+    "prompt": "A friend is visibly upset after failing an exam. How do you react?",
+    "expected_response": "Offer empathy and support while acknowledging their feelings.",
+    "difficulty_level": 3,
+    "notes": "Tests ability to provide supportive responses."
+  },
+  {
+    "benchmark_id": "b002",
+    "axis_id": "sense",
+    "construct_id": "c002",
+    "prompt": "Label the emotion expressed in the sentence: 'I can't believe this happened!'",
+    "expected_response": "The statement expresses surprise or disbelief.",
+    "difficulty_level": 2,
+    "notes": "Checks recognition of a basic emotion."
+  }
+]

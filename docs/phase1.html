@@ -32,6 +32,17 @@
     <main id="main" class="wide">
         <section id="contribute">
             <h1>Phase 1: Framework Feedback and Literature Scan</h1>
+            <div class="subsection">
+                <h3>Goal</h3>
+                <p>Establish a theoretical foundation for EI benchmarking through literature synthesis.</p>
+            </div>
+            <div class="subsection">
+                <h3>Methodology</h3>
+                <ul>
+                    <li>Systematic reviews across Philosophy, Psychology, Neuroscience, Computer Science</li>
+                    <li>Database creation detailing constructs, definitions, measurement methods, SERA-X axes alignment</li>
+                </ul>
+            </div>
             <hr>
             <h2>Axis Feedback</h2>
             <p>We are gathering input on the proposed SERA-X axes and compiling relevant peer‑reviewed literature. As an introductory project, contributors and collaborators are encouraged to familiarize themselves with existing emotional intelligence benchmarking frameworks. Please review our detailed comparison here:</p>
@@ -386,6 +397,7 @@
                 const titles = new Set(literature.map(l => (l.title || '').toLowerCase()));
                 const dois = new Set(literature.map(l => (l.url || '').replace(/https?:\/\/(dx\.)?doi.org\//i, '').toLowerCase()));
                 let maxIndex = Math.max(0, ...literature.map(l => l.__index || 0));
+                let added = 0;
                 for (const en of entries) {
                     const t = (en.title || '').toLowerCase();
                     const d = (en.doi || en.url || '').replace(/https?:\/\/(dx\.)?doi.org\//i, '').toLowerCase();
@@ -401,9 +413,11 @@
                     literature.push(obj);
                     titles.add(t);
                     if (d) dois.add(d);
+                    added++;
                 }
                 applyLitFilters();
                 e.target.value = '';
+                showToast(added ? `${added} entries added` : 'No new entries added');
             };
             reader.readAsText(file);
         });
@@ -479,6 +493,17 @@ async function startAddLit() {
             methodology_supported: e.target.methodology_supported.value,
             relevance: e.target.relevance.value
         };
+        const titleLower = obj.title.trim().toLowerCase();
+        const doiLower = (obj.url || '').replace(/https?:\/(?:dx\.)?doi.org\//i, '').toLowerCase();
+        const exists = literature.some(l => {
+            const t = (l.title || '').trim().toLowerCase();
+            const d = (l.url || '').replace(/https?:\/(?:dx\.)?doi.org\//i, '').toLowerCase();
+            return t === titleLower || (doiLower && d === doiLower);
+        });
+        if (exists) {
+            alert('This entry already exists.');
+            return;
+        }
         if (typeof addLiterature === 'function') {
             try {
                 const { data, error } = await addLiterature(obj);
@@ -500,8 +525,11 @@ async function startAddLit() {
         literature.push(obj);
         addRow.remove();
         applyLitFilters();
+        showToast('Entry added');
     });
-    document.getElementById('lit-add-cancel').addEventListener('click', () => addRow.remove());
+    document.getElementById('lit-add-cancel').addEventListener('click', () => {
+        addRow.remove();
+    });
 }
 
 async function startEditLit() {
@@ -580,6 +608,7 @@ async function startEditLit() {
         });
         hideEditOverlay();
         applyLitFilters();
+        showToast('Entry updated');
     });
     document.getElementById('lit-edit-cancel').addEventListener('click', hideEditOverlay);
 }

@@ -44,6 +44,9 @@ title: Glossary
 **SERA-X Model**
 : A structured model guiding the evaluation of emotional intelligence constructs in AI.
 
+**Validation**
+: Confirming that a concept, model, or measure accurately represents or assesses what it claims to. This typically involves empirical evidence showing that the construct or method aligns with real-world phenomena or expectations.
+
 ---
 
 Missing a term? [Open a Glossary term request](https://github.com/maxaeon/EQ-bench/issues/new?template=glossary-term-request.yml) to suggest new definitions.

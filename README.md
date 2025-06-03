@@ -9,7 +9,7 @@ This website serves as the foundational resource and single source of truth for 
 Status: *early scaffold* (v0.0.1) - layout may change
 
 New to these terms? See the [Glossary](docs/glossary.md) for quick definitions.
-Missing a term? Use the **Glossary term request** issue template to propose an addition.
+Missing a term? [Open a Glossary term request](https://github.com/maxaeon/EQ-bench/issues/new?template=glossary-term-request.yml) to propose an addition.
 
 ## 1  Project Snapshot
 SERA-X is intended to be a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Authorized visitors can sign in using the **Login** button at the top right of the project website and submit new sources or constructs directly through the provided forms. Use the same button to log out when finished. These entries are stored in our Supabase tables (`literature` and `constructs`) and mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).

@@ -55,11 +55,12 @@
         <section id="literature">
             <hr>
             <h2>Relevant Literature</h2>
-<p>Notice something missing? Use the <strong>Add Source</strong> button to submit new references. Logged-in contributors may also import a <code>.bib</code> file, and the entries will be saved to our Supabase database. Each submission must specify at least one of the supported SERA-X axes, a related construct, or the methodology it informs.</p>
+<p>Notice something missing? Use the <strong>Add Source</strong> button to submit new references. Logged-in contributors may also import a <code>.bib</code> file or paste BibTeX text directly, and the entries will be saved to our Supabase database. Each submission must specify at least one of the supported SERA-X axes, a related construct, or the methodology it informs.</p>
 <p>Need to modify the database structure itself? <a href="https://github.com/maxaeon/EQ-bench/issues/new?template=database-change.yml" target="_blank">Open a database change request</a>.</p>
             <div class="add-source-controls">
                 <label for="bib-upload" class="button">Upload .bib</label>
                 <input id="bib-upload" type="file" accept=".bib" hidden>
+                <button id="paste-bibtex-btn" class="button" type="button">Paste BibTeX</button>
                 <button id="add-source-btn" class="button" type="button">Add Source</button>
             </div>
 
@@ -480,6 +481,61 @@
 document.addEventListener('DOMContentLoaded', loadLiterature);
 let authed = false;
 
+async function startPasteBibtex() {
+    if (!authed) { if (!(await authenticate())) return; authed = true; }
+    const formHtml = `<form id="paste-bibtex-form">
+        <label>Paste BibTeX:<br><textarea id="paste-bibtex-text" rows="10" style="width:100%"></textarea></label>
+        <div class="edit-buttons">
+            <button type="submit" class="button">Import</button>
+            <button type="button" id="paste-bibtex-cancel" class="button">Cancel</button>
+        </div>
+    </form>`;
+    const form = showEditOverlay(formHtml);
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const text = form.querySelector('#paste-bibtex-text').value;
+        hideEditOverlay();
+        if (!text.trim()) { showToast('No BibTeX provided'); return; }
+        const entries = parseBibtex(text);
+        const titles = new Set(literature.map(l => (l.title || '').toLowerCase()));
+        const dois = new Set(literature.map(l => (l.url || '').replace(/https?:\/(dx\.)?doi.org\//i, '').toLowerCase()));
+        let maxIndex = Math.max(0, ...literature.map(l => l.__index || 0));
+        let added = 0;
+        for (const en of entries) {
+            const t = (en.title || '').toLowerCase();
+            const d = (en.doi || en.url || '').replace(/https?:\/(dx\.)?doi.org\//i, '').toLowerCase();
+            if (titles.has(t) || (d && dois.has(d))) continue;
+            const obj = Object.assign({construct: '', axis: '', methodology_supported: '', relevance: ''}, en);
+            if (!obj.construct) {
+                const v = prompt(`Construct for "${obj.title}"?`);
+                if (v !== null) obj.construct = v.trim();
+            }
+            if (!obj.axis) {
+                const v = prompt(`Axis for "${obj.title}"?`);
+                if (v !== null) obj.axis = v.trim();
+            }
+            if (!obj.methodology_supported) {
+                const v = prompt(`Methodology supported for "${obj.title}"?`);
+                if (v !== null) obj.methodology_supported = v.trim();
+            }
+            obj.__index = ++maxIndex;
+            if (authed && typeof addLiterature === 'function') {
+                try {
+                    const { data, error } = await addLiterature(obj);
+                    if (!error && data && data[0]) Object.assign(obj, data[0]);
+                } catch (err) { console.error(err); }
+            }
+            literature.push(obj);
+            titles.add(t);
+            if (d) dois.add(d);
+            added++;
+        }
+        applyLitFilters();
+        showToast(added ? `${added} entries added` : 'No new entries added');
+    });
+    document.getElementById('paste-bibtex-cancel').addEventListener('click', hideEditOverlay);
+}
+
 async function startAddLit() {
     if (!authed) { if (!(await authenticate())) return; authed = true; }
     document.getElementById('lit-add-row')?.remove();
@@ -760,6 +816,7 @@ async function undoLastLitAction() {
 document.getElementById('edit-lit-btn').addEventListener('click', startEditLit);
 document.getElementById('delete-lit-btn').addEventListener('click', deleteSelectedLit);
 document.getElementById('add-source-btn').addEventListener('click', startAddLit);
+document.getElementById('paste-bibtex-btn').addEventListener('click', startPasteBibtex);
 document.getElementById('undo-lit-btn').addEventListener('click', undoLastLitAction);
 
 // Confirm before saving new or updated literature

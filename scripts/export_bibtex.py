@@ -16,16 +16,24 @@ from pathlib import Path
 
 
 def to_bibtex(item: dict) -> str:
-    """Return a BibTeX entry string for *item* using the website mapping."""
+    """Return a BibTeX entry string for *item* using the website mapping.
+
+    ``authors`` may be a string or a list of author name strings which will
+    be joined with ``" and "`` when constructing the entry.
+    """
     entry_type = "article" if item.get("journal") else "book"
-    authors = item.get("authors") or "ref"
-    key_author = authors.split()[0].split(",")[0]
+    raw_authors = item.get("authors")
+    if isinstance(raw_authors, list):
+        authors = " and ".join(raw_authors)
+    else:
+        authors = str(raw_authors) if raw_authors else ""
+    key_author = (authors or "ref").split()[0].split(",")[0]
     key_author = "".join(ch for ch in key_author if ch.isalnum()) or "ref"
     key = f"{key_author}{item.get('year', '')}"
 
     entry = f"@{entry_type}{{{key},\n  title = {{{item.get('title')}}}"
-    if item.get("authors"):
-        entry += f",\n  author = {{{item['authors']}}}"
+    if authors:
+        entry += f",\n  author = {{{authors}}}"
     if item.get("journal"):
         entry += f",\n  journal = {{{item['journal']}}}"
     if item.get("publisher"):

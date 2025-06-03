@@ -198,13 +198,23 @@ async function addConstruct(construct) {
 
 async function updateConstruct(id, updates) {
   const client = await ensureSupabase();
-  if (!client) return null;
-  const { data, error } = await client.from('constructs').update(updates).eq('id', id);
+  if (!client) {
+    const error = new Error('Supabase unavailable');
+    return { data: null, error };
+  }
+  const updateData = { ...updates };
+  delete updateData.id;
+  delete updateData.__index;
+  for (const [key, value] of Object.entries(updateData)) {
+    if (Array.isArray(value)) {
+      updateData[key] = JSON.stringify(value);
+    }
+  }
+  const { data, error } = await client.from('constructs').update(updateData).eq('id', id);
   if (error) {
     console.error('Error updating construct:', error);
-    return null;
   }
-  return data;
+  return { data, error };
 }
 
 async function deleteConstruct(id) {
@@ -252,13 +262,23 @@ async function addLiterature(entry) {
 
 async function updateLiterature(id, updates) {
   const client = await ensureSupabase();
-  if (!client) return null;
-  const { data, error } = await client.from('literature').update(updates).eq('id', id);
+  if (!client) {
+    const error = new Error('Supabase unavailable');
+    return { data: null, error };
+  }
+  const updateData = { ...updates };
+  delete updateData.id;
+  delete updateData.__index;
+  for (const [key, value] of Object.entries(updateData)) {
+    if (Array.isArray(value)) {
+      updateData[key] = JSON.stringify(value);
+    }
+  }
+  const { data, error } = await client.from('literature').update(updateData).eq('id', id);
   if (error) {
     console.error('Error updating literature:', error);
-    return null;
   }
-  return data;
+  return { data, error };
 }
 
 async function deleteLiterature(id) {

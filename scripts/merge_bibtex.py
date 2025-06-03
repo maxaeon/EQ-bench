@@ -24,6 +24,16 @@ def doi_norm(url: str) -> str:
     return url
 
 
+def get_field(entry: dict, name: str):
+    if name in entry:
+        return entry[name]
+    lower = name.lower()
+    for k, v in entry.items():
+        if k.lower() == lower:
+            return v
+    return None
+
+
 def load_literature(path: Path):
     if path.exists():
         with path.open("r", encoding="utf-8") as f:
@@ -43,7 +53,8 @@ def merge_entries(entries, data):
     added = 0
     for entry in entries:
         title = entry.get("title", "")
-        url = entry.get("url") or (entry.get("doi") and f"https://doi.org/{entry['doi']}") or ""
+        doi_value = get_field(entry, "doi")
+        url = entry.get("url") or get_field(entry, "URL") or (doi_value and f"https://doi.org/{doi_value}") or ""
         t_key = norm(title)
         d_key = doi_norm(url)
         if t_key in by_title or (d_key and d_key in by_doi):

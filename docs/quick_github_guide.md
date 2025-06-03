@@ -22,7 +22,7 @@ When filling out a literature issue or sharing your own bibliography, convert ea
 
 ## 3. Importing and exporting `.bib` files
 
-While logged in, you can upload a local `.bib` file on the **Phase&nbsp;1** page to quickly populate the submission form. After uploading, the site prompts you for any missing construct, axis, or methodology fields. Exported BibTeX files omit these extra fields so they remain compatible with standard reference managers. Maintainers can also run `python scripts/export_bibtex.py references.bib` to export the curated data directly from the JSON files.
+While logged in, you can upload a local `.bib` file on the **Phase&nbsp;1** page to quickly populate the submission form. If a record contains a `doi` field it is automatically converted to a `url` pointing at `https://doi.org/`. After uploading, the site prompts you for any missing construct, axis, or methodology fields. Exported BibTeX files omit these extra fields so they remain compatible with standard reference managers. Maintainers can also run `python scripts/export_bibtex.py references.bib` to export the curated data directly from the JSON files.
 
 ## 4. Edit the literature review in Overleaf
 

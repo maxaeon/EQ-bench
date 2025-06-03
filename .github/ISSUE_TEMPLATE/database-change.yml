@@ -1,0 +1,51 @@
+name: Database Schema Change
+description: Request updates to the Supabase database structure
+labels: ["database-change"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to propose modifications to the database schema. These requests may include adding or removing tables or columns, updating data types, or creating new relations between tables.
+  - type: input
+    id: summary
+    attributes:
+      label: Short summary
+      description: Briefly describe the requested change
+    validations:
+      required: true
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Type of change
+      options:
+        - Add table
+        - Remove table
+        - Add column
+        - Remove column
+        - Modify column
+        - Connect entries
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: table
+    attributes:
+      label: Table affected
+      description: Name of the existing or new table
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Provide specifics like column names, data types, or relations
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Why is this change necessary?
+  - type: textarea
+    id: references
+    attributes:
+      label: Supporting links or references

@@ -98,7 +98,7 @@ For a short overview of how psychologists, philosophers, engineers, and other sp
 
 The `docs/` folder doubles as a GitHub Pages site.
 Visit <https://maxaeon.github.io/EQ-bench/> for a short overview of the project and direct forms for submitting constructs or literature references. Entries submitted through these forms are stored in `data/construct_submissions.json` and `data/literature.json` and mirrored in our Supabase tables. See [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md) for details. Selected references can be downloaded as a BibTeX file. If you have a DOI, you can convert it to a BibTeX entry using online tools such as [bibtex.com](https://www.bibtex.com/c/doi-to-bibtex-converter/).
-When exporting, the construct name and axis are stored under the custom BibTeX fields `sera-construct` and `sera-axis`, while any keywords are written to the standard `keywords` tag and relevance notes appear under `note`. The site parses these tags back into the JSON fields on upload.
+When exporting, extra fields such as the construct name, supported methodology, or SERA-X axis are omitted to keep the BibTeX file portable. Any keywords are written to the standard `keywords` tag and relevance notes appear under `note`. During import the site prompts for any missing required values.
 For a walkthrough of the import/export buttons, see the [quick guide section on BibTeX files](docs/quick_github_guide.md#importing-and-exporting-bib-files).
 The website also lets you rate how relevant each construct or paper is using a star widget.
 The scale runs from **1 star = not relevant** to **5 stars = crucial**.

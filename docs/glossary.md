@@ -29,7 +29,7 @@ title: Glossary
 **EQ (Emotional Quotient)**
 : A measure of emotional intelligence reflecting the capacity to perceive, understand, manage, and effectively use emotions in interactions. Within this framework, **AI-EQ** specifically refers to evaluating these capabilities in artificial intelligence systems.
 
-**Explainability (XAI)**
+**Explainability**
 : The feature of AI systems providing clear, interpretable reasons for their emotional responses or decisions.
 
 **Human-AI Interaction**
@@ -41,17 +41,8 @@ title: Glossary
 **Responding Appropriately**
 : Generating contextually suitable and emotionally intelligent responses within human-AI interactions.
 
-**SERA-X**
-: An emotional intelligence benchmark short for **Sense, Explain, Respond, Adapt – Extended**. It defines a set of axes and metrics for evaluating how well AI systems perceive and react to human emotions.
-
 **SERA-X Model**
 : A structured model guiding the evaluation of emotional intelligence constructs in AI.
-
-**Supabase**
-: An open-source backend service used by this project to store submitted constructs and literature references. Form data from the project website is synced to Supabase tables for collaborative editing.
-
-**Validation Methodology**
-: Procedures or techniques employed to verify the effectiveness and accuracy of identified emotional intelligence constructs.
 
 ---
 

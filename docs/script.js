@@ -491,12 +491,14 @@ function populateFoundationsTable(tbodyId) {
 }
 
 
-// Parse BibTeX text into reference objects matching literature.json fields
+// Parse BibTeX text into reference objects matching literature.json fields.
+// Any `doi` value is converted into a URL if no explicit URL is provided.
 function parseBibtex(text) {
   if (!text || !window.bibtexParse || !window.bibtexParse.toJSON) return [];
   const rawEntries = window.bibtexParse.toJSON(text);
   return rawEntries.map(entry => {
     const fields = entry.entryTags || {};
+    const doiValue = fields.doi || fields.DOI;
     const rawAuthors = fields.author || fields.authors || '';
     const authors = rawAuthors
       ? rawAuthors.split(/\s+and\s+/).map(a => a.trim()).filter(Boolean)
@@ -510,8 +512,8 @@ function parseBibtex(text) {
       volume: fields.volume || '',
       number: fields.number || '',
       pages: fields.pages || '',
-      url: fields.url || (fields.doi ? `https://doi.org/${fields.doi}` : ''),
-      doi: fields.doi || '',
+      url: fields.url || fields.URL || (doiValue ? `https://doi.org/${doiValue}` : ''),
+      doi: doiValue || '',
       construct: fields['sera-construct'] || fields.construct || '',
       axis: fields['sera-axis'] || fields.axis || '',
       keywords: (fields.keywords || fields.keyword || '')

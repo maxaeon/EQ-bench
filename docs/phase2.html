@@ -193,6 +193,12 @@
     function render(data) {
         const tbody = document.querySelector('#construct-table tbody');
         tbody.innerHTML = '';
+        if (!data.length) {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td colspan="6">No constructs found. Try adjusting your filters.</td>`;
+            tbody.appendChild(row);
+            return;
+        }
         data.forEach((c, idx) => {
             const row = document.createElement('tr');
             row.className = 'construct-row';
@@ -211,7 +217,7 @@
                 <td>${c.definition || ''}</td>
                 <td>${c.example || ''}</td>
                 <td>${c.indicators || ''}</td>
-                <td>${c.axis}</td>
+                <td>${Array.isArray(c.axis) ? c.axis.join(', ') : c.axis}</td>
                 <td></td>`;
 
             extra.className = 'construct-extra';
@@ -224,7 +230,7 @@
                 ${c.indicators ? `<strong>Indicators:</strong> ${c.indicators}<br>` : ''}
                 ${c.evaluation ? `<strong>How to Measure:</strong> ${c.evaluation}<br>` : ''}
                 <strong>Potential Issues:</strong> ${issues}<br>
-                ${c.category ? `<strong>Category:</strong> ${c.category}<br>` : ''}</td>`;
+                ${c.category ? `<strong>Category:</strong> ${Array.isArray(c.category) ? c.category.join(', ') : c.category}<br>` : ''}</td>`;
 
             tbody.appendChild(row);
             tbody.appendChild(extra);
@@ -309,16 +315,22 @@
             const axisFilter = document.getElementById('axis-filter');
             const axisOrder = ['sense','explain','respond','adapt','extended'];
             axisOrder.forEach(a => {
-                if (axisSet.has(a))
-                    axisFilter.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a));
+                axisFilter.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a));
             });
+            Array.from(axisSet)
+                .filter(a => !axisOrder.includes(a))
+                .sort((a,b)=>a.localeCompare(b))
+                .forEach(a => axisFilter.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)));
 
             const fieldFilter = document.getElementById('field-filter');
             const fieldOrder = ['psychology','philosophy of mind','computer science','ethics','other'];
             fieldOrder.forEach(f => {
-                if (fieldSet.has(f))
-                    fieldFilter.appendChild(new Option(toTitle(f), f));
+                fieldFilter.appendChild(new Option(toTitle(f), f));
             });
+            Array.from(fieldSet)
+                .filter(f => !fieldOrder.includes(f))
+                .sort((a,b)=>a.localeCompare(b))
+                .forEach(f => fieldFilter.appendChild(new Option(toTitle(f), f)));
 
             enableMultiSelectDropdown(axisFilter);
             enableMultiSelectDropdown(fieldFilter);

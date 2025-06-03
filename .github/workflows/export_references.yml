@@ -94,8 +94,7 @@ jobs:
                 url: f.url || (f.doi ? `https://doi.org/${f.doi}` : ''),
                 construct: '',
                 axis: '',
-                relevance: '',
-                ratings: []
+                relevance: ''
               };
               const tKey = norm(obj.title);
               const dKey = doiNorm(obj.url);

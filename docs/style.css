@@ -478,27 +478,6 @@ tbody tr:nth-child(even) {
     }
 }
 
-/* Star rating widget */
-.star-rating {
-    display: inline-block;
-}
-.star-rating .star {
-    cursor: pointer;
-    color: #ccc;
-    font-size: 1.2em;
-}
-.star-rating .star.filled {
-    color: #f5b301;
-}
-
-@media (prefers-color-scheme: dark) {
-    .star-rating .star {
-        color: #555;
-    }
-    .table-scroll tbody tr.selected {
-        background-color: #333;
-    }
-}
 
 /* Login modal - disabled for now */
 .hidden {

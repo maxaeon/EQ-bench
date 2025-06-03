@@ -126,6 +126,35 @@ async function authenticate() {
   }
 }
 
+async function isLoggedIn() {
+  const client = await ensureSupabase();
+  if (!client) return false;
+  const { data: { session } } = await client.auth.getSession();
+  return !!session;
+}
+
+async function logout() {
+  const client = await ensureSupabase();
+  if (client) await client.auth.signOut();
+}
+
+async function updateAuthButton() {
+  const btn = document.querySelector('#auth-btn');
+  if (!btn) return;
+  btn.textContent = (await isLoggedIn()) ? 'Logout' : 'Login';
+}
+
+async function handleAuthButton() {
+  if (await isLoggedIn()) {
+    await logout();
+    showToast('Logged out');
+  } else {
+    const ok = await authenticate();
+    if (ok) showToast('Logged in');
+  }
+  updateAuthButton();
+}
+
 async function fetchConstructs() {
   const client = await ensureSupabase();
   if (!client) return [];
@@ -275,6 +304,15 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const header = document.querySelector('header');
+  if (header) {
+    const btn = document.createElement('button');
+    btn.id = 'auth-btn';
+    btn.className = 'button auth-button';
+    btn.addEventListener('click', handleAuthButton);
+    header.appendChild(btn);
+    updateAuthButton();
+  }
 });
 
 // Populate constructs for a given axis onto the page

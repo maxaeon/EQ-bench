@@ -12,7 +12,7 @@ New to these terms? See the [Glossary](docs/glossary.md) for quick definitions.
 Missing a term? Use the **Glossary term request** issue template to propose an addition.
 
 ## 1  Project Snapshot
-SERA-X is intended to be a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Authorized visitors can log in on the project website and submit new sources or constructs directly through the provided forms. These entries are stored in our Supabase tables (`literature` and `constructs`) and mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
+SERA-X is intended to be a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Authorized visitors can sign in using the **Login** button at the top right of the project website and submit new sources or constructs directly through the provided forms. Use the same button to log out when finished. These entries are stored in our Supabase tables (`literature` and `constructs`) and mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
 
 | Project Attribute | Short description |
 |-------------------------|---------------------|

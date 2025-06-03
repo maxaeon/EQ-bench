@@ -150,6 +150,16 @@ async function updateAuthButton() {
   btn.textContent = (await isLoggedIn()) ? 'Logout' : 'Login';
 }
 
+// Enable or hide the BibTeX upload control based on login status
+async function updateBibtexUpload() {
+  const input = document.getElementById('bib-upload');
+  const label = document.querySelector('label[for="bib-upload"]');
+  if (!input && !label) return;
+  const loggedIn = await isLoggedIn();
+  if (input) input.disabled = !loggedIn;
+  if (label) label.style.display = loggedIn ? '' : 'none';
+}
+
 async function handleAuthButton() {
   if (await isLoggedIn()) {
     await logout();
@@ -159,6 +169,7 @@ async function handleAuthButton() {
     if (ok) showToast('Logged in');
   }
   updateAuthButton();
+  updateBibtexUpload();
 }
 
 async function fetchConstructs() {
@@ -318,6 +329,7 @@ window.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', handleAuthButton);
     header.appendChild(btn);
     updateAuthButton();
+    updateBibtexUpload();
   }
 });
 

@@ -299,7 +299,7 @@ table {
     height: var(--table-row-h);
 }
 .table-scroll tbody tr.selected {
-    background-color: #e0f0ff;
+    background-color: #d4e2ff;
 }
 
 .info-icon {
@@ -471,6 +471,10 @@ tbody tr:nth-child(even) {
 
     .lit-extra td {
         background-color: #333;
+    }
+
+    .table-scroll tbody tr.selected {
+        background-color: #2a3d55;
     }
 
     .construct-actions a {

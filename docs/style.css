@@ -627,7 +627,7 @@ form label > textarea {
     background: linear-gradient(135deg, #0d6efd, #0b5ed7);
     color: #fff;
     text-align: center;
-    padding: 4rem 1rem;
+    padding: 3.4rem 1rem;
 }
 
 .hero h1 {
@@ -643,4 +643,22 @@ form label > textarea {
 
 .hero .button {
     font-size: 1.1rem;
+}
+
+.phase-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.phase-links .button {
+    margin: 0;
+}
+
+@media (min-width: 1024px) {
+    .sera-diagram {
+        max-width: 350px;
+    }
 }

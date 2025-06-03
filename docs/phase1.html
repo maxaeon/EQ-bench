@@ -666,6 +666,7 @@ async function startEditLit() {
             <option value="extended" ${axisVals.includes('extended') ? 'selected' : ''}>Extended</option>
         </select></label>
         <label>Methodology Supported: <input type="text" name="methodology_supported" value="${item.methodology_supported || ''}"></label>
+        <label>Relevance: <textarea name="relevance" rows="3">${item.relevance || ''}</textarea></label>
         <div class="edit-buttons">
             <button type="submit" class="button">Save</button>
             <button type="button" id="lit-edit-cancel" class="button">Cancel</button>
@@ -715,6 +716,7 @@ async function startEditLit() {
         const axisArr = Array.from(form.elements.axis.selectedOptions).map(o => o.value);
         item.axis = axisArr.join(', ');
         item.methodology_supported = form.methodology_supported.value;
+        item.relevance = form.relevance.value;
         if (item.id && typeof updateLiterature === 'function') await updateLiterature(item.id, {
             title: item.title,
             authors: item.authors,
@@ -728,7 +730,8 @@ async function startEditLit() {
             category: item.category,
             keywords: item.keywords,
             axis: axisArr,
-            methodology_supported: item.methodology_supported
+            methodology_supported: item.methodology_supported,
+            relevance: item.relevance
         });
         hideEditOverlay();
         applyLitFilters();

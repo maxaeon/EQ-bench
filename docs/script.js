@@ -368,7 +368,7 @@ function enableMultiSelectDropdown(select) {
 
   select.addEventListener('focus', expand);
   select.addEventListener('click', expand);
-  select.addEventListener('change', collapse);
+  select.addEventListener('input', collapse);
   select.addEventListener('blur', collapse);
   select.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

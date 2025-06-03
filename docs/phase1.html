@@ -23,7 +23,7 @@
                         <li><a href="phase4.html">Phase 4</a></li>
                     </ul>
                 </li>
-                <li><a href="expert-collaborators.html">Our Team of Experts</a></li>
+                <li><a href="expert-collaborators.html">Our Team</a></li>
                 <li><a href="https://github.com/maxaeon/EQ-bench">GitHub Repository</a></li>
             </ul>
         </nav>
@@ -169,11 +169,8 @@
             year: 'year',
             url: 'url',
             doi: 'doi',
-            construct: 'sera-construct',
-            axis: 'sera-axis',
             keywords: 'keywords',
-            relevance: 'note',
-            methodology_supported: 'methodology_supported'
+            relevance: 'note'
         };
         const fields = {};
         for (const [prop, tag] of Object.entries(mapping)) {
@@ -409,7 +406,19 @@
                     const t = (en.title || '').toLowerCase();
                     const d = (en.doi || en.url || '').replace(/https?:\/\/(dx\.)?doi.org\//i, '').toLowerCase();
                     if (titles.has(t) || (d && dois.has(d))) continue;
-                    const obj = Object.assign({construct: '', axis: '', relevance: ''}, en);
+                    const obj = Object.assign({construct: '', axis: '', methodology_supported: '', relevance: ''}, en);
+                    if (!obj.construct) {
+                        const v = prompt(`Construct for "${obj.title}"?`);
+                        if (v !== null) obj.construct = v.trim();
+                    }
+                    if (!obj.axis) {
+                        const v = prompt(`Axis for "${obj.title}"?`);
+                        if (v !== null) obj.axis = v.trim();
+                    }
+                    if (!obj.methodology_supported) {
+                        const v = prompt(`Methodology supported for "${obj.title}"?`);
+                        if (v !== null) obj.methodology_supported = v.trim();
+                    }
                     obj.__index = ++maxIndex;
                     if (authed && typeof addLiterature === 'function') {
                         try {

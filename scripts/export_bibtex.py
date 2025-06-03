@@ -48,10 +48,6 @@ def to_bibtex(item: dict) -> str:
         entry += f",\n  year = {{{item['year']}}}"
     if item.get("url"):
         entry += f",\n  url = {{{item['url']}}}"
-    if item.get("construct"):
-        entry += f",\n  sera-construct = {{{item['construct']}}}"
-    if item.get("axis"):
-        entry += f",\n  sera-axis = {{{item['axis']}}}"
     keywords = item.get("keywords")
     if keywords:
         kw = ", ".join(keywords) if isinstance(keywords, list) else str(keywords)

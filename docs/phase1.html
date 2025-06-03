@@ -151,8 +151,12 @@
 
     function toBibtex(item) {
         const type = item.journal ? 'article' : 'book';
-        const firstAuthor = Array.isArray(item.authors) ? (item.authors[0] || '') : (item.authors || '');
-        const keyAuthor = (firstAuthor || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '') || 'ref';
+        const firstAuthor = Array.isArray(item.authors)
+            ? (item.authors.length ? item.authors[0] : 'ref')
+            : (item.authors || 'ref');
+        const keyAuthor = String(firstAuthor || 'ref')
+            .split(/[ ,]/)[0]
+            .replace(/[^a-zA-Z0-9]/g, '') || 'ref';
         const key = keyAuthor + (item.year || '');
         const mapping = {
             title: 'title',

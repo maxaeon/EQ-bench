@@ -521,8 +521,10 @@ function parseBibtex(text) {
       relevance: fields.note || '',
       methodology_supported: fields.methodology_supported || ''
     };
-    // Preserve any additional fields not explicitly handled
+    // Preserve any additional fields not explicitly handled, but drop the
+    // original `author`/`authors` keys since they are normalized above.
     for (const [k, v] of Object.entries(fields)) {
+      if (k === 'author' || k === 'authors') continue;
       if (!(k in obj)) obj[k] = v;
     }
     return obj;

@@ -5,7 +5,7 @@ title: Comparison of Alternative Emotional Intelligence Models
 
 # Comparison of Alternative Emotional Intelligence Models
 
-This section provides an overview and comparison of prominent emotional intelligence (EI) benchmarking models and frameworks currently utilized in AI research. Understanding these alternatives contextualizes the rationale and unique strengths of the SERA-X framework.
+This section provides an overview and comparison of prominent emotional intelligence (EQ) benchmarking models and frameworks currently utilized in AI research. Understanding these alternatives contextualizes the rationale and unique strengths of the SERA-X framework.
 
 ## Alternative Models Overview
 
@@ -13,7 +13,7 @@ This section provides an overview and comparison of prominent emotional intellig
 |-----------------|-------------------|----------------|-------------------|-------------|
 | **MSCEIT-based Framework** | Based on the Mayer-Salovey-Caruso Emotional Intelligence Test, emphasizes emotion perception, facilitation, understanding, and management. | Psychology | Empirically validated, widely used | Limited computational adaptability; human-focused, lacks explicit AI adaptation |
 | **EQ-i (Bar-On Model)** | Focuses on emotional-social intelligence including self-awareness, empathy, and interpersonal skills. | Psychology | Comprehensive human emotional skills assessment | Difficult to operationalize computationally; limited explicit AI applicability |
-| **Affective Computing Framework (Picard)** | Integrates computational techniques for recognizing, interpreting, and simulating human emotions. | Computer Science | Strong computational basis; interdisciplinary | Broad theoretical focus; lacks standardized EI benchmarking methodology |
+| **Affective Computing Framework (Picard)** | Integrates computational techniques for recognizing, interpreting, and simulating human emotions. | Computer Science | Strong computational basis; interdisciplinary | Broad theoretical focus; lacks standardized EQ benchmarking methodology |
 
 ## Why SERA-X?
 
@@ -23,8 +23,8 @@ The **SERA-X Framework** explicitly integrates interdisciplinary insights from p
 
 1. **Explicit Interdisciplinary Integration**  
    Unlike narrowly psychology-based or purely computational models, SERA-X clearly incorporates philosophical and neuroscientific theories, significantly enriching emotional intelligence modeling.
-2. **Comprehensive, Measurable Axes (SERA-X Axes)**  
-   SERA-X explicitly defines measurable EI capabilities across distinct axes—**Sensing, Explaining, Responding, Adapting, and Extended**—providing comprehensive coverage explicitly designed for computational evaluation.
+2. **Comprehensive, Measurable Axes (SERA-X Axes)**
+   SERA-X explicitly defines measurable EQ capabilities across distinct axes—**Sensing, Explaining, Responding, Adapting, and Extended**—providing comprehensive coverage explicitly designed for computational evaluation.
 3. **Adaptability and Scalability**  
    Designed explicitly for AI benchmarking, SERA-X easily adapts to diverse computational systems (social robots, conversational AI, virtual assistants), which traditional human-focused models struggle with.
 4. **Transparency and Interpretability**  

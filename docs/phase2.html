@@ -84,6 +84,7 @@
                         <th>Construct</th>
                         <th>Definition</th>
                         <th>Example</th>
+                        <th>Indicators</th>
                         <th>Axis</th>
                         <th>Authors &amp; Sources</th>
                     </tr>
@@ -139,6 +140,10 @@
         }
         if (c.references && !Array.isArray(c.references)) {
             c.references = c.references.split(',').map(r => r.trim()).filter(Boolean);
+        }
+        if (!c.indicators && c.body) {
+            const indMatch = c.body.match(/indicators?[:\-]?\s*(.*)/i);
+            c.indicators = indMatch ? indMatch[1].trim() : '';
         }
     }
 
@@ -205,6 +210,7 @@
                 <td>${c.title}</td>
                 <td>${c.definition || ''}</td>
                 <td>${c.example || ''}</td>
+                <td>${c.indicators || ''}</td>
                 <td>${c.axis}</td>
                 <td></td>`;
 
@@ -212,9 +218,10 @@
             extra.id = id;
             extra.style.display = 'none';
             extra.innerHTML = `
-                <td colspan="5"><strong>synonyms:</strong> ${synonyms}<br>
+                <td colspan="6"><strong>synonyms:</strong> ${synonyms}<br>
                 <strong>related terms:</strong> ${related}<br>
                 <strong>Related Literature:</strong> ${refs}<br>
+                ${c.indicators ? `<strong>Indicators:</strong> ${c.indicators}<br>` : ''}
                 ${c.evaluation ? `<strong>How to Measure:</strong> ${c.evaluation}<br>` : ''}
                 <strong>Potential Issues:</strong> ${issues}<br>
                 ${c.category ? `<strong>Category:</strong> ${c.category}<br>` : ''}</td>`;
@@ -251,7 +258,8 @@
                 const def = (c.definition || '').toLowerCase();
                 const syn = Array.isArray(c.synonyms) ? c.synonyms.join(' ').toLowerCase() : (c.synonyms || '').toLowerCase();
                 const refs = Array.isArray(c.references) ? c.references.join(' ').toLowerCase() : (c.references || '').toLowerCase();
-                return title.includes(q) || def.includes(q) || syn.includes(q) || refs.includes(q);
+                const inds = (c.indicators || '').toLowerCase();
+                return title.includes(q) || def.includes(q) || syn.includes(q) || refs.includes(q) || inds.includes(q);
             }
             return true;
         });
@@ -334,7 +342,7 @@ async function startAddConstruct() {
     const tbody = document.querySelector('#construct-table tbody');
     const addRow = document.createElement('tr');
     addRow.id = 'construct-add-row';
-    addRow.innerHTML = `<td colspan="5"><form id="construct-add-form">
+    addRow.innerHTML = `<td colspan="6"><form id="construct-add-form">
         <label>Title: <input type="text" name="title" required></label>
         <label>Axes: <select name="axes" multiple size="1">
             <option value="sense">Sense</option>
@@ -347,6 +355,7 @@ async function startAddConstruct() {
         <label>Example: <textarea name="example" rows="2"></textarea></label>
         <label>Synonyms: <input type="text" name="synonyms" placeholder="comma separated"></label>
         <label>Related Terms: <input type="text" name="related_terms" placeholder="comma separated"></label>
+        <label>Indicators: <textarea name="indicators" rows="2"></textarea></label>
         <label>How to Measure: <textarea name="measurement" rows="2"></textarea></label>
         <label>Potential Issues: <textarea name="verification_issues" rows="2"></textarea></label>
         <label>Category: <select name="category" multiple size="1">
@@ -385,6 +394,7 @@ async function startAddConstruct() {
             example: e.target.example.value,
             synonyms: parseList(e.target.synonyms.value),
             related_terms: parseList(e.target.related_terms.value),
+            indicators: e.target.indicators.value,
             measurement: e.target.measurement.value,
             verification_issues: e.target.verification_issues.value,
             category: catArr.join(', ')
@@ -436,6 +446,7 @@ async function startEditConstruct() {
         <label>Example: <textarea name="example" rows="2" placeholder="Brief example">${item.example || ''}</textarea></label>
         <label>Synonyms: <input type="text" name="synonyms" placeholder="comma separated" value="${Array.isArray(item.synonyms) ? item.synonyms.join(', ') : (item.synonyms || '')}"></label>
         <label>Related Terms: <input type="text" name="related_terms" placeholder="comma separated" value="${Array.isArray(item.related_terms) ? item.related_terms.join(', ') : (item.related_terms || '')}"></label>
+        <label>Indicators: <textarea name="indicators" rows="2" placeholder="Indicators">${item.indicators || ''}</textarea></label>
         <label>How to Measure: <textarea name="measurement" rows="2" placeholder="How to measure">${item.measurement || ''}</textarea></label>
         <label>Potential Issues: <textarea name="verification_issues" rows="2" placeholder="Verification caveats">${item.verification_issues || ''}</textarea></label>
         <label>Category: <select name="category" multiple size="1">
@@ -467,10 +478,11 @@ async function startEditConstruct() {
         item.axes = axesArr;
         item.axis = axesArr.join(', ');
         item.definition = form.definition.value;
-        item.example = form.example.value;
-        item.synonyms = parseList(form.synonyms.value);
-        item.related_terms = parseList(form.related_terms.value);
-        item.measurement = form.measurement.value;
+       item.example = form.example.value;
+       item.synonyms = parseList(form.synonyms.value);
+       item.related_terms = parseList(form.related_terms.value);
+        item.indicators = form.indicators.value;
+       item.measurement = form.measurement.value;
         item.verification_issues = form.verification_issues.value;
         item.category = catArrEdit.join(', ');
         item.references = refsArr;
@@ -481,6 +493,7 @@ async function startEditConstruct() {
             example: item.example,
             synonyms: item.synonyms,
             related_terms: item.related_terms,
+            indicators: item.indicators,
             measurement: item.measurement,
             verification_issues: item.verification_issues,
             category: item.category,

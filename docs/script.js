@@ -67,7 +67,11 @@ function showLoginForm() {
 }
 
 function hideLoginForm() {
-  if (loginOverlay) loginOverlay.classList.add('hidden');
+  if (loginOverlay) {
+    loginOverlay.classList.add('hidden');
+    loginOverlay.remove();
+    loginOverlay = null;
+  }
 }
 
 function createEditOverlay() {
@@ -89,6 +93,8 @@ function hideEditOverlay() {
   if (editOverlay) {
     editOverlay.classList.add('hidden');
     editOverlay.innerHTML = '';
+    editOverlay.remove();
+    editOverlay = null;
   }
 }
 

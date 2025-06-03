@@ -198,6 +198,7 @@
             benchmarks.push(obj);
             row.remove();
             renderBenchmarks(benchmarks);
+            window.location.reload();
         });
         document.getElementById('benchmark-add-cancel').addEventListener('click',()=>row.remove());
     }
@@ -247,6 +248,7 @@
             }
             hideEditOverlay();
             renderBenchmarks(benchmarks);
+            window.location.reload();
         });
         document.getElementById('benchmark-edit-cancel').addEventListener('click', hideEditOverlay);
     }
@@ -262,6 +264,7 @@
         benchmarks.splice(idx,1);
         selectedBenchmarkId = null;
         renderBenchmarks(benchmarks);
+        window.location.reload();
     }
 
     document.getElementById('add-benchmark-btn').addEventListener('click', startAddBenchmark);

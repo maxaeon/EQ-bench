@@ -4,6 +4,8 @@ Welcome to the **EQ AI Research Hub**. We are committed to collaboratively devel
 
 GitHub Discussions are enabled for open dialogue and interdisciplinary collaboration.
 
+This website serves as the foundational resource and single source of truth for all project collaborators.
+
 Status: *early scaffold* (v0.0.1) - layout may change
 
 New to these terms? See the [Glossary](docs/glossary.md) for quick definitions.

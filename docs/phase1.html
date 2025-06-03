@@ -114,7 +114,7 @@
             <a class="button" href="#" id="bibtex-export-filtered" title="Export currently filtered list">Export Bib</a>
             <button id="edit-lit-btn" class="button">Edit</button>
             <button id="delete-lit-btn" class="button">Delete</button>
-            <button id="undo-lit-btn" class="button">Undo</button>
+            <!-- <button id="undo-lit-btn" class="button">Undo</button> -->
         </div>
 
             <hr style="margin-top: 40px; margin-bottom: 20px;">
@@ -782,7 +782,7 @@ document.getElementById('edit-lit-btn').addEventListener('click', startEditLit);
 document.getElementById('delete-lit-btn').addEventListener('click', deleteSelectedLit);
 document.getElementById('add-source-btn').addEventListener('click', startAddLit);
 document.getElementById('bibtex-btn').addEventListener('click', startBibtex);
-document.getElementById('undo-lit-btn').addEventListener('click', undoLastLitAction);
+// document.getElementById('undo-lit-btn').addEventListener('click', undoLastLitAction);
 
 // Confirm before saving new or updated literature
 document.getElementById('literature-form')?.addEventListener('submit', e => {

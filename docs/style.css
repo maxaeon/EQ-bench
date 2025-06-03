@@ -303,6 +303,7 @@ table {
 }
 select option:checked {
     background-color: #d4e2ff;
+    color: #000;
 }
 
 .info-icon {
@@ -481,6 +482,7 @@ tbody tr:nth-child(even) {
     }
     select option:checked {
         background-color: #2a3d55;
+        color: #fff;
     }
 
     .construct-actions a {

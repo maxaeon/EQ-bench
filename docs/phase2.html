@@ -146,6 +146,18 @@
             const indMatch = c.body.match(/indicators?[:\-]?\s*(.*)/i);
             c.indicators = indMatch ? indMatch[1].trim() : '';
         }
+        if (Array.isArray(c.indicators)) {
+            c.indicators = c.indicators.join(', ');
+        } else if (typeof c.indicators === 'string') {
+            const s = c.indicators.trim();
+            if (s.startsWith('{') && s.endsWith('}')) {
+                c.indicators = s.slice(1, -1)
+                    .split(',')
+                    .map(v => v.trim().replace(/^"|"$/g, ''))
+                    .filter(Boolean)
+                    .join(', ');
+            }
+        }
     }
 
     function toTitle(text) {

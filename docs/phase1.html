@@ -278,9 +278,11 @@
         tbody.querySelectorAll('.lit-row').forEach(r => {
             r.addEventListener('click', e => {
                 if (e.target.classList.contains('lit-check')) return;
-                tbody.querySelectorAll('.lit-row').forEach(x => x.classList.remove('selected'));
-                r.classList.add('selected');
-                selectedLitId = r.dataset.lid || r.id.replace('lit-row-','');
+                const cb = r.querySelector('.lit-check');
+                if (cb) {
+                    cb.checked = !cb.checked;
+                    cb.dispatchEvent(new Event('change'));
+                }
                 const target = document.getElementById(r.dataset.target);
                 if (target) {
                     target.style.display = target.style.display === 'none' || !target.style.display ? 'table-row' : 'none';

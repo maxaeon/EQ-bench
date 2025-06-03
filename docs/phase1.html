@@ -213,6 +213,12 @@
     function renderLit(items) {
         const tbody = document.querySelector('#lit-table tbody');
         tbody.innerHTML = '';
+        if (!items.length) {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td colspan="8">No literature found. Try adjusting your filters.</td>`;
+            tbody.appendChild(row);
+            return;
+        }
         items.forEach(l => {
             const checked = selectedLit.has(l.__index) ? 'checked' : '';
             const row = document.createElement('tr');
@@ -226,7 +232,7 @@
                 <td>${l.year}</td>
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
-                <td>${l.axis}</td>
+                <td>${Array.isArray(l.axis) ? l.axis.join(', ') : l.axis}</td>
                 <td>${l.methodology_supported || ''}</td>`;
             const extra = document.createElement('tr');
             const id = `ldetail-${l.__index}`;
@@ -241,7 +247,7 @@
                 ${l.volume ? `<strong>Volume:</strong> ${l.volume} ` : ''}${l.number ? ` <strong>Number:</strong> ${l.number}` : ''}${(l.volume||l.number)?'<br>':''}
                 ${l.pages ? `<strong>Pages:</strong> ${l.pages}<br>` : ''}
                 ${l.url ? `<strong>URL:</strong> <a href="${l.url}">${l.url}</a><br>` : ''}
-                ${l.category ? `<strong>Category:</strong> ${l.category}<br>` : ''}
+                ${l.category ? `<strong>Category:</strong> ${Array.isArray(l.category) ? l.category.join(', ') : l.category}<br>` : ''}
                 ${keywords ? `<strong>Keywords:</strong> ${keywords}` : ''}</td>`;
             tbody.appendChild(row);
             tbody.appendChild(extra);
@@ -353,10 +359,23 @@
 
         const axisF = document.getElementById('lit-axis-filter');
         const axisOrder = ['sense','explain','respond','adapt','extended'];
-        axisOrder.forEach(a => { if (axisSet.has(a)) axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)); });
+        axisOrder.forEach(a => {
+            axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a));
+        });
+        Array.from(axisSet)
+            .filter(a => !axisOrder.includes(a))
+            .sort((a,b)=>a.localeCompare(b))
+            .forEach(a => axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)));
+
         const fieldF = document.getElementById('lit-field-filter');
         const fieldOrder = ['psychology','philosophy of mind','computer science','ethics','other'];
-        fieldOrder.forEach(f => { if (fieldSet.has(f)) fieldF.appendChild(new Option(toTitle(f), f)); });
+        fieldOrder.forEach(f => {
+            fieldF.appendChild(new Option(toTitle(f), f));
+        });
+        Array.from(fieldSet)
+            .filter(f => !fieldOrder.includes(f))
+            .sort((a,b)=>a.localeCompare(b))
+            .forEach(f => fieldF.appendChild(new Option(toTitle(f), f)));
         const constructF = document.getElementById('lit-construct-filter');
         Array.from(constructSet)
             .sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()))

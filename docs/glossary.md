@@ -46,5 +46,5 @@ title: Glossary
 
 ---
 
-Missing a term? Open a **Glossary term request** issue to suggest new definitions.
+Missing a term? [Open a Glossary term request](https://github.com/maxaeon/EQ-bench/issues/new?template=glossary-term-request.yml) to suggest new definitions.
 

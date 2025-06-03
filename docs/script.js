@@ -205,11 +205,6 @@ async function updateConstruct(id, updates) {
   const updateData = { ...updates };
   delete updateData.id;
   delete updateData.__index;
-  for (const [key, value] of Object.entries(updateData)) {
-    if (Array.isArray(value)) {
-      updateData[key] = JSON.stringify(value);
-    }
-  }
   const { data, error } = await client.from('constructs').update(updateData).eq('id', id);
   if (error) {
     console.error('Error updating construct:', error);
@@ -248,11 +243,6 @@ async function addLiterature(entry) {
   const insertData = { ...entry };
   delete insertData.id;
   delete insertData.__index;
-  for (const [key, value] of Object.entries(insertData)) {
-    if (Array.isArray(value)) {
-      insertData[key] = JSON.stringify(value);
-    }
-  }
   const { data, error } = await client.from('literature').insert([insertData]);
   if (error) {
     console.error('Error adding literature:', error);
@@ -269,11 +259,6 @@ async function updateLiterature(id, updates) {
   const updateData = { ...updates };
   delete updateData.id;
   delete updateData.__index;
-  for (const [key, value] of Object.entries(updateData)) {
-    if (Array.isArray(value)) {
-      updateData[key] = JSON.stringify(value);
-    }
-  }
   const { data, error } = await client.from('literature').update(updateData).eq('id', id);
   if (error) {
     console.error('Error updating literature:', error);

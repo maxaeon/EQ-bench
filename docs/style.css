@@ -528,6 +528,8 @@ tbody tr:nth-child(even) {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
+    padding: 1rem;
     z-index: 1000;
 }
 #edit-overlay form {
@@ -536,6 +538,8 @@ tbody tr:nth-child(even) {
     border-radius: 4px;
     max-width: 600px;
     width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 #edit-overlay .edit-buttons {
     margin-top: 0.5rem;

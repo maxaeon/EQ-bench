@@ -624,7 +624,19 @@ async function startEditLit() {
     const item = literature.find(l => (l.id ?? l.__index) == selectedLitId);
     if (!item) return;
     const axisVals = Array.isArray(item.axis) ? item.axis : (item.axis || '').split(',').map(a=>a.trim());
-    const authorsVal = Array.isArray(item.authors) ? item.authors : String(item.authors || '').split(',').map(a=>a.trim()).filter(Boolean);
+    let authorsVal;
+    if (Array.isArray(item.authors)) {
+        authorsVal = item.authors;
+    } else {
+        const raw = String(item.authors || '').trim();
+        try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) authorsVal = parsed;
+        } catch (_) {}
+        if (!authorsVal) {
+            authorsVal = raw.split(/\s+and\s+|;|,/).map(a => a.trim()).filter(Boolean);
+        }
+    }
     const originalAuthors = authorsVal.map(a => toTitleCase(a));
     const authorsInputs = (authorsVal.length ? authorsVal : ['']).map((a,i)=>`<label>Author ${i+1}: <input type="text" class="author-input" value="${a}"></label>`).join('');
     const formHtml = `<form id="lit-edit-form">

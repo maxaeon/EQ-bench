@@ -73,6 +73,7 @@
 <div class="benchmark-controls">
     <button id="edit-benchmark-btn" class="button">Edit</button>
     <button id="delete-benchmark-btn" class="button">Delete</button>
+    <button id="undo-benchmark-btn" class="button">Undo</button>
 </div>
 
                 <!-- Explanation of Validation -->
@@ -91,6 +92,7 @@
     let constructs = [];
     let authed = false;
     let selectedBenchmarkId = null;
+    let lastBmAction = null;
 
     async function loadConstructOptions(select, selected='') {
         if (!constructs.length) {
@@ -199,7 +201,7 @@
             benchmarks.push(obj);
             row.remove();
             renderBenchmarks(benchmarks);
-            window.location.reload();
+            lastBmAction = { type: 'add', item: obj, index: benchmarks.length - 1 };
         });
         document.getElementById('benchmark-add-cancel').addEventListener('click',()=>row.remove());
     }
@@ -231,6 +233,7 @@
         loadConstructOptions(form.elements.construct_id, item.construct_id);
         form.addEventListener('submit', async e => {
             e.preventDefault();
+            const before = JSON.parse(JSON.stringify(item));
             item.axis_id = form.axis_id.value;
             item.construct_id = form.construct_id.value;
             item.prompt = form.prompt.value;
@@ -249,7 +252,7 @@
             }
             hideEditOverlay();
             renderBenchmarks(benchmarks);
-            window.location.reload();
+            lastBmAction = { type: 'update', item, before };
         });
         document.getElementById('benchmark-edit-cancel').addEventListener('click', hideEditOverlay);
     }
@@ -262,15 +265,37 @@
         if (!confirm('Delete this benchmark?')) return;
         const item = benchmarks[idx];
         if (item.id && typeof deleteBenchmark === 'function') await deleteBenchmark(item.id);
-        benchmarks.splice(idx,1);
+        const removed = benchmarks.splice(idx,1)[0];
         selectedBenchmarkId = null;
         renderBenchmarks(benchmarks);
-        window.location.reload();
+        lastBmAction = { type: 'delete', item: removed, index: idx };
+    }
+
+    async function undoLastBenchmarkAction() {
+        if (!lastBmAction) { alert('Nothing to undo'); return; }
+        const { type, item, index, before } = lastBmAction;
+        if (type === 'add') {
+            if (item.id && typeof deleteBenchmark === 'function') await deleteBenchmark(item.id);
+            const idx = benchmarks.findIndex(b => b === item || (b.id ?? b.__index) == (item.id ?? item.__index));
+            if (idx !== -1) benchmarks.splice(idx,1);
+        } else if (type === 'update') {
+            Object.assign(item, before);
+            if (item.id && typeof updateBenchmark === 'function') await updateBenchmark(item.id, before);
+        } else if (type === 'delete') {
+            if (typeof addBenchmark === 'function') {
+                const { data } = await addBenchmark(item);
+                if (data && data[0]) item.id = data[0].id;
+            }
+            benchmarks.splice(index,0,item);
+        }
+        renderBenchmarks(benchmarks);
+        lastBmAction = null;
     }
 
     document.getElementById('add-benchmark-btn').addEventListener('click', startAddBenchmark);
     document.getElementById('edit-benchmark-btn').addEventListener('click', startEditBenchmark);
     document.getElementById('delete-benchmark-btn').addEventListener('click', deleteSelectedBenchmark);
+    document.getElementById('undo-benchmark-btn').addEventListener('click', undoLastBenchmarkAction);
     </script>
     <script src="env.js"></script>
     <script src="script.js"></script>

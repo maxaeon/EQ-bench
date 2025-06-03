@@ -106,15 +106,7 @@ window.SUPABASE_URL = '<SUPABASE_URL>';
 window.SUPABASE_ANON_KEY = '<SUPABASE_ANON_KEY>'; // public anon key
 ```
 
-During deployment, the workflow overwrites these placeholders with the secrets stored in the repository (see `.github/workflows/export_constructs.yml`). Avoid committing real keys to the repo—use GitHub secrets instead. The site's CRUD functions require these values to access Supabase.
-
-To require a simple password for editing when Supabase Auth is not used, define `window.DOC_PASSWORD` before loading `script.js`:
-
-```javascript
-window.DOC_PASSWORD = '<your editing password>';
-```
-
-When `SUPABASE_URL` and `SUPABASE_ANON_KEY` are provided, the site prompts for a Supabase email and password instead.
+During deployment, the workflow overwrites these placeholders with the secrets stored in the repository (see `.github/workflows/export_constructs.yml`). 
 
 ---
 

@@ -180,6 +180,7 @@
             let val = item[prop];
             if (val === undefined || val === null || val === '' || (Array.isArray(val) && !val.length)) continue;
             if (prop === 'keywords') val = Array.isArray(val) ? val.join(', ') : val;
+            if (prop === 'authors') val = Array.isArray(val) ? val.join(' and ') : val;
             fields[tag] = val;
         }
         for (const [k,v] of Object.entries(item)) {
@@ -224,7 +225,7 @@
             row.innerHTML = `
                 <td><input type="checkbox" class="lit-check" data-index="${l.__index}" ${checked}></td>
                 <td>${l.title}</td>
-                <td>${l.authors}</td>
+                <td>${Array.isArray(l.authors) ? l.authors.join(', ') : l.authors}</td>
                 <td>${l.year}</td>
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
@@ -284,7 +285,8 @@
                 if (!constructVals.some(v => list.some(c => c.trim().toLowerCase() === v))) return false;
             }
             if (q) {
-                const text = `${l.title || ''} ${l.authors || ''} ${l.relevance || ''}`.toLowerCase();
+                const authText = Array.isArray(l.authors) ? l.authors.join(' ') : l.authors || '';
+                const text = `${l.title || ''} ${authText} ${l.relevance || ''}`.toLowerCase();
                 if (!text.includes(q)) return false;
             }
             return true;
@@ -292,7 +294,10 @@
 
         const sortVal = document.getElementById('lit-sort').value;
         if (sortVal === 'title') items.sort((a,b)=>a.title.localeCompare(b.title));
-        else if (sortVal === 'author') items.sort((a,b)=>String(a.authors).localeCompare(String(b.authors)));
+        else if (sortVal === 'author') {
+            const getAuth = l => Array.isArray(l.authors) ? l.authors.join(' ') : l.authors || '';
+            items.sort((a,b)=>getAuth(a).localeCompare(getAuth(b)));
+        }
         else items.sort((a,b)=>(a.year||0)-(b.year||0));
         filteredLiterature = items;
         renderLit(items);

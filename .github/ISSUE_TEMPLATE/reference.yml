@@ -27,7 +27,8 @@ body:
     id: authors
     attributes:
       label: Author(s)
-      description: e.g., Smith J., Doe A.
+      description: |
+        Enter names separated by " and " (e.g., Smith J. and Doe A.)
     validations:
       required: true
   - type: input
@@ -46,11 +47,6 @@ body:
     attributes:
       label: Publisher
       description: Organization or publisher name (if applicable)
-  - type: input
-    id: address
-    attributes:
-      label: Address
-      description: City or location (if applicable)
   - type: input
     id: url
     attributes:

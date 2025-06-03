@@ -79,14 +79,15 @@ jobs:
             const content = fs.readFileSync(file, 'utf8');
             parse.toJSON(content).forEach(entry => {
               const f = entry.entryTags || {};
+              const rawAuthors = f.author || f.authors || '';
+              const authors = rawAuthors ? rawAuthors.split(/\s+and\s+/).map(a => a.trim()).filter(Boolean) : [];
               const obj = {
                 id: ++maxId,
                 title: f.title || '',
-                authors: f.author || '',
+                authors,
                 year: f.year ? parseInt(f.year, 10) : undefined,
                 journal: f.journal || f.booktitle || '',
                 publisher: f.publisher || '',
-                address: f.address || '',
                 volume: f.volume || '',
                 number: f.number || '',
                 pages: f.pages || '',

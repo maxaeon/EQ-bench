@@ -463,9 +463,13 @@ function parseBibtex(text) {
   const rawEntries = window.bibtexParse.toJSON(text);
   return rawEntries.map(entry => {
     const fields = entry.entryTags || {};
+    const rawAuthors = fields.author || fields.authors || '';
+    const authors = rawAuthors
+      ? rawAuthors.split(/\s+and\s+/).map(a => a.trim()).filter(Boolean)
+      : [];
     const obj = {
       title: fields.title || '',
-      authors: fields.author || fields.authors || '',
+      authors,
       year: fields.year || '',
       journal: fields.journal || fields.booktitle || '',
       publisher: fields.publisher || '',

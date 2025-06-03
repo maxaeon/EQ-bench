@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 import bibtexparser
+import re
 
 
 def norm(text: str) -> str:
@@ -47,9 +48,15 @@ def merge_entries(entries, data):
         d_key = doi_norm(url)
         if t_key in by_title or (d_key and d_key in by_doi):
             continue
+        raw_authors = entry.get("author", "")
+        if raw_authors:
+            authors = [a.strip() for a in re.split(r"\s+and\s+|,", raw_authors) if a.strip()]
+        else:
+            authors = []
+
         obj = {
             "title": title,
-            "authors": entry.get("author", ""),
+            "authors": authors,
             "year": int(entry.get("year")) if entry.get("year", "").isdigit() else entry.get("year"),
             "journal": entry.get("journal") or entry.get("booktitle", ""),
             "publisher": entry.get("publisher", ""),

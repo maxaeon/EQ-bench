@@ -473,9 +473,9 @@ async function startAddLit() {
         <label>Year: <input type="number" name="year"></label>
         <label>Publisher: <input type="text" name="publisher"></label>
         <label>Journal: <input type="text" name="journal"></label>
-        <label>Volume: <input type="text" name="volume"></label>
-        <label>Number: <input type="text" name="number"></label>
-        <label>Pages: <input type="text" name="pages"></label>
+        <label>Volume: <input type="number" name="volume" inputmode="numeric" pattern="\d*"></label>
+        <label>Number: <input type="number" name="number" inputmode="numeric" pattern="\d*"></label>
+        <label>Pages: <input type="text" name="pages" pattern="\d+(?:-\d+)?" title="e.g., 123-145"></label>
         <label>URL: <input type="text" name="url"></label>
         <label>Category: <select name="category" multiple size="1">
             <option value="psychology">Psychology</option>
@@ -531,16 +531,16 @@ async function startAddLit() {
             return;
         }
         const authorArr = Array.from(form.querySelectorAll('.author-input'))
-            .map(i => i.value.trim())
+            .map(i => toTitleCase(i.value.trim()))
             .filter(Boolean);
         const obj = {
-            title: e.target.title.value,
+            title: toTitleCase(e.target.title.value.trim()),
             authors: authorArr,
             year: parseInt(e.target.year.value,10) || null,
             publisher: e.target.publisher.value,
             journal: e.target.journal.value,
-            volume: e.target.volume.value,
-            number: e.target.number.value,
+            volume: parseInt(e.target.volume.value,10) || null,
+            number: parseInt(e.target.number.value,10) || null,
             pages: e.target.pages.value,
             url: e.target.url.value,
             category: catArr.join(', '),
@@ -605,9 +605,9 @@ async function startEditLit() {
         <label>Year: <input type="number" name="year" value="${item.year || ''}" placeholder="2024"></label>
         <label>Publisher: <input type="text" name="publisher" value="${item.publisher || ''}" placeholder="Publisher"></label>
         <label>Journal: <input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
-        <label>Volume: <input type="text" name="volume" value="${item.volume || ''}" placeholder="Volume"></label>
-        <label>Number: <input type="text" name="number" value="${item.number || ''}" placeholder="Number"></label>
-        <label>Pages: <input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages"></label>
+        <label>Volume: <input type="number" name="volume" value="${item.volume || ''}" placeholder="Volume" inputmode="numeric" pattern="\d*"></label>
+        <label>Number: <input type="number" name="number" value="${item.number || ''}" placeholder="Number" inputmode="numeric" pattern="\d*"></label>
+        <label>Pages: <input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages" pattern="\d+(?:-\d+)?" title="e.g., 123-145"></label>
         <label>URL: <input type="url" name="url" value="${item.url || ''}" placeholder="https://..."></label>
         <label>Category: <select name="category" multiple size="1">
             <option value="psychology" ${item.category && item.category.toLowerCase().includes('psychology') ? 'selected' : ''}>Psychology</option>
@@ -650,15 +650,18 @@ async function startEditLit() {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!confirm('Save changes?')) return;
-        item.title = form.title.value;
-        item.authors = Array.from(form.querySelectorAll('.author-input'))
-            .map(i => i.value.trim())
+        item.title = toTitleCase(form.title.value.trim());
+        const newAuthors = Array.from(form.querySelectorAll('.author-input'))
+            .map(i => toTitleCase(i.value.trim()))
             .filter(Boolean);
+        if (newAuthors.length) {
+            item.authors = newAuthors;
+        }
         item.year = parseInt(form.year.value,10) || null;
         item.publisher = form.publisher.value;
         item.journal = form.journal.value;
-        item.volume = form.volume.value;
-        item.number = form.number.value;
+        item.volume = parseInt(form.volume.value,10) || null;
+        item.number = parseInt(form.number.value,10) || null;
         item.pages = form.pages.value;
         item.url = form.url.value;
         const catArrEdit = Array.from(form.elements.category.selectedOptions).map(o => o.value);

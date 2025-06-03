@@ -110,6 +110,10 @@ function showToast(message, duration = 3000) {
   }, duration);
 }
 
+function toTitleCase(str) {
+  return str.replace(/\b(\w)(\w*)/g, (_, c, rest) => c.toUpperCase() + rest.toLowerCase());
+}
+
 // Prompt the user to log in if no session is active
 async function authenticate() {
   const client = await ensureSupabase();
@@ -430,7 +434,8 @@ function enableMultiSelectDropdown(select) {
   };
 
   const collapse = () => {
-    select.size = 1;
+    const rows = Math.max(select.selectedOptions.length, 1);
+    select.size = rows;
     select.classList.remove('select-open');
   };
 

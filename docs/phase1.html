@@ -583,6 +583,7 @@ async function startAddLit() {
         addRow.remove();
         applyLitFilters();
         showToast('Entry added');
+        window.location.reload();
     });
     document.getElementById('lit-add-cancel').addEventListener('click', () => {
         addRow.remove();
@@ -684,6 +685,7 @@ async function startEditLit() {
         hideEditOverlay();
         applyLitFilters();
         showToast('Entry updated');
+        window.location.reload();
     });
     document.getElementById('lit-edit-cancel').addEventListener('click', hideEditOverlay);
 }
@@ -699,6 +701,7 @@ async function deleteSelectedLit() {
     literature.splice(idx,1);
     selectedLitId = null;
     applyLitFilters();
+    window.location.reload();
 }
 
 

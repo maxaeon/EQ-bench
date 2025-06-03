@@ -48,7 +48,7 @@ def merge_entries(entries, data):
         d_key = doi_norm(url)
         if t_key in by_title or (d_key and d_key in by_doi):
             continue
-        raw_authors = entry.get("author", "")
+        raw_authors = entry.get("authors") or entry.get("author", "")
         if raw_authors:
             authors = [a.strip() for a in re.split(r"\s+and\s+|,", raw_authors) if a.strip()]
         else:

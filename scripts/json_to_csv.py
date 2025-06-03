@@ -39,12 +39,15 @@ def json_to_csv(json_path: Path, csv_path: Path) -> None:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for item in data:
-            row = {
-                key: json.dumps(value, ensure_ascii=False)
-                if isinstance(value, list)
-                else value
-                for key, value in item.items()
-            }
+            row = {}
+            for key, value in item.items():
+                if isinstance(value, list):
+                    if key == "authors":
+                        row[key] = "; ".join(value)
+                    else:
+                        row[key] = json.dumps(value, ensure_ascii=False)
+                else:
+                    row[key] = value
             writer.writerow(row)
     print(f"Wrote {csv_path}")
 

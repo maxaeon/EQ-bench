@@ -1,7 +1,9 @@
 [
   {
     "title": "Affective Computing",
-    "authors": "Rosalind W. Picard",
+    "authors": [
+      "Rosalind W. Picard"
+    ],
     "year": 1997,
     "publisher": "MIT Press",
     "construct": "Affective computing",
@@ -16,7 +18,9 @@
   },
   {
     "title": "The Emotions: A Philosophical Exploration",
-    "authors": "Peter Goldie",
+    "authors": [
+      "Peter Goldie"
+    ],
     "year": 2000,
     "publisher": "Oxford University Press",
     "construct": "Feelings-towards",
@@ -33,7 +37,11 @@
   },
   {
     "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User\u2019s Manual",
-    "authors": "John D. Mayer, Peter Salovey, David R. Caruso",
+    "authors": [
+      "John D. Mayer",
+      "Peter Salovey",
+      "David R. Caruso"
+    ],
     "year": 2002,
     "publisher": "MHS Publishers",
     "construct": "Four-branch model of EI",
@@ -49,7 +57,9 @@
   },
   {
     "title": "How Emotions Are Made",
-    "authors": "Barrett",
+    "authors": [
+      "Barrett"
+    ],
     "year": 2017,
     "construct": "Core affect",
     "axis": "adapt",
@@ -64,7 +74,9 @@
   },
   {
     "title": "EmpatheticDialogues",
-    "authors": "Rashkin et al.",
+    "authors": [
+      "Rashkin et al."
+    ],
     "year": 2019,
     "construct": "Empathic response",
     "axis": "respond",
@@ -79,7 +91,9 @@
   },
   {
     "title": "Upheavals of Thought: The Intelligence of Emotions",
-    "authors": "Martha C. Nussbaum",
+    "authors": [
+      "Martha C. Nussbaum"
+    ],
     "year": 2001,
     "publisher": "Cambridge University Press",
     "construct": "Evaluative judgment",
@@ -95,7 +109,9 @@
   },
   {
     "title": "Descartes' Error: Emotion, Reason, and the Human Brain",
-    "authors": "Antonio R. Damasio",
+    "authors": [
+      "Antonio R. Damasio"
+    ],
     "year": 1994,
     "publisher": "Putnam",
     "construct": "Emotion-cognition interaction",
@@ -111,7 +127,9 @@
   },
   {
     "title": "Gut Reactions",
-    "authors": "Prinz",
+    "authors": [
+      "Prinz"
+    ],
     "year": 2004,
     "construct": "Perceptual/bodily theory",
     "axis": "sense, explain",
@@ -126,7 +144,9 @@
   },
   {
     "title": "AI Ethics",
-    "authors": "Coeckelbergh",
+    "authors": [
+      "Coeckelbergh"
+    ],
     "year": 2020,
     "construct": "Ethical AI development",
     "axis": "adapt",
@@ -141,7 +161,9 @@
   },
   {
     "title": "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence",
-    "authors": "Kate Crawford",
+    "authors": [
+      "Kate Crawford"
+    ],
     "year": 2021,
     "publisher": "Yale University Press",
     "construct": "Bias and power dynamics",
@@ -157,7 +179,9 @@
   },
   {
     "title": "Antecedent- and Response-focused Emotion Regulation: Divergent Consequences for Experience, Expression, and Physiology",
-    "authors": "James J. Gross",
+    "authors": [
+      "James J. Gross"
+    ],
     "year": 1998,
     "journal": "Journal of Personality and Social Psychology",
     "volume": 74,
@@ -176,7 +200,11 @@
   },
   {
     "title": "Does the Autistic Child Have a 'Theory of Mind'?",
-    "authors": "Simon Baron-Cohen, Alan M. Leslie, Uta Frith",
+    "authors": [
+      "Simon Baron-Cohen",
+      "Alan M. Leslie",
+      "Uta Frith"
+    ],
     "year": 1985,
     "journal": "Cognition",
     "volume": 21,
@@ -195,7 +223,9 @@
   },
   {
     "title": "Emotion Recognition in Conversation",
-    "authors": "Poria et al.",
+    "authors": [
+      "Poria et al."
+    ],
     "year": 2019,
     "construct": "Multimodal emotion recognition",
     "axis": "sense",
@@ -210,7 +240,9 @@
   },
   {
     "title": "The Emotional Brain",
-    "authors": "LeDoux",
+    "authors": [
+      "LeDoux"
+    ],
     "year": 1998,
     "construct": "Neural circuits of emotion",
     "axis": "explain",
@@ -225,7 +257,10 @@
   },
   {
     "title": "The Extended Mind",
-    "authors": "Andy Clark and David Chalmers",
+    "authors": [
+      "Andy Clark",
+      "David Chalmers"
+    ],
     "year": 1998,
     "journal": "Analysis",
     "volume": 58,
@@ -244,7 +279,9 @@
   },
   {
     "title": "A Survey on Bias and Fairness in Machine Learning",
-    "authors": "Mehrabi et al.",
+    "authors": [
+      "Mehrabi et al."
+    ],
     "year": 2021,
     "construct": "Bias and power dynamics",
     "axis": "extended",
@@ -259,7 +296,9 @@
   },
   {
     "title": "An Argument for Basic Emotions",
-    "authors": "Paul Ekman",
+    "authors": [
+      "Paul Ekman"
+    ],
     "year": 1992,
     "journal": "Cognition and Emotion",
     "volume": 6,
@@ -277,7 +316,9 @@
   },
   {
     "title": "The Bar-On Model of Emotional-Social Intelligence (ESI)",
-    "authors": "Reuven Bar-On",
+    "authors": [
+      "Reuven Bar-On"
+    ],
     "year": 2006,
     "journal": "Psicothema",
     "volume": 18,
@@ -294,7 +335,11 @@
   },
   {
     "title": "Handbook of Emotions",
-    "authors": "Michael Lewis, Jeannette M. Haviland-Jones, Lisa Feldman Barrett",
+    "authors": [
+      "Michael Lewis",
+      "Jeannette M. Haviland-Jones",
+      "Lisa Feldman Barrett"
+    ],
     "year": 2008,
     "publisher": "Guilford Press",
     "construct": "Emotion reference",

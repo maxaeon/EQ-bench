@@ -5,7 +5,7 @@ title: Research Hub Contribution Guide
 
 # Research Hub Contribution Guide
 
-This guide shows how to contribute to the EQ AI Research Hub using the GitHub interface and our collaborative Overleaf project. You can participate without installing any software.
+This guide shows how to contribute to the AI EQ Research Hub using the GitHub interface and our collaborative Overleaf project. You can participate without installing any software.
 
 If you are unfamiliar with terms like "construct" or "axis," check the [Glossary](glossary.md).
 

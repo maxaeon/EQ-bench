@@ -475,7 +475,7 @@ async function startAddLit() {
         <label>Journal: <input type="text" name="journal"></label>
         <label>Volume: <input type="number" name="volume" inputmode="numeric" pattern="\d*"></label>
         <label>Number: <input type="number" name="number" inputmode="numeric" pattern="\d*"></label>
-        <label>Pages: <input type="text" name="pages" pattern="\d+(?:-\d+)?" title="e.g., 123-145"></label>
+        <label>Pages: <input type="text" name="pages" pattern="[1-9]\d{0,3}(?:-{1,2}[1-9]\d{0,3})?" title="e.g., 123-145 or 123--145"></label>
         <label>URL: <input type="text" name="url"></label>
         <label>Category: <select name="category" multiple size="1">
             <option value="psychology">Psychology</option>
@@ -607,7 +607,7 @@ async function startEditLit() {
         <label>Journal: <input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
         <label>Volume: <input type="number" name="volume" value="${item.volume || ''}" placeholder="Volume" inputmode="numeric" pattern="\d*"></label>
         <label>Number: <input type="number" name="number" value="${item.number || ''}" placeholder="Number" inputmode="numeric" pattern="\d*"></label>
-        <label>Pages: <input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages" pattern="\d+(?:-\d+)?" title="e.g., 123-145"></label>
+        <label>Pages: <input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages" pattern="[1-9]\d{0,3}(?:-{1,2}[1-9]\d{0,3})?" title="e.g., 123-145 or 123--145"></label>
         <label>URL: <input type="url" name="url" value="${item.url || ''}" placeholder="https://..."></label>
         <label>Category: <select name="category" multiple size="1">
             <option value="psychology" ${item.category && item.category.toLowerCase().includes('psychology') ? 'selected' : ''}>Psychology</option>

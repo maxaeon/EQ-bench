@@ -463,9 +463,14 @@ function parseBibtex(text) {
   const rawEntries = window.bibtexParse.toJSON(text);
   return rawEntries.map(entry => {
     const fields = entry.entryTags || {};
+    const parseAuthors = auth =>
+      (auth || '')
+        .split(/\band\b|,/)
+        .map(a => a.trim())
+        .filter(Boolean);
     const obj = {
       title: fields.title || '',
-      authors: fields.author || fields.authors || '',
+      authors: parseAuthors(fields.author || fields.authors),
       year: fields.year || '',
       journal: fields.journal || fields.booktitle || '',
       publisher: fields.publisher || '',

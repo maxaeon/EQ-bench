@@ -168,14 +168,15 @@
         const selSet = selected.map(String);
         const getLastName = auth => {
             if (!auth) return '';
-            const first = auth.split(/,|\band\b/)[0].trim();
-            const parts = first.split(/\s+/);
+            const first = Array.isArray(auth) ? auth[0] : auth.split(/\band\b|,/)[0].trim();
+            const parts = first.split(/[,\s]+/);
             return parts[parts.length - 1].toLowerCase();
         };
         const sorted = [...lit].sort((a,b)=>getLastName(a.authors).localeCompare(getLastName(b.authors)));
         sorted.forEach(l => {
             const val = l.id ?? l.title;
-            const text = `${l.authors} (${l.year})`;
+            const nameStr = Array.isArray(l.authors) ? l.authors.join(' and ') : l.authors;
+            const text = `${nameStr} (${l.year})`;
             const opt = new Option(text, val);
             if (selSet.includes(String(val))) opt.selected = true;
             select.appendChild(opt);

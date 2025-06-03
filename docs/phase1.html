@@ -151,7 +151,8 @@
 
     function toBibtex(item) {
         const type = item.journal ? 'article' : 'book';
-        const keyAuthor = (item.authors || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '') || 'ref';
+        const firstAuth = Array.isArray(item.authors) ? item.authors[0] : (item.authors || 'ref');
+        const keyAuthor = firstAuth.split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '') || 'ref';
         const key = keyAuthor + (item.year || '');
         const mapping = {
             title: 'title',
@@ -175,6 +176,7 @@
             let val = item[prop];
             if (val === undefined || val === null || val === '' || (Array.isArray(val) && !val.length)) continue;
             if (prop === 'keywords') val = Array.isArray(val) ? val.join(', ') : val;
+            if (prop === 'authors') val = Array.isArray(val) ? val.join(' and ') : val;
             fields[tag] = val;
         }
         for (const [k,v] of Object.entries(item)) {
@@ -216,10 +218,11 @@
             row.className = 'lit-row';
             row.dataset.lid = l.id ?? l.__index;
             row.id = `lit-row-${l.id ?? l.__index}`;
+            const authors = Array.isArray(l.authors) ? l.authors.join(', ') : l.authors;
             row.innerHTML = `
                 <td><input type="checkbox" class="lit-check" data-index="${l.__index}" ${checked}></td>
                 <td>${l.title}</td>
-                <td>${l.authors}</td>
+                <td>${authors}</td>
                 <td>${l.year}</td>
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
@@ -279,7 +282,8 @@
                 if (!constructVals.some(v => list.some(c => c.trim().toLowerCase() === v))) return false;
             }
             if (q) {
-                const text = `${l.title || ''} ${l.authors || ''} ${l.relevance || ''}`.toLowerCase();
+                const authStr = Array.isArray(l.authors) ? l.authors.join(' ') : (l.authors || '');
+                const text = `${l.title || ''} ${authStr} ${l.relevance || ''}`.toLowerCase();
                 if (!text.includes(q)) return false;
             }
             return true;
@@ -287,7 +291,10 @@
 
         const sortVal = document.getElementById('lit-sort').value;
         if (sortVal === 'title') items.sort((a,b)=>a.title.localeCompare(b.title));
-        else if (sortVal === 'author') items.sort((a,b)=>a.authors.localeCompare(b.authors));
+        else if (sortVal === 'author') {
+            const toStr = x => Array.isArray(x.authors) ? x.authors.join(' and ') : (x.authors || '');
+            items.sort((a,b)=>toStr(a).localeCompare(toStr(b)));
+        }
         else items.sort((a,b)=>(a.year||0)-(b.year||0));
         filteredLiterature = items;
         renderLit(items);
@@ -481,7 +488,7 @@ async function startAddLit() {
         }
         const obj = {
             title: e.target.title.value,
-            authors: e.target.authors.value,
+            authors: e.target.authors.value.split(/\band\b|,/).map(s=>s.trim()).filter(Boolean),
             year: parseInt(e.target.year.value,10) || null,
             publisher: e.target.publisher.value,
             journal: e.target.journal.value,
@@ -543,7 +550,7 @@ async function startEditLit() {
     const axisVals = Array.isArray(item.axis) ? item.axis : (item.axis || '').split(',').map(a=>a.trim());
     const formHtml = `<form id="lit-edit-form">
         <label>Title: <input type="text" name="title" value="${item.title}" placeholder="Paper title"></label>
-        <label>Authors: <input type="text" name="authors" value="${item.authors || ''}" placeholder="Author list"></label>
+        <label>Authors: <input type="text" name="authors" value="${Array.isArray(item.authors) ? item.authors.join(', ') : (item.authors || '')}" placeholder="Author list"></label>
         <label>Year: <input type="number" name="year" value="${item.year || ''}" placeholder="2024"></label>
         <label>Publisher: <input type="text" name="publisher" value="${item.publisher || ''}" placeholder="Publisher"></label>
         <label>Journal: <input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
@@ -580,7 +587,7 @@ async function startEditLit() {
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!confirm('Save changes?')) return;
         item.title = form.title.value;
-        item.authors = form.authors.value;
+        item.authors = form.authors.value.split(/\band\b|,/).map(s=>s.trim()).filter(Boolean);
         item.year = parseInt(form.year.value,10) || null;
         item.publisher = form.publisher.value;
         item.journal = form.journal.value;

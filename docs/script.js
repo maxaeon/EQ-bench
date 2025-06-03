@@ -114,6 +114,11 @@ function toTitleCase(str) {
   return str.replace(/\b(\w)(\w*)/g, (_, c, rest) => c.toUpperCase() + rest.toLowerCase());
 }
 
+function toInt(value) {
+  const str = String(value ?? '').trim();
+  return /^-?\d+$/.test(str) ? parseInt(str, 10) : null;
+}
+
 // Prompt the user to log in if no session is active
 async function authenticate() {
   const client = await ensureSupabase();
@@ -493,14 +498,17 @@ function parseBibtex(text) {
     const authors = rawAuthors
       ? rawAuthors.split(/\s+and\s+/).map(a => a.trim()).filter(Boolean)
       : [];
+    const year = toInt(fields.year);
+    const volume = toInt(fields.volume);
+    const number = toInt(fields.number);
     const obj = {
       title: fields.title || '',
       authors,
-      year: fields.year || '',
+      year,
       journal: fields.journal || fields.booktitle || '',
       publisher: fields.publisher || '',
-      volume: fields.volume || '',
-      number: fields.number || '',
+      volume,
+      number,
       pages: fields.pages || '',
       url: fields.url || fields.URL || (doiValue ? `https://doi.org/${doiValue}` : ''),
       doi: doiValue || '',

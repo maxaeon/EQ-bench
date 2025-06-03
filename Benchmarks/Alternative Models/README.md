@@ -11,7 +11,7 @@ The **Mayer–Salovey–Caruso Emotional Intelligence Test (MSCEIT)** is a perfo
 **Key publication:** Mayer, Salovey, & Caruso (2002). *MSCEIT User’s Manual.*
 
 **Advantages**
-- Psychometrically validated for assessing human EI skills.
+- Psychometrically validated for assessing human EQ skills.
 
 **Limitations relative to SERA-X**
 - Designed for human testing, so it lacks direct computational metrics for AI systems.

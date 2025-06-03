@@ -1,5 +1,5 @@
 # 📂 Emotional Intelligence Dataset Schema
-To ensure consistency and reliability, please adhere strictly to the following standardized schemas for submitting and annotating Emotional Intelligence (EI) datasets.
+To ensure consistency and reliability, please adhere strictly to the following standardized schemas for submitting and annotating Emotional Intelligence (EQ) datasets.
 
 ## 🎙 Audio Dataset Schema
 | Field Name | Data Type | Description                            |

@@ -407,55 +407,6 @@ function populateFoundationsTable(tbodyId) {
     });
 }
 
-// Initialize interactive star rating widgets
-function parseRating(val) {
-  const n = parseInt(val, 10);
-  return Number.isInteger(n) && n >= 0 && n <= 5 ? n : null;
-}
-
-function initStarRatings(selector, keyPrefix, updateFn) {
-  document.querySelectorAll(selector).forEach(el => {
-    const idx = el.dataset.index;
-    const key = keyPrefix + '-' + idx;
-    // Read any previously stored rating and default to zero
-    let stored = parseRating(localStorage.getItem(key));
-    if (stored === null) stored = 0;
-
-    const render = (rating) => {
-      el.innerHTML = '';
-      for (let i = 1; i <= 5; i++) {
-        const s = document.createElement('span');
-        s.className = 'star' + (i <= rating ? ' filled' : '');
-        s.dataset.value = i;
-        s.setAttribute('aria-pressed', i <= rating ? 'true' : 'false');
-        s.textContent = '★';
-        el.appendChild(s);
-      }
-    };
-
-    // Render the widget using the stored rating so the correct
-    // number of stars are initially marked as selected
-    render(stored);
-    if (typeof updateFn === 'function') updateFn(idx);
-
-    el.addEventListener('click', (e) => {
-      const star = e.target.closest('.star');
-      if (!star) return;
-      const val = parseRating(star.dataset.value);
-      if (val === null) return;
-      localStorage.setItem(key, val);
-      render(val);
-      if (typeof updateFn === 'function') updateFn(idx);
-    });
-  });
-}
-
-// Setup star rating widgets for significance values
-// selector: rating widget selector
-// storagePrefix: prefix for localStorage keys
-function initRatings(selector, storagePrefix) {
-  initStarRatings(selector, storagePrefix, null);
-}
 
 // Parse BibTeX text into reference objects matching literature.json fields
 function parseBibtex(text) {

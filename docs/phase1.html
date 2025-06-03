@@ -617,6 +617,7 @@ async function startEditLit() {
     if (!item) return;
     const axisVals = Array.isArray(item.axis) ? item.axis : (item.axis || '').split(',').map(a=>a.trim());
     const authorsVal = Array.isArray(item.authors) ? item.authors : String(item.authors || '').split(',').map(a=>a.trim()).filter(Boolean);
+    const originalAuthors = authorsVal.map(a => toTitleCase(a));
     const authorsInputs = (authorsVal.length ? authorsVal : ['']).map((a,i)=>`<label>Author ${i+1}: <input type="text" class="author-input" value="${a}"></label>`).join('');
     const formHtml = `<form id="lit-edit-form">
         <label>Title: <input type="text" name="title" value="${item.title}" placeholder="Paper title"></label>
@@ -671,10 +672,13 @@ async function startEditLit() {
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!confirm('Save changes?')) return;
         item.title = toTitleCase(form.title.value.trim());
-        const newAuthors = Array.from(form.querySelectorAll('.author-input'))
-            .map(i => toTitleCase(i.value.trim()))
-            .filter(Boolean);
-        if (newAuthors.length) {
+        const authorInputs = Array.from(form.querySelectorAll('.author-input'))
+            .map(i => toTitleCase(i.value.trim()));
+        const newAuthors = authorInputs.filter(Boolean);
+        const authorsModified =
+            authorInputs.length !== originalAuthors.length ||
+            authorInputs.some((a, idx) => a !== originalAuthors[idx]);
+        if (authorsModified) {
             item.authors = newAuthors;
         }
         item.year = parseInt(form.year.value,10) || null;

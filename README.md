@@ -102,14 +102,14 @@ When exporting, extra fields such as the construct name, supported methodology, 
 For a walkthrough of the import/export buttons, see the [quick guide section on BibTeX files](docs/quick_github_guide.md#importing-and-exporting-bib-files).
 
 ### Supabase integration
-The website fetches data from Supabase. A small `env.js` file is created during deployment and loaded before `docs/script.js`:
+The website fetches data from Supabase. A small `env.js` file lives under `docs/` and is loaded before `docs/script.js`:
 
 ```javascript
 window.SUPABASE_URL = '<SUPABASE_URL>';
 window.SUPABASE_ANON_KEY = '<SUPABASE_ANON_KEY>'; // public anon key
 ```
 
-Store these values as GitHub repository secrets. The deployment workflow writes them into `docs/env.js` before publishing the site (see `.github/workflows/export_constructs.yml`). The GitHub documentation on [encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) explains how to configure them. The keys are never committed to the repository. The site's CRUD functions require these values to access Supabase.
+During deployment, the workflow overwrites these placeholders with the secrets stored in the repository (see `.github/workflows/export_constructs.yml`). Avoid committing real keys to the repo—use GitHub secrets instead. The site's CRUD functions require these values to access Supabase.
 
 To require a simple password for editing when Supabase Auth is not used, define `window.DOC_PASSWORD` before loading `script.js`:
 

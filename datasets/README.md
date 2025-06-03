@@ -1,4 +1,4 @@
-# \ud83d\udcda Dataset Submission and Review Process
+# 📚 Dataset Submission and Review Process
 
 ## Submission Guidelines
 - Explicitly follow the provided standardized schema (`dataset-schema.md`) for each modality.
@@ -10,4 +10,4 @@
 
 ## Submission Link
 To submit datasets, create an issue using the following template:
-\ud83d\dd17 [Submit New Dataset](https://github.com/maxaeon/SERA-X/issues/new?assignees=&labels=new-dataset&template=dataset-submission.yml&title=New+Dataset+Submission)
+📎 [Submit New Dataset](https://github.com/maxaeon/SERA-X/issues/new?assignees=&labels=new-dataset&template=dataset-submission.yml&title=New+Dataset+Submission)

@@ -151,7 +151,8 @@
 
     function toBibtex(item) {
         const type = item.journal ? 'article' : 'book';
-        const keyAuthor = (item.authors || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '') || 'ref';
+        const firstAuthor = Array.isArray(item.authors) ? (item.authors[0] || '') : (item.authors || '');
+        const keyAuthor = (firstAuthor || 'ref').split(/[ ,]/)[0].replace(/[^a-zA-Z0-9]/g, '') || 'ref';
         const key = keyAuthor + (item.year || '');
         const mapping = {
             title: 'title',
@@ -287,7 +288,7 @@
 
         const sortVal = document.getElementById('lit-sort').value;
         if (sortVal === 'title') items.sort((a,b)=>a.title.localeCompare(b.title));
-        else if (sortVal === 'author') items.sort((a,b)=>a.authors.localeCompare(b.authors));
+        else if (sortVal === 'author') items.sort((a,b)=>String(a.authors).localeCompare(String(b.authors)));
         else items.sort((a,b)=>(a.year||0)-(b.year||0));
         filteredLiterature = items;
         renderLit(items);
@@ -431,7 +432,10 @@ async function startAddLit() {
     addRow.id = 'lit-add-row';
     addRow.innerHTML = `<td colspan="8"><form id="lit-add-form">
         <label>Title: <input type="text" name="title" required></label>
-        <label>Authors: <input type="text" name="authors"></label>
+        <div id="authors-container">
+            <label>Author 1: <input type="text" class="author-input"></label>
+        </div>
+        <button type="button" id="add-author-btn" class="button">Add another author</button>
         <label>Year: <input type="number" name="year"></label>
         <label>Publisher: <input type="text" name="publisher"></label>
         <label>Journal: <input type="text" name="journal"></label>
@@ -466,6 +470,19 @@ async function startAddLit() {
     const errorDiv = form.querySelector('.form-error');
     enableMultiSelectDropdown(form.elements.axis);
     enableMultiSelectDropdown(form.elements.category);
+    const authorsContainer = form.querySelector('#authors-container');
+    const addAuthorBtn = form.querySelector('#add-author-btn');
+    addAuthorBtn.addEventListener('click', () => {
+        const count = authorsContainer.querySelectorAll('.author-input').length;
+        if (count >= 10) return;
+        const label = document.createElement('label');
+        label.textContent = `Author ${count + 1}: `;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'author-input';
+        label.appendChild(input);
+        authorsContainer.appendChild(label);
+    });
     form.addEventListener('submit', async e => {
         e.preventDefault();
         errorDiv.textContent = '';
@@ -479,9 +496,12 @@ async function startAddLit() {
             alert('Please specify at least one of Axis, Construct, or Methodology Supported.');
             return;
         }
+        const authorArr = Array.from(form.querySelectorAll('.author-input'))
+            .map(i => i.value.trim())
+            .filter(Boolean);
         const obj = {
             title: e.target.title.value,
-            authors: e.target.authors.value,
+            authors: authorArr,
             year: parseInt(e.target.year.value,10) || null,
             publisher: e.target.publisher.value,
             journal: e.target.journal.value,
@@ -541,9 +561,12 @@ async function startEditLit() {
     const item = literature.find(l => (l.id ?? l.__index) == selectedLitId);
     if (!item) return;
     const axisVals = Array.isArray(item.axis) ? item.axis : (item.axis || '').split(',').map(a=>a.trim());
+    const authorsVal = Array.isArray(item.authors) ? item.authors : String(item.authors || '').split(',').map(a=>a.trim()).filter(Boolean);
+    const authorsInputs = (authorsVal.length ? authorsVal : ['']).map((a,i)=>`<label>Author ${i+1}: <input type="text" class="author-input" value="${a}"></label>`).join('');
     const formHtml = `<form id="lit-edit-form">
         <label>Title: <input type="text" name="title" value="${item.title}" placeholder="Paper title"></label>
-        <label>Authors: <input type="text" name="authors" value="${item.authors || ''}" placeholder="Author list"></label>
+        <div id="authors-container">${authorsInputs}</div>
+        <button type="button" id="add-author-btn" class="button">Add another author</button>
         <label>Year: <input type="number" name="year" value="${item.year || ''}" placeholder="2024"></label>
         <label>Publisher: <input type="text" name="publisher" value="${item.publisher || ''}" placeholder="Publisher"></label>
         <label>Journal: <input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
@@ -575,12 +598,27 @@ async function startEditLit() {
     const form = showEditOverlay(formHtml);
     enableMultiSelectDropdown(form.elements.axis);
     enableMultiSelectDropdown(form.elements.category);
+    const authorsContainerE = form.querySelector('#authors-container');
+    const addAuthorBtnE = form.querySelector('#add-author-btn');
+    addAuthorBtnE.addEventListener('click', () => {
+        const count = authorsContainerE.querySelectorAll('.author-input').length;
+        if (count >= 10) return;
+        const label = document.createElement('label');
+        label.textContent = `Author ${count + 1}: `;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'author-input';
+        label.appendChild(input);
+        authorsContainerE.appendChild(label);
+    });
     form.addEventListener('submit', async e => {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!confirm('Save changes?')) return;
         item.title = form.title.value;
-        item.authors = form.authors.value;
+        item.authors = Array.from(form.querySelectorAll('.author-input'))
+            .map(i => i.value.trim())
+            .filter(Boolean);
         item.year = parseInt(form.year.value,10) || null;
         item.publisher = form.publisher.value;
         item.journal = form.journal.value;

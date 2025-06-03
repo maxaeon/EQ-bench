@@ -301,6 +301,9 @@ table {
 .table-scroll tbody tr.selected {
     background-color: #d4e2ff;
 }
+select option:checked {
+    background-color: #d4e2ff;
+}
 
 .info-icon {
     display: inline-block;
@@ -474,6 +477,9 @@ tbody tr:nth-child(even) {
     }
 
     .table-scroll tbody tr.selected {
+        background-color: #2a3d55;
+    }
+    select option:checked {
         background-color: #2a3d55;
     }
 

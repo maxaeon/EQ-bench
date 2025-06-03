@@ -249,7 +249,22 @@
         tbody.querySelectorAll('.lit-check').forEach(cb => {
             cb.addEventListener('change', () => {
                 const idx = parseInt(cb.dataset.index, 10);
-                if (cb.checked) selectedLit.add(idx); else selectedLit.delete(idx);
+                if (cb.checked) {
+                    selectedLit.add(idx);
+                    const row = cb.closest('.lit-row');
+                    if (row) {
+                        tbody.querySelectorAll('.lit-row').forEach(x => x.classList.remove('selected'));
+                        row.classList.add('selected');
+                        selectedLitId = row.dataset.lid || row.id.replace('lit-row-','');
+                    }
+                } else {
+                    selectedLit.delete(idx);
+                    const row = cb.closest('.lit-row');
+                    if (row && row.classList.contains('selected')) {
+                        row.classList.remove('selected');
+                        selectedLitId = null;
+                    }
+                }
                 updateSelectAll();
             });
         });

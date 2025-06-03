@@ -235,7 +235,14 @@ async function addLiterature(entry) {
     const error = new Error('Supabase unavailable');
     return { data: null, error };
   }
-  const { id, ...insertData } = entry;
+  const insertData = { ...entry };
+  delete insertData.id;
+  delete insertData.__index;
+  for (const [key, value] of Object.entries(insertData)) {
+    if (Array.isArray(value)) {
+      insertData[key] = JSON.stringify(value);
+    }
+  }
   const { data, error } = await client.from('literature').insert([insertData]);
   if (error) {
     console.error('Error adding literature:', error);

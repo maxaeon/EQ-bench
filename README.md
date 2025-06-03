@@ -89,9 +89,6 @@ pytest               # tests not yet available
 
 See the [Research Hub Contribution Guide](docs/quick_github_guide.md) for step-by-step screenshots.
 
-For a short overview of how psychologists, philosophers, engineers, and other specialists can get involved, see [Community-and-Collaboration/ONBOARDING.md](Community-and-Collaboration/ONBOARDING.md).
-
-
 ---
 
 ### Project website

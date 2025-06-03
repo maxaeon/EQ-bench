@@ -442,6 +442,12 @@ function enableMultiSelectDropdown(select) {
     const rows = Math.max(select.selectedOptions.length, 1);
     select.size = rows;
     select.classList.remove('select-open');
+    if (select.selectedOptions.length > 0) {
+      const first = select.selectedOptions[0];
+      if (first && typeof first.scrollIntoView === 'function') {
+        first.scrollIntoView({ block: 'nearest' });
+      }
+    }
   };
 
   select.addEventListener('focus', expand);

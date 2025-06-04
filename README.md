@@ -27,7 +27,7 @@ SERA-X is intended to be a collaborative benchmark for evaluating emotional inte
 
 ## 2  Why SERA-X?
 Emotional intelligence in AI should not be judged by a single pass/fail label.  
-We model it as four independent, graded skills, along with an extended perspective:
+We tentatively model it as four independent, graded skills, along with an extended perspective:
 
 | Axis | Short description | Pilot metric (text-only) |
 |------|-------------------|--------------------------|

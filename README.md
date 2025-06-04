@@ -76,8 +76,6 @@ This repository is organized as an AI EQ Research Hub. Major sections include:
 bash
 git clone https://github.com/maxaeon/EQ-bench.git
 cd EQ-bench
-# No additional Python packages required yet
-pytest               # tests not yet available
 
 ---
 

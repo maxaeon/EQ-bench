@@ -98,16 +98,6 @@ Visit <https://maxaeon.github.io/EQ-bench/> for a short overview of the project 
 When exporting, extra fields such as the construct name, supported methodology, or SERA-X axis are omitted to keep the BibTeX file portable. Any keywords are written to the standard `keywords` tag and relevance notes appear under `note`. During import the site prompts for any missing required values.
 For a walkthrough of the import/export buttons, see the [quick guide section on BibTeX files](docs/quick_github_guide.md#importing-and-exporting-bib-files).
 
-### Supabase integration
-The website fetches data from Supabase. A small `env.js` file lives under `docs/` and is loaded before `docs/script.js`:
-
-```javascript
-window.SUPABASE_URL = '<SUPABASE_URL>';
-window.SUPABASE_ANON_KEY = '<SUPABASE_ANON_KEY>'; // public anon key
-```
-
-During deployment, the workflow overwrites these placeholders with the secrets stored in the repository (see `.github/workflows/export_constructs.yml`). 
-
 ---
 
 ## 6 Contributing

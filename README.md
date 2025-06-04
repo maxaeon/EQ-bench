@@ -1,6 +1,6 @@
 # AI EQ Research Hub
 
-Welcome to the **AI EQ Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems, anchored around the leading **SERA-X** model. You can find our deployed page [here](https://maxaeon.github.io/EQ-bench/). 
+Welcome to the **AI EQ Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems. You can find our deployed page [here](https://maxaeon.github.io/EQ-bench/). 
 
 GitHub Discussions are enabled for open dialogue and interdisciplinary collaboration.
 

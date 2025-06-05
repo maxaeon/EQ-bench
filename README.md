@@ -5,7 +5,7 @@
 
 Welcome to the **AI EQ Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems. You can find our deployed page [here](https://maxaeon.github.io/EQ-bench/). 
 
-![Image](https://github.com/user-attachments/assets/db99e6ce-c48c-411d-a76d-f1e024ea6d94)
+![Image](https://github.com/user-attachments/assets/55f96859-efec-477a-8189-90d9831a2636) 
 
 GitHub Discussions are enabled for open dialogue and interdisciplinary collaboration.
 

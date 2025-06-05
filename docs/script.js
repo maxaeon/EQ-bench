@@ -536,3 +536,57 @@ function parseBibtex(text) {
     return obj;
   });
 }
+
+// Parse CSV text into literature objects similar to parseBibtex.
+// Dynamically loads PapaParse if not already present.
+async function parseCsv(text) {
+  if (!text) return [];
+  if (!window.Papa) {
+    try {
+      const mod = await import('https://cdn.jsdelivr.net/npm/papaparse/+esm');
+      window.Papa = mod.default || mod;
+    } catch (err) {
+      console.error('Failed to load PapaParse', err);
+      return [];
+    }
+  }
+  const result = window.Papa.parse(text.trim(), { header: true });
+  const rows = Array.isArray(result.data) ? result.data : [];
+  return rows.map(row => {
+    const authorsRaw =
+      row.authors || row.author || row.Authors || row.Author || '';
+    const authors = authorsRaw
+      ? authorsRaw
+          .split(/\s*[,;]\s*|\s+and\s+/)
+          .map(a => a.trim())
+          .filter(Boolean)
+      : [];
+    const year = toInt(row.year);
+    const volume = toInt(row.volume);
+    const number = toInt(row.number);
+    const obj = {
+      title: row.title || '',
+      authors,
+      year,
+      journal: row.journal || row.booktitle || '',
+      publisher: row.publisher || '',
+      volume,
+      number,
+      pages: row.pages || '',
+      url: row.url || row.URL || '',
+      doi: row.doi || row.DOI || '',
+      construct: row['sera-construct'] || row.construct || '',
+      axis: row['sera-axis'] || row.axis || '',
+      keywords: (row.keywords || row.keyword || '')
+        .split(/[,;]+/)
+        .map(k => k.trim())
+        .filter(Boolean),
+      relevance: row.note || row.relevance || '',
+      methodology_supported: row.methodology_supported || ''
+    };
+    for (const [k, v] of Object.entries(row)) {
+      if (!(k in obj)) obj[k] = v;
+    }
+    return obj;
+  });
+}

@@ -165,6 +165,20 @@ function normalizeFields(obj) {
   return result;
 }
 
+const ALLOWED_LIT_FIELDS = new Set([
+  'title', 'authors', 'year', 'publisher', 'journal', 'volume', 'number', 'pages',
+  'url', 'doi', 'construct', 'axis', 'keywords', 'relevance',
+  'methodology_supported', 'category'
+]);
+
+function sanitizeLiteratureFields(obj) {
+  const clean = {};
+  for (const [k, v] of Object.entries(obj)) {
+    if (ALLOWED_LIT_FIELDS.has(k)) clean[k] = v;
+  }
+  return clean;
+}
+
 // Prompt the user to log in if no session is active
 async function authenticate() {
   const client = await ensureSupabase();
@@ -295,7 +309,7 @@ async function addLiterature(entry) {
     const error = new Error('Supabase unavailable');
     return { data: null, error };
   }
-  const insertData = { ...entry };
+  const insertData = sanitizeLiteratureFields({ ...entry });
   delete insertData.id;
   delete insertData.__index;
   const { data, error } = await client.from('literature').insert([insertData]);
@@ -311,7 +325,7 @@ async function updateLiterature(id, updates) {
     const error = new Error('Supabase unavailable');
     return { data: null, error };
   }
-  const updateData = { ...updates };
+  const updateData = sanitizeLiteratureFields({ ...updates });
   delete updateData.id;
   delete updateData.__index;
   const { data, error } = await client.from('literature').update(updateData).eq('id', id);

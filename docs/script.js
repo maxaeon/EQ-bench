@@ -127,14 +127,16 @@ const FIELD_MAP = {
   authorss: 'authors', // from "author(s)"
   url: 'url',
   link: 'url',
-  doi: 'doi',
+  doi: 'url',
   year: 'year',
   journal: 'journal',
-  booktitle: 'journal',
+  booktitle: 'booktitle',
   publisher: 'publisher',
+  institution: 'publisher',
   volume: 'volume',
   number: 'number',
   pages: 'pages',
+  page: 'pages',
   construct: 'construct',
   seraconstruct: 'construct',
   axis: 'axis',
@@ -143,6 +145,7 @@ const FIELD_MAP = {
   keywords: 'keywords',
   note: 'relevance',
   relevance: 'relevance',
+  summary: 'relevance',
   methodologysupported: 'methodology_supported',
   methodology: 'methodology_supported'
 };

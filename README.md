@@ -109,12 +109,6 @@ For a walkthrough of the import/export buttons, see the [quick guide section on 
 ## 6 Contributing
 We welcome pull requests, issues, and Discussions from developers, psychologists, ethicists, educators, and end-users.
 
-Task type	How-to
-Add literature insight	Fill a [docs/construct-sheet.md](docs/construct-sheet.md) using the template.
-Suggest new metric	Open an Issue tagged enhancement, include formula & citation.
-Code contribution	Branch feat/<area>/<short-desc> → PR → ensure CI passes.
-Report bias or bug	Use Issue template Bug report, provide minimal repro.
-
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
 ### Merging BibTeX references (maintainers)
 Run the helper script after collecting new `.bib` citations:

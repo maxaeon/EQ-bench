@@ -110,43 +110,6 @@ For a walkthrough of the import/export buttons, see the [quick guide section on 
 We welcome pull requests, issues, and Discussions from developers, psychologists, ethicists, educators, and end-users.
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
-### Merging BibTeX references (maintainers)
-Run the helper script after collecting new `.bib` citations:
-
-```bash
-python scripts/merge_bibtex.py path/to/references.bib
-```
-
-This updates `data/literature.json` and mirrors it to `docs/data/literature.json` after deduplicating entries by title and DOI.
-
-To export the curated JSON back into a single BibTeX file run:
-
-```bash
-python scripts/export_bibtex.py references.bib
-```
-
-### Migrating JSON snapshots to Supabase
-If you need to seed the Supabase tables from the versioned JSON files, run:
-
-```bash
-export SUPABASE_URL="https://pzmmgpzcnjhivkizcvpp.supabase.co"
-export SUPABASE_SERVICE_KEY="<service role key>"
-node scripts/upload_to_supabase.js
-```
-
-The script reads `data/construct_submissions.json` and `data/literature.json`,
-inserting them into the `constructs` and `literature` tables respectively.
-
-To generate CSV files for Supabase's bulk import tool instead of using the API,
-run:
-
-```bash
-python scripts/json_to_csv.py
-```
-
-This writes `data/construct_submissions.csv` and `data/literature.csv` that can
-be uploaded through the Supabase dashboard.
-
 
 ---
 ## 7 Roadmap (v0 → v1)

@@ -134,7 +134,7 @@ async function authenticate() {
     if (!error) return true;
     const retry = confirm(
       'Login failed: ' + (error.message || error) +
-      '\nIf you forgot your login information or encounter issues, please email maxaeonparks@gmail.com.' +
+      '\nIf you forgot your login information or encounter issues, please email Max Parks at maxaeonparks@gmail.com.' +
       '\n\nClick OK to try again, or Cancel to return.'
     );
     if (!retry) return false;

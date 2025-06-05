@@ -2,11 +2,13 @@
 # Participant Consent Template for the AI Emotional Intelligence Benchmark Project
 
 **Project Title:** AI Emotional Intelligence Benchmark Project  
-**Research Lead:** Max Aeon Parks  
+**Project Lead:** Max Parks
 **Affiliation:** University of Michigan–Flint  
-**Funding Provided By:** Inflection AI  
-**Collaborator:** Mark Allison, Department of Computer Science, University of Michigan–Flint  
+**Funding Provided By:** Inflection AI
+**Collaborator:** Mark Allison, Department of Computer Science, University of Michigan–Flint
 **Version:** v0.1 | Drafted June 4, 2025
+
+This benchmark is developed by the community and is expected to be stewarded by **ML Commons** once mature.
 
 ---
 
@@ -63,11 +65,11 @@ If you wish to withdraw your data after submission, please email the research te
 
 ## 📧 Who can I contact?
 
-If you have questions about the project or your rights as a contributor, you can reach the research lead at:
+If you have questions about the project or your rights as a contributor, you can reach the project lead and coordination point at:
 
-**Max Aeon Parks**  
-Research Lead, AI Emotional Intelligence Benchmark Project  
-University of Michigan–Flint  
+**Max Parks**
+Project Lead, AI Emotional Intelligence Benchmark Project
+University of Michigan–Flint
 Email: [maxaeonparks@gmail.com](mailto:maxaeonparks@gmail.com)
 
 ---

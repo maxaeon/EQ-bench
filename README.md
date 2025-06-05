@@ -6,6 +6,8 @@ GitHub Discussions are enabled for open dialogue and interdisciplinary collabora
 
 This website serves as the foundational resource and single source of truth for all project collaborators.
 
+This benchmark is organized as a **community-led initiative**. Once the framework is stable, long-term stewardship will transition to **ML Commons** to ensure broad, vendor-neutral oversight.
+
 Status: *early scaffold* (v0.0.1) - layout may change
 
 New to these terms? See the [Glossary](docs/glossary.md) for quick definitions.
@@ -20,8 +22,8 @@ We are developing a collaborative benchmark for evaluating emotional intelligenc
 | **Status** | `v0.1-alpha` – folder skeleton, pilot metric stubs, and sample data only. |
 | **Pilot window** | **Day 0 – Day 90** (see roadmap) |
 | **Inspiration** | *Humanity’s-Last-Exam*, HELM, EQ-Bench, ETHOS, EmpatheticDialogues |
-| **Lead org** | tentatively *Inflection AI* research group |
-| **Contact** | placeholder: Max Parks, research lead maxaeonparks@gmail.com |
+| **Lead org** | Community-led project (future stewardship by ML Commons) |
+| **Contact** | Max Parks – project lead and coordination point <maxaeonparks@gmail.com> |
 
 ---
 

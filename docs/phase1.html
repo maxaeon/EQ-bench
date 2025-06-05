@@ -590,7 +590,7 @@ async function startAddLit() {
             category: catArr.join(', '),
             keywords: e.target.keywords.value.split(',').map(s=>s.trim()).filter(Boolean),
             construct: e.target.construct.value,
-            axis: axisArr,
+            axis: axisArr.join(', '),
             methodology_supported: e.target.methodology_supported.value,
             relevance: e.target.relevance.value
         };
@@ -745,7 +745,7 @@ async function startEditLit() {
             url: item.url,
             category: item.category,
             keywords: item.keywords,
-            axis: axisArr,
+            axis: axisArr.join(', '),
             methodology_supported: item.methodology_supported,
             relevance: item.relevance
         });

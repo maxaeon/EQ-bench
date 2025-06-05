@@ -1,5 +1,8 @@
 # AI EQ Research Hub
 
+**Note:** This repository is the initial public release (tagged `ai-eq-bench-public`) and may later migrate under the ML Commons umbrella.
+
+
 Welcome to the **AI EQ Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems. You can find our deployed page [here](https://maxaeon.github.io/EQ-bench/). 
 
 GitHub Discussions are enabled for open dialogue and interdisciplinary collaboration.

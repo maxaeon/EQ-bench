@@ -119,6 +119,49 @@ function toInt(value) {
   return /^-?\d+$/.test(str) ? parseInt(str, 10) : null;
 }
 
+// Map common variations of field names to canonical keys
+const FIELD_MAP = {
+  title: 'title',
+  author: 'authors',
+  authors: 'authors',
+  authorss: 'authors', // from "author(s)"
+  url: 'url',
+  link: 'url',
+  doi: 'doi',
+  year: 'year',
+  journal: 'journal',
+  booktitle: 'journal',
+  publisher: 'publisher',
+  volume: 'volume',
+  number: 'number',
+  pages: 'pages',
+  construct: 'construct',
+  seraconstruct: 'construct',
+  axis: 'axis',
+  seraaxis: 'axis',
+  keyword: 'keywords',
+  keywords: 'keywords',
+  note: 'relevance',
+  relevance: 'relevance',
+  methodologysupported: 'methodology_supported',
+  methodology: 'methodology_supported'
+};
+
+function normalizeFieldKey(key) {
+  if (!key) return key;
+  const cleaned = key.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return FIELD_MAP[cleaned] || FIELD_MAP[key] || key.toLowerCase();
+}
+
+function normalizeFields(obj) {
+  const result = {};
+  for (const [k, v] of Object.entries(obj)) {
+    const nk = normalizeFieldKey(k);
+    if (result[nk] === undefined) result[nk] = v;
+  }
+  return result;
+}
+
 // Prompt the user to log in if no session is active
 async function authenticate() {
   const client = await ensureSupabase();
@@ -498,9 +541,9 @@ function parseBibtex(text) {
   if (!text || !window.bibtexParse || !window.bibtexParse.toJSON) return [];
   const rawEntries = window.bibtexParse.toJSON(text);
   return rawEntries.map(entry => {
-    const fields = entry.entryTags || {};
-    const doiValue = fields.doi || fields.DOI;
-    const rawAuthors = fields.author || fields.authors || '';
+    const fields = normalizeFields(entry.entryTags || {});
+    const doiValue = fields.doi;
+    const rawAuthors = fields.authors || '';
     const authors = rawAuthors
       ? rawAuthors.split(/\s+and\s+/).map(a => a.trim()).filter(Boolean)
       : [];
@@ -511,26 +554,24 @@ function parseBibtex(text) {
       title: fields.title || '',
       authors,
       year,
-      journal: fields.journal || fields.booktitle || '',
+      journal: fields.journal || '',
       publisher: fields.publisher || '',
       volume,
       number,
       pages: fields.pages || '',
-      url: fields.url || fields.URL || (doiValue ? `https://doi.org/${doiValue}` : ''),
+      url: fields.url || (doiValue ? `https://doi.org/${doiValue}` : ''),
       doi: doiValue || '',
       construct: fields['sera-construct'] || fields.construct || '',
       axis: fields['sera-axis'] || fields.axis || '',
-      keywords: (fields.keywords || fields.keyword || '')
+      keywords: (fields.keywords || '')
         .split(/[,;]+/)
         .map(k => k.trim())
         .filter(Boolean),
-      relevance: fields.note || '',
+      relevance: fields.note || fields.relevance || '',
       methodology_supported: fields.methodology_supported || ''
     };
-    // Preserve any additional fields not explicitly handled, but drop the
-    // original `author`/`authors` keys since they are normalized above.
     for (const [k, v] of Object.entries(fields)) {
-      if (k === 'author' || k === 'authors') continue;
+      if (k === 'authors') continue;
       if (!(k in obj)) obj[k] = v;
     }
     return obj;
@@ -552,9 +593,9 @@ async function parseCsv(text) {
   }
   const result = window.Papa.parse(text.trim(), { header: true });
   const rows = Array.isArray(result.data) ? result.data : [];
-  return rows.map(row => {
-    const authorsRaw =
-      row.authors || row.author || row.Authors || row.Author || '';
+  return rows.map(raw => {
+    const row = normalizeFields(raw);
+    const authorsRaw = row.authors || '';
     const authors = authorsRaw
       ? authorsRaw
           .split(/\s*[,;]\s*|\s+and\s+/)
@@ -568,16 +609,16 @@ async function parseCsv(text) {
       title: row.title || '',
       authors,
       year,
-      journal: row.journal || row.booktitle || '',
+      journal: row.journal || '',
       publisher: row.publisher || '',
       volume,
       number,
       pages: row.pages || '',
-      url: row.url || row.URL || '',
-      doi: row.doi || row.DOI || '',
+      url: row.url || '',
+      doi: row.doi || '',
       construct: row['sera-construct'] || row.construct || '',
       axis: row['sera-axis'] || row.axis || '',
-      keywords: (row.keywords || row.keyword || '')
+      keywords: (row.keywords || '')
         .split(/[,;]+/)
         .map(k => k.trim())
         .filter(Boolean),

@@ -164,5 +164,4 @@ be uploaded through the Supabase dashboard.
 </p>
 
 ## License
-- **Code, docs & sample data**: Provided for evaluation and internal research only.
-Redistribution or commercial use is prohibited without written permission. See `LICENSE`, `docs/LICENSE_DOCS`, and `data/LICENSE_DATA` for details.
+- **Code and documentation**: Released under the [MIT License](LICENSE). See [LICENSE-NOTES.md](LICENSE-NOTES.md) for additional details.

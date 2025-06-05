@@ -22,6 +22,6 @@ Maintaining ethical integrity is central to the project. This directory collects
   - Encourage feedback from marginalized groups during reviews.
 
 - **Reporting ethical concerns**
-  - Open a private GitHub issue or email the lead at `maxaeonparks@gmail.com`.
+  - Open a private GitHub issue or email the project lead, Max Parks, at `maxaeonparks@gmail.com`.
   - Describe the concern and reference any related files or discussions.
   - Maintainers aim to respond within **7 days**.

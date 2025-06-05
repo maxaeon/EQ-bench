@@ -12,10 +12,10 @@ Use this template to propose a new dataset or evaluation script.
 
 **Link:** <https://example.com/empathy-chats>
 
-**License:** Proprietary - no redistribution or commercial use without permission
+**License:** CC-BY-4.0
 
 ## Evaluation Standards
-- Data must be legally shareable; specify license and permissions.
+- Data must be legally shareable; specify any license and permissions that apply.
 - Describe how the data were collected and annotated.
 - Include instructions or code for reproducing evaluation results.
 - Summarize demographics and any known biases.

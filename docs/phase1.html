@@ -58,7 +58,7 @@
 <p>Notice something missing? Use the <strong>Add Source</strong> button to submit new references. Logged-in contributors may also import a <code>.bib</code> file or paste BibTeX text directly, and the entries will be saved to our Supabase database. Each submission must specify at least one of the supported SERA-X axes, a related construct, or the methodology it informs.</p>
 <p>Need to modify the database structure itself? <a href="https://github.com/maxaeon/EQ-bench/issues/new?template=database-change.yml" target="_blank">Open a database change request</a>.</p>
             <div class="add-source-controls">
-                <button id="bibtex-btn" class="button" type="button">BibTeX</button>
+                <button id="bibtex-btn" class="button" type="button">BibTeX/CSV</button>
                 <button id="add-source-btn" class="button" type="button">Add Source</button>
             </div>
 
@@ -111,7 +111,7 @@
         </section>
         <div class="bibtex-controls">
             <!--<a class="button" href="#" id="bibtex-download">Download BibTeX</a> -->
-            <a class="button" href="#" id="bibtex-export-filtered" title="Export currently filtered list">Export Bib</a>
+            <a class="button" href="#" id="bibtex-export-filtered" title="Export currently filtered list">BibTeX/CSV</a>
             <button id="edit-lit-btn" class="button">Edit</button>
             <button id="delete-lit-btn" class="button">Delete</button>
             <!-- <button id="undo-lit-btn" class="button">Undo</button> -->
@@ -190,8 +190,23 @@
         return `@${type}{${key},\n${body}\n}`;
     }
 
-    function downloadFile(content, filename) {
-        const blob = new Blob([content], {type: 'text/x-bibtex'});
+    function toCsv(items) {
+        const headers = new Set();
+        items.forEach(it => {
+            Object.keys(it).forEach(k => { if (k !== '__index') headers.add(k); });
+        });
+        const cols = Array.from(headers);
+        const rows = items.map(it => cols.map(c => {
+            let val = it[c];
+            if (Array.isArray(val)) val = val.join('; ');
+            if (val === undefined || val === null) val = '';
+            return '"' + String(val).replace(/"/g,'""') + '"';
+        }).join(','));
+        return [cols.join(','), ...rows].join('\n');
+    }
+
+    function downloadFile(content, filename, mime = 'text/plain') {
+        const blob = new Blob([content], {type: mime});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -411,7 +426,7 @@
             const items = Array.from(selectedLit).map(i => literature.find(l => l.__index === i)).filter(Boolean);
             if (!items.length) return;
             const content = items.map(toBibtex).join('\n\n');
-            downloadFile(content, 'references.bib');
+            downloadFile(content, 'references.bib', 'text/x-bibtex');
         });
 
 
@@ -419,8 +434,10 @@
             e.preventDefault();
             const items = filteredLiterature.length ? filteredLiterature : literature;
             if (!items.length) return;
-            const content = items.map(toBibtex).join('\n\n');
-            downloadFile(content, 'references.bib');
+            const bib = items.map(toBibtex).join('\n\n');
+            const csv = toCsv(items);
+            downloadFile(bib, 'references.bib', 'text/x-bibtex');
+            downloadFile(csv, 'references.csv', 'text/csv');
         });
 
     }
@@ -431,8 +448,8 @@ let authed = false;
 async function startBibtex() {
     if (!authed) { if (!(await authenticate())) return; authed = true; }
     const formHtml = `<form id="bibtex-form">
-        <label>Upload .bib <input id="bibtex-file" type="file" accept=".bib"></label>
-        <label>Or paste BibTeX:<br><textarea id="bibtex-text" rows="10" style="width:100%"></textarea></label>
+        <label>Upload .bib or .csv <input id="bibtex-file" type="file" accept=".bib,.csv"></label>
+        <label>Or paste BibTeX/CSV:<br><textarea id="bibtex-text" rows="10" style="width:100%"></textarea></label>
         <div class="edit-buttons">
             <button type="submit" class="button">Import</button>
             <button type="button" id="bibtex-cancel" class="button">Cancel</button>
@@ -443,12 +460,14 @@ async function startBibtex() {
     form.addEventListener('submit', async e => {
         e.preventDefault();
         let text = form.querySelector('#bibtex-text').value;
-        if (!text.trim() && fileInput.files[0]) {
-            text = await fileInput.files[0].text();
+        let file = fileInput.files[0];
+        if (!text.trim() && file) {
+            text = await file.text();
         }
         hideEditOverlay();
-        if (!text.trim()) { showToast('No BibTeX provided'); return; }
-        const entries = parseBibtex(text);
+        if (!text.trim()) { showToast('No BibTeX/CSV provided'); return; }
+        const isCsv = (file && file.name.toLowerCase().endsWith('.csv')) || (!text.trim().startsWith('@') && text.includes(','));
+        const entries = isCsv ? await parseCsv(text) : parseBibtex(text);
         const titles = new Set(literature.map(l => (l.title || '').toLowerCase()));
         const dois = new Set(literature.map(l => (l.url || '').replace(/https?:\/(dx\.)?doi.org\//i, '').toLowerCase()));
         let maxIndex = Math.max(0, ...literature.map(l => l.__index || 0));

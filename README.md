@@ -5,6 +5,8 @@
 
 Welcome to the **AI EQ Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems. You can find our deployed page [here](https://maxaeon.github.io/EQ-bench/). 
 
+![Image](https://github.com/user-attachments/assets/db99e6ce-c48c-411d-a76d-f1e024ea6d94)
+
 GitHub Discussions are enabled for open dialogue and interdisciplinary collaboration.
 
 This website serves as the foundational resource and single source of truth for all project collaborators.
@@ -18,6 +20,8 @@ Missing a term? [Open a Glossary term request](https://github.com/maxaeon/EQ-ben
 
 ## 1  Project Snapshot
 We are developing a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Authorized visitors can sign in using the **Login** button at the top right of the project website and submit new sources or constructs directly through the provided forms. Use the same button to log out when finished. These entries are stored in our Supabase tables (`literature` and `constructs`) and mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
+
+![Image](https://github.com/user-attachments/assets/d25e1df5-df25-405d-a3b8-4424fc9f3408)
 
 | Project Attribute | Short description |
 |-------------------------|---------------------|
@@ -110,6 +114,8 @@ For a walkthrough of the import/export buttons, see the [quick guide section on 
 We welcome pull requests, issues, and Discussions from developers, psychologists, ethicists, educators, and end-users.
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
+
+![Image](https://github.com/user-attachments/assets/69e5f1e9-21b1-44a1-af1d-51feace740be)
 
 ---
 ## 7 Roadmap (v0 → v1)

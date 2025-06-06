@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create env.js
         run: |
-          echo "window.SUPABASE_URL = '${SUPABASE_URL}';" > docs/env.js
-          echo "window.SUPABASE_ANON_KEY = '${SUPABASE_ANON_KEY}';" >> docs/env.js
+          node docs/env.js > docs/env.tmp.js
+          mv docs/env.tmp.js docs/env.js
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}

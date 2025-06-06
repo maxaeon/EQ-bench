@@ -1,2 +1,12 @@
-window.SUPABASE_URL = 'https://pzmmgpzcnjhivkizcvpp.supabase.co';
-window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6bW1ncHpjbmpoaXZraXpjdnBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2MzA4ODEsImV4cCI6MjA2NDIwNjg4MX0.oeXfuk-Z2_BS4M7jU9vguedalcuw217gRRvxlg2t9Hc';
+// Build-time script to generate Supabase client config without storing secrets.
+
+const url = process.env.SUPABASE_URL || '';
+const anon = process.env.SUPABASE_ANON_KEY || '';
+
+const output = `window.SUPABASE_URL = '${url}';\nwindow.SUPABASE_ANON_KEY = '${anon}';\n`;
+
+if (require.main === module) {
+  process.stdout.write(output);
+}
+
+module.exports = output;

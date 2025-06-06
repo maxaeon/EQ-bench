@@ -499,8 +499,16 @@ async function startBibtex() {
             if (authed && typeof addLiterature === 'function') {
                 try {
                     const { data, error } = await addLiterature(obj);
-                    if (!error && data && data[0]) Object.assign(obj, data[0]);
-                } catch (err) { console.error(err); }
+                    if (error) {
+                        console.error(error);
+                        showToast(`Upload failed: ${error.message || error}`);
+                    } else if (data && data[0]) {
+                        Object.assign(obj, data[0]);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    showToast(`Upload failed: ${err.message || err}`);
+                }
             }
             literature.push(obj);
             titles.add(t);

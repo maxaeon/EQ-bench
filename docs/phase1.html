@@ -664,6 +664,7 @@ async function startAddLit() {
         addRow.remove();
         applyLitFilters();
         showToast('Entry added');
+        window.location.reload();
         lastLitAction = { type: 'add', item: obj, index: literature.length - 1 };
     });
     document.getElementById('lit-add-cancel').addEventListener('click', () => {
@@ -800,6 +801,7 @@ async function startEditLit() {
         hideEditOverlay();
         applyLitFilters();
         showToast('Entry updated');
+        window.location.reload();
         lastLitAction = { type: 'update', item, before };
     });
     document.getElementById('lit-edit-cancel').addEventListener('click', hideEditOverlay);
@@ -816,6 +818,7 @@ async function deleteSelectedLit() {
     const removed = literature.splice(idx,1)[0];
     selectedLitId = null;
     applyLitFilters();
+    window.location.reload();
     lastLitAction = { type: 'delete', item: removed, index: idx };
 }
 

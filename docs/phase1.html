@@ -484,15 +484,15 @@ async function startBibtex() {
             const obj = Object.assign({construct: '', axis: '', methodology_supported: '', relevance: ''}, en);
             obj.entry_type = en.entry_type || defaultType || (en.journal ? 'article' : 'book');
             if (!obj.construct) {
-                const v = prompt(`Construct for "${obj.title}"?`);
+                const v = await showPrompt(`Construct for "${obj.title}"?`);
                 if (v !== null) obj.construct = v.trim();
             }
             if (!obj.axis) {
-                const v = prompt(`Axis for "${obj.title}"?`);
+                const v = await showPrompt(`Axis for "${obj.title}"?`);
                 if (v !== null) obj.axis = v.trim();
             }
             if (!obj.methodology_supported) {
-                const v = prompt(`Methodology supported for "${obj.title}"?`);
+                const v = await showPrompt(`Methodology supported for "${obj.title}"?`);
                 if (v !== null) obj.methodology_supported = v.trim();
             }
             obj.__index = ++maxIndex;
@@ -591,7 +591,7 @@ async function startAddLit() {
         const constructVal = e.target.construct.value.trim();
         const methVal = e.target.methodology_supported.value.trim();
         if (axisArr.length === 0 && !constructVal && !methVal) {
-            alert('Please specify at least one of Axis, Construct, or Methodology Supported.');
+            showToast('Please specify at least one of Axis, Construct, or Methodology Supported.');
             return;
         }
         const authorArr = Array.from(form.querySelectorAll('.author-input'))
@@ -623,7 +623,7 @@ async function startAddLit() {
             return t === titleLower || (doiLower && d === doiLower);
         });
         if (exists) {
-            alert('This entry already exists.');
+            showToast('This entry already exists.');
             return;
         }
         if (typeof addLiterature === 'function') {
@@ -657,7 +657,7 @@ async function startAddLit() {
 
 async function startEditLit() {
     if (!authed) { if (!(await authenticate())) return; authed = true; }
-    if (selectedLitId === null) { alert('Select an entry first.'); return; }
+    if (selectedLitId === null) { showToast('Select an entry first.'); return; }
     const item = literature.find(l => (l.id ?? l.__index) == selectedLitId);
     if (!item) return;
     const axisVals = Array.isArray(item.axis) ? item.axis : (item.axis || '').split(',').map(a=>a.trim());
@@ -737,7 +737,7 @@ async function startEditLit() {
     form.addEventListener('submit', async e => {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
-        if (!confirm('Save changes?')) return;
+        if (!(await showConfirm('Save changes?'))) return;
         const before = JSON.parse(JSON.stringify(item));
         item.title = toTitleCase(form.title.value.trim());
         const authorInputs = Array.from(form.querySelectorAll('.author-input'))
@@ -790,11 +790,11 @@ async function startEditLit() {
 }
 
 async function deleteSelectedLit() {
-    if (selectedLitId === null) { alert('Select an entry first.'); return; }
+    if (selectedLitId === null) { showToast('Select an entry first.'); return; }
     const idx = literature.findIndex(l => (l.id ?? l.__index) == selectedLitId);
     if (idx === -1) return;
     if (!authed) { if (!(await authenticate())) return; authed = true; }
-    if (!confirm('Delete this entry?')) return;
+    if (!(await showConfirm('Delete this entry?'))) return;
     const item = literature[idx];
     if (item.id && typeof deleteLiterature === 'function') await deleteLiterature(item.id);
     const removed = literature.splice(idx,1)[0];
@@ -804,7 +804,7 @@ async function deleteSelectedLit() {
 }
 
 async function undoLastLitAction() {
-    if (!lastLitAction) { alert('Nothing to undo'); return; }
+    if (!lastLitAction) { showToast('Nothing to undo'); return; }
     const { type, item, index, before } = lastLitAction;
     if (type === 'add') {
         if (item.id && typeof deleteLiterature === 'function') await deleteLiterature(item.id);
@@ -833,8 +833,8 @@ document.getElementById('bibtex-btn').addEventListener('click', startBibtex);
 // document.getElementById('undo-lit-btn').addEventListener('click', undoLastLitAction);
 
 // Confirm before saving new or updated literature
-document.getElementById('literature-form')?.addEventListener('submit', e => {
-    if (!confirm('Save changes?')) {
+document.getElementById('literature-form')?.addEventListener('submit', async e => {
+    if (!(await showConfirm('Save changes?'))) {
         e.preventDefault();
     }
 });

@@ -208,7 +208,7 @@
 
     async function startEditBenchmark() {
         if (!authed) { if (!(await authenticate())) return; authed = true; }
-        if (selectedBenchmarkId === null) { alert('Select an entry first.'); return; }
+        if (selectedBenchmarkId === null) { showToast('Select an entry first.'); return; }
         const item = benchmarks.find(b => (b.id ?? b.__index) == selectedBenchmarkId);
         if (!item) return;
         const formHtml = `<form id="benchmark-edit-form">
@@ -258,11 +258,11 @@
     }
 
     async function deleteSelectedBenchmark() {
-        if (selectedBenchmarkId === null) { alert('Select an entry first.'); return; }
+        if (selectedBenchmarkId === null) { showToast('Select an entry first.'); return; }
         const idx = benchmarks.findIndex(b => (b.id ?? b.__index) == selectedBenchmarkId);
         if (idx === -1) return;
         if (!authed) { if (!(await authenticate())) return; authed = true; }
-        if (!confirm('Delete this benchmark?')) return;
+        if (!(await showConfirm('Delete this benchmark?'))) return;
         const item = benchmarks[idx];
         if (item.id && typeof deleteBenchmark === 'function') await deleteBenchmark(item.id);
         const removed = benchmarks.splice(idx,1)[0];
@@ -272,7 +272,7 @@
     }
 
     async function undoLastBenchmarkAction() {
-        if (!lastBmAction) { alert('Nothing to undo'); return; }
+        if (!lastBmAction) { showToast('Nothing to undo'); return; }
         const { type, item, index, before } = lastBmAction;
         if (type === 'add') {
             if (item.id && typeof deleteBenchmark === 'function') await deleteBenchmark(item.id);

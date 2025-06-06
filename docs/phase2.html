@@ -454,7 +454,7 @@ async function startAddConstruct() {
 
 async function startEditConstruct() {
     if (!authed) { if (!(await authenticate())) return; authed = true; }
-    if (selectedConstructId === null) { alert('Select an entry first.'); return; }
+    if (selectedConstructId === null) { showToast('Select an entry first.'); return; }
     const item = constructs.find(c => (c.id ?? c.__index) == selectedConstructId);
     if (!item) return;
     const axesVals = Array.isArray(item.axes) ? item.axes : (item.axes || '').split(',').map(a=>a.trim());
@@ -494,7 +494,7 @@ async function startEditConstruct() {
     form.addEventListener('submit', async e => {
         e.preventDefault();
         if (!authed) { if (!(await authenticate())) return; authed = true; }
-        if (!confirm('Save changes?')) return;
+        if (!(await showConfirm('Save changes?'))) return;
         const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
         const refsArr = Array.from(form.elements.references.selectedOptions).map(o => o.value);
         const catArrEdit = Array.from(form.elements.category.selectedOptions).map(o => o.value);
@@ -532,11 +532,11 @@ async function startEditConstruct() {
 }
 
 async function deleteSelectedConstruct() {
-    if (selectedConstructId === null) { alert('Select an entry first.'); return; }
+    if (selectedConstructId === null) { showToast('Select an entry first.'); return; }
     const idx = constructs.findIndex(c => (c.id ?? c.__index) == selectedConstructId);
     if (idx === -1) return;
     if (!authed) { if (!(await authenticate())) return; authed = true; }
-    if (!confirm('Delete this construct?')) return;
+    if (!(await showConfirm('Delete this construct?'))) return;
     const item = constructs[idx];
     if (item.id && typeof deleteConstruct === 'function') await deleteConstruct(item.id);
     constructs.splice(idx,1);
@@ -550,8 +550,8 @@ document.getElementById('delete-construct-btn').addEventListener('click', delete
 document.getElementById('add-construct-btn').addEventListener('click', startAddConstruct);
 
 // Confirm before saving new or updated constructs
-document.getElementById('construct-form')?.addEventListener('submit', e => {
-    if (!confirm('Save changes?')) {
+document.getElementById('construct-form')?.addEventListener('submit', async e => {
+    if (!(await showConfirm('Save changes?'))) {
         e.preventDefault();
     }
 });

@@ -190,13 +190,25 @@
                 difficulty_level: parseInt(form.difficulty_level.value,10) || null,
                 notes: form.notes.value
             };
+            let success = true;
             if (typeof addBenchmark === 'function') {
                 try {
                     const { data, error } = await addBenchmark(obj);
-                    if (error) { errorDiv.textContent = error.message || error; errorDiv.style.display='block'; return; }
-                    if (data && data[0]) Object.assign(obj, data[0]);
-                } catch(err) { console.error(err); errorDiv.textContent = err.message || err; errorDiv.style.display='block'; return; }
+                    if (error) {
+                        errorDiv.textContent = error.message || error;
+                        errorDiv.style.display='block';
+                        success = false;
+                    } else if (data && data[0]) {
+                        Object.assign(obj, data[0]);
+                    }
+                } catch(err) {
+                    console.error(err);
+                    errorDiv.textContent = err.message || err;
+                    errorDiv.style.display='block';
+                    success = false;
+                }
             }
+            if (!success) return;
             obj.__index = Math.max(0,...benchmarks.map(b=>b.__index||0))+1;
             benchmarks.push(obj);
             row.remove();

@@ -496,24 +496,29 @@ async function startBibtex() {
                 if (v !== null) obj.methodology_supported = v.trim();
             }
             obj.__index = ++maxIndex;
+            let success = true;
             if (authed && typeof addLiterature === 'function') {
                 try {
                     const { data, error } = await addLiterature(obj);
                     if (error) {
                         console.error(error);
                         showToast(`Upload failed: ${error.message || error}`);
+                        success = false;
                     } else if (data && data[0]) {
                         Object.assign(obj, data[0]);
                     }
                 } catch (err) {
                     console.error(err);
                     showToast(`Upload failed: ${err.message || err}`);
+                    success = false;
                 }
             }
-            literature.push(obj);
-            titles.add(t);
-            if (d) dois.add(d);
-            added++;
+            if (success) {
+                literature.push(obj);
+                titles.add(t);
+                if (d) dois.add(d);
+                added++;
+            }
         }
         applyLitFilters();
         showToast(added ? `${added} entries added` : 'No new entries added');
@@ -634,22 +639,25 @@ async function startAddLit() {
             showToast('This entry already exists.');
             return;
         }
+        let success = true;
         if (typeof addLiterature === 'function') {
             try {
                 const { data, error } = await addLiterature(obj);
                 if (error) {
                     errorDiv.textContent = error.message || error;
                     errorDiv.style.display = 'block';
-                    return;
+                    success = false;
+                } else if (data && data[0]) {
+                    Object.assign(obj, data[0]);
                 }
-                if (data && data[0]) Object.assign(obj, data[0]);
             } catch (err) {
                 console.error(err);
                 errorDiv.textContent = err.message || err;
                 errorDiv.style.display = 'block';
-                return;
+                success = false;
             }
         }
+        if (!success) return;
         obj.axis = axisArr.join(', ');
         obj.__index = Math.max(0, ...literature.map(l => l.__index || 0)) + 1;
         literature.push(obj);

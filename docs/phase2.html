@@ -424,22 +424,25 @@ async function startAddConstruct() {
             verification_issues: e.target.verification_issues.value,
             category: catArr.join(', ')
         };
+        let success = true;
         if (typeof addConstruct === 'function') {
             try {
                 const { data, error } = await addConstruct(obj);
                 if (error) {
                     errorDiv.textContent = error.message || error;
                     errorDiv.style.display = 'block';
-                    return;
+                    success = false;
+                } else if (data && data[0]) {
+                    Object.assign(obj, data[0]);
                 }
-                if (data && data[0]) Object.assign(obj, data[0]);
             } catch (err) {
                 console.error(err);
                 errorDiv.textContent = err.message || err;
                 errorDiv.style.display = 'block';
-                return;
+                success = false;
             }
         }
+        if (!success) return;
         obj.axis = axesArr.join(', ');
         obj.__index = Math.max(0, ...constructs.map(c => c.__index || 0)) + 1;
         constructs.push(obj);

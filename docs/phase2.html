@@ -445,7 +445,6 @@ async function startAddConstruct() {
         constructs.push(obj);
         addRow.remove();
         applyConstructFilters();
-        window.location.reload();
     });
     document.getElementById('construct-add-cancel').addEventListener('click', () => addRow.remove());
 }
@@ -526,7 +525,6 @@ async function startEditConstruct() {
         });
         hideEditOverlay();
         applyConstructFilters();
-        window.location.reload();
     });
     document.getElementById('construct-edit-cancel').addEventListener('click', hideEditOverlay);
 }
@@ -542,7 +540,6 @@ async function deleteSelectedConstruct() {
     constructs.splice(idx,1);
     selectedConstructId = null;
     applyConstructFilters();
-    window.location.reload();
 }
 
 document.getElementById('edit-construct-btn').addEventListener('click', startEditConstruct);

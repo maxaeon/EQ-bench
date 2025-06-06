@@ -146,7 +146,7 @@
     let lastLitAction = null;
 
     function toBibtex(item) {
-        const type = item.journal ? 'article' : 'book';
+        const type = item.entry_type || (item.journal ? 'article' : 'book');
         const firstAuthor = Array.isArray(item.authors)
             ? (item.authors.length ? item.authors[0] : 'ref')
             : (item.authors || 'ref');
@@ -177,7 +177,7 @@
             fields[tag] = val;
         }
         for (const [k,v] of Object.entries(item)) {
-            if (!(k in mapping) && k !== '__index' && v !== undefined && v !== null && v !== '' && !(Array.isArray(v) && !v.length)) {
+            if (!(k in mapping) && k !== '__index' && k !== 'entry_type' && v !== undefined && v !== null && v !== '' && !(Array.isArray(v) && !v.length)) {
                 fields[k] = Array.isArray(v) ? v.join(', ') : v;
             }
         }
@@ -445,6 +445,15 @@ async function startBibtex() {
     const formHtml = `<form id="bibtex-form">
         <label>Upload .bib or .csv <input id="bibtex-file" type="file" accept=".bib,.csv"></label>
         <label>Or paste BibTeX/CSV:<br><textarea id="bibtex-text" rows="10" style="width:100%"></textarea></label>
+        <label>Default Type: <select id="import-entry-type">
+            <option value="">(auto)</option>
+            <option value="article">article</option>
+            <option value="book">book</option>
+            <option value="incollection">incollection</option>
+            <option value="inproceedings">inproceedings</option>
+            <option value="techreport">techreport</option>
+            <option value="misc">misc</option>
+        </select></label>
         <div class="edit-buttons">
             <button type="submit" class="button">Import</button>
             <button type="button" id="bibtex-cancel" class="button">Cancel</button>
@@ -454,6 +463,7 @@ async function startBibtex() {
     const fileInput = form.querySelector('#bibtex-file');
     form.addEventListener('submit', async e => {
         e.preventDefault();
+        const defaultType = form.querySelector('#import-entry-type').value;
         let text = form.querySelector('#bibtex-text').value;
         let file = fileInput.files[0];
         if (!text.trim() && file) {
@@ -472,6 +482,7 @@ async function startBibtex() {
             const d = (en.doi || en.url || '').replace(/https?:\/(dx\.)?doi.org\//i, '').toLowerCase();
             if (titles.has(t) || (d && dois.has(d))) continue;
             const obj = Object.assign({construct: '', axis: '', methodology_supported: '', relevance: ''}, en);
+            obj.entry_type = en.entry_type || defaultType || (en.journal ? 'article' : 'book');
             if (!obj.construct) {
                 const v = prompt(`Construct for "${obj.title}"?`);
                 if (v !== null) obj.construct = v.trim();
@@ -517,6 +528,15 @@ async function startAddLit() {
         <label>Year: <input type="number" name="year"></label>
         <label>Publisher: <input type="text" name="publisher"></label>
         <label>Journal: <input type="text" name="journal"></label>
+        <label>Entry Type: <select name="entry_type">
+            <option value="">(auto)</option>
+            <option value="article">article</option>
+            <option value="book">book</option>
+            <option value="incollection">incollection</option>
+            <option value="inproceedings">inproceedings</option>
+            <option value="techreport">techreport</option>
+            <option value="misc">misc</option>
+        </select></label>
         <label>Volume: <input type="number" name="volume" inputmode="numeric" pattern="\d*"></label>
         <label>Number: <input type="number" name="number" inputmode="numeric" pattern="\d*"></label>
         <label>Pages: <input type="text" name="pages" pattern="[0-9A-Za-z]+(?:[-–—]{1,2}[0-9A-Za-z]+)?" title="e.g., 123-145, 123--145 or 123–145"></label>
@@ -583,6 +603,7 @@ async function startAddLit() {
             year: parseInt(e.target.year.value,10) || null,
             publisher: e.target.publisher.value,
             journal: e.target.journal.value,
+            entry_type: e.target.entry_type.value,
             volume: parseInt(e.target.volume.value,10) || null,
             number: parseInt(e.target.number.value,10) || null,
             pages: e.target.pages.value,
@@ -662,6 +683,15 @@ async function startEditLit() {
         <label>Year: <input type="number" name="year" value="${item.year || ''}" placeholder="2024"></label>
         <label>Publisher: <input type="text" name="publisher" value="${item.publisher || ''}" placeholder="Publisher"></label>
         <label>Journal: <input type="text" name="journal" value="${item.journal || ''}" placeholder="Journal name"></label>
+        <label>Entry Type: <select name="entry_type">
+            <option value="">(auto)</option>
+            <option value="article" ${item.entry_type==='article'?'selected':''}>article</option>
+            <option value="book" ${item.entry_type==='book'?'selected':''}>book</option>
+            <option value="incollection" ${item.entry_type==='incollection'?'selected':''}>incollection</option>
+            <option value="inproceedings" ${item.entry_type==='inproceedings'?'selected':''}>inproceedings</option>
+            <option value="techreport" ${item.entry_type==='techreport'?'selected':''}>techreport</option>
+            <option value="misc" ${item.entry_type==='misc'?'selected':''}>misc</option>
+        </select></label>
         <label>Volume: <input type="number" name="volume" value="${item.volume || ''}" placeholder="Volume" inputmode="numeric" pattern="\d*"></label>
         <label>Number: <input type="number" name="number" value="${item.number || ''}" placeholder="Number" inputmode="numeric" pattern="\d*"></label>
         <label>Pages: <input type="text" name="pages" value="${item.pages || ''}" placeholder="Pages" pattern="[0-9A-Za-z]+(?:[-–—]{1,2}[0-9A-Za-z]+)?" title="e.g., 123-145, 123--145 or 123–145"></label>
@@ -722,6 +752,7 @@ async function startEditLit() {
         item.year = parseInt(form.year.value,10) || null;
         item.publisher = form.publisher.value;
         item.journal = form.journal.value;
+        item.entry_type = form.entry_type.value;
         item.volume = parseInt(form.volume.value,10) || null;
         item.number = parseInt(form.number.value,10) || null;
         item.pages = form.pages.value;
@@ -745,6 +776,7 @@ async function startEditLit() {
             url: item.url,
             category: item.category,
             keywords: item.keywords,
+            entry_type: item.entry_type,
             axis: axisArr.join(', '),
             methodology_supported: item.methodology_supported,
             relevance: item.relevance

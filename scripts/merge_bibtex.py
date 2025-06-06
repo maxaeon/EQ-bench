@@ -75,6 +75,7 @@ def merge_entries(entries, data):
             "number": entry.get("number", ""),
             "pages": entry.get("pages", ""),
             "url": url,
+            "entry_type": entry.get("ENTRYTYPE") or entry.get("entrytype") or ("article" if entry.get("journal") else "book"),
             "construct": "",
             "axis": "",
             "relevance": ""

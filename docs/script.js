@@ -168,7 +168,7 @@ function normalizeFields(obj) {
 const ALLOWED_LIT_FIELDS = new Set([
   'title', 'authors', 'year', 'publisher', 'journal', 'volume', 'number', 'pages',
   'url', 'doi', 'construct', 'axis', 'keywords', 'relevance',
-  'methodology_supported', 'category'
+  'methodology_supported', 'category', 'entry_type'
 ]);
 
 function sanitizeLiteratureFields(obj) {
@@ -559,6 +559,7 @@ function parseBibtex(text) {
   const rawEntries = window.bibtexParse.toJSON(text);
   return rawEntries.map(entry => {
     const fields = normalizeFields(entry.entryTags || {});
+    const entryType = entry.entryType || fields.entrytype || '';
     const doiValue = fields.doi;
     const rawAuthors = fields.authors || '';
     const authors = rawAuthors
@@ -585,7 +586,8 @@ function parseBibtex(text) {
         .map(k => k.trim())
         .filter(Boolean),
       relevance: fields.note || fields.relevance || '',
-      methodology_supported: fields.methodology_supported || ''
+      methodology_supported: fields.methodology_supported || '',
+      entry_type: entryType
     };
     for (const [k, v] of Object.entries(fields)) {
       if (k === 'authors') continue;
@@ -640,7 +642,8 @@ async function parseCsv(text) {
         .map(k => k.trim())
         .filter(Boolean),
       relevance: row.note || row.relevance || '',
-      methodology_supported: row.methodology_supported || ''
+      methodology_supported: row.methodology_supported || '',
+      entry_type: row.entry_type || row.type || ''
     };
     for (const [k, v] of Object.entries(row)) {
       if (!(k in obj)) obj[k] = v;

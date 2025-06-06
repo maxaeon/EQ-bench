@@ -21,7 +21,7 @@ def to_bibtex(item: dict) -> str:
     ``authors`` may be a string or a list of author name strings which will
     be joined with ``" and "`` when constructing the entry.
     """
-    entry_type = "article" if item.get("journal") else "book"
+    entry_type = item.get("entry_type") or ("article" if item.get("journal") else "book")
     raw_authors = item.get("authors")
     if isinstance(raw_authors, list):
         authors = " and ".join(raw_authors)

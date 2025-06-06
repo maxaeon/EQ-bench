@@ -14,7 +14,8 @@
     "keywords": [
       "affective computing",
       "emotion recognition"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "The Emotions: A Philosophical Exploration",
@@ -33,10 +34,11 @@
       "intentionality",
       "emotion",
       "philosophy"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
-    "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User\u2019s Manual",
+    "title": "Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) User’s Manual",
     "authors": [
       "John D. Mayer",
       "Peter Salovey",
@@ -53,7 +55,8 @@
       "ability test",
       "emotional intelligence",
       "measurement"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "How Emotions Are Made",
@@ -70,7 +73,8 @@
       "constructionism",
       "core affect",
       "culture"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "EmpatheticDialogues",
@@ -87,7 +91,8 @@
       "empathy",
       "dialogue dataset",
       "nlp"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "Upheavals of Thought: The Intelligence of Emotions",
@@ -105,7 +110,8 @@
       "cognitive appraisal",
       "judgment",
       "emotion"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "Descartes' Error: Emotion, Reason, and the Human Brain",
@@ -123,7 +129,8 @@
       "neuroscience",
       "emotion-cognition",
       "somatic marker"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "Gut Reactions",
@@ -140,7 +147,8 @@
       "bodily emotion",
       "perception",
       "philosophy"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "AI Ethics",
@@ -157,7 +165,8 @@
       "responsible ai",
       "ethics",
       "governance"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence",
@@ -175,7 +184,8 @@
       "bias",
       "power",
       "sociotechnical"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "Antecedent- and Response-focused Emotion Regulation: Divergent Consequences for Experience, Expression, and Physiology",
@@ -196,7 +206,8 @@
       "emotion regulation",
       "strategy",
       "process model"
-    ]
+    ],
+    "entry_type": "article"
   },
   {
     "title": "Does the Autistic Child Have a 'Theory of Mind'?",
@@ -219,7 +230,8 @@
       "autism",
       "false belief",
       "social cognition"
-    ]
+    ],
+    "entry_type": "article"
   },
   {
     "title": "Emotion Recognition in Conversation",
@@ -236,7 +248,8 @@
       "multimodal",
       "conversation",
       "emotion recognition"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "The Emotional Brain",
@@ -253,7 +266,8 @@
       "amygdala",
       "neural circuits",
       "fear"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "The Extended Mind",
@@ -275,7 +289,8 @@
       "distributed cognition",
       "externalism",
       "embodiment"
-    ]
+    ],
+    "entry_type": "article"
   },
   {
     "title": "A Survey on Bias and Fairness in Machine Learning",
@@ -292,7 +307,8 @@
       "fairness",
       "bias",
       "machine learning"
-    ]
+    ],
+    "entry_type": "book"
   },
   {
     "title": "An Argument for Basic Emotions",
@@ -312,7 +328,8 @@
     "keywords": [
       "basic emotions",
       "emotion theory"
-    ]
+    ],
+    "entry_type": "article"
   },
   {
     "title": "The Bar-On Model of Emotional-Social Intelligence (ESI)",
@@ -331,7 +348,8 @@
     "keywords": [
       "emotional intelligence",
       "bar-on"
-    ]
+    ],
+    "entry_type": "article"
   },
   {
     "title": "Handbook of Emotions",
@@ -350,6 +368,7 @@
     "keywords": [
       "emotion",
       "reference"
-    ]
+    ],
+    "entry_type": "book"
   }
 ]

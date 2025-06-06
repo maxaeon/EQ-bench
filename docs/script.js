@@ -27,7 +27,11 @@ ensureSupabase();
 
 let loginOverlay = null;
 let loginResolve = null;
+let loginTrigger = null;
+let loginKeyHandler = null;
 let editOverlay = null;
+let editTrigger = null;
+let editKeyHandler = null;
 
 function createLoginForm() {
   if (loginOverlay) return;
@@ -59,10 +63,20 @@ function createLoginForm() {
   });
 }
 
-function showLoginForm() {
+function showLoginForm(trigger = document.activeElement) {
   createLoginForm();
+  loginTrigger = trigger;
+  loginOverlay.setAttribute('role', 'dialog');
+  loginOverlay.setAttribute('aria-modal', 'true');
   loginOverlay.classList.remove('hidden');
   loginOverlay.querySelector('#login-email').focus();
+  loginKeyHandler = e => {
+    if (e.key === 'Escape') {
+      hideLoginForm();
+      if (loginResolve) loginResolve(null);
+    }
+  };
+  document.addEventListener('keydown', loginKeyHandler);
   return new Promise(res => { loginResolve = res; });
 }
 
@@ -72,6 +86,14 @@ function hideLoginForm() {
     loginOverlay.remove();
     loginOverlay = null;
   }
+  if (loginKeyHandler) {
+    document.removeEventListener('keydown', loginKeyHandler);
+    loginKeyHandler = null;
+  }
+  if (loginTrigger && typeof loginTrigger.focus === 'function') {
+    loginTrigger.focus();
+  }
+  loginTrigger = null;
 }
 
 function createEditOverlay() {
@@ -82,10 +104,17 @@ function createEditOverlay() {
   document.body.appendChild(editOverlay);
 }
 
-function showEditOverlay(html) {
+function showEditOverlay(html, trigger = document.activeElement) {
   createEditOverlay();
+  editTrigger = trigger;
+  editOverlay.setAttribute('role', 'dialog');
+  editOverlay.setAttribute('aria-modal', 'true');
   editOverlay.innerHTML = html;
   editOverlay.classList.remove('hidden');
+  editKeyHandler = e => {
+    if (e.key === 'Escape') hideEditOverlay();
+  };
+  document.addEventListener('keydown', editKeyHandler);
   return editOverlay.querySelector('form');
 }
 
@@ -96,6 +125,14 @@ function hideEditOverlay() {
     editOverlay.remove();
     editOverlay = null;
   }
+  if (editKeyHandler) {
+    document.removeEventListener('keydown', editKeyHandler);
+    editKeyHandler = null;
+  }
+  if (editTrigger && typeof editTrigger.focus === 'function') {
+    editTrigger.focus();
+  }
+  editTrigger = null;
 }
 
 function showToast(message, duration = 3000) {

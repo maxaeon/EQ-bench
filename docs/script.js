@@ -147,6 +147,69 @@ function showToast(message, duration = 3000) {
   }, duration);
 }
 
+function showConfirm(message, trigger = document.activeElement) {
+  return new Promise(resolve => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `
+      <div class="modal-box">
+        <p>${message}</p>
+        <div class="modal-buttons">
+          <button type="button" class="button" id="confirm-ok">OK</button>
+          <button type="button" class="button" id="confirm-cancel">Cancel</button>
+        </div>
+      </div>`;
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    document.body.appendChild(overlay);
+    const ok = overlay.querySelector('#confirm-ok');
+    const cancel = overlay.querySelector('#confirm-cancel');
+    ok.focus();
+    const cleanup = (val) => {
+      overlay.remove();
+      document.removeEventListener('keydown', onKey);
+      if (trigger && typeof trigger.focus === 'function') trigger.focus();
+      resolve(val);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') cleanup(false); };
+    document.addEventListener('keydown', onKey);
+    ok.addEventListener('click', () => cleanup(true));
+    cancel.addEventListener('click', () => cleanup(false));
+  });
+}
+
+function showPrompt(message, defaultValue = '', trigger = document.activeElement) {
+  return new Promise(resolve => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `
+      <form class="modal-box" id="prompt-form">
+        <label>${message}<br><input type="text" id="prompt-input"></label>
+        <div class="modal-buttons">
+          <button type="submit" class="button">OK</button>
+          <button type="button" class="button" id="prompt-cancel">Cancel</button>
+        </div>
+      </form>`;
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    document.body.appendChild(overlay);
+    const form = overlay.querySelector('#prompt-form');
+    const input = overlay.querySelector('#prompt-input');
+    input.value = defaultValue;
+    input.focus();
+    const cleanup = (val) => {
+      overlay.remove();
+      document.removeEventListener('keydown', onKey);
+      if (trigger && typeof trigger.focus === 'function') trigger.focus();
+      resolve(val);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') cleanup(null); };
+    document.addEventListener('keydown', onKey);
+    form.addEventListener('submit', e => { e.preventDefault(); cleanup(input.value); });
+    overlay.querySelector('#prompt-cancel').addEventListener('click', () => cleanup(null));
+  });
+}
+
 function toTitleCase(str) {
   return str.replace(/\b(\w)(\w*)/g, (_, c, rest) => c.toUpperCase() + rest.toLowerCase());
 }

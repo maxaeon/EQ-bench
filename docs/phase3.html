@@ -213,6 +213,7 @@
             benchmarks.push(obj);
             row.remove();
             renderBenchmarks(benchmarks);
+            window.location.reload();
             lastBmAction = { type: 'add', item: obj, index: benchmarks.length - 1 };
         });
         document.getElementById('benchmark-add-cancel').addEventListener('click',()=>row.remove());
@@ -264,6 +265,7 @@
             }
             hideEditOverlay();
             renderBenchmarks(benchmarks);
+            window.location.reload();
             lastBmAction = { type: 'update', item, before };
         });
         document.getElementById('benchmark-edit-cancel').addEventListener('click', hideEditOverlay);
@@ -280,6 +282,7 @@
         const removed = benchmarks.splice(idx,1)[0];
         selectedBenchmarkId = null;
         renderBenchmarks(benchmarks);
+        window.location.reload();
         lastBmAction = { type: 'delete', item: removed, index: idx };
     }
 

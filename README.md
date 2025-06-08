@@ -123,7 +123,6 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE
   <img src="https://github.com/user-attachments/assets/cabc0e0a-a39d-431f-baee-660085de01e1" width="600" alt="Image" />
 </p>
 
-<p align="center">![Image]()</p>
 
 ---
 ## 7 Roadmap (v0 → v1)

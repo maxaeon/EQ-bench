@@ -1,4 +1,4 @@
-MIT LicenseAdd commentMore actions
+MIT License
 
 Copyright (c) 2025 AI EQ Research Collaborative
 

@@ -143,4 +143,4 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE
 </p>
 
 ## License
-- **Code and documentation**: Released under the [MIT License](LICENSE). See [LICENSE-NOTES.md](LICENSE-NOTES.md) for additional details.
+- **Code and documentation**: Released under the [MIT License](LICENSE). See [LICENSE-NOTES.md](LICENSE-NOTES.md) for details on the private evaluation rubric.

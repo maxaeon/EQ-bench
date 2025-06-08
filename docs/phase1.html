@@ -218,6 +218,27 @@
         document.getElementById('lit-select-all').checked = allChecked;
     }
 
+    function parseAuthors(val) {
+        if (Array.isArray(val)) return val;
+        if (!val) return [];
+        const raw = String(val).trim();
+        if (!raw) return [];
+        try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) return parsed;
+        } catch (_) {}
+        if (raw.startsWith('{') && raw.endsWith('}')) {
+            return raw.slice(1, -1)
+                .split(',')
+                .map(a => a.replace(/^"|"$/g, '').trim())
+                .filter(Boolean);
+        }
+        return raw
+            .split(/\s*[,;]\s*|\s+and\s+/)
+            .map(a => a.replace(/^"|"$/g, '').trim())
+            .filter(Boolean);
+    }
+
 
 
 
@@ -239,7 +260,7 @@
             row.innerHTML = `
                 <td><input type="checkbox" class="lit-check" data-index="${l.__index}" ${checked}></td>
                 <td>${l.title}</td>
-                <td>${Array.isArray(l.authors) ? l.authors.join(', ') : l.authors}</td>
+                <td>${parseAuthors(l.authors).join(', ')}</td>
                 <td>${l.year}</td>
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
@@ -316,7 +337,7 @@
                 if (!constructVals.some(v => list.some(c => c.trim().toLowerCase() === v))) return false;
             }
             if (q) {
-                const authText = Array.isArray(l.authors) ? l.authors.join(' ') : l.authors || '';
+                const authText = parseAuthors(l.authors).join(' ');
                 const text = `${l.title || ''} ${authText} ${l.relevance || ''}`.toLowerCase();
                 if (!text.includes(q)) return false;
             }
@@ -326,7 +347,7 @@
         const sortVal = document.getElementById('lit-sort').value;
         if (sortVal === 'title') items.sort((a,b)=>a.title.localeCompare(b.title));
         else if (sortVal === 'author') {
-            const getAuth = l => Array.isArray(l.authors) ? l.authors.join(' ') : l.authors || '';
+            const getAuth = l => parseAuthors(l.authors).join(' ');
             items.sort((a,b)=>getAuth(a).localeCompare(getAuth(b)));
         }
         else items.sort((a,b)=>(a.year||0)-(b.year||0));
@@ -355,7 +376,10 @@
             try { lit = await (await fetch('data/literature.json')).json(); } catch(e) { lit = []; }
         }
 
-        literature = lit.map((l, i) => Object.assign({__index: i}, l));
+        literature = lit.map((l, i) => Object.assign({__index: i}, {
+            ...l,
+            authors: parseAuthors(l.authors)
+        }));
 
         const axisSet = new Set();
         const fieldSet = new Set();
@@ -678,19 +702,7 @@ async function startEditLit() {
     const item = literature.find(l => (l.id ?? l.__index) == selectedLitId);
     if (!item) return;
     const axisVals = Array.isArray(item.axis) ? item.axis : (item.axis || '').split(',').map(a=>a.trim());
-    let authorsVal;
-    if (Array.isArray(item.authors)) {
-        authorsVal = item.authors;
-    } else {
-        const raw = String(item.authors || '').trim();
-        try {
-            const parsed = JSON.parse(raw);
-            if (Array.isArray(parsed)) authorsVal = parsed;
-        } catch (_) {}
-        if (!authorsVal) {
-            authorsVal = raw.split(/\s+and\s+|;|,/).map(a => a.trim()).filter(Boolean);
-        }
-    }
+    let authorsVal = parseAuthors(item.authors);
     const originalAuthors = authorsVal.map(a => toTitleCase(a));
     const authorsInputs = (authorsVal.length ? authorsVal : ['']).map((a,i)=>`<label>Author ${i+1}: <input type="text" class="author-input" value="${a}"></label>`).join('');
     const formHtml = `<form id="lit-edit-form">

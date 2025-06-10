@@ -125,10 +125,10 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [CODE_OF_CONDUCT.md](CODE
 
 
 ---
-## 7 Roadmap (v0 → v1)
+## 7 Flexible Roadmap (v0 → v1)
 
-1. **M-1 (Weeks&nbsp;1–2)** — Literature briefs & construct sheets consolidated
-2. **M-1 (Week&nbsp;3)** — Axes & pilot metrics frozen (`design_dossier_v1`)
+1. **M-1 (Weeks&nbsp;1–3)** — Literature briefs & construct sheets consolidated
+2. **M-1 (Week&nbsp;4)** — Axes & pilot metrics frozen (`design_dossier_v1`)
 3. **M-2** — Pilot data (≈300 dialogue turns) annotated & baselines published
 4. **M-3** — Day-90 deliverables:
    - Pilot report (`reports/`)

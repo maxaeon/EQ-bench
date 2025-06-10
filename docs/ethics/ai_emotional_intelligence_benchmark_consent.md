@@ -5,6 +5,7 @@
 **Project Lead:** Max Parks
 **Affiliation:** University of Michigan–Flint  
 **Funding Provided By:** Inflection AI
+**Research independence:** Funding sources do not influence methods or reporting; our interdisciplinary team strives for an unbiased, gold-standard EQ benchmark.
 **Collaborator:** Mark Allison, Department of Computer Science, University of Michigan–Flint
 **Version:** v0.1 | Drafted June 4, 2025
 

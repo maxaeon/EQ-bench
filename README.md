@@ -44,7 +44,7 @@ We are developing a collaborative benchmark for evaluating emotional intelligenc
 Emotional intelligence in AI should not be judged by a single pass/fail label.  
 We tentatively model it as four independent, graded skills, along with an extended perspective:
 
-| Axis | Short description | Pilot metric (text-only) |
+| Axis | Short description | Possible Pilot metric |
 |------|-------------------|--------------------------|
 | [**Sense**](https://maxaeon.github.io/EQ-bench/sense.html) | Detect user emotion from language | Macro-F1 on 10 emotion labels |
 | [**Explain**](https://maxaeon.github.io/EQ-bench/explain.html) | Infer probable causes / appraisals | Cause-Inference Accuracy |

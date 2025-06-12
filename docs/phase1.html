@@ -76,6 +76,10 @@
                     <select id="lit-field-filter" multiple size="1">
                         <option value="">All</option>
                     </select>
+                    <label for="lit-type-filter">Type:</label>
+                    <select id="lit-type-filter" multiple size="1">
+                        <option value="">All</option>
+                    </select>
                 </div>
                 <div class="sort-controls">
                     <label for="lit-sort">Sort by:</label>
@@ -97,6 +101,7 @@
                         <th>Relevance</th>
                         <th>Construct</th>
                         <th>Axis</th>
+                        <th>Type</th>
                         <th>Methodology Supported</th>
                     </tr>
                 </thead>
@@ -247,7 +252,7 @@
         tbody.innerHTML = '';
         if (!items.length) {
             const row = document.createElement('tr');
-            row.innerHTML = `<td colspan="8">No literature found. Try adjusting your filters.</td>`;
+            row.innerHTML = `<td colspan="9">No literature found. Try adjusting your filters.</td>`;
             tbody.appendChild(row);
             return;
         }
@@ -265,6 +270,7 @@
                 <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
                 <td>${Array.isArray(l.axis) ? l.axis.join(', ') : l.axis}</td>
+                <td>${l.type || ''}</td>
                 <td>${l.methodology_supported || ''}</td>`;
             const extra = document.createElement('tr');
             const id = `ldetail-${l.__index}`;
@@ -274,7 +280,7 @@
             extra.style.display = 'none';
             const keywords = Array.isArray(l.keywords) ? l.keywords.join(', ') : (l.keywords || '');
             extra.innerHTML = `
-                <td colspan="8">${l.publisher ? `<strong>Publisher:</strong> ${l.publisher}<br>` : ''}
+                <td colspan="9">${l.publisher ? `<strong>Publisher:</strong> ${l.publisher}<br>` : ''}
                 ${l.journal ? `<strong>Journal:</strong> ${l.journal}<br>` : ''}
                 ${l.volume ? `<strong>Volume:</strong> ${l.volume} ` : ''}${l.number ? ` <strong>Number:</strong> ${l.number}` : ''}${(l.volume||l.number)?'<br>':''}
                 ${l.pages ? `<strong>Pages:</strong> ${l.pages}<br>` : ''}
@@ -328,10 +334,12 @@
         const axisVals = Array.from(document.getElementById('lit-axis-filter').selectedOptions).map(o=>o.value).filter(Boolean);
         const constructVals = Array.from(document.getElementById('lit-construct-filter').selectedOptions).map(o=>o.value).filter(Boolean);
         const fieldVals = Array.from(document.getElementById('lit-field-filter').selectedOptions).map(o=>o.value).filter(Boolean);
+        const typeVals = Array.from(document.getElementById('lit-type-filter').selectedOptions).map(o=>o.value).filter(Boolean);
         let items = literature.filter(l => {
             if (axisVals.length && !axisVals.some(a => (l.axis || '').toLowerCase().includes(a))) return false;
             const catList = Array.isArray(l.category) ? l.category : (l.category || '').split(',').map(c=>c.trim().toLowerCase()).filter(Boolean);
             if (fieldVals.length && !fieldVals.some(f => catList.includes(f))) return false;
+            if (typeVals.length && (!l.type || !typeVals.includes(l.type.toLowerCase()))) return false;
             if (constructVals.length) {
                 const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
                 if (!constructVals.some(v => list.some(c => c.trim().toLowerCase() === v))) return false;
@@ -383,6 +391,7 @@
 
         const axisSet = new Set();
         const fieldSet = new Set();
+        const typeSet = new Set();
         const constructSet = new Set();
         literature.forEach(l => {
             if (l.axis) l.axis.split(',').forEach(a => axisSet.add(a.trim()));
@@ -390,6 +399,7 @@
                 const cats = Array.isArray(l.category) ? l.category : l.category.split(',');
                 cats.forEach(c => fieldSet.add(c.trim().toLowerCase()));
             }
+            if (l.type) typeSet.add(l.type.toLowerCase());
             const list = Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/);
             list.forEach(c => constructSet.add(c.trim()));
         });
@@ -404,15 +414,19 @@
             .sort((a,b)=>a.localeCompare(b))
             .forEach(a => axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)));
 
-        const fieldF = document.getElementById('lit-field-filter');
-        const fieldOrder = ['psychology','philosophy of mind','computer science','ethics','other'];
-        fieldOrder.forEach(f => {
-            fieldF.appendChild(new Option(toTitle(f), f));
-        });
-        Array.from(fieldSet)
-            .filter(f => !fieldOrder.includes(f))
+       const fieldF = document.getElementById('lit-field-filter');
+       const fieldOrder = ['psychology','philosophy of mind','computer science','ethics','other'];
+       fieldOrder.forEach(f => {
+           fieldF.appendChild(new Option(toTitle(f), f));
+       });
+       Array.from(fieldSet)
+           .filter(f => !fieldOrder.includes(f))
+           .sort((a,b)=>a.localeCompare(b))
+           .forEach(f => fieldF.appendChild(new Option(toTitle(f), f)));
+        const typeF = document.getElementById('lit-type-filter');
+        Array.from(typeSet)
             .sort((a,b)=>a.localeCompare(b))
-            .forEach(f => fieldF.appendChild(new Option(toTitle(f), f)));
+            .forEach(t => typeF.appendChild(new Option(toTitle(t), t)));
         const constructF = document.getElementById('lit-construct-filter');
         Array.from(constructSet)
             .sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()))
@@ -420,6 +434,7 @@
 
         enableMultiSelectDropdown(axisF);
         enableMultiSelectDropdown(fieldF);
+        enableMultiSelectDropdown(typeF);
         enableMultiSelectDropdown(constructF);
 
         document.getElementById('lit-sort').value = 'author';
@@ -428,6 +443,7 @@
         document.getElementById('lit-sort').addEventListener('change', applyLitFilters);
         axisF.addEventListener('change', applyLitFilters);
         fieldF.addEventListener('change', applyLitFilters);
+        typeF.addEventListener('change', applyLitFilters);
         constructF.addEventListener('change', applyLitFilters);
         document.getElementById('lit-search').addEventListener('input', applyLitFilters);
 
@@ -505,7 +521,7 @@ async function startBibtex() {
             const t = (en.title || '').toLowerCase();
             const d = (en.doi || en.url || '').replace(/https?:\/(dx\.)?doi.org\//i, '').toLowerCase();
             if (titles.has(t) || (d && dois.has(d))) continue;
-            const obj = Object.assign({construct: '', axis: '', methodology_supported: '', relevance: ''}, en);
+            const obj = Object.assign({construct: '', axis: '', methodology_supported: '', relevance: '', type: ''}, en);
             obj.entry_type = en.entry_type || defaultType || (en.journal ? 'article' : 'book');
             if (!obj.construct) {
                 const v = await showPrompt(`Construct for "${obj.title}"?`);
@@ -556,7 +572,7 @@ async function startAddLit() {
     const tbody = document.querySelector('#lit-table tbody');
     const addRow = document.createElement('tr');
     addRow.id = 'lit-add-row';
-    addRow.innerHTML = `<td colspan="8"><form id="lit-add-form">
+    addRow.innerHTML = `<td colspan="9"><form id="lit-add-form">
         <label>Title: <input type="text" name="title" required></label>
         <div id="authors-container">
             <label>Author 1: <input type="text" class="author-input"></label>
@@ -585,6 +601,7 @@ async function startAddLit() {
             <option value="ethics">Ethics</option>
             <option value="other">Other</option>
         </select></label>
+        <label>Type: <input type="text" name="type"></label>
         <label>Keywords: <input type="text" name="keywords" placeholder="comma separated"></label>
         <label>Construct: <input type="text" name="construct"></label>
         <label>Axis: <select name="axis" multiple size="1">
@@ -646,6 +663,7 @@ async function startAddLit() {
             pages: e.target.pages.value,
             url: e.target.url.value,
             category: catArr.join(', '),
+            type: e.target.type.value.trim(),
             keywords: e.target.keywords.value.split(',').map(s=>s.trim()).filter(Boolean),
             construct: e.target.construct.value,
             axis: axisArr.join(', '),
@@ -732,6 +750,7 @@ async function startEditLit() {
             <option value="ethics" ${item.category && item.category.toLowerCase().includes('ethics') ? 'selected' : ''}>Ethics</option>
             <option value="other" ${item.category && item.category.toLowerCase().includes('other') ? 'selected' : ''}>Other</option>
         </select></label>
+        <label>Type: <input type="text" name="type" value="${item.type || ''}"></label>
         <label>Keywords: <input type="text" name="keywords" value="${Array.isArray(item.keywords) ? item.keywords.join(', ') : (item.keywords || '')}" placeholder="comma separated"></label>
         <label>Axis: <select name="axis" multiple size="1">
             <option value="sense" ${axisVals.includes('sense') ? 'selected' : ''}>Sense</option>
@@ -788,6 +807,7 @@ async function startEditLit() {
         item.url = form.url.value;
         const catArrEdit = Array.from(form.elements.category.selectedOptions).map(o => o.value);
         item.category = catArrEdit.join(', ');
+        item.type = form.type.value.trim();
         item.keywords = form.keywords.value.split(',').map(s=>s.trim()).filter(Boolean);
         const axisArr = Array.from(form.elements.axis.selectedOptions).map(o => o.value);
         item.axis = axisArr.join(', ');
@@ -804,6 +824,7 @@ async function startEditLit() {
             pages: item.pages,
             url: item.url,
             category: item.category,
+            type: item.type,
             keywords: item.keywords,
             entry_type: item.entry_type,
             axis: axisArr.join(', '),

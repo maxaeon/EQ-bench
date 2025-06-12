@@ -268,7 +268,7 @@ function normalizeFields(obj) {
 const ALLOWED_LIT_FIELDS = new Set([
   'title', 'authors', 'year', 'publisher', 'journal', 'volume', 'number', 'pages',
   'url', 'doi', 'construct', 'axis', 'keywords', 'relevance',
-  'methodology_supported', 'category', 'entry_type'
+  'methodology_supported', 'category', 'entry_type', 'type'
 ]);
 
 function sanitizeLiteratureFields(obj) {
@@ -688,7 +688,8 @@ function parseBibtex(text) {
         .filter(Boolean),
       relevance: fields.note || fields.relevance || '',
       methodology_supported: fields.methodology_supported || '',
-      entry_type: entryType
+      entry_type: entryType,
+      type: fields.type || ''
     };
     for (const [k, v] of Object.entries(fields)) {
       if (k === 'authors') continue;
@@ -744,7 +745,8 @@ async function parseCsv(text) {
         .filter(Boolean),
       relevance: row.note || row.relevance || '',
       methodology_supported: row.methodology_supported || '',
-      entry_type: row.entry_type || row.type || ''
+      entry_type: row.entry_type || row.entrytype || '',
+      type: row.type || ''
     };
     for (const [k, v] of Object.entries(row)) {
       if (!(k in obj)) obj[k] = v;

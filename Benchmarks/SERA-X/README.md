@@ -41,7 +41,13 @@ Example assessments include:
 - Compare emotion classification before and after domain shifts.
 
 ## Extended
-Looks at emotional intelligence across whole human–AI interactions rather than single prompts.
+Evaluates emotional intelligence across entire human–AI interactions and their wider impacts.
+
+**Key dimensions include:**
+- **Interactional Flexibility** – adapting responses as conversations unfold.
+- **Contextual Awareness** – accounting for social and cultural factors.
+- **Ethical and Environmental Responsibility** – promoting fairness, transparency, and sustainability.
+- **Systemic Impact** – considering long-term effects on trust and norms.
 
 Example assessments include:
 

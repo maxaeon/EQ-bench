@@ -62,7 +62,8 @@ Example prompt: *"Your advice was clutch; thanks for having my back."*
 | **3** | "Thanks! I'm glad it worked out for you." |
 | **4** | "I'm happy my suggestion was clutch and helped you succeed. Let me know if you need anything else." |
 
-### Extended – Maintain EQ Across Interactions
+### Extended – Multi-Level Emotional Intelligence
+This axis encompasses interactional flexibility, contextual awareness, ethical and environmental responsibility, and systemic impact.
 
 Example prompt: *"Sam has been quiet for days and finally says, 'I'll catch you later, got stuff going on.' Summarize what might be happening."*
 
@@ -82,6 +83,6 @@ Phase 3 benchmarks use this rubric to score model performance on each axis:
 - **Explain** tasks examine how well the model articulates underlying causes or appraisals.
 - **Respond** tasks measure the helpfulness and empathy of replies.
 - **Adapt** tasks consider flexibility across cultural or situational changes.
-- **Extended** tasks assess consistency over long interactions and collaborative goals.
+- **Extended** tasks measure how well systems maintain EQ while considering ethical, environmental, and systemic impacts over long interactions.
 
 Annotators assign a 0–4 score per axis following the scale above so results remain comparable across benchmarks.

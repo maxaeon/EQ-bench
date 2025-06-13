@@ -50,7 +50,7 @@ We tentatively model it as four independent, graded skills, along with an extend
 | [**Explain**](https://maxaeon.github.io/EQ-bench/explain.html) | Infer probable causes / appraisals | Cause-Inference Accuracy |
 | [**Respond**](https://maxaeon.github.io/EQ-bench/respond.html) | Generate helpful, empathic replies | Human Empathy Score (HES 1-5) |
 | [**Adapt**](https://maxaeon.github.io/EQ-bench/adapt.html) | Retain performance on new cultures & slang | Δ-F1 across “Experience Packs” |
-| [**Extended**](https://maxaeon.github.io/EQ-bench/extended.html) | Evaluates AI's performance across diverse human-AI interaction levels. | Composite score from multi-modal interaction assessments. |
+| [**Extended**](https://maxaeon.github.io/EQ-bench/extended.html) | Evaluates AI across multiple human-AI interaction levels, explicitly considering ethical and environmental impacts. | Composite score from multi-modal interaction assessments. |
 
 ### Theoretical Foundations
 Underlying this interdisciplinary methodology are several Theoretical Foundations, essential to guiding and informing our approach to emotional intelligence assessment. These foundations provide crucial context and ensure conceptual coherence by defining the ethical considerations, methodological principles, and disciplinary frameworks that inform how emotional intelligence constructs are identified, understood, measured, and interpreted within the SERA-X project. Understanding these theoretical foundations is vital to appreciating the comprehensive, responsible, and rigorous nature of our emotional intelligence benchmarks.

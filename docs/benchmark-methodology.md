@@ -15,7 +15,7 @@ Phase&nbsp;3 introduces scenario-based tests for each SERA-X axis:
 2. **Explain** – scenarios ask the model to justify perceived emotions or appraisals.
 3. **Respond** – dialogues evaluate whether a model can craft empathic, contextually appropriate replies.
 4. **Adapt** – tests measure cultural or situational flexibility across turns.
-5. **Extended** – long‑horizon tasks assess consistent EQ in collaborative settings.
+5. **Extended** – multi-level evaluations that track interactional flexibility, contextual awareness, ethical and environmental responsibility, and systemic impact.
 
 Each benchmark includes example prompts, expected responses, and a difficulty rating. Human annotators score model outputs on a 0–4 scale using the rubric. The rubric’s categories—Missing, Limited, Adequate, Strong, and Exceptional—correspond directly to how well a model demonstrates each axis skill.
 

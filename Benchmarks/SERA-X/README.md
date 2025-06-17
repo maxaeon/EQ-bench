@@ -40,14 +40,13 @@ Example assessments include:
 - Maintain performance after fine-tuning on a new domain.
 - Compare emotion classification before and after domain shifts.
 
-## Extended
-Evaluates emotional intelligence across entire human–AI interactions and their wider impacts.
+## Extended Axis
+This axis evaluates emotional intelligence at multiple levels of human-AI interaction, including:
 
-**Key dimensions include:**
-- **Interactional Flexibility** – adapting responses as conversations unfold.
-- **Contextual Awareness** – accounting for social and cultural factors.
-- **Ethical and Environmental Responsibility** – promoting fairness, transparency, and sustainability.
-- **Systemic Impact** – considering long-term effects on trust and norms.
+- **Interactional Flexibility:** Immediate adaptive emotional responses.
+- **Contextual Awareness:** Broader social and cultural adaptability.
+- **Ethical and Environmental Responsibility:** Ensuring fairness, transparency, inclusivity, user autonomy, and sustainability.
+- **Systemic Impact:** Evaluating broader societal and ecological implications.
 
 Example assessments include:
 

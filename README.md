@@ -38,6 +38,13 @@ We are developing a collaborative benchmark for evaluating emotional intelligenc
 | **Lead org** | Community-led project (future stewardship by ML Commons) |
 | **Contact** | Max Parks – project lead and coordination point <maxaeonparks@gmail.com> |
 
+## Core Project Objectives
+
+- Develop a comprehensive, adaptable experimental protocol …
+- Conduct a thorough literature review …
+- Create precise evaluation prompts and metrics …
+- Facilitate widespread adoption …
+
 ---
 
 ## 2  Why this Framework?

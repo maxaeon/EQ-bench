@@ -15,7 +15,7 @@ This website serves as the foundational resource and single source of truth for 
 
 This benchmark is organized as a **community-led initiative**. Once the framework is stable, long-term stewardship will transition to **ML Commons** to ensure broad, vendor-neutral oversight.
 
-Although funding and resources may come from a range of academic and industry partners, the research team retains full independence in methodology and analysis. Our goal is to produce an unbiased, gold‑standard EQ benchmark through open, interdisciplinary collaboration.
+Supported by Inflection AI, the research team retains full independence in methodology and analysis. Our goal is to produce an unbiased, gold‑standard EQ benchmark through open, interdisciplinary collaboration.
 
 Status: *early scaffold* (v0.0.1) - layout may change
 

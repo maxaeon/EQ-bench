@@ -1,9 +1,6 @@
 # AI EQ Research Hub
 
-**Note:** This repository is the initial public release (tagged `ai-eq-bench-public`) and may later migrate under the ML Commons umbrella.
-
-## Project Disclosure
-This work is supported by external funding from Inflection AI to ensure its release under an open-source license (MIT). There is no commercial ownership of the outputs. All contributions are published for public use and reuse.
+**Note:** This work is supported by external funding from Inflection AI to ensure its release under an open-source license (MIT). There is no commercial ownership of the outputs. All contributions are published for public use and reuse. This repository is the initial public release (tagged `ai-eq-bench-public`) and may later migrate under the ML Commons umbrella.
 
 Welcome to the **AI EQ Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems. You can find our deployed page [here](https://maxaeon.github.io/EQ-bench/). 
 

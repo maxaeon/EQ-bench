@@ -2,6 +2,8 @@
 
 **Note:** This repository is the initial public release (tagged `ai-eq-bench-public`) and may later migrate under the ML Commons umbrella.
 
+## Project Disclosure
+This work is supported by external funding from Inflection AI to ensure its release under an open-source license (MIT). There is no commercial ownership of the outputs. All contributions are published for public use and reuse.
 
 Welcome to the **AI EQ Research Hub**. We are committed to collaboratively developing, refining, and promoting standardized benchmarks for assessing emotional intelligence in artificial intelligence systems. You can find our deployed page [here](https://maxaeon.github.io/EQ-bench/). 
 
@@ -69,7 +71,6 @@ This repository is organized as an AI EQ Research Hub. Major sections include:
 
 - [**Benchmarks/**](Benchmarks/) – details of the SERA-X benchmark and comparisons to alternative models (see [docs/alternative-models.html](docs/alternative-models.html)).
 - [**Resources-and-Tools/**](Resources-and-Tools/) – datasets, scripts, and utilities for running EQ evaluations.
-- [**Community-and-Collaboration/**](Community-and-Collaboration/) – information on participating via GitHub Discussions or chat channels.
 - [**Contributor-Hub/**](Contributor-Hub/) – guidelines and Markdown templates for submitting new constructs, datasets, and publications.
 - [**datasets/**](datasets/) – sample conversation data for building baseline metrics.
 - [**data/**](data/) – JSON snapshots mirrored from the project database.

@@ -1,3 +1,7 @@
+## License
+MIT License  
+© 2025 Max Parks
+
 MIT License
 
 Copyright (c) 2025 Max Parks

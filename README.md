@@ -21,6 +21,14 @@ Status: *early scaffold* (v0.0.1) - layout may change
 New to these terms? See the [Glossary](docs/glossary.md) for quick definitions.
 Missing a term? [Open a Glossary term request](https://github.com/maxaeon/EQ-bench/issues/new?template=glossary-term-request.yml) to propose an addition.
 
+## Research Questions
+The primary question driving this project is **what is the best way to evaluate emotional intelligence in AI systems?**
+To support that goal we also explore several secondary questions:
+
+- What frameworks have been used so far?
+- Where do they fall short?
+- What patterns emerge in existing constructs, and where are the gaps?
+
 ## 1  Project Snapshot
 We are developing a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Authorized visitors can sign in using the **Login** button at the top right of the project website and submit new sources or constructs directly through the provided forms. Use the same button to log out when finished. These entries are stored in our Supabase tables (`literature` and `constructs`) and mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
 

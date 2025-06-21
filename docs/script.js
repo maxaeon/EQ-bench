@@ -15,7 +15,7 @@ async function ensureSupabase() {
       return supabase;
     })
     .catch(err => {
-      console.error('Failed to load Supabase client', err);
+      console.error('Failed to load database client', err);
       supabasePromise = null;
       return null;
     });
@@ -355,7 +355,7 @@ async function fetchConstructs() {
 async function addConstruct(construct) {
   const client = await ensureSupabase();
   if (!client) {
-    const error = new Error('Supabase unavailable');
+    const error = new Error('Database unavailable');
     return { data: null, error };
   }
   const { data, error } = await client.from('constructs').insert([construct]);
@@ -368,7 +368,7 @@ async function addConstruct(construct) {
 async function updateConstruct(id, updates) {
   const client = await ensureSupabase();
   if (!client) {
-    const error = new Error('Supabase unavailable');
+    const error = new Error('Database unavailable');
     return { data: null, error };
   }
   const updateData = { ...updates };
@@ -406,7 +406,7 @@ async function fetchLiterature() {
 async function addLiterature(entry) {
   const client = await ensureSupabase();
   if (!client) {
-    const error = new Error('Supabase unavailable');
+    const error = new Error('Database unavailable');
     return { data: null, error };
   }
   const insertData = sanitizeLiteratureFields({ ...entry });
@@ -422,7 +422,7 @@ async function addLiterature(entry) {
 async function updateLiterature(id, updates) {
   const client = await ensureSupabase();
   if (!client) {
-    const error = new Error('Supabase unavailable');
+    const error = new Error('Database unavailable');
     return { data: null, error };
   }
   const updateData = sanitizeLiteratureFields({ ...updates });
@@ -460,7 +460,7 @@ async function fetchBenchmarks() {
 async function addBenchmark(entry) {
   const client = await ensureSupabase();
   if (!client) {
-    const error = new Error('Supabase unavailable');
+    const error = new Error('Database unavailable');
     return { data: null, error };
   }
   const { data, error } = await client.from('benchmarks').insert([entry]);

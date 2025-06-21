@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Database Setup
+title: Supabase Setup
 ---
 
-# Database Setup
+# Supabase Setup
 
-This guide outlines the basic steps for seeding the external database from the versioned JSON snapshots.
+This guide describes how to prepare your environment to seed the Supabase tables from the versioned JSON snapshots.
 
 ## Node requirements
 
@@ -21,9 +21,11 @@ npm install node-fetch
 
 ## Uploading snapshot data
 
-Set the required database credentials in the shell and run the helper script:
+Set your Supabase credentials in the shell and run the helper script:
 
 ```bash
+export SUPABASE_URL="https://<project>.supabase.co"
+export SUPABASE_SERVICE_KEY="<service role key>"
 node scripts/upload_to_supabase.js
 ```
 
@@ -32,5 +34,3 @@ The script reads `data/construct_submissions.json` and `data/literature.json` an
 ```bash
 node scripts/upload_to_supabase.js path/to/file.json table_name
 ```
-
-For details on the specific Supabase configuration used by the project, see the internal guide located outside this documentation directory.

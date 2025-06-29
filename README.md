@@ -108,6 +108,8 @@ cd EQ-bench
 **Prerequisites:**
 - GitHub account
 - Modern web browser
+- Older browsers without JavaScript dynamic `import()` will automatically fall back
+  to loading bundled scripts. Ensure JavaScript is enabled for this fallback.
 
 See the [Research Hub Contribution Guide](docs/quick_github_guide.md) for step-by-step screenshots.
 

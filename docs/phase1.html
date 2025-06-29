@@ -133,6 +133,12 @@
     </footer>
     <script>
 
+    if (typeof supportsDynamicImport !== 'function') {
+        function supportsDynamicImport() {
+            try { new Function('return import("")'); return true; } catch (e) { return false; }
+        }
+    }
+
     let literature = [];
     let filteredLiterature = [];
 
@@ -357,8 +363,19 @@
     async function loadLiterature() {
         if (!window.bibtexParse) {
             try {
-                const mod = await import('https://cdn.jsdelivr.net/npm/bibtex-parse-js/+esm');
-                window.bibtexParse = mod.default || mod;
+                if (supportsDynamicImport()) {
+                    const mod = await import('https://cdn.jsdelivr.net/npm/bibtex-parse-js/+esm');
+                    window.bibtexParse = mod.default || mod;
+                } else {
+                    await new Promise(res => {
+                        const s = document.createElement('script');
+                        s.src = 'https://cdn.jsdelivr.net/npm/bibtex-parse-js/dist/bibtexParse.js';
+                        s.async = true;
+                        s.onload = res;
+                        s.onerror = e => { console.error('Failed to load BibTeX parser', e); res(); };
+                        document.head.appendChild(s);
+                    });
+                }
             } catch (e) {
                 console.error('Failed to load BibTeX parser', e);
             }

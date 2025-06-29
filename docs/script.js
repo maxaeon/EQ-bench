@@ -4,21 +4,53 @@ let supabasePromise = null;
 // expose placeholder for legacy checks
 window.supabase = null;
 
+function supportsDynamicImport() {
+  try {
+    new Function('return import("")');
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
 async function ensureSupabase() {
   if (supabase) return supabase;
   if (supabasePromise) return supabasePromise;
   if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return null;
-  supabasePromise = import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
-    .then(({ createClient }) => {
-      supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-      window.supabase = supabase;
-      return supabase;
-    })
-    .catch(err => {
-      console.error('Failed to load database client', err);
-      supabasePromise = null;
-      return null;
+  if (supportsDynamicImport()) {
+    supabasePromise = import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
+      .then(({ createClient }) => {
+        supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+        window.supabase = supabase;
+        return supabase;
+      })
+      .catch(err => {
+        console.error('Failed to load database client', err);
+        supabasePromise = null;
+        return null;
+      });
+  } else {
+    supabasePromise = new Promise(resolve => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js';
+      s.async = true;
+      s.onload = () => {
+        try {
+          supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+          window.supabase = supabase;
+          resolve(supabase);
+        } catch (err) {
+          console.error('Failed to init database client', err);
+          resolve(null);
+        }
+      };
+      s.onerror = err => {
+        console.error('Failed to load database client', err);
+        resolve(null);
+      };
+      document.head.appendChild(s);
     });
+  }
   return supabasePromise;
 }
 
@@ -703,12 +735,24 @@ function parseBibtex(text) {
 async function parseCsv(text) {
   if (!text) return [];
   if (!window.Papa) {
-    try {
-      const mod = await import('https://cdn.jsdelivr.net/npm/papaparse/+esm');
-      window.Papa = mod.default || mod;
-    } catch (err) {
-      console.error('Failed to load PapaParse', err);
-      return [];
+    if (supportsDynamicImport()) {
+      try {
+        const mod = await import('https://cdn.jsdelivr.net/npm/papaparse/+esm');
+        window.Papa = mod.default || mod;
+      } catch (err) {
+        console.error('Failed to load PapaParse', err);
+        return [];
+      }
+    } else {
+      await new Promise(resolve => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/papaparse@latest/papaparse.min.js';
+        s.async = true;
+        s.onload = resolve;
+        s.onerror = e => { console.error('Failed to load PapaParse', e); resolve(); };
+        document.head.appendChild(s);
+      });
+      if (!window.Papa) return [];
     }
   }
   const result = window.Papa.parse(text.trim(), { header: true });

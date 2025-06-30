@@ -58,7 +58,7 @@ Add any of the following if helpful:
 
 - Known biases, controversies, or cultural differences in interpretation.  
 - Related constructs (include their names if already submitted).  
-- Visual aids or diagrams (reference filenames in `docs/img/`).
+- Visual aids or diagrams (reference filenames in `docs/assets/images/`).
 
 ---
 

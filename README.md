@@ -95,11 +95,10 @@ This repository is organized as an AI EQ Research Hub. Major sections include:
 - Git
 - virtualenv or venv
 
-bash
-
+```bash
 git clone https://github.com/maxaeon/EQ-bench.git
-
 cd EQ-bench
+```
 
 ---
 

@@ -6,7 +6,7 @@
       "James-Lange Theory"
     ],
     "axes": "sense, explain",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Classical physiological theory holds that emotions arise from bodily perceptions. Field: philosophy",
     "definition": "Emotions are perceptions of bodily states or physiological responses triggered by stimuli.",
@@ -26,7 +26,7 @@
       "Emotional Phenomenology"
     ],
     "axes": "respond, extended",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Goldie's philosophical work explores the subjective experience of emotion. Field: philosophy",
     "definition": "The subjective, experiential, qualitative aspect of emotional experience.",
@@ -47,7 +47,7 @@
       "Somatic Marker Theory"
     ],
     "axes": "explain, respond, adapt",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Damasio's neuroscience research links emotion and cognition through bodily states. Field: neuroscience",
     "definition": "Emotional processes guide or bias behavior and decision-making through bodily states and sensations.",
@@ -68,7 +68,7 @@
       "Emotional Control"
     ],
     "axes": "respond, adapt",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Gross's psychological research examines how people adjust emotional responses. Field: psychology",
     "definition": "The processes by which individuals or systems influence which emotions they experience, when, and how they express them.",
@@ -89,7 +89,7 @@
       "Mentalizing"
     ],
     "axes": "sense, explain",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Baron-Cohen and colleagues explore attribution of mental states and emotions. Field: psychology",
     "definition": "Ability to attribute mental states (beliefs, desires, intentions) to others.",
@@ -110,7 +110,7 @@
       "Universal Emotions"
     ],
     "axes": "sense, respond",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Ekman's work identifies universal emotional expressions studied in psychology. Field: psychology",
     "definition": "Proposes universal discrete emotions with characteristic expressions.",
@@ -131,7 +131,7 @@
       "Cross-modal Emotion Detection"
     ],
     "axes": "sense, explain",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Poria and colleagues describe algorithms that combine audio, visual, and text cues. Field: computer science",
     "definition": "Algorithms integrating multiple modalities (audio, visual, textual) for emotion detection.",
@@ -152,7 +152,7 @@
       "Emotion Circuitry"
     ],
     "axes": "sense, explain",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "LeDoux describes amygdala and limbic roles in emotion processing from neuroscience. Field: neuroscience",
     "definition": "Brain structures and pathways involved in emotional processing such as the amygdala and prefrontal cortex.",
@@ -173,7 +173,7 @@
       "Basic Emotional Circuits"
     ],
     "axes": "sense, explain",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Panksepp identifies fundamental emotional circuits such as SEEKING and FEAR. Field: neuroscience",
     "definition": "Basic neural systems such as SEEKING and FEAR underlying emotions.",
@@ -194,7 +194,7 @@
       "FER"
     ],
     "axes": "sense, explain",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Adolphs analyzes neural mechanisms for detecting facial expressions. Field: neuroscience",
     "definition": "Neural mechanisms for perceiving facial expressions of emotion.",
@@ -215,7 +215,7 @@
       "Circumplex Model"
     ],
     "axes": "sense, respond, explain",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Russell's psychological construction approach views emotions as constructed from affective dimensions. Field: psychology",
     "definition": "Emotions constructed from valence and arousal dimensions of core affect.",
@@ -236,7 +236,7 @@
       "Extended Mind"
     ],
     "axes": "respond, adapt, extended",
-    "user": "placeholder",
+    "user": "anonymous",
     "created_at": "2025-01-01T00:00:00Z",
     "body": "Clark and Chalmers argue that cognitive processes extend into the environment. This construct explores how components of mental states can be distributed in varying degrees across external resources. Field: philosophy",
     "definition": "Mental states may be partly realized outside the brain, with degrees of distribution across tools and social partners.",

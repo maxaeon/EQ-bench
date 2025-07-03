@@ -32,6 +32,8 @@ To support that goal we also explore several secondary questions:
 ## 1  Project Snapshot
 We are developing a collaborative benchmark for evaluating emotional intelligence in AI systems. This repository collects design documents and sample datasets as they become available. Authorized visitors can sign in using the **Login** button at the top right of the project website and submit new sources or constructs directly through the provided forms. Use the same button to log out when finished. These entries are stored in our project database tables (`literature` and `constructs`) and mirrored JSON files under `data/`. For guidance, see [docs/persisting_constructs.md](docs/persisting_constructs.md) and the [Research Hub Contribution Guide](docs/quick_github_guide.md).
 
+When adding a new entry, choose from **Psychology**, **Neuroscience**, **Computer Science**, or **Philosophy and Ethics** to keep categories consistent.
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d25e1df5-df25-405d-a3b8-4424fc9f3408" width="600" alt="Image" />
 </p>

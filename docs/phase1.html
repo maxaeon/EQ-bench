@@ -421,7 +421,7 @@
             .forEach(a => axisF.appendChild(new Option(a.charAt(0).toUpperCase()+a.slice(1), a)));
 
         const fieldF = document.getElementById('lit-field-filter');
-        const fieldOrder = ['psychology','philosophy of mind','computer science','ethics','other'];
+        const fieldOrder = ['psychology','neuroscience','computer science','philosophy and ethics','other'];
         fieldOrder.forEach(f => {
             fieldF.appendChild(new Option(toTitle(f), f));
         });
@@ -596,9 +596,9 @@ async function startAddLit() {
         <label>URL: <input type="text" name="url"></label>
         <label>Category: <select name="category" multiple size="1">
             <option value="psychology">Psychology</option>
-            <option value="philosophy of mind">Philosophy of Mind</option>
+            <option value="neuroscience">Neuroscience</option>
             <option value="computer science">Computer Science</option>
-            <option value="ethics">Ethics</option>
+            <option value="philosophy and ethics">Philosophy and Ethics</option>
             <option value="other">Other</option>
         </select></label>
         <label>Keywords: <input type="text" name="keywords" placeholder="comma separated"></label>
@@ -743,9 +743,9 @@ async function startEditLit() {
         <label>URL: <input type="url" name="url" value="${item.url || ''}" placeholder="https://..."></label>
         <label>Category: <select name="category" multiple size="1">
             <option value="psychology" ${item.category && item.category.toLowerCase().includes('psychology') ? 'selected' : ''}>Psychology</option>
-            <option value="philosophy of mind" ${item.category && item.category.toLowerCase().includes('philosophy of mind') ? 'selected' : ''}>Philosophy of Mind</option>
+            <option value="neuroscience" ${item.category && item.category.toLowerCase().includes('neuroscience') ? 'selected' : ''}>Neuroscience</option>
             <option value="computer science" ${item.category && item.category.toLowerCase().includes('computer science') ? 'selected' : ''}>Computer Science</option>
-            <option value="ethics" ${item.category && item.category.toLowerCase().includes('ethics') ? 'selected' : ''}>Ethics</option>
+            <option value="philosophy and ethics" ${item.category && item.category.toLowerCase().includes('philosophy and ethics') ? 'selected' : ''}>Philosophy and Ethics</option>
             <option value="other" ${item.category && item.category.toLowerCase().includes('other') ? 'selected' : ''}>Other</option>
         </select></label>
         <label>Keywords: <input type="text" name="keywords" value="${Array.isArray(item.keywords) ? item.keywords.join(', ') : (item.keywords || '')}" placeholder="comma separated"></label>

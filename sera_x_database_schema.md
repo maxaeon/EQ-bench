@@ -13,7 +13,7 @@ A construct represents a specific concept from the emotional intelligence litera
 | `definition` | text | Brief explanation of the construct. |
 | `axis_ids` | array | List of `axis_id` values that this construct informs. |
 | `references` | text | Citations or links supporting the construct. |
-| `category` | string | Broad discipline or topic area. |
+| `category` | string | Broad discipline or topic area. Use one of `Psychology`, `Neuroscience`, `Computer Science`, or `Philosophy and Ethics` (use `Other` only if none apply). |
 
 Example:
 

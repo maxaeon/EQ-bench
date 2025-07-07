@@ -3,9 +3,9 @@ layout: default
 title: Supabase Setup
 ---
 
-# Supabase Setup
+# Supabase Setup (Legacy)
 
-This guide describes how to prepare your environment to seed the Supabase tables from the versioned JSON snapshots.
+**Note:** The project database now lives entirely in GitHub under the `data/` directory. Supabase is no longer required. The instructions below are kept for reference in case contributors need to migrate older snapshots.
 
 ## Node requirements
 

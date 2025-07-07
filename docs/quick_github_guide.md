@@ -14,7 +14,7 @@ If you are unfamiliar with terms like "construct" or "axis," check the [Glossary
 1. Visit <https://maxaeon.github.io/EQ-bench/>.
 2. Click the **Login** button at the top right (or **Logout** when finished) and use the **Add Source** or **Add Construct** buttons to open the submission form.
 3. Fill in the requested details—be sure to provide at least one of the supported axes, a related construct, or the methodology it informs—and choose an **entry type** (article, book, etc.) before clicking **Save**. Use the **Add another author** button to list each author separately (up to ten).
-4. On the **Phase&nbsp;1** page you can upload your own `.bib` file or paste BibTeX text after logging in. The imported entries are saved directly to the repository's JSON files.
+4. On the **Phase&nbsp;2** page you can upload your own `.bib` file or paste BibTeX text after logging in. The imported entries are saved directly to the repository's JSON files.
 
 ## 2. Convert references to BibTeX
 
@@ -22,7 +22,7 @@ When filling out a literature issue or sharing your own bibliography, convert ea
 
 ## 3. Importing and exporting `.bib` files
 
-While logged in, you can upload a local `.bib` file or paste a BibTeX snippet on the **Phase&nbsp;1** page to quickly populate the submission form. If a record contains a `doi` field it is automatically converted to a `url` pointing at `https://doi.org/`. After importing, the site prompts you for any missing construct, axis, or methodology fields. Exported BibTeX files omit these extra fields so they remain compatible with standard reference managers. Maintainers can also run `python scripts/export_bibtex.py references.bib` to export the curated data directly from the JSON files.
+While logged in, you can upload a local `.bib` file or paste a BibTeX snippet on the **Phase&nbsp;2** page to quickly populate the submission form. If a record contains a `doi` field it is automatically converted to a `url` pointing at `https://doi.org/`. After importing, the site prompts you for any missing construct, axis, or methodology fields. Exported BibTeX files omit these extra fields so they remain compatible with standard reference managers. Maintainers can also run `python scripts/export_bibtex.py references.bib` to export the curated data directly from the JSON files.
 
 ## 4. Edit the literature review in Overleaf
 

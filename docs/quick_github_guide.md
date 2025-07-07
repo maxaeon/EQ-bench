@@ -14,7 +14,7 @@ If you are unfamiliar with terms like "construct" or "axis," check the [Glossary
 1. Visit <https://maxaeon.github.io/EQ-bench/>.
 2. Click the **Login** button at the top right (or **Logout** when finished) and use the **Add Source** or **Add Construct** buttons to open the submission form.
 3. Fill in the requested details—be sure to provide at least one of the supported axes, a related construct, or the methodology it informs—and choose an **entry type** (article, book, etc.) before clicking **Save**. Use the **Add another author** button to list each author separately (up to ten).
-4. On the **Phase&nbsp;1** page you can upload your own `.bib` file or paste BibTeX text after logging in. The imported entries are stored in the project database automatically.
+4. On the **Phase&nbsp;1** page you can upload your own `.bib` file or paste BibTeX text after logging in. The imported entries are saved directly to the repository's JSON files.
 
 ## 2. Convert references to BibTeX
 

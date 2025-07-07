@@ -478,10 +478,8 @@
     }
 
 document.addEventListener('DOMContentLoaded', loadLiterature);
-let authed = false;
 
 async function startBibtex() {
-    if (!authed) { if (!(await authenticate())) return; authed = true; }
     const formHtml = `<form id="bibtex-form">
         <label>Upload .bib or .csv <input id="bibtex-file" type="file" accept=".bib,.csv"></label>
         <label>Or paste BibTeX/CSV:<br><textarea id="bibtex-text" rows="10" style="width:100%"></textarea></label>
@@ -537,7 +535,7 @@ async function startBibtex() {
             }
             obj.__index = ++maxIndex;
             let success = true;
-            if (authed && typeof addLiterature === 'function') {
+            if (typeof addLiterature === 'function') {
                 try {
                     const { data, error } = await addLiterature(obj);
                     if (error) {
@@ -567,7 +565,6 @@ async function startBibtex() {
 }
 
 async function startAddLit() {
-    if (!authed) { if (!(await authenticate())) return; authed = true; }
     document.getElementById('lit-add-row')?.remove();
     const tbody = document.querySelector('#lit-table tbody');
     const addRow = document.createElement('tr');
@@ -638,7 +635,6 @@ async function startAddLit() {
         e.preventDefault();
         errorDiv.textContent = '';
         errorDiv.style.display = 'none';
-        if (!authed) { if (!(await authenticate())) return; authed = true; }
         const axisArr = Array.from(form.elements.axis.selectedOptions).map(o => o.value);
         const catArr = Array.from(form.elements.category.selectedOptions).map(o => o.value);
         const constructVal = e.target.construct.value.trim();
@@ -713,7 +709,6 @@ async function startAddLit() {
 }
 
 async function startEditLit() {
-    if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (selectedLitId === null) { showToast('Select an entry first.'); return; }
     const item = literature.find(l => (l.id ?? l.__index) == selectedLitId);
     if (!item) return;
@@ -781,7 +776,6 @@ async function startEditLit() {
     });
     form.addEventListener('submit', async e => {
         e.preventDefault();
-        if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!(await showConfirm('Save changes?'))) return;
         const before = JSON.parse(JSON.stringify(item));
         item.title = toTitleCase(form.title.value.trim());
@@ -839,7 +833,6 @@ async function deleteSelectedLit() {
     if (selectedLitId === null) { showToast('Select an entry first.'); return; }
     const idx = literature.findIndex(l => (l.id ?? l.__index) == selectedLitId);
     if (idx === -1) return;
-    if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (!(await showConfirm('Delete this entry?'))) return;
     const item = literature[idx];
     if (item.id && typeof deleteLiterature === 'function') await deleteLiterature(item.id);

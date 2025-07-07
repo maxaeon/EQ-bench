@@ -1,9 +1,4 @@
-// Authentication helper for CRUD actions
-let supabase = null;
-let supabasePromise = null;
-// expose placeholder for legacy checks
-window.supabase = null;
-
+// Utility helpers
 function supportsDynamicImport() {
   try {
     new Function('return import("")');
@@ -13,120 +8,9 @@ function supportsDynamicImport() {
   }
 }
 
-async function ensureSupabase() {
-  if (supabase) return supabase;
-  if (supabasePromise) return supabasePromise;
-  if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return null;
-  if (supportsDynamicImport()) {
-    supabasePromise = import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
-      .then(({ createClient }) => {
-        supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-        window.supabase = supabase;
-        return supabase;
-      })
-      .catch(err => {
-        console.error('Failed to load database client', err);
-        supabasePromise = null;
-        return null;
-      });
-  } else {
-    supabasePromise = new Promise(resolve => {
-      const s = document.createElement('script');
-      s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js';
-      s.async = true;
-      s.onload = () => {
-        try {
-          supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-          window.supabase = supabase;
-          resolve(supabase);
-        } catch (err) {
-          console.error('Failed to init database client', err);
-          resolve(null);
-        }
-      };
-      s.onerror = err => {
-        console.error('Failed to load database client', err);
-        resolve(null);
-      };
-      document.head.appendChild(s);
-    });
-  }
-  return supabasePromise;
-}
-
-// kick off loading in the background when possible
-ensureSupabase();
-
-let loginOverlay = null;
-let loginResolve = null;
-let loginTrigger = null;
-let loginKeyHandler = null;
 let editOverlay = null;
 let editTrigger = null;
 let editKeyHandler = null;
-
-function createLoginForm() {
-  if (loginOverlay) return;
-  loginOverlay = document.createElement('div');
-  loginOverlay.id = 'login-overlay';
-  loginOverlay.className = 'hidden';
-  loginOverlay.innerHTML = `
-    <form id="login-form" class="login-form">
-      <h3>Login</h3>
-      <label>Email<br><input type="email" id="login-email" required></label><br>
-      <label>Password<br><input type="password" id="login-pass" required></label><br>
-      <div class="login-buttons">
-        <button type="submit" class="button">Login</button>
-        <button type="button" id="login-cancel" class="button">Cancel</button>
-      </div>
-    </form>`;
-  document.body.appendChild(loginOverlay);
-  const form = loginOverlay.querySelector('#login-form');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const email = form.querySelector('#login-email').value.trim();
-    const password = form.querySelector('#login-pass').value;
-    hideLoginForm();
-    if (loginResolve) loginResolve({ email, password });
-  });
-  loginOverlay.querySelector('#login-cancel').addEventListener('click', () => {
-    hideLoginForm();
-    if (loginResolve) loginResolve(null);
-  });
-}
-
-function showLoginForm(trigger = document.activeElement) {
-  createLoginForm();
-  loginTrigger = trigger;
-  loginOverlay.setAttribute('role', 'dialog');
-  loginOverlay.setAttribute('aria-modal', 'true');
-  loginOverlay.classList.remove('hidden');
-  loginOverlay.querySelector('#login-email').focus();
-  loginKeyHandler = e => {
-    if (e.key === 'Escape') {
-      hideLoginForm();
-      if (loginResolve) loginResolve(null);
-    }
-  };
-  document.addEventListener('keydown', loginKeyHandler);
-  return new Promise(res => { loginResolve = res; });
-}
-
-function hideLoginForm() {
-  if (loginOverlay) {
-    loginOverlay.classList.add('hidden');
-    loginOverlay.remove();
-    loginOverlay = null;
-  }
-  if (loginKeyHandler) {
-    document.removeEventListener('keydown', loginKeyHandler);
-    loginKeyHandler = null;
-  }
-  if (loginTrigger && typeof loginTrigger.focus === 'function') {
-    loginTrigger.focus();
-  }
-  loginTrigger = null;
-}
 
 function createEditOverlay() {
   if (editOverlay) return;
@@ -242,6 +126,17 @@ function showPrompt(message, defaultValue = '', trigger = document.activeElement
   });
 }
 
+function openGithubIssue(template, title, body) {
+  const url =
+    'https://github.com/maxaeon/EQ-bench/issues/new?template=' +
+    encodeURIComponent(template) +
+    '&title=' + encodeURIComponent(title) +
+    '&body=' + encodeURIComponent(body);
+  const win = window.open(url, '_blank');
+  if (!win) showToast('Unable to open GitHub issue.');
+  return win;
+}
+
 function toTitleCase(str) {
   return str.replace(/\b(\w)(\w*)/g, (_, c, rest) => c.toUpperCase() + rest.toLowerCase());
 }
@@ -311,217 +206,88 @@ function sanitizeLiteratureFields(obj) {
   return clean;
 }
 
-// Prompt the user to log in if no session is active
-async function authenticate() {
-  const client = await ensureSupabase();
-  if (!client) return false;
-  const { data: { session } } = await client.auth.getSession();
-  if (session) return true;
-
-  while (true) {
-    const creds = await showLoginForm();
-    if (!creds) return false;
-    const { error } = await client.auth.signInWithPassword(creds);
-    hideLoginForm();
-    if (!error) return true;
-    const retry = confirm(
-      'Login failed: ' + (error.message || error) +
-      '\nIf you forgot your login information or encounter issues, please email Max Parks at maxaeonparks@gmail.com.' +
-      '\n\nClick OK to try again, or Cancel to return.'
-    );
-    if (!retry) return false;
-  }
-}
-
-async function isLoggedIn() {
-  const client = await ensureSupabase();
-  if (!client) return false;
-  const { data: { session } } = await client.auth.getSession();
-  return !!session;
-}
-
-async function logout() {
-  const client = await ensureSupabase();
-  if (client) await client.auth.signOut();
-}
-
-async function updateAuthButton() {
-  const btn = document.querySelector('#auth-btn');
-  if (!btn) return;
-  btn.textContent = (await isLoggedIn()) ? 'Logout' : 'Login';
-}
-
-// Enable or hide the BibTeX upload control based on login status
-async function updateBibtexUpload() {
-  const input = document.getElementById('bib-upload');
-  const label = document.querySelector('label[for="bib-upload"]');
-  if (!input && !label) return;
-  const loggedIn = await isLoggedIn();
-  if (input) input.disabled = !loggedIn;
-  if (label) label.style.display = loggedIn ? '' : 'none';
-}
-
-async function handleAuthButton() {
-  if (await isLoggedIn()) {
-    await logout();
-    showToast('Logged out');
-  } else {
-    const ok = await authenticate();
-    if (ok) showToast('Logged in');
-  }
-  updateAuthButton();
-  updateBibtexUpload();
-}
+// Authentication-related helpers were removed. Forms now open GitHub issues.
 
 async function fetchConstructs() {
-  const client = await ensureSupabase();
-  if (!client) return [];
-  const { data, error } = await client.from('constructs').select('*');
-  if (error) {
-    console.error('Error fetching constructs:', error);
-    return [];
-  }
-  return data;
+  return [];
 }
 
 async function addConstruct(construct) {
-  const client = await ensureSupabase();
-  if (!client) {
-    const error = new Error('Database unavailable');
-    return { data: null, error };
-  }
-  const { data, error } = await client.from('constructs').insert([construct]);
-  if (error) {
-    console.error('Error adding construct:', error);
-  }
-  return { data, error };
+  openGithubIssue(
+    'construct.yml',
+    'New construct: ' + (construct.title || ''),
+    '```json\n' + JSON.stringify(construct, null, 2) + '\n```'
+  );
+  return { data: null, error: null };
 }
 
 async function updateConstruct(id, updates) {
-  const client = await ensureSupabase();
-  if (!client) {
-    const error = new Error('Database unavailable');
-    return { data: null, error };
-  }
-  const updateData = { ...updates };
-  delete updateData.id;
-  delete updateData.__index;
-  const { data, error } = await client.from('constructs').update(updateData).eq('id', id);
-  if (error) {
-    console.error('Error updating construct:', error);
-  }
-  return { data, error };
+  const updateData = { id, ...updates };
+  openGithubIssue(
+    'construct.yml',
+    'Update construct: ' + (updates.title || id),
+    '```json\n' + JSON.stringify(updateData, null, 2) + '\n```'
+  );
+  return { data: null, error: null };
 }
 
 async function deleteConstruct(id) {
-  const client = await ensureSupabase();
-  if (!client) return null;
-  const { data, error } = await client.from('constructs').delete().eq('id', id);
-  if (error) {
-    console.error('Error deleting construct:', error);
-    return null;
-  }
-  return data;
+  openGithubIssue('delete-construct.yml', 'Delete construct: ' + id, 'ID: ' + id);
+  return null;
 }
 
 async function fetchLiterature() {
-  const client = await ensureSupabase();
-  if (!client) return [];
-  const { data, error } = await client.from('literature').select('*');
-  if (error) {
-    console.error('Error fetching literature:', error);
-    return [];
-  }
-  return data;
+  return [];
 }
 
 async function addLiterature(entry) {
-  const client = await ensureSupabase();
-  if (!client) {
-    const error = new Error('Database unavailable');
-    return { data: null, error };
-  }
-  const insertData = sanitizeLiteratureFields({ ...entry });
-  delete insertData.id;
-  delete insertData.__index;
-  const { data, error } = await client.from('literature').insert([insertData]);
-  if (error) {
-    console.error('Error adding literature:', error);
-  }
-  return { data, error };
+  openGithubIssue(
+    'reference.yml',
+    'New reference: ' + (entry.title || ''),
+    '```json\n' + JSON.stringify(entry, null, 2) + '\n```'
+  );
+  return { data: null, error: null };
 }
 
 async function updateLiterature(id, updates) {
-  const client = await ensureSupabase();
-  if (!client) {
-    const error = new Error('Database unavailable');
-    return { data: null, error };
-  }
-  const updateData = sanitizeLiteratureFields({ ...updates });
-  delete updateData.id;
-  delete updateData.__index;
-  const { data, error } = await client.from('literature').update(updateData).eq('id', id);
-  if (error) {
-    console.error('Error updating literature:', error);
-  }
-  return { data, error };
+  openGithubIssue(
+    'reference.yml',
+    'Update reference: ' + (updates.title || id),
+    '```json\n' + JSON.stringify({ id, ...updates }, null, 2) + '\n```'
+  );
+  return { data: null, error: null };
 }
 
 async function deleteLiterature(id) {
-  const client = await ensureSupabase();
-  if (!client) return null;
-  const { data, error } = await client.from('literature').delete().eq('id', id);
-  if (error) {
-    console.error('Error deleting literature:', error);
-    return null;
-  }
-  return data;
+  openGithubIssue('delete-publication.yml', 'Delete publication: ' + id, 'ID: ' + id);
+  return null;
 }
 
 async function fetchBenchmarks() {
-  const client = await ensureSupabase();
-  if (!client) return [];
-  const { data, error } = await client.from('benchmarks').select('*');
-  if (error) {
-    console.error('Error fetching benchmarks:', error);
-    return [];
-  }
-  return data;
+  return [];
 }
 
 async function addBenchmark(entry) {
-  const client = await ensureSupabase();
-  if (!client) {
-    const error = new Error('Database unavailable');
-    return { data: null, error };
-  }
-  const { data, error } = await client.from('benchmarks').insert([entry]);
-  if (error) {
-    console.error('Error adding benchmark:', error);
-  }
-  return { data, error };
+  openGithubIssue(
+    'dataset-submission.yml',
+    'New benchmark entry',
+    '```json\n' + JSON.stringify(entry, null, 2) + '\n```'
+  );
+  return { data: null, error: null };
 }
 
 async function updateBenchmark(id, updates) {
-  const client = await ensureSupabase();
-  if (!client) return null;
-  const { data, error } = await client.from('benchmarks').update(updates).eq('id', id);
-  if (error) {
-    console.error('Error updating benchmark:', error);
-    return null;
-  }
-  return data;
+  openGithubIssue(
+    'dataset-submission.yml',
+    'Update benchmark: ' + id,
+    '```json\n' + JSON.stringify({ id, ...updates }, null, 2) + '\n```'
+  );
+  return null;
 }
 
 async function deleteBenchmark(id) {
-  const client = await ensureSupabase();
-  if (!client) return null;
-  const { data, error } = await client.from('benchmarks').delete().eq('id', id);
-  if (error) {
-    console.error('Error deleting benchmark:', error);
-    return null;
-  }
-  return data;
+  openGithubIssue('dataset-submission.yml', 'Delete benchmark: ' + id, 'ID: ' + id);
+  return null;
 }
 
 // Navigation menu toggle for small screens
@@ -537,13 +303,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const header = document.querySelector('header');
   if (header) {
-    const btn = document.createElement('button');
-    btn.id = 'auth-btn';
-    btn.className = 'button auth-button';
-    btn.addEventListener('click', handleAuthButton);
-    header.appendChild(btn);
-    updateAuthButton();
-    updateBibtexUpload();
+    // previously a login/logout button was inserted here
   }
 });
 

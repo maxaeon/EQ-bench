@@ -357,11 +357,9 @@
     }
 
 document.addEventListener('DOMContentLoaded', loadConstructs);
-let authed = false;
 let selectedConstructId = null;
 
 async function startAddConstruct() {
-    if (!authed) { if (!(await authenticate())) return; authed = true; }
     document.getElementById('construct-add-row')?.remove();
     const tbody = document.querySelector('#construct-table tbody');
     const addRow = document.createElement('tr');
@@ -405,7 +403,6 @@ async function startAddConstruct() {
         e.preventDefault();
         errorDiv.textContent = '';
         errorDiv.style.display = 'none';
-        if (!authed) { if (!(await authenticate())) return; authed = true; }
         const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
         const refsArr = Array.from(form.elements.references.selectedOptions).map(o => o.value);
         const catArr = Array.from(form.elements.category.selectedOptions).map(o => o.value);
@@ -455,7 +452,6 @@ async function startAddConstruct() {
 
 
 async function startEditConstruct() {
-    if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (selectedConstructId === null) { showToast('Select an entry first.'); return; }
     const item = constructs.find(c => (c.id ?? c.__index) == selectedConstructId);
     if (!item) return;
@@ -495,7 +491,6 @@ async function startEditConstruct() {
     populateLiteratureSelect(form.elements.references, currentRefs);
     form.addEventListener('submit', async e => {
         e.preventDefault();
-        if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!(await showConfirm('Save changes?'))) return;
         const axesArr = Array.from(form.elements.axes.selectedOptions).map(o => o.value);
         const refsArr = Array.from(form.elements.references.selectedOptions).map(o => o.value);
@@ -537,7 +532,6 @@ async function deleteSelectedConstruct() {
     if (selectedConstructId === null) { showToast('Select an entry first.'); return; }
     const idx = constructs.findIndex(c => (c.id ?? c.__index) == selectedConstructId);
     if (idx === -1) return;
-    if (!authed) { if (!(await authenticate())) return; authed = true; }
     if (!(await showConfirm('Delete this construct?'))) return;
     const item = constructs[idx];
     if (item.id && typeof deleteConstruct === 'function') await deleteConstruct(item.id);

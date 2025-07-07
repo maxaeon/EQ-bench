@@ -508,19 +508,25 @@ async function startEditConstruct() {
         item.verification_issues = form.verification_issues.value;
         item.category = catArrEdit.join(', ');
         item.references = refsArr;
-        if (item.id && typeof updateConstruct === 'function') await updateConstruct(item.id, {
-            title: item.title,
-            axes: axesArr,
-            definition: item.definition,
-            example: item.example,
-            synonyms: item.synonyms,
-            related_terms: item.related_terms,
-            indicators: item.indicators,
-            measurement: item.measurement,
-            verification_issues: item.verification_issues,
-            category: item.category,
-            references: refsArr
-        });
+        if (item.id && typeof updateConstruct === 'function') {
+            const { error } = await updateConstruct(item.id, {
+                title: item.title,
+                axes: axesArr,
+                definition: item.definition,
+                example: item.example,
+                synonyms: item.synonyms,
+                related_terms: item.related_terms,
+                indicators: item.indicators,
+                measurement: item.measurement,
+                verification_issues: item.verification_issues,
+                category: item.category,
+                references: refsArr
+            });
+            if (error) {
+                showToast(error.message || error);
+                return;
+            }
+        }
         hideEditOverlay();
         applyConstructFilters();
         window.location.reload();
@@ -534,7 +540,10 @@ async function deleteSelectedConstruct() {
     if (idx === -1) return;
     if (!(await showConfirm('Delete this construct?'))) return;
     const item = constructs[idx];
-    if (item.id && typeof deleteConstruct === 'function') await deleteConstruct(item.id);
+    if (item.id && typeof deleteConstruct === 'function') {
+        const { error } = await deleteConstruct(item.id);
+        if (error) { showToast(error.message || error); return; }
+    }
     constructs.splice(idx,1);
     selectedConstructId = null;
     applyConstructFilters();

@@ -133,7 +133,10 @@ function openGithubIssue(template, title, body) {
     '&title=' + encodeURIComponent(title) +
     '&body=' + encodeURIComponent(body);
   const win = window.open(url, '_blank');
-  if (!win) showToast('Unable to open GitHub issue.');
+  if (!win) {
+    showToast('Unable to open GitHub issue. Please check pop-up settings.');
+    return null;
+  }
   return win;
 }
 
@@ -213,26 +216,42 @@ async function fetchConstructs() {
 }
 
 async function addConstruct(construct) {
-  openGithubIssue(
+  const win = openGithubIssue(
     'construct.yml',
     'New construct: ' + (construct.title || ''),
     '```json\n' + JSON.stringify(construct, null, 2) + '\n```'
   );
+  if (!win)
+    return {
+      data: null,
+      error: 'Unable to open GitHub issue. Please check pop-up settings.'
+    };
   return { data: null, error: null };
 }
 
 async function updateConstruct(id, updates) {
   const updateData = { id, ...updates };
-  openGithubIssue(
+  const win = openGithubIssue(
     'construct.yml',
     'Update construct: ' + (updates.title || id),
     '```json\n' + JSON.stringify(updateData, null, 2) + '\n```'
   );
+  if (!win)
+    return {
+      data: null,
+      error: 'Unable to open GitHub issue. Please check pop-up settings.'
+    };
   return { data: null, error: null };
 }
 
 async function deleteConstruct(id) {
-  openGithubIssue('delete-construct.yml', 'Delete construct: ' + id, 'ID: ' + id);
+  const win = openGithubIssue(
+    'delete-construct.yml',
+    'Delete construct: ' + id,
+    'ID: ' + id
+  );
+  if (!win)
+    return { error: 'Unable to open GitHub issue. Please check pop-up settings.' };
   return null;
 }
 
@@ -241,25 +260,41 @@ async function fetchLiterature() {
 }
 
 async function addLiterature(entry) {
-  openGithubIssue(
+  const win = openGithubIssue(
     'reference.yml',
     'New reference: ' + (entry.title || ''),
     '```json\n' + JSON.stringify(entry, null, 2) + '\n```'
   );
+  if (!win)
+    return {
+      data: null,
+      error: 'Unable to open GitHub issue. Please check pop-up settings.'
+    };
   return { data: null, error: null };
 }
 
 async function updateLiterature(id, updates) {
-  openGithubIssue(
+  const win = openGithubIssue(
     'reference.yml',
     'Update reference: ' + (updates.title || id),
     '```json\n' + JSON.stringify({ id, ...updates }, null, 2) + '\n```'
   );
+  if (!win)
+    return {
+      data: null,
+      error: 'Unable to open GitHub issue. Please check pop-up settings.'
+    };
   return { data: null, error: null };
 }
 
 async function deleteLiterature(id) {
-  openGithubIssue('delete-publication.yml', 'Delete publication: ' + id, 'ID: ' + id);
+  const win = openGithubIssue(
+    'delete-publication.yml',
+    'Delete publication: ' + id,
+    'ID: ' + id
+  );
+  if (!win)
+    return { error: 'Unable to open GitHub issue. Please check pop-up settings.' };
   return null;
 }
 
@@ -268,25 +303,38 @@ async function fetchBenchmarks() {
 }
 
 async function addBenchmark(entry) {
-  openGithubIssue(
+  const win = openGithubIssue(
     'dataset-submission.yml',
     'New benchmark entry',
     '```json\n' + JSON.stringify(entry, null, 2) + '\n```'
   );
+  if (!win)
+    return {
+      data: null,
+      error: 'Unable to open GitHub issue. Please check pop-up settings.'
+    };
   return { data: null, error: null };
 }
 
 async function updateBenchmark(id, updates) {
-  openGithubIssue(
+  const win = openGithubIssue(
     'dataset-submission.yml',
     'Update benchmark: ' + id,
     '```json\n' + JSON.stringify({ id, ...updates }, null, 2) + '\n```'
   );
+  if (!win)
+    return { error: 'Unable to open GitHub issue. Please check pop-up settings.' };
   return null;
 }
 
 async function deleteBenchmark(id) {
-  openGithubIssue('dataset-submission.yml', 'Delete benchmark: ' + id, 'ID: ' + id);
+  const win = openGithubIssue(
+    'dataset-submission.yml',
+    'Delete benchmark: ' + id,
+    'ID: ' + id
+  );
+  if (!win)
+    return { error: 'Unable to open GitHub issue. Please check pop-up settings.' };
   return null;
 }
 

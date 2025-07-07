@@ -89,7 +89,6 @@
     <script>
     let benchmarks = [];
     let constructs = [];
-    let authed = false;
     let selectedBenchmarkId = null;
     let lastBmAction = null;
 
@@ -151,7 +150,6 @@
     document.addEventListener('DOMContentLoaded', loadBenchmarks);
 
     async function startAddBenchmark() {
-        if (!authed) { if (!(await authenticate())) return; authed = true; }
         document.getElementById('benchmark-add-row')?.remove();
         const tbody = document.querySelector('#benchmark-table tbody');
         const row = document.createElement('tr');
@@ -219,7 +217,6 @@
     }
 
     async function startEditBenchmark() {
-        if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (selectedBenchmarkId === null) { showToast('Select an entry first.'); return; }
         const item = benchmarks.find(b => (b.id ?? b.__index) == selectedBenchmarkId);
         if (!item) return;
@@ -274,7 +271,6 @@
         if (selectedBenchmarkId === null) { showToast('Select an entry first.'); return; }
         const idx = benchmarks.findIndex(b => (b.id ?? b.__index) == selectedBenchmarkId);
         if (idx === -1) return;
-        if (!authed) { if (!(await authenticate())) return; authed = true; }
         if (!(await showConfirm('Delete this benchmark?'))) return;
         const item = benchmarks[idx];
         if (item.id && typeof deleteBenchmark === 'function') await deleteBenchmark(item.id);

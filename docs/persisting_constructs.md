@@ -20,26 +20,12 @@ emotion-related constructs.
 
 ## Current approach
 
-Submissions are now stored in a small Supabase instance so that the website can
-fetch constructs and literature entries dynamically. The GitHub Actions
-workflows still export `data/construct_submissions.json` and
-`data/literature.json` as static snapshots. These JSON files are mirrored under
-`docs/data/` for GitHub Pages, but the source of truth is the Supabase project.
+Submissions are now stored directly in JSON files under `data/`. The GitHub Actions
+workflows mirror these files to `docs/data/` for GitHub Pages, making the repository
+the sole source of truth.
 
-Each workflow step uploads the JSON contents using
-`scripts/upload_to_supabase.js` with the credentials provided via repository
-secrets. Construct records are inserted into the `constructs` table, while
-
-literature entries go into the `literature` table. Uploads should omit the
-`id` field so that Supabase can assign primary keys without conflicts.
-
-### Configuration
-
-The GitHub workflows require `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` secrets
-for uploads. The public website reads the same database using the
-`SUPABASE_URL` and `SUPABASE_ANON_KEY` variables injected at build time. See the
-[GitHub documentation on encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-for how to configure these values. The deployment workflow inserts them into docs/env.js so that the website's CRUD functions can talk to Supabase.
+Supabase integration has been removed. Any updates should be committed to the JSON
+files through pull requests.
 
 Each record includes an `axes` field listing the relevant SERA skills
 (e.g., `"sense, explain"`). Pages like `sense.html` filter constructs by reading
@@ -56,8 +42,7 @@ presents a multi-select dropdown populated with literature titles. Select the
 relevant sources or leave it blank. If a needed reference is missing, add it to
 the literature table first so it appears in the list.
 
-This hybrid method keeps contributions transparent via the JSON snapshots while
-allowing richer queries and edits through the Supabase backend.
+This approach keeps contributions transparent via versioned JSON snapshots.
 
 ## Removing entries
 

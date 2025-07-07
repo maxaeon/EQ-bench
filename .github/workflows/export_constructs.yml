@@ -11,13 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Create env.js
-        run: |
-          echo "window.SUPABASE_URL = '${SUPABASE_URL}';" > docs/env.js
-          echo "window.SUPABASE_ANON_KEY = '${SUPABASE_ANON_KEY}';" >> docs/env.js
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
       - name: Export construct issues to JSON
         id: export
         uses: actions/github-script@v6
@@ -61,13 +54,3 @@ jobs:
           message: 'Update construct submissions'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload Constructs
-        run: node scripts/upload_to_supabase.js data/construct_submissions.json constructs
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-      - name: Upload Benchmarks
-        run: if [ -f data/benchmarks.json ]; then node scripts/upload_to_supabase.js data/benchmarks.json benchmarks; fi
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}

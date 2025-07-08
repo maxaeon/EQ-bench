@@ -52,7 +52,7 @@
 <p>Notice something missing? Submit new references via <a href="https://github.com/maxaeon/EQ-bench/issues/new?template=reference.yml" target="_blank">GitHub Issues</a>. Uploaded <code>.bib</code> or <code>.csv</code> files, or pasted BibTeX/CSV text, are stored in this repository's data files. Each submission must specify at least one of the supported SERA-X axes, a related construct, or the methodology it informs.</p>
 <p>Need to modify the database structure itself? <a href="https://github.com/maxaeon/EQ-bench/issues/new?template=database-change.yml" target="_blank">Open a database change request</a>.</p>
             <div class="add-source-controls">
-                <button id="bibtex-btn" class="button" type="button">BibTeX/CSV</button>
+                <!-- Upload functionality removed -->
             </div>
 
             <div class="search-controls">
@@ -92,10 +92,8 @@
                         <th>Title</th>
                         <th>Author(s)</th>
                         <th>Year</th>
-                        <th>Relevance</th>
                         <th>Construct</th>
                         <th>Axis</th>
-                        <th>Methodology Supported</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -249,7 +247,7 @@
         tbody.innerHTML = '';
         if (!items.length) {
             const row = document.createElement('tr');
-            row.innerHTML = `<td colspan="8">No literature found. Try adjusting your filters.</td>`;
+            row.innerHTML = `<td colspan="6">No literature found. Try adjusting your filters.</td>`;
             tbody.appendChild(row);
             return;
         }
@@ -264,10 +262,8 @@
                 <td>${l.title}</td>
                 <td>${parseAuthors(l.authors).join(', ')}</td>
                 <td>${l.year}</td>
-                <td>${l.relevance || ''}</td>
                 <td>${(Array.isArray(l.construct) ? l.construct : (l.construct || '').split(/[,;]+/)).map(c => c.trim()).filter(Boolean).join('<br>')}</td>
-                <td>${Array.isArray(l.axis) ? l.axis.join(', ') : l.axis}</td>
-                <td>${l.methodology_supported || ''}</td>`;
+                <td>${Array.isArray(l.axis) ? l.axis.join(', ') : l.axis}</td>`;
             const extra = document.createElement('tr');
             const id = `ldetail-${l.__index}`;
             row.dataset.target = id;
@@ -276,7 +272,7 @@
             extra.style.display = 'none';
             const keywords = Array.isArray(l.keywords) ? l.keywords.join(', ') : (l.keywords || '');
             extra.innerHTML = `
-                <td colspan="8">${l.publisher ? `<strong>Publisher:</strong> ${l.publisher}<br>` : ''}
+                <td colspan="6">${l.publisher ? `<strong>Publisher:</strong> ${l.publisher}<br>` : ''}
                 ${l.journal ? `<strong>Journal:</strong> ${l.journal}<br>` : ''}
                 ${l.volume ? `<strong>Volume:</strong> ${l.volume} ` : ''}${l.number ? ` <strong>Number:</strong> ${l.number}` : ''}${(l.volume||l.number)?'<br>':''}
                 ${l.pages ? `<strong>Pages:</strong> ${l.pages}<br>` : ''}
@@ -566,7 +562,7 @@ async function startAddLit() {
     const tbody = document.querySelector('#lit-table tbody');
     const addRow = document.createElement('tr');
     addRow.id = 'lit-add-row';
-    addRow.innerHTML = `<td colspan="8"><form id="lit-add-form">
+    addRow.innerHTML = `<td colspan="6"><form id="lit-add-form">
         <label>Title: <input type="text" name="title" required></label>
         <div id="authors-container">
             <label>Author 1: <input type="text" class="author-input"></label>
@@ -876,7 +872,7 @@ async function undoLastLitAction() {
 
 
 
-document.getElementById('bibtex-btn').addEventListener('click', startBibtex);
+// Upload button removed
 // document.getElementById('undo-lit-btn').addEventListener('click', undoLastLitAction);
 
 // Confirm before saving new or updated literature

@@ -49,11 +49,10 @@
         <section id="literature">
             <hr>
             <h2>Relevant Literature</h2>
-<p>Notice something missing? Use the <strong>Add Source</strong> button to submit new references. Uploaded <code>.bib</code> or <code>.csv</code> files, or pasted BibTeX/CSV text, are stored in this repository's data files. Each submission must specify at least one of the supported SERA-X axes, a related construct, or the methodology it informs.</p>
+<p>Notice something missing? Submit new references via <a href="https://github.com/maxaeon/EQ-bench/issues/new?template=reference.yml" target="_blank">GitHub Issues</a>. Uploaded <code>.bib</code> or <code>.csv</code> files, or pasted BibTeX/CSV text, are stored in this repository's data files. Each submission must specify at least one of the supported SERA-X axes, a related construct, or the methodology it informs.</p>
 <p>Need to modify the database structure itself? <a href="https://github.com/maxaeon/EQ-bench/issues/new?template=database-change.yml" target="_blank">Open a database change request</a>.</p>
             <div class="add-source-controls">
                 <button id="bibtex-btn" class="button" type="button">BibTeX/CSV</button>
-                <button id="add-source-btn" class="button" type="button">Add Source</button>
             </div>
 
             <div class="search-controls">
@@ -106,8 +105,6 @@
         <div class="bibtex-controls">
             <!--<a class="button" href="#" id="bibtex-download">Download BibTeX</a> -->
             <a class="button" href="#" id="bibtex-export-filtered" title="Export currently filtered list">BibTeX/CSV</a>
-            <button id="edit-lit-btn" class="button">Edit</button>
-            <button id="delete-lit-btn" class="button">Delete</button>
             <!-- <button id="undo-lit-btn" class="button">Undo</button> -->
         </div>
 
@@ -879,9 +876,6 @@ async function undoLastLitAction() {
 
 
 
-document.getElementById('edit-lit-btn').addEventListener('click', startEditLit);
-document.getElementById('delete-lit-btn').addEventListener('click', deleteSelectedLit);
-document.getElementById('add-source-btn').addEventListener('click', startAddLit);
 document.getElementById('bibtex-btn').addEventListener('click', startBibtex);
 // document.getElementById('undo-lit-btn').addEventListener('click', undoLastLitAction);
 

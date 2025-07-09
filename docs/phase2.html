@@ -173,7 +173,7 @@
                 try { lit = await fetchLiterature(); } catch(e) { console.error(e); lit = []; }
             }
         } else {
-            try { lit = await (await fetch('../data/literature.json')).json(); } catch(e) { lit = []; }
+            try { lit = await (await fetch('data/literature.json')).json(); } catch(e) { lit = []; }
         }
         literatureCache = lit;
         return lit;
